@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 490" width="800" height="490" role="img" aria-label="Pile de l'interopérabilité des agents et couches manquantes">
+<style>
+:root{--ink:#1c1a17;--bg:#f9f7f7;--grey:#6b6459;--line:#ddd8d2;--card:#f0eeec;--blue:#1565c0;--wash:#e3ecf7}
+@media (prefers-color-scheme:dark){:root{--ink:#f9f7f7;--bg:#282623;--grey:#b0aba6;--line:#453f39;--card:#32302c;--blue:#a5d6fe;--wash:#2f3a47}}
+text{font-family:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;fill:var(--ink);font-size:12px}
+.t{font-size:13px;font-weight:700}.s{font-size:11px;fill:var(--grey)}.tag{font-size:10.5px;fill:var(--blue);font-weight:600}
+.box{fill:var(--card);stroke:var(--ink);stroke-width:1}
+.miss{fill:none;stroke:var(--blue);stroke-width:1.4;stroke-dasharray:6 4}
+.rail{fill:var(--wash);stroke:var(--blue);stroke-width:1.2;stroke-dasharray:6 4}
+.ar{stroke:var(--grey);stroke-width:1;fill:none;marker-end:url(#m)}
+</style>
+<defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--grey)"/></marker></defs>
+<rect width="100%" height="100%" style="fill:var(--bg)"/>
+<!-- couche 6 : gouvernance collective (manquante) -->
+<rect x="40" y="36" width="520" height="64" class="miss"/>
+<text x="56" y="60" class="t">Gouvernance collective</text>
+<text x="548" y="52" class="tag" text-anchor="end">couche manquante</text>
+<text x="56" y="82" class="s">adhésion · délibération · vote · préservation de la dissidence · escalade humaine · audit et rejeu [32]</text>
+<!-- couche 5 : sémantique (manquante) -->
+<rect x="40" y="108" width="520" height="64" class="miss"/>
+<text x="56" y="132" class="t">Sémantique (couche L9)</text>
+<text x="548" y="124" class="tag" text-anchor="end">couche manquante</text>
+<text x="56" y="154" class="s">ancrage des termes · négociation de contexte · clarification et vérification · consensus [22], [23]</text>
+<!-- couche 4 : découverte -->
+<rect x="40" y="180" width="520" height="64" class="box"/>
+<text x="56" y="204" class="t">Découverte et registres</text>
+<text x="56" y="226" class="s">annuaires signés (OASF, ADS) · découverte temps réel · bruit de découverte à l'échelle [27], [29]–[31]</text>
+<!-- couche 3 : agent-agent -->
+<rect x="40" y="252" width="520" height="64" class="box"/>
+<text x="56" y="276" class="t">Agent–agent</text>
+<text x="56" y="298" class="s">A2A (Agent Cards, tâches, sessions) · ACP fusionné dans A2A · ANP (réseau ouvert, DID) [12], [19]</text>
+<!-- couche 2 : agent-outil -->
+<rect x="40" y="324" width="520" height="64" class="box"/>
+<text x="56" y="348" class="t">Agent–outil</text>
+<text x="56" y="370" class="s">MCP : outils, ressources, contexte propagé · manifeste de permissions à l'enregistrement [12], [14], [15]</text>
+<!-- couche 1 : transport -->
+<rect x="40" y="396" width="520" height="64" class="box"/>
+<text x="56" y="420" class="t">Transport et syntaxe</text>
+<text x="56" y="442" class="s">HTTP · JSON-RPC · gRPC · schémas · diffusion en continu · cycle de vie — la mieux couverte [22]</text>
+<!-- flèche de dépendance -->
+<line x1="24" y1="458" x2="24" y2="44" class="ar"/>
+<text transform="translate(14 250) rotate(-90)" class="s" text-anchor="middle">chaque couche s'appuie sur la précédente</text>
+<!-- rails transversaux -->
+<rect x="590" y="36" width="82" height="424" class="rail"/>
+<text transform="translate(624 248) rotate(-90)" class="t" text-anchor="middle">Identité et délégation</text>
+<text transform="translate(644 248) rotate(-90)" class="s" text-anchor="middle">partiellement couverte [33], [72]–[80]</text>
+<rect x="686" y="36" width="82" height="424" class="rail"/>
+<text transform="translate(720 248) rotate(-90)" class="t" text-anchor="middle">Gouvernance à l'exécution</text>
+<text transform="translate(740 248) rotate(-90)" class="s" text-anchor="middle">proposée hors des protocoles [81]–[87]</text>
+<text x="40" y="480" class="s">Trait plein : couvert par les protocoles actuels · pointillé bleu : absent ou partiel selon la littérature examinée</text>
+</svg>

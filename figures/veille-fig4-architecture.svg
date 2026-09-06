@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" role="img" aria-label="Architecture de référence observée : modèles, passerelle, registre, systèmes d'affaires, identité et observabilité">
+<style>
+:root{--ink:#1c1a17;--bg:#f9f7f7;--grey:#6b6459;--line:#ddd8d2;--card:#f0eeec;--blue:#1565c0;--wash:#e3ecf7}
+@media (prefers-color-scheme:dark){:root{--ink:#f9f7f7;--bg:#282623;--grey:#b0aba6;--line:#453f39;--card:#32302c;--blue:#a5d6fe;--wash:#2f3a47}}
+text{font-family:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;fill:var(--ink);font-size:12px}
+.t{font-size:13px;font-weight:700}.s{font-size:10.5px;fill:var(--grey)}.rt{font-size:12px;font-weight:700;text-anchor:middle}.rs{font-size:10px;fill:var(--grey);text-anchor:middle}
+.box{fill:var(--card);stroke:var(--ink);stroke-width:1}
+.rail{fill:var(--wash);stroke:var(--blue);stroke-width:1.2}
+.ar{stroke:var(--ink);stroke-width:1.2;fill:none;marker-end:url(#m)}
+</style>
+<defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink)"/></marker></defs>
+<rect width="100%" height="100%" style="fill:var(--bg)"/>
+<!-- couche 1 -->
+<rect x="140" y="36" width="520" height="82" class="box"/>
+<text x="156" y="58" class="t">1 · Modèles et exécution gérée</text>
+<text x="156" y="76" class="s">Foundry Agent Service · Bedrock AgentCore · Gemini Enterprise Agent Platform · Claude Managed Agents</text>
+<text x="156" y="92" class="s">OpenAI Agents SDK · modèles : Claude Fable 5.1, GPT-6 Astra (repli et paliers d'accès internes)</text>
+<text x="156" y="108" class="s">sessions durables (14 jours sur AgentCore), bac à sable, routines planifiées</text>
+<line x1="400" y1="118" x2="400" y2="132" class="ar"/>
+<!-- couche 2 -->
+<rect x="140" y="134" width="520" height="82" class="box"/>
+<text x="156" y="156" class="t">2 · Passerelle d'agents</text>
+<text x="156" y="174" class="s">routage sur les en-têtes Mcp-Method / Mcp-Name · mandataire A2A · quotas de jetons par agent</text>
+<text x="156" y="190" class="s">inspection (injection d'invites), politiques par agent, journaux d'audit agent-agent</text>
+<text x="156" y="206" class="s">Kong AI Gateway 3.14 · agentgateway (AAIF) · Apigee · Gravitee 4.11</text>
+<line x1="400" y1="216" x2="400" y2="230" class="ar"/>
+<!-- couche 3 -->
+<rect x="140" y="232" width="520" height="82" class="box"/>
+<text x="156" y="254" class="t">3 · Registre privé et pipeline d'admission</text>
+<text x="156" y="272" class="s">registre public → admission (éditeur, intégrité, permissions) → registre privé / liste d'autorisation</text>
+<text x="156" y="288" class="s">→ application à l'exécution · le registre est lui-même interrogeable par MCP</text>
+<text x="156" y="304" class="s">MCP Registry officiel (préversion) · AWS Agent Registry · catalogue gouverné watsonx Orchestrate</text>
+<line x1="400" y1="314" x2="400" y2="328" class="ar"/>
+<!-- couche 4 -->
+<rect x="140" y="330" width="520" height="82" class="box"/>
+<text x="156" y="352" class="t">4 · Systèmes d'affaires exposés aux agents</text>
+<text x="156" y="370" class="s">ServiceNow Action Fabric (serveur MCP GA) · Salesforce Headless 360 (60+ outils MCP)</text>
+<text x="156" y="386" class="s">SAP Joule (A2A obligatoire, GA T4 2026) · IBM watsonx Orchestrate · UiPath Maestro</text>
+<text x="156" y="402" class="s">actions gouvernées : OAuth, audit, paquets d'outils par rôle, mesure de consommation</text>
+<!-- rail gauche : identité -->
+<rect x="24" y="36" width="104" height="376" class="rail"/>
+<text x="76" y="58" class="rt">Identité et</text>
+<text x="76" y="74" class="rt">délégation</text>
+<text x="76" y="100" class="rs">Entra Agent ID</text>
+<text x="76" y="114" class="rs">(18 mars 2026)</text>
+<text x="76" y="136" class="rs">Okta Agent SSO,</text>
+<text x="76" y="150" class="rs">XAA = extension</text>
+<text x="76" y="164" class="rs">officielle de MCP</text>
+<text x="76" y="178" class="rs">(24 août 2026)</text>
+<text x="76" y="200" class="rs">échange de jetons</text>
+<text x="76" y="214" class="rs">RFC 8693 (Loom)</text>
+<text x="76" y="236" class="rs">Agent Cards</text>
+<text x="76" y="250" class="rs">signées (A2A 1.0)</text>
+<text x="76" y="272" class="rs">NIST : identités</text>
+<text x="76" y="286" class="rs">distinctes, jetons</text>
+<text x="76" y="300" class="rs">éphémères,</text>
+<text x="76" y="314" class="rs">délégation</text>
+<text x="76" y="328" class="rs">atténuée</text>
+<text x="76" y="350" class="rs">paliers d'accès</text>
+<text x="76" y="364" class="rs">aux modèles selon</text>
+<text x="76" y="378" class="rs">l'organisation</text>
+<!-- rail droit : observabilité -->
+<rect x="672" y="36" width="104" height="376" class="rail"/>
+<text x="724" y="58" class="rt">Observabilité</text>
+<text x="724" y="84" class="rs">OpenTelemetry</text>
+<text x="724" y="98" class="rs">GenAI :</text>
+<text x="724" y="112" class="rs">invoke_agent,</text>
+<text x="724" y="126" class="rs">execute_tool,</text>
+<text x="724" y="140" class="rs">invoke_workflow</text>
+<text x="724" y="162" class="rs">conventions MCP</text>
+<text x="724" y="176" class="rs">v1.39 : trace</text>
+<text x="724" y="190" class="rs">client–serveur</text>
+<text x="724" y="204" class="rs">(W3C Trace Context)</text>
+<text x="724" y="226" class="rs">v1.41 (mai 2026) :</text>
+<text x="724" y="240" class="rs">jetons de</text>
+<text x="724" y="254" class="rs">raisonnement</text>
+<text x="724" y="276" class="rs">statut :</text>
+<text x="724" y="290" class="rs">Development,</text>
+<text x="724" y="304" class="rs">sans calendrier</text>
+<text x="724" y="326" class="rs">Foundry, AgentCore,</text>
+<text x="724" y="340" class="rs">watsonx : traçage</text>
+<text x="724" y="354" class="rs">et évaluation</text>
+<text x="724" y="368" class="rs">intégrés</text>
+<!-- cadre -->
+<rect x="24" y="428" width="752" height="40" class="box"/>
+<text x="400" y="452" class="s" text-anchor="middle">Cadre : AI Act, art. 50 applicable aux agents depuis le 2 août 2026 · initiative NIST (févr. 2026) · billet NIST sur l'identité (27 août 2026) · EFS (automne 2026)</text>
+</svg>

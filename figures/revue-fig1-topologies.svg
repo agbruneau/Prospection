@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" role="img" aria-label="Trois topologies d'orchestration et un axe adaptatif">
+<style>
+:root{--ink:#1c1a17;--bg:#f9f7f7;--grey:#6b6459;--line:#ddd8d2;--card:#f0eeec;--blue:#1565c0;--wash:#e3ecf7}
+@media (prefers-color-scheme:dark){:root{--ink:#f9f7f7;--bg:#282623;--grey:#b0aba6;--line:#453f39;--card:#32302c;--blue:#a5d6fe;--wash:#2f3a47}}
+text{font-family:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;fill:var(--ink);font-size:12px}
+.h{font-size:14px;font-weight:700}.s{font-size:11px;fill:var(--grey)}
+.panel{fill:none;stroke:var(--line);stroke-width:1}
+.node{fill:var(--card);stroke:var(--ink);stroke-width:1}
+.hub{fill:var(--wash);stroke:var(--ink);stroke-width:1.2}
+.ln{stroke:var(--ink);stroke-width:1}
+.ar{stroke:var(--ink);stroke-width:1.2;fill:none;marker-end:url(#m)}
+.lbl{font-size:11px;font-weight:600;text-anchor:middle}
+</style>
+<defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink)"/></marker></defs>
+<rect width="100%" height="100%" style="fill:var(--bg)"/>
+<rect x="20" y="20" width="240" height="220" class="panel"/>
+<rect x="280" y="20" width="240" height="220" class="panel"/>
+<rect x="540" y="20" width="240" height="220" class="panel"/>
+<text x="140" y="44" class="h" text-anchor="middle">Centralisée</text>
+<text x="400" y="44" class="h" text-anchor="middle">Décentralisée</text>
+<text x="660" y="44" class="h" text-anchor="middle">Hiérarchique</text>
+<!-- centralisée -->
+<line x1="140" y1="140" x2="70" y2="90" class="ln"/><line x1="140" y1="140" x2="210" y2="90" class="ln"/>
+<line x1="140" y1="140" x2="70" y2="190" class="ln"/><line x1="140" y1="140" x2="210" y2="190" class="ln"/>
+<circle cx="140" cy="140" r="17" class="hub"/><text x="140" y="144" class="lbl">O</text>
+<circle cx="70" cy="90" r="13" class="node"/><text x="70" y="94" class="lbl">A</text>
+<circle cx="210" cy="90" r="13" class="node"/><text x="210" y="94" class="lbl">A</text>
+<circle cx="70" cy="190" r="13" class="node"/><text x="70" y="194" class="lbl">A</text>
+<circle cx="210" cy="190" r="13" class="node"/><text x="210" y="194" class="lbl">A</text>
+<text x="140" y="228" class="s" text-anchor="middle">un orchestrateur délègue et agrège</text>
+<!-- décentralisée -->
+<line x1="400" y1="80" x2="457" y2="121" class="ln"/><line x1="400" y1="80" x2="435" y2="189" class="ln"/><line x1="400" y1="80" x2="365" y2="189" class="ln"/><line x1="400" y1="80" x2="343" y2="121" class="ln"/>
+<line x1="457" y1="121" x2="435" y2="189" class="ln"/><line x1="457" y1="121" x2="365" y2="189" class="ln"/><line x1="457" y1="121" x2="343" y2="121" class="ln"/>
+<line x1="435" y1="189" x2="365" y2="189" class="ln"/><line x1="435" y1="189" x2="343" y2="121" class="ln"/><line x1="365" y1="189" x2="343" y2="121" class="ln"/>
+<circle cx="400" cy="80" r="13" class="node"/><text x="400" y="84" class="lbl">A</text>
+<circle cx="457" cy="121" r="13" class="node"/><text x="457" y="125" class="lbl">A</text>
+<circle cx="435" cy="189" r="13" class="node"/><text x="435" y="193" class="lbl">A</text>
+<circle cx="365" cy="189" r="13" class="node"/><text x="365" y="193" class="lbl">A</text>
+<circle cx="343" cy="121" r="13" class="node"/><text x="343" y="125" class="lbl">A</text>
+<text x="400" y="228" class="s" text-anchor="middle">pairs qui négocient sans coordonnateur</text>
+<!-- hiérarchique -->
+<line x1="660" y1="80" x2="600" y2="140" class="ln"/><line x1="660" y1="80" x2="720" y2="140" class="ln"/>
+<line x1="600" y1="140" x2="570" y2="200" class="ln"/><line x1="600" y1="140" x2="630" y2="200" class="ln"/>
+<line x1="720" y1="140" x2="690" y2="200" class="ln"/><line x1="720" y1="140" x2="750" y2="200" class="ln"/>
+<circle cx="660" cy="80" r="17" class="hub"/><text x="660" y="84" class="lbl">O</text>
+<circle cx="600" cy="140" r="14" class="hub"/><text x="600" y="144" class="lbl">S</text>
+<circle cx="720" cy="140" r="14" class="hub"/><text x="720" y="144" class="lbl">S</text>
+<circle cx="570" cy="200" r="12" class="node"/><text x="570" y="204" class="lbl">A</text>
+<circle cx="630" cy="200" r="12" class="node"/><text x="630" y="204" class="lbl">A</text>
+<circle cx="690" cy="200" r="12" class="node"/><text x="690" y="204" class="lbl">A</text>
+<circle cx="750" cy="200" r="12" class="node"/><text x="750" y="204" class="lbl">A</text>
+<text x="660" y="228" class="s" text-anchor="middle">sous-orchestrateurs par domaine</text>
+<!-- axe adaptatif -->
+<line x1="40" y1="272" x2="758" y2="272" class="ar"/>
+<text x="400" y="262" text-anchor="middle" style="font-size:12px">Axe dynamique–adaptatif : la topologie se reconfigure selon la difficulté de la requête, l'échelle ou les fautes [5], [35], [36], [47]</text>
+<text x="20" y="292" class="s">O : orchestrateur · S : sous-orchestrateur · A : agent</text>
+</svg>
