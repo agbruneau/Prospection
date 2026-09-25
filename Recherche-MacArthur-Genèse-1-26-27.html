@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Genèse 1.26-27 · À l&#x27;image de Christ · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Genèse 1.26-27 dans la perspective de John MacArthur : À l&#x27;image de Christ.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Genèse 1.26-27</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Genèse 1.26-27</span></p>
+    <h1 class="hero__title">À l'image de Christ</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Car ceux qu'il a connus d'avance, il les a aussi prédestinés à être semblables à l'image de son Fils, afin que son Fils soit le premier-né de beaucoup de frères.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Romains 8.29 · NEG</p>
+    
+    <p class="hero__meta">Recherche exégétique · 25 septembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Genèse 1.26-27</p></header>
+<div class="verses"><figure class="verse"><p class="verse__text">Puis Dieu dit : Faisons l'homme à notre image, selon notre ressemblance, et qu'il domine sur les poissons de la mer, sur les oiseaux du ciel, sur le bétail, sur toute la terre, et sur tous les reptiles qui rampent sur la terre.</p><cite class="verse__ref">Genèse 1.26 · NEG</cite></figure><figure class="verse"><p class="verse__text">Dieu créa l'homme à son image, il le créa à l'image de Dieu, il créa l'homme et la femme.</p><cite class="verse__ref">Genèse 1.27 · NEG</cite></figure><figure class="verse"><p class="verse__text">à cause de l'espérance qui vous est réservée dans les cieux, et que la parole de la vérité, la parole de l'Évangile vous a précédemment fait connaître.</p><cite class="verse__ref">Colossiens 1.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">Le Fils est l'image du Dieu invisible, le premier-né de toute la création.</p><cite class="verse__ref">Colossiens 1.15 · NEG</cite></figure></div><p class="lead">Quatre textes tracent un seul arc : l'homme créé à l'image de Dieu (Genèse 1.26-27), Christ ressemblance parfaite du Dieu invisible (Colossiens 1.15), le projet éternel de rendre les élus semblables à lui (Romains 8.29), et l'espérance réservée dans les cieux qui en garantit l'achèvement (Colossiens 1.5).</p><div class="body"><p>Genèse est le premier des cinq livres de Moïse. Le Pentateuque lui en attribue la rédaction, Jésus parle des écrits de Moïse comme d'un témoignage à son sujet (Jean 5.46-47; Luc 24.27), et le cadre de MacArthur tient cette paternité pour acquise. Moïse écrit pour Israël pendant les années du désert, entre la sortie d'Égypte (vers 1445 av. J.-C., selon la chronologie tirée de 1 Rois 6.1) et sa mort au seuil de Canaan (vers 1405) : un peuple racheté de l'esclavage, qui vient de recevoir la loi au Sinaï et s'apprête à entrer dans un pays rempli d'idoles. Le genre est le récit historique, relié sans rupture aux généalogies (Genèse 5.1-2 reprend 1.27 presque mot pour mot); le cadre de MacArthur y lit six jours ordinaires, une création ex nihilo et un Adam historique. Les versets 26-27 sont le sommet du prologue (1.1 à 2.3). Aux versets 3 à 24, Dieu commande à la troisième personne : « Que la lumière soit », « Que la terre produise ». Au verset 26, ce rythme se brise sur un « Faisons », et le verset 27 répond par trois emplois du verbe <i>bara'</i> (créer), dont Dieu seul est le sujet dans l'Ancien Testament. L'homme y paraît comme le couronnement de la création, créé pour la gérer, et le sixième jour s'achève sur le seul « très bon » du récit (1.31).</p><p>Les trois autres textes viennent de Paul. Romains, écrite de Corinthe vers 56, expose l'Évangile de la justice de Dieu; le chapitre 8 en tire la sécurité du croyant, et les versets 28-30 en sont la clé de voûte : la chaîne des verbes connaître d'avance, prédestiner, appeler, justifier et glorifier garantit que toutes choses concourent au bien de ceux qui aiment Dieu, et ce bien est défini, être semblables à l'image du Fils (8.29). Colossiens, écrite de prison à Rome vers 60-62, répond à une fausse doctrine qui mêlait philosophie païenne, ascétisme et légalisme juif, et reléguait Christ parmi les intermédiaires. Colossiens 1.5 appartient à l'action de grâces d'ouverture (1.3-8) : la foi et l'amour des Colossiens découlent de l'espérance réservée dans les cieux. Colossiens 1.15 ouvre le grand passage christologique (1.15-20) qui établit la suprématie de Christ sur la création et sur l'Église.</p></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Genèse 1.26-27</p></header>
+<p class="lead">Dans le monde qu'Israël connaissait, comme dans celui des lecteurs de Paul, l'« image » avait un sens précis : elle représentait, et rendait présent, celui qu'elle figurait.</p><div class="body"><p>Le mot hébreu <i>tselem</i> désigne ailleurs les statues cultuelles de Canaan qu'Israël devait détruire (Nombres 33.52; 2 Rois 11.18; Amos 5.26), et son équivalent araméen la statue d'or de Nebucadnetsar (Daniel 3.1). En Égypte, le pharaon portait le titre d'image vivante du dieu : le nom même de Toutânkhamon signifie « image vivante d'Amon ». En Mésopotamie, des lettres néo-assyriennes appellent le roi l'« image » (<i>salmu</i>) du dieu Bel, et les rois dressaient leur effigie aux confins des territoires conquis pour y marquer leur souveraineté. Les récits mésopotamiens de création (Atrahasis, Enuma Elish) font naître l'humanité de l'argile mêlée au sang d'un dieu mis à mort, pour décharger les dieux de leurs corvées; Genèse 1 présente au contraire un homme créé par une décision délibérée de Dieu, béni (1.28), établi roi et nourri par la générosité de son Créateur (1.29). Un peuple d'anciens esclaves, sorti d'un pays qui divinisait le soleil, le Nil et les bêtes, apprend que sa dignité ne lui vient ni de Pharaon ni de la terre qu'il va conquérir, mais de l'acte créateur de Dieu.</p><p>Les lecteurs de Paul connaissaient aussi l'image. Le grec <i>eikôn</i> désignait l'effigie de l'empereur frappée sur la monnaie : c'est le mot de Jésus devant le denier, « De qui porte-t-il l'effigie et l'inscription? » (Matthieu 22.20). À Colosses, les tenants de la fausse doctrine plaçaient entre Dieu et l'homme une hiérarchie d'intermédiaires, anges et visions compris (Colossiens 2.8, 18); Paul répond que Christ n'est pas un intermédiaire parmi d'autres, mais l'image même du Dieu invisible, en qui habite corporellement toute la plénitude de la divinité (2.9). Enfin, le monde gréco-romain vivait « sans espérance » (Éphésiens 2.12), et l'espérance y désignait d'ordinaire un souhait incertain; Colossiens 1.5 en fait un bien déjà existant, mis en réserve.</p></div><p>Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>L'image démocratisée.</b> Là où les peuples voisins réservaient au roi le titre d'image du dieu, Genèse 1.27 l'accorde à l'être humain comme tel, homme et femme, sans rang ni lignée.</li><li><b>L'image interdite, l'image donnée.</b> Israël, à qui le Sinaï venait d'interdire toute image taillée (Exode 20.4), apprenait que Dieu avait lui-même façonné son image sur la terre : l'homme.</li><li><b>Le premier-né, héritier.</b> Dans la culture grecque comme dans la culture juive, le premier-né était le fils qui avait droit à l'héritage du père, qu'il soit l'aîné ou non : Israël portait ce titre sans être la première des nations (Exode 4.22), et Éphraïm le reçoit devant son aîné Manassé (Jérémie 31.9). Les lecteurs de Paul entendaient dans « premier-né » un rang, là où le lecteur moderne entend un ordre de naissance.</li></ul>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage.</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Français · translit.</th><th scope="col">Sens littéral</th><th scope="col">Champ sémantique</th><th scope="col">Traductions comparées</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">image</span><span class="mot-gr">tselem</span></th><td class="col-sens">forme taillée ou découpée; représentation, effigie</td><td>17 emplois en hébreu biblique : l'homme créé (Genèse 1.26-27; 5.3; 9.6), mais aussi les idoles et figures fondues ou peintes (Nombres 33.52; 1 Samuel 6.5; Ézéchiel 7.20). Son synonyme <i>demuth</i> (ressemblance) le suit en 1.26, et Genèse 5.3 inverse l'ordre des deux termes. La note de MacArthur sur Genèse 1.26 fait de « notre image » la définition de la relation unique de l'homme avec Dieu : un être vivant capable de refléter les attributs communicables de Dieu (elle renvoie à 9.6, Romains 8.29, Colossiens 3.10 et Jacques 3.9). La Septante rend <i>tselem</i> par <i>eikôn</i> en 1.26-27, le mot même que Paul applique à Christ.</td><td><span class="trad"><span><b>S21</b> image</span><span><b>NEG79</b> image</span><span><b>Darby</b> image</span><span><b>LSG</b> image</span><span><b>KJF</b> image</span></span></td></tr><tr><th scope="row"><span class="mot-fr">image</span><span class="mot-gr">eikôn</span></th><td class="col-sens">portrait, ressemblance; effigie, reproduction</td><td>L'effigie de César sur le denier (Matthieu 22.20), l'image de la bête (Apocalypse 13.14). Paul l'applique à Christ, image de Dieu (2 Corinthiens 4.4; Colossiens 1.15), puis au croyant renouvelé (Colossiens 3.10) et rendu conforme (Romains 8.29; 2 Corinthiens 3.18; 1 Corinthiens 15.49). La note sur Colossiens 1.15 y lit la ressemblance parfaite de Christ, qui possède de toute éternité la forme même de Dieu (Philippiens 2.6) et en est à la fois la représentation et la manifestation; le sermon 2135 parle d'une reproduction exacte, sans rien de manquant ni d'altéré (Hébreux 1.3).</td><td><span class="trad"><span><b>S21</b> image</span><span><b>NEG79</b> image</span><span><b>Darby</b> image</span><span><b>LSG</b> image</span><span><b>KJF</b> image</span></span></td></tr><tr><th scope="row"><span class="mot-fr">connus d'avance</span><span class="mot-gr">proginôskô</span></th><td class="col-sens">connaître d'avance; choisir d'avance pour une relation</td><td>Cinq emplois dans le Nouveau Testament : des personnes qui connaissent Paul depuis longtemps (Actes 26.5), Dieu qui a connu d'avance son peuple (Romains 8.29; 11.2), Christ connu avant la fondation du monde (1 Pierre 1.20), des croyants avertis d'avance (2 Pierre 3.17); le nom <i>prognôsis</i> en Actes 2.23 et 1 Pierre 1.2. La note sur Romains 8.29 écarte la simple omniscience : il s'agit du choix déterminé de Dieu de manifester son amour à des personnes et d'entrer avec elles dans une relation intime, c'est-à-dire de l'élection. Le verbe suivant, <i>proorizô</i> (prédestiner), signifie littéralement marquer ou déterminer d'avance.</td><td><span class="trad"><span><b>S21</b> connus d'avance</span><span><b>NEG79</b> connus d'avance</span><span><b>Darby</b> préconnus</span><span><b>LSG</b> connus d'avance</span><span><b>KJF</b> connus d'avance</span></span></td></tr><tr><th scope="row"><span class="mot-fr">semblables</span><span class="mot-gr">summorphos</span></th><td class="col-sens">de même forme, conforme à (de <i>sun</i>, avec, et <i>morphê</i>, forme)</td><td>Deux emplois dans le Nouveau Testament : Romains 8.29 et Philippiens 3.21, où le corps de notre humiliation sera rendu « semblable au corps de sa gloire ». Le verbe apparenté décrit Paul « en devenant conforme à lui dans sa mort » (Philippiens 3.10). La <i>morphê</i> désigne la forme essentielle, non l'apparence passagère. La note sur Romains 8.29 y voit le projet éternel de Dieu pour les siens, le « prix de la vocation céleste » (Philippiens 3.14); les sermons 45-66 et 90-180 en tirent une conformité intérieure (la sainteté) et corporelle (le corps glorifié), amorcée dans la sanctification et achevée dans la glorification.</td><td><span class="trad"><span><b>S21</b> conformes</span><span><b>NEG79</b> semblables</span><span><b>Darby</b> conformes</span><span><b>LSG</b> semblables</span><span><b>KJF</b> conformes</span></span></td></tr><tr><th scope="row"><span class="mot-fr">premier-né</span><span class="mot-gr">prôtotokos</span></th><td class="col-sens">premier-né; celui qui a le rang et les droits de l'héritier</td><td>Sens chronologique pour Jésus, premier-né de Marie (Luc 2.7), mais le plus souvent sens de rang : Israël, premier-né de Dieu (Exode 4.22), Éphraïm (Jérémie 31.9), le roi messianique établi « le premier-né, le plus élevé des rois de la terre » (Psaume 89.28). Paul l'emploie de Christ premier-né de toute la création (Colossiens 1.15), d'entre les morts (1.18) et de beaucoup de frères (Romains 8.29). Les notes sur Colossiens 1.15 et Romains 8.29, comme le sermon 2135, y lisent la prééminence et le droit d'héritage, non une création première.</td><td><span class="trad"><span><b>S21</b> premier-né</span><span><b>NEG79</b> premier-né</span><span><b>Darby</b> premier-né</span><span><b>LSG</b> premier-né</span><span><b>KJF</b> premier-né</span></span></td></tr></tbody></table></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Genèse 1.26-27</p></header>
+<p><b>Niveau de source.</b> Niveau 1 : huit sermons Grace to You, trois sur Genèse 1.24-31 (série The Battle for the Beginning, 90-217 à 90-219, juillet 1999), trois sur Romains 8.28-30 (45-65 et 45-66, septembre et octobre 1983; 90-180, série The Grip of God, janvier 1998) et deux sur Colossiens 1 (2131 sur 1.3-8, 2135 sur 1.15-19, février et mars 1976). En appui, niveau 3 : les notes de La Sainte Bible avec commentaires de John MacArthur (Société Biblique de Genève, 2006) sur Genèse 1.26-27, Romains 8.29 et Colossiens 1.15, extrait fourni; et le livre The Battle for the Beginning (billet Grace to You « To Bear the Creator's Image »)</p><div class="table-wrap" style="margin-bottom:2.4rem"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">90-217</span></th><td><a href="https://www.gty.org/sermons/90-217" target="_blank" rel="noopener">Creation Day 6, Part 1</a></td><td>Gn 1.24-26</td></tr><tr><th scope="row"><span class="mot-fr">90-218</span></th><td><a href="https://www.gty.org/sermons/90-218" target="_blank" rel="noopener">Creation Day 6, Part 2</a></td><td>Gn 1.26-27</td></tr><tr><th scope="row"><span class="mot-fr">90-219</span></th><td><a href="https://www.gty.org/sermons/90-219" target="_blank" rel="noopener">Creation Day 6, Part 3</a></td><td>Gn 1.26-31</td></tr><tr><th scope="row"><span class="mot-fr">45-65</span></th><td><a href="https://www.gty.org/sermons/45-65" target="_blank" rel="noopener">The Promise of Security, Part 2</a></td><td>Rm 8.28-30</td></tr><tr><th scope="row"><span class="mot-fr">45-66</span></th><td><a href="https://www.gty.org/sermons/45-66" target="_blank" rel="noopener">The Ultimate Security of Our Salvation</a></td><td>Rm 8.29-30</td></tr><tr><th scope="row"><span class="mot-fr">90-180</span></th><td><a href="https://www.gty.org/sermons/90-180" target="_blank" rel="noopener">The Purpose of Salvation</a></td><td>Rm 8.29</td></tr><tr><th scope="row"><span class="mot-fr">2131</span></th><td><a href="https://www.gty.org/sermons/2131" target="_blank" rel="noopener">The Gospel Truth</a></td><td>Col 1.3-8</td></tr><tr><th scope="row"><span class="mot-fr">2135</span></th><td><a href="https://www.gty.org/sermons/2135" target="_blank" rel="noopener">Christ Above All</a></td><td>Col 1.15-19</td></tr></tbody></table></div><p class="lead">La question interprétative qui relie les quatre textes : quel rapport y a-t-il entre l'image selon laquelle Dieu a créé l'homme (Genèse 1.26-27) et l'image de son Fils à laquelle il a prédestiné les siens (Romains 8.29)? MacArthur établit ce lien dans ses notes bibliques mêmes, et sa réponse tient en une ligne : l'homme a été créé à l'image de Dieu pour le représenter; cette image, ternie par la chute, subsiste sans pouvoir se restaurer d'elle-même; Christ en est de toute éternité la ressemblance parfaite; Dieu a résolu de rendre ses élus semblables à lui, et l'espérance réservée dans les cieux en garantit l'achèvement.</p><div class="body"><p>Le lien est explicite dans les notes. Celle sur « notre image » (Genèse 1.26) renvoie à Romains 8.29 et à Colossiens 3.10; celle sur « premier-né » (Colossiens 1.15) renvoie à Romains 8.29; et le sermon 90-180 rattache Romains 8.29 à Genèse 1.26 : l'image originelle, défigurée et ternie par le péché, sera rétablie dans la gloire éternelle.</p><p>Le « Faisons… notre » est, selon la note sur Genèse 1.26, la première indication claire du caractère trinitaire de Dieu, que confirment 3.22 et 11.7; le nom même d'<i>Elohim</i> est le pluriel d'<i>El</i>. Les sermons soulignent la bascule du langage : jusqu'au verset 24, Dieu commande de façon impersonnelle; au verset 26, il parle au pluriel, en lui-même, et se révèle comme un Dieu qui porte en sa nature même des relations. La pleine clarification attend le Nouveau Testament, mais la Trinité est déjà manifeste dans l'Ancien : l'Esprit de Dieu, l'ange de l'Éternel, le Seigneur du Psaume 110.1, le Fils du Psaume 2.7. Cette délibération n'a rien d'improvisé : le conseil du sixième jour exécute un dessein arrêté avant la fondation du monde, où le Père a résolu de créer et de racheter un peuple pour le donner au Fils (Jean 6.37; 17.6; Éphésiens 1.4). L'univers physique sera consumé (2 Pierre 3.10); l'homme seul demeure pour toujours.</p><p>Qu'est-ce que l'image? La note sur Genèse 1.26 la définit d'abord comme une relation : « notre image » désigne la relation unique de l'homme avec Dieu, comme la domination désigne sa relation unique avec la création. L'homme est un être vivant capable de refléter en sa personne les attributs communicables de Dieu. La note distingue deux plans. Dans sa vie rationnelle, l'homme est comme Dieu : il raisonne et possède intelligence, volonté et émotions. Sur le plan moral, il était comme Dieu, bon et sans péché; le temps du verbe dit ce que la chute a perdu. Les sermons complètent ce portrait. Image et ressemblance sont synonymes, le parallélisme hébreu répétant pour insister; l'image n'est ni dans les gènes ni dans le corps, puisque Dieu est esprit (Jean 4.24). Son cœur est la personne : « L'image de Dieu, chers amis, c'est la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218). Dieu n'a jamais existé comme un individu solitaire; d'où le constat de Genèse 2.18 : il n'est pas bon que l'homme soit seul.</p><p>La domination découle de l'image. Selon la note sur Genèse 1.26-27, les verbes dominer et assujettir (1.26, 28) définissent la relation unique de l'homme avec la création : il est le représentant de Dieu pour régner sur elle, ce qui le distingue des autres créatures vivantes et l'établit au-dessus d'elles (Psaume 8.7-9). La note sur le verset 27 ajoute que l'homme et la femme portent l'image de manière égale et exercent ensemble cette domination; ils sont pourtant, par conception divine, physiquement différents afin d'accomplir le mandat de se multiplier, aucun ne pouvant avoir de descendance sans l'autre (Matthieu 19.4; Marc 10.6). Le texte hébreu le marque par le passage du singulier au pluriel, que Darby et la KJF conservent (« qu'ils dominent », 1.26; « il les créa mâle et femelle », 1.27) et que la NEG79 efface (« qu'il domine », « il créa l'homme et la femme »). Dans le sermon 90-219, MacArthur dégage quatre traits de l'homme du sixième jour : il porte l'image de Dieu, il est roi de la terre, il propage la race humaine, il reçoit la bénédiction et la générosité de Dieu (1.28-30). Adam a perdu sa royauté à la chute : nous ne voyons pas encore toutes choses soumises à l'homme (Hébreux 2.8). Mais Jésus, couronné de gloire et d'honneur, a acquis par sa mort le droit de régner sur la terre, et il la soumettra dans son royaume millénaire.</p><p>Colossiens 1.15 mène de l'image créée à l'Image incréée. La note sur ce verset donne à <i>eikôn</i> le sens de portrait ou de ressemblance : Jésus-Christ est la ressemblance parfaite de Dieu et possède, de toute éternité, la forme même de Dieu (Philippiens 2.6; Jean 1.14; 14.9). Paul le présente ainsi comme la représentation et la manifestation de Dieu, pleinement Dieu à tous égards (Colossiens 2.9; Jean 8.58; 10.30-33; Hébreux 1.8). Le sermon 2135 part lui-même de Genèse 1.27 pour marquer l'écart : l'homme porte l'image comme personne, capable de penser, de sentir et de décider, mais ne ressemble à Dieu ni moralement, puisqu'il est pécheur, ni essentiellement, puisqu'il n'a ni l'omniscience ni la toute-puissance; Christ, lui, est une reproduction exacte de Dieu, sans rien de manquant ni d'altéré. L'image ternie en l'homme ne se restaure qu'en Christ : elle commence à l'être quand le croyant revêt l'homme nouveau (Colossiens 3.10), et elle le sera pleinement quand nous lui serons semblables (1 Jean 3.2).</p><p>Le titre de premier-né de toute la création ne fait pas de Christ la première créature. La note sur Colossiens 1.15 rappelle que le mot pouvait désigner l'aîné par la naissance, mais évoquait le plus souvent la prééminence de rang et le droit à l'héritage. Elle donne quatre raisons de l'entendre ainsi. Christ ne peut être à la fois le Fils unique et le premier d'une série d'engendrés (Jean 1.14, 18; 3.16, 18; 1 Jean 4.9). Quand le premier-né appartient à un groupe, ce groupe est au pluriel (Colossiens 1.18; Romains 8.29), alors que le mot création est au singulier. Faire de Christ une créature aurait servi l'hérésie que Paul réfutait. Enfin, celui qui a créé toutes choses (1.16) ne peut avoir été créé. Christ est donc premier-né en ce qu'il a la prééminence (1.18) et le droit d'héritage (Hébreux 1.2; Apocalypse 5.1-7, 13) : il existait avant la création, et il est élevé au-dessus d'elle.</p><p>Romains 8.29 dit pourquoi Dieu sauve. La note sur « connus d'avance » écarte l'idée d'une simple omniscience, par laquelle Dieu aurait su de tout temps qui viendrait à Christ : il s'agit de son choix déterminé de manifester son amour à des personnes et d'entrer avec elles dans une relation intime, c'est-à-dire de son élection. Elle s'appuie sur Actes 2.23, où la règle de grammaire grecque dite de Granville Sharp associe le dessein arrêté et la prescience de Dieu, et sur le même sens en 1 Pierre 1.2 et 1.20; le sermon 45-65 le prêche dans les mêmes termes. « Prédestinés » signifie littéralement marqués ou déterminés d'avance : ceux que Dieu choisit, il les destine à un but précis (Éphésiens 1.4-5, 11). Ce but est nommé : être semblables à l'image de son Fils. La note y voit le projet éternel de Dieu pour les siens, le « prix de la vocation céleste » (Philippiens 3.14; cf. Éphésiens 4.13; Colossiens 1.28; Philippiens 3.20-21; 1 Jean 3.2). Les sermons en déploient le contenu : « Le but de votre salut était que vous soyez rendus semblables à l'image de son Fils » (90-180). Dieu façonne le racheté en réplique de Christ, non identique à lui, mais portant son image, dans la sainteté et dans un corps glorifié (Philippiens 3.21); la ressemblance progresse de gloire en gloire par l'Esprit (2 Corinthiens 3.18) et s'achève à la glorification (45-66). Reste le second but : que le Fils soit le premier-né de beaucoup de frères. La note y lit la prééminence du seul héritier légitime (Psaume 89.28; Colossiens 1.15-18; Apocalypse 1.5) : Christ est le plus éminent de ceux qui ont été rendus semblables à lui. D'où la sécurité du croyant : Dieu ayant décrété la fin, il achèvera ce qu'il a commencé.</p><p>Colossiens 1.5 donne à cette fin le nom d'espérance. Dans son sermon sur Colossiens 1.3-8 (2131), MacArthur relève la triade de la foi, de l'amour et de l'espérance, et l'ordre du texte : c'est « à cause de l'espérance » que naît l'amour pour tous les saints. Foi et espérance sont inséparables : nous croyons, et c'est pourquoi nous espérons. Le verbe <i>apokeimai</i>, employé aussi pour la couronne de justice réservée (2 Timothée 4.8), signifie réservé, mis de côté; MacArthur parle d'un plan divin de mise en réserve, comme l'héritage « réservé dans les cieux » de 1 Pierre 1.4. L'espérance n'est donc pas un souhait, mais un bien qui existe déjà, gardé par Dieu, et que la parole de la vérité, la parole de l'Évangile, a fait connaître. Son contenu, MacArthur le nomme avec 1 Jean 3.1-2 : « Dieu a établi notre espérance en faisant de nous des fils, et il l'accomplit en nous rendant semblables à son Fils » (2131). L'espérance de Colossiens 1.5 et la prédestination de Romains 8.29 visent donc le même terme : la ressemblance achevée à Christ.</p></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Huit passages</p></header>
+<p class="lead">Huit passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 9.6</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Après la chute et le déluge, le meurtre est puni parce que « Dieu a fait l'homme à son image » : l'image, ternie, n'est pas effacée. La note sur Genèse 1.26 y renvoie, avec Jacques 3.9.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 8.7-9</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">David contemple la domination confiée à l'homme sur les œuvres des mains de Dieu; la note sur Genèse 1.26-27 s'y appuie pour établir la place de l'homme au-dessus des autres créatures.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Matthieu 19.4-6</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Jésus cite Genèse 1.27, « l'homme et la femme », pour fonder le mariage; la note sur 1.27 y renvoie avec Marc 10.6.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Hébreux 1.2-3</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Le Fils, héritier de toutes choses et par qui Dieu a fait le monde, est « le reflet de sa gloire et l'empreinte de sa personne » : même affirmation que Colossiens 1.15-16, et la note sur ce verset y renvoie.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Colossiens 3.9-10</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Le nouvel homme « se renouvelle, dans la connaissance, selon l'image de celui qui l'a créé » : allusion à Genèse 1.27, que la note sur Genèse 1.26 cite; la rédemption restaure en Christ ce que la chute a terni.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Pierre 1.1-2, 20</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Des élus « selon la prescience de Dieu le Père », et Christ connu avant la fondation du monde : la note sur Romains 8.29 y lit le même sens de connaître d'avance, un choix et non une simple prévision (voir aussi Actes 2.23).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Philippiens 3.14, 20-21</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Le « prix de la vocation céleste », puis le corps de notre humiliation rendu « semblable au corps de sa gloire » (<i>summorphos</i>) : la note sur Romains 8.29 y renvoie pour définir le but de la prédestination.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Jean 3.2-3</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">« Nous serons semblables à lui, parce que nous le verrons tel qu'il est » : l'achèvement de Romains 8.29, cité par la note sur ce verset, et le contenu de l'espérance de Colossiens 1.5 selon le sermon 2131; cette espérance purifie dès maintenant (3.3).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Cinq axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><section class="theme"><h3 class="theme__title">Le Dieu trine et son dessein éternel</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Le « Faisons… notre » de Genèse 1.26 est la première indication claire de la Trinité (cf. 3.22; 11.7) : un Dieu unique qui délibère en lui-même. Romains 8.29 dévoile l'objet de ce conseil : ceux qu'il a connus d'avance, c'est-à-dire choisis pour les aimer, il les a prédestinés à être semblables à l'image de son Fils (Éphésiens 1.4-5). Ancrage doctrinal : théologie propre (la Trinité) et sotériologie (l'élection), <i>Biblical Doctrine</i>.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le croyant n'est ni le produit d'un hasard ni l'objet d'une décision tardive : il a été aimé d'avance. Pour une assemblée inquiète de sa persévérance, la sécurité ne repose pas sur la constance de sa foi, mais sur un dessein qui a commencé avant elle et que Dieu achèvera (8.30).</p></div></div></section><section class="theme"><h3 class="theme__title">L'homme, représentant de Dieu à son image</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>L'homme seul est créé « à notre image, selon notre ressemblance » (1.26) : relation unique avec Dieu, capacité de refléter ses attributs communicables, intelligence, volonté et émotions. Il reçoit la domination comme représentant de Dieu sur la création (Psaume 8.7-9), et l'homme et la femme portent cette image à égalité, dans une différence voulue pour la fécondité (1.27-28). Ternie par la chute, l'image demeure (Genèse 9.6; Jacques 3.9). Ancrage doctrinal : anthropologie, la création et la nature de l'homme, <i>Biblical Doctrine</i>.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La dignité humaine repose sur l'acte créateur, non sur l'utilité : l'enfant à naître, la personne handicapée, l'aîné atteint de démence la portent au même titre que quiconque. Être homme ou femme est un don reçu, non une identité à construire. Mais porter l'image ne suffit pas à connaître Dieu : la ressemblance morale perdue ne se retrouve qu'en Christ.</p></div></div></section><section class="theme"><h3 class="theme__title">Christ, l'image parfaite du Dieu invisible</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Colossiens 1.15 applique à Christ le mot par lequel la Septante rendait l'image de Genèse 1.27 (<i>eikôn</i>), mais en un autre sens : l'homme porte l'image comme créature et l'a ternie; Christ est de toute éternité la ressemblance parfaite de Dieu, sa représentation et sa manifestation, premier-né par la prééminence et le droit d'héritage, non par la création. Ancrage doctrinal : christologie, la pleine déité et la filiation éternelle du Fils, <i>Biblical Doctrine</i>.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Qui veut savoir ce qu'est l'homme tel que Dieu l'a voulu doit regarder Christ, non les modèles que la culture propose. Qui veut connaître Dieu n'a pas à chercher d'intermédiaire : il le voit en Christ (Jean 14.9). Une prédication sur l'image aboutit à la personne de Christ, non à un idéal moral.</p></div></div></section><section class="theme"><h3 class="theme__title">Prédestinés à être semblables à l'image du Fils</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Romains 8.29 nomme le projet éternel de Dieu pour les siens : être semblables (<i>summorphos</i>) à l'image du Fils, afin qu'il soit le premier-né de beaucoup de frères. C'est le « prix de la vocation céleste » (Philippiens 3.14). La conformité commence dans le renouvellement de l'homme nouveau (Colossiens 3.10), progresse de gloire en gloire par l'Esprit (2 Corinthiens 3.18) et s'achève à la glorification (8.30). Ancrage doctrinal : sotériologie, l'élection, la sanctification progressive et la glorification, <i>Biblical Doctrine</i>.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La ressemblance à Christ n'est pas un programme d'amélioration de soi : c'est l'œuvre que Dieu a décrétée et que l'Esprit accomplit au moyen de la Parole en ceux qu'il a unis à Christ. L'obéissance en découle, elle ne la précède pas. Les épreuves de 8.28 ne sont pas des accidents : elles servent ce but.</p></div></div></section><section class="theme"><h3 class="theme__title">L'espérance réservée : l'image achevée dans la gloire</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Colossiens 1.5 place l'objet de l'espérance dans les cieux, mis en réserve (<i>apokeimai</i>) et annoncé par l'Évangile; le sermon 2131 en nomme le contenu avec 1 Jean 3.2 : nous lui serons semblables. Le corps sera rendu semblable au corps de sa gloire (Philippiens 3.21), et la domination confiée à l'homme en Genèse 1.26, pas encore visible (Hébreux 2.8), sera exercée par Christ, l'héritier, dans son royaume. Ancrage doctrinal : eschatologie, la résurrection corporelle, la glorification et le règne millénaire, <i>Biblical Doctrine</i>.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'espérance chrétienne n'est pas un souhait : c'est un bien gardé par Dieu, et c'est elle qui nourrit la foi et l'amour présents (1.4-5). Une assemblée tentée de chercher sa gloire ici-bas apprend à sacrifier le présent pour ce qui lui est réservé; une assemblée découragée par la lenteur de sa sanctification apprend que l'achèvement ne dépend pas d'elle.</p></div></div></section>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Sept questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>La note sur Genèse 1.27 affirme que l'homme et la femme portent l'image de manière égale et dominent ensemble, tout en étant différents par dessein divin. Comment tiendrez-vous ensemble l'égalité et la différence, à partir d'un pluriel que la NEG79 efface et que la KJF conserve (« qu'ils dominent », « il les créa mâle et femelle »)?</li><li>La note sur Genèse 1.26 renvoie déjà à Romains 8.29 et à Colossiens 3.10, mais Moïse n'écrit pas « à l'image de Christ ». Comment montrerez-vous le chemin canonique qui y conduit (<i>tselem</i> rendu par <i>eikôn</i> dans la Septante, Christ image de Dieu en Colossiens 1.15, conformité en Romains 8.29), pour que votre titre sorte du texte au lieu d'être projeté sur Genèse 1?</li><li>La note distingue ce que l'homme est encore, un être rationnel doté d'intelligence, de volonté et d'émotions, de ce qu'il était, bon et sans péché. Votre prédication fait-elle entendre cette différence, pour que la dignité de l'image n'efface pas la gravité de la chute, ni la chute la dignité de l'enfant à naître ou de l'aîné atteint de démence?</li><li>Christ est l'image de toute éternité, par nature; l'homme l'est par création, et le croyant y est rendu conforme par grâce. Votre prédication garde-t-elle cette distinction, ou laisse-t-elle entendre que le croyant deviendra ce que Christ est par essence?</li><li>Votre assemblée entend spontanément « connus d'avance » comme « Dieu savait d'avance qui croirait ». La note sur Romains 8.29 y lit un choix d'amour, l'élection (Actes 2.23; 1 Pierre 1.2, 20). Comment ferez-vous voir ce sens à partir du texte, et prêcherez-vous l'élection comme la source de la ressemblance plutôt que de la contourner pour ne garder qu'un appel à imiter Jésus?</li><li>Si « premier-né » évoque pour l'auditeur l'ordre des naissances, il comprendra de travers Colossiens 1.15 et Romains 8.29. Comment ferez-vous saisir le sens de rang et d'héritage (Exode 4.22; Jérémie 31.9), et ce qu'il dit des frères : rendus semblables à celui qui a la prééminence, jamais ses égaux?</li><li>L'espérance de Colossiens 1.5 est réservée et gardée par Dieu, et 1 Jean 3.2 dit pourtant que ce que nous serons n'a « pas encore » été manifesté. Votre prédication fait-elle de cette certitude la source de la foi et de l'amour présents (1.4-5), en évitant à la fois le triomphalisme, qui promettrait ici-bas la ressemblance achevée, et le découragement de celui qui ne voit pas encore le fruit de sa sanctification?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Genèse 1.26-27 · 25 septembre 2026</p>
+  
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Genèse-1-26-27.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
