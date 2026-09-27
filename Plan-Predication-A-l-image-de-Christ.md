@@ -23,7 +23,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 | Étape | Texte | Durée |
 |---|---|---|
 | Rappel | 2 Timothée 3.16-17 | 2 min |
-| Introduction | Matthieu 22.20-21 | 3 min |
+| Introduction | Genèse 1.27 | 3 min |
 | I. L'image créée | Genèse 1.26-27 | 8 min |
 | II. L'image parfaite | Colossiens 1.15 | 6 min |
 | III. L'image promise | Romains 8.29 | 5 min |
@@ -44,7 +44,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 ## Introduction (3 min)
 
-- **Accroche.** Devant le denier, Jésus demande : « De qui porte-t-il l'effigie et l'inscription? » (Matthieu 22.20). Le mot grec est <i>eikôn</i>, image. « Comme l'image de César était frappée sur la pièce pour être rendue à César, l'image de Dieu est frappée sur une vie pour être rendue à Dieu » (2356).
+- **Accroche.** Dans l'Antiquité, l'« image » d'un dieu, c'était le roi. En Égypte, le pharaon en portait le titre : Toutânkhamon signifie « image vivante d'Amon ». En Mésopotamie, le roi dressait son effigie aux confins de ses territoires pour y marquer sa souveraineté. Genèse 1.27 accorde ce titre à l'être humain comme tel, homme et femme, sans rang ni lignée.
 - **Question.** Vous aussi, vous portez une image. Laquelle? Qu'est-il arrivé à cette image, et que Dieu en fait-il?
 - **Parcours.** Six textes, un seul arc : l'image **créée**, **parfaite**, **promise**, **transformée**, **qui aime**, **envoyée**.
 
@@ -144,7 +144,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
   - **Moral** (Psaume 51.12) : le cœur pur qui juge le bien et le mal. Le cœur est tortueux (Jérémie 17.9); Dieu seul en crée un pur.
   - **Relationnel** (Matthieu 22.37-40) : le cœur qui aime. Dieu répand son amour dans nos cœurs par l'Esprit (Romains 5.5).
 
-**Application.** Nous l'aimons parce qu'il nous a aimés le premier (1 Jean 4.19). Aimer Dieu de tout son cœur, c'est lui rendre la vie qui porte son image (retour à l'accroche).
+**Application.** Nous l'aimons parce qu'il nous a aimés le premier (1 Jean 4.19), et cet amour se prouve par l'obéissance (Jean 14.15).
 
 **Transition.** Et le prochain que nous aimons, que lui devons-nous d'abord?
 
