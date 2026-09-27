@@ -2,55 +2,72 @@
 
 **Plan de prédication** · 30 septembre 2026 · André-Guy Bruneau
 
-**Texte central :** Genèse 1.26-27 · **Textes d'appui :** Colossiens 1.15; Romains 8.29; 2 Corinthiens 3.18; Matthieu 22.37-40 · **Rappel :** 2 Timothée 3.16-17 (NEG79)
+**Texte central :** Genèse 1.26-27 · **Textes d'appui :** Colossiens 1.15; Romains 8.29; 2 Corinthiens 3.18; Matthieu 22.37-40; Matthieu 28.19-20 · **Rappel :** 2 Timothée 3.16-17 · **Le cœur :** Jérémie 31.33 (NBS). Autres citations : NEG79.
 
-**Source :** [Recherche-MacArthur-Genèse-1-26-27](Recherche-MacArthur-Genèse-1-26-27.md) (sermons Grace to You et notes de *La Sainte Bible avec commentaires de John MacArthur*)
+**Source :** [Recherche-MacArthur-Genèse-1-26-27](Recherche-MacArthur-Genèse-1-26-27.md) (sermons Grace to You, notes de *La Sainte Bible avec commentaires de John MacArthur*)
 
 ---
 
 ## Idée centrale
 
-Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l'a ternie; Christ en est la ressemblance parfaite; Dieu a résolu de rendre les siens semblables à lui; l'Esprit les y transforme dès maintenant par la Parole; et cette ressemblance se voit dans l'amour de Dieu et du prochain.
+Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l'a ternie; Christ en est la ressemblance parfaite; Dieu a résolu de rendre les siens semblables à lui; l'Esprit les y transforme par la Parole et écrit sa loi sur leur cœur; et ceux qui portent l'image restaurée sont envoyés faire des disciples de toutes les nations.
 
-**But :** que l'incroyant voie qu'il porte une image qu'il ne peut restaurer et un commandement qu'il n'a jamais accompli, et que le croyant repose sa sanctification sur le dessein de Dieu et l'œuvre de l'Esprit, en contemplant Christ dans la Parole, non sur son propre effort.
+**Phrase à faire retenir :** *Créés à son image, restaurés en Christ, transformés par l'Esprit, envoyés en son nom.*
+
+**But :** que l'incroyant voie qu'il porte une image qu'il ne peut restaurer et un commandement qu'il n'a jamais accompli, et se tourne vers Christ; que le croyant repose sa sanctification sur le dessein de Dieu et l'œuvre de l'Esprit, contemple Christ dans la Parole, et fasse des disciples.
 
 **Lecture publique :** Genèse 1.26-28 et Romains 8.28-30.
 
 **Durée visée :** 45 minutes.
 
+| Étape | Texte | Durée |
+|---|---|---|
+| Rappel | 2 Timothée 3.16-17 | 2 min |
+| Introduction | Matthieu 22.20-21 | 3 min |
+| I. L'image créée | Genèse 1.26-27 | 8 min |
+| II. L'image parfaite | Colossiens 1.15 | 6 min |
+| III. L'image promise | Romains 8.29 | 5 min |
+| IV. L'image transformée | 2 Corinthiens 3.18 | 6 min |
+| V. L'image qui aime | Matthieu 22.37-40; Jérémie 31.33 | 7 min |
+| VI. L'image envoyée | Matthieu 28.19-20 | 5 min |
+| Conclusion et appel | 2 Corinthiens 3.18 | 3 min |
+
 ---
 
 ## Rappel (2 min)
 
-- **Lire 2 Timothée 3.16-17.** Toute l'Écriture est « soufflée par Dieu » (<i>theopneustos</i>) : « Ce que l'Écriture dit, Dieu le dit » (55-17).
+- **Lire 2 Timothée 3.16-17.**
+- Toute l'Écriture est « soufflée par Dieu » (<i>theopneustos</i>) : « Ce que l'Écriture dit, Dieu le dit » (55-17).
 - Elle enseigne, convainc, corrige et forme dans la justice, pour que l'homme de Dieu soit propre non à la plupart des bonnes œuvres, mais à toutes (55-19).
-- **Posture :** nous ouvrons Genèse 1 pour être enseignés et transformés, non pour juger le texte. *Pose la pierre d'attente du point IV : l'Écriture est le miroir où l'Esprit nous transforme.*
 
 ---
 
-## Introduction (4 min)
+## Introduction (3 min)
 
 - **Accroche.** Devant le denier, Jésus demande : « De qui porte-t-il l'effigie et l'inscription? » (Matthieu 22.20). Le mot grec est <i>eikôn</i>, image. « Comme l'image de César était frappée sur la pièce pour être rendue à César, l'image de Dieu est frappée sur une vie pour être rendue à Dieu » (2356).
 - **Question.** Vous aussi, vous portez une image. Laquelle? Qu'est-il arrivé à cette image, et que Dieu en fait-il?
-- **Annonce du parcours.** Cinq textes, un seul arc : l'image **créée** (Genèse 1), l'image **parfaite** (Colossiens 1.15), l'image **promise** (Romains 8.29), l'image **transformée** (2 Corinthiens 3.18), l'image **rendue à Dieu** (Matthieu 22.37-40).
+- **Parcours.** Six textes, un seul arc : l'image **créée**, **parfaite**, **promise**, **transformée**, **qui aime**, **envoyée**.
 
 ---
 
 ## I. L'image créée : Dieu fait l'homme pour lui ressembler (Genèse 1.26-27) · 8 min
 
+*Phrase clé : l'homme est fait à l'image d'un Dieu qui n'a jamais été seul.*
+
 **A. Le Dieu qui dit « Faisons »** (1.26)
-- Jusqu'au verset 24, Dieu commande : « Que la terre produise ». Au verset 26, il délibère au pluriel, puis agit au singulier (1.27).
-- Première indication claire de la Trinité (cf. 3.22; 11.7). L'homme est fait à l'image d'un Dieu qui n'a jamais été seul.
-- Ce conseil n'est pas improvisé : il exécute un dessein arrêté avant la fondation du monde (Éphésiens 1.4). *Pose la pierre d'attente du point III.*
+- Jusqu'au verset 24, Dieu commande : « Que la terre produise ». Au verset 26, pour la première fois, il parle au pluriel : « Jamais Dieu n'a parlé au pluriel » (90-218). Puis il agit au singulier (1.27).
+- Première indication claire de la Trinité (cf. 3.22; 11.7). Un seul Dieu, trois personnes en communion parfaite : la tradition appelle cette habitation mutuelle la périchorèse (Jean 14.10-11; 17.21). Le mot sert à nommer, non à spéculer.
+- Ce conseil n'est pas improvisé : il exécute un dessein arrêté avant la fondation du monde (Éphésiens 1.4). *Pierre d'attente du point III.*
 
 **B. Ce qu'est l'image**
-- Image et ressemblance : deux mots, une seule réalité (parallélisme hébreu).
+- *Tselem* (image) et *demuth* (ressemblance) : « synonymes », répétés pour insister (90-218).
 - Deux plans (note sur Gn 1.26) : par la raison, l'homme **est** comme Dieu (intelligence, volonté, émotions); moralement, il **était** comme Dieu, bon et sans péché.
-- Le cœur : « la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218). *Pose la pierre d'attente du point V : l'image est faite pour aimer.*
+- Le centre : « la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218). *Pierre d'attente du point V.*
+- *Bara'* (créer) trois fois au verset 27 : Dieu seul crée, et l'homme est le seul être vivant fait sur le modèle divin (90-219).
 
 **C. La vocation de l'image** (1.26-28)
-- Représentant de Dieu, l'homme reçoit la domination sur la création (Psaume 8.7-9).
-- L'homme et la femme portent l'image à égalité et dominent ensemble, différents par dessein divin pour se multiplier (Matthieu 19.4). La NEG79 efface le pluriel hébreu (« qu'ils dominent », « il les créa mâle et femelle ») : le montrer.
+- Représentant de Dieu, l'homme reçoit la domination : « roi de la terre », chargé de la cultiver et de la garder (90-219; Psaume 8.7-9).
+- L'homme et la femme portent l'image à égalité et dominent ensemble. Égaux en dignité, ils reçoivent des rôles distincts que l'ordre de la création établit (Genèse 2.18-23; 1 Timothée 2.13). La NEG79 efface le pluriel hébreu (« qu'ils dominent », « il les créa mâle et femelle ») : le montrer.
 
 **Application.** La dignité humaine repose sur l'acte créateur, non sur l'utilité : l'enfant à naître, la personne handicapée, l'aîné atteint de démence portent l'image.
 
@@ -58,15 +75,17 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 ---
 
-## II. L'image parfaite : Christ, image du Dieu invisible (Colossiens 1.15) · 7 min
+## II. L'image parfaite : Christ, image du Dieu invisible (Colossiens 1.15) · 6 min
 
-**A. Christ est ce que l'homme n'est plus**
+*Phrase clé : Christ est ce que l'homme n'est plus.*
+
+**A. L'Image incréée**
 - La Septante rend l'« image » de Genèse 1.27 par <i>eikôn</i>, le mot que Paul applique à Christ (aussi 2 Corinthiens 4.4).
 - Mais en un autre sens : l'homme porte l'image comme créature; Christ est, de toute éternité, la ressemblance parfaite de Dieu, sa représentation et sa manifestation (Philippiens 2.6; Jean 14.9), une reproduction exacte, sans rien de manquant ni d'altéré (2135; Hébreux 1.3).
 
 **B. Premier-né : le rang, non la naissance**
-- Pour les lecteurs de Paul, le premier-né est l'héritier, qu'il soit l'aîné ou non (Exode 4.22; Jérémie 31.9).
-- Christ n'est pas la première créature : il est le Créateur de toutes choses (1.16), et il a la prééminence et le droit d'héritage (1.18; Hébreux 1.2). Retenir une ou deux des quatre raisons de la note, pas les quatre.
+- Le premier-né est l'héritier, qu'il soit l'aîné ou non (Exode 4.22; Jérémie 31.9).
+- Christ n'est pas la première créature : il a créé toutes choses (1.16), et il a la prééminence et le droit d'héritage (1.18; Hébreux 1.2).
 
 **Application.** Qui veut savoir ce qu'est l'homme tel que Dieu l'a voulu regarde Christ. Qui veut connaître Dieu n'a besoin d'aucun intermédiaire : il le voit en Christ.
 
@@ -74,68 +93,82 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 ---
 
-## III. L'image promise : prédestinés à lui ressembler (Romains 8.29) · 7 min
+## III. L'image promise : prédestinés à lui ressembler (Romains 8.29) · 5 min
 
-**A. « Connus d'avance » : aimés d'avance**
-- Non une simple prévision de qui croirait, mais le choix déterminé de Dieu d'aimer des personnes et d'entrer en relation avec elles : l'élection (note sur Rm 8.29; Actes 2.23; 1 Pierre 1.2, 20).
-- Relier au « Faisons » du point I : le même conseil éternel.
+*Phrase clé : Dieu a décidé d'avance la fin de votre salut, et cette fin, c'est Christ en vous.*
 
-**B. « Prédestinés » à un but : être semblables à l'image de son Fils**
-- Prédestiner : déterminer d'avance une destination. La destination est nommée : ressembler à Christ, le « prix de la vocation céleste » (Philippiens 3.14).
-- « Le but de votre salut était que vous soyez rendus semblables à l'image de son Fils » (90-180) : sainteté intérieure et, à la fin, un corps glorifié (Philippiens 3.21).
-
-**C. « Afin que son Fils soit le premier-né de beaucoup de frères »**
-- La fin dernière du salut est la gloire du Fils : il a la prééminence parmi ceux qui lui ressemblent, qui ne sont jamais ses égaux.
+- **« Connus d'avance » :** non une simple prévision de qui croirait, mais le choix d'aimer, l'élection (note sur Rm 8.29; Actes 2.23; 1 Pierre 1.2, 20). Le même conseil éternel que le « Faisons ».
+- **« Prédestinés à être semblables à l'image de son Fils » :** « Le but de votre salut était que vous soyez rendus semblables à l'image de son Fils » (90-180) : sainteté maintenant, corps glorifié à la fin (Philippiens 3.21).
+- **« Premier-né de beaucoup de frères » :** la fin dernière du salut est la gloire du Fils; ses frères lui ressemblent sans jamais être ses égaux.
 
 **Application.** Ce que Dieu a décrété, il l'achèvera (8.30) : c'est la sécurité du croyant. Les épreuves de 8.28 servent ce but.
 
-**Transition.** Mais nous ne voyons pas encore cette ressemblance achevée. Comment Dieu nous y conduit-il, aujourd'hui?
+**Transition.** Nous ne voyons pas encore cette ressemblance achevée. Comment Dieu nous y conduit-il, aujourd'hui?
 
 ---
 
-## IV. L'image transformée : de gloire en gloire, par l'Esprit (2 Corinthiens 3.18) · 7 min
+## IV. L'image transformée : de gloire en gloire, par l'Esprit (2 Corinthiens 3.18) · 6 min
 
-**A. Le visage découvert**
-- Moïse voilait son visage (Exode 34.29-35); en Christ, le voile est ôté (3.14-16). « Nous tous » : tous les croyants, non les seuls apôtres. Rien ne s'interpose plus entre eux et la vision du Seigneur (47-22).
+*Phrase clé : on devient semblable à ce que l'on contemple.*
 
-**B. Contempler dans le miroir**
-- La NEG79 dit « reflète »; le grec (<i>katoptrizomai</i>), avec la S21, la LSG, Darby et la KJF, dit contempler comme dans un miroir. Le signaler sans déprécier la version en main : on ne reflète que ce qu'on contemple.
-- Le miroir, c'est l'Écriture, où la gloire de Dieu se voit sur la face de Jésus-Christ (90-75; 4.6). Relier au Rappel.
+**A. Le visage découvert.** Moïse voilait son visage (Exode 34.29-35); en Christ, le voile est ôté (3.14-16). « Nous tous » : tous les croyants. Rien ne s'interpose plus entre eux et la vision du Seigneur (47-22).
 
-**C. Transformés, de gloire en gloire, par l'Esprit**
+**B. Contempler dans le miroir.** La NEG79 dit « reflète »; le grec, avec la S21, la LSG, Darby et la KJF, dit contempler comme dans un miroir. On ne reflète que ce qu'on contemple. Le miroir, c'est l'Écriture, où la gloire de Dieu se voit sur la face de Jésus-Christ (90-75; 4.6). Relier au Rappel.
+
+**C. Transformés par l'Esprit.**
 - <i>Metamorphoô</i>, au présent passif : « une action de transformation continue et progressive » (47-21). Nous ne nous transformons pas; nous sommes transformés.
 - « C'est là toute la sanctification progressive […] passer d'un degré de gloire au suivant en contemplant la gloire du Seigneur » (90-75).
-- L'agent : le Seigneur, l'Esprit. Et le terme : « Le dessein salvateur de Dieu était de créer une humanité rachetée qui serait semblable à son Fils » (47-21, citant Romains 8.29).
+- Le terme : « Le dessein salvateur de Dieu était de créer une humanité rachetée qui serait semblable à son Fils » (47-21).
 
-**Application.** La ressemblance à Christ n'est pas un programme d'amélioration de soi. Le moyen est fixé : contempler Christ dans sa Parole, et l'Esprit fait le reste. Celui qui délaisse l'Écriture se prive du miroir.
+**Application.** Le moyen est fixé : contempler Christ dans sa Parole, et l'Esprit fait l'œuvre. Celui qui délaisse l'Écriture se prive du miroir.
 
-**Transition.** À quoi reconnaît-on cette image qui grandit?
+**Transition.** À quoi reconnaît-on cette image qui grandit? À ce que Dieu avait mis au centre : le cœur qui aime.
 
 ---
 
-## V. L'image rendue à Dieu : aimer Dieu et le prochain (Matthieu 22.37-40) · 7 min
+## V. L'image qui aime : le cœur renouvelé (Matthieu 22.37-40; Jérémie 31.33) · 7 min
 
-**A. Le commandement que tous connaissaient**
-- Le piège des 613 commandements, légers et lourds; Jésus répond par le Shema, récité matin et soir (Deutéronome 6.5), et par Lévitique 19.18 (2358).
-- « Tu aimeras » : l'amour de la volonté, non d'abord de l'émotion; cœur, âme et pensée : l'être entier (2358).
-- Le second découle du premier : « Quand vous aimez Dieu comme il faut, vous aimez les gens comme il faut » (2358). Toute la loi est suspendue à ces deux clous.
+*Phrase clé : la loi que je ne peux accomplir, Dieu l'écrit sur mon cœur.*
+
+**A. Le commandement que tous connaissaient** (Matthieu 22.37-40)
+- Le piège des 613 commandements; Jésus répond par le Shema, récité matin et soir (Deutéronome 6.5), et par Lévitique 19.18 (2358).
+- « Tu aimeras » : l'amour de la volonté, de tout l'être. Le second découle du premier : « Quand vous aimez Dieu comme il faut, vous aimez les gens comme il faut » (2358).
 
 **B. Le commandement qui accuse**
 - Personne n'a aimé Dieu ainsi. « Parce que nous n'avons pas aimé ainsi, nous avons besoin du pardon, et parce que nous ne pouvons pas aimer ainsi, nous avons besoin d'une capacité nouvelle » (2358).
-- Christ a porté à la croix le péché de ceux qui n'ont pas aimé Dieu; l'Esprit répand l'amour de Dieu dans le cœur (Romains 5.5).
 
-**C. Rendre à Dieu ce qui porte son image**
-- Retour à l'accroche : l'image de Dieu est frappée sur une vie pour être rendue à Dieu (22.21; 2356). Aimer Dieu de tout son être, c'est lui rendre la vie qui porte son image.
+**C. La loi écrite sur le cœur** (lire Jérémie 31.33, NBS)
+- La nouvelle alliance tient en deux éléments : « le pardon de tous nos péchés et l'écriture de la loi de Dieu sur nos cœurs » (80-286).
+- Le cœur, dans la Bible, c'est la personne intérieure (1 Chroniques 28.9) :
+  - **Rationnel** (Jean 1.1; 1 Jean 1.1) : le cœur qui pense. Dieu parle en Christ, le *Logos* (43-2), et il renouvelle la pensée.
+  - **Moral** (Psaume 51.12) : le cœur pur qui juge le bien et le mal. Le cœur est tortueux (Jérémie 17.9); Dieu seul en crée un pur.
+  - **Relationnel** (Matthieu 22.37-40) : le cœur qui aime. Dieu répand son amour dans nos cœurs par l'Esprit (Romains 5.5).
 
-**Application.** Nous l'aimons parce qu'il nous a aimés le premier (1 Jean 4.19); cet amour se prouve par l'obéissance (Jean 14.15) et par le soin du prochain avec le même empressement que pour soi-même.
+**Application.** Nous l'aimons parce qu'il nous a aimés le premier (1 Jean 4.19). Aimer Dieu de tout son cœur, c'est lui rendre la vie qui porte son image (retour à l'accroche).
+
+**Transition.** Et le prochain que nous aimons, que lui devons-nous d'abord?
+
+---
+
+## VI. L'image envoyée : faites des disciples (Matthieu 28.19-20) · 5 min
+
+*Phrase clé : ceux que Dieu restaure à son image, il les envoie.*
+
+- **Un seul impératif :** « faites des disciples »; aller, baptiser, enseigner en décrivent le chemin (2405).
+- **Le disciple :** « un croyant qui apprend »; « on ne peut être disciple de Christ sans un cœur obéissant » (2405). La foi salvatrice se soumet à Christ comme Seigneur.
+- **« Au nom » du Père, du Fils et du Saint-Esprit :** « un seul nom et trois personnes » (2405). Le Dieu du « Faisons » est celui dans le nom duquel les disciples sont baptisés, signe extérieur d'une foi déjà reçue.
+- **« Tout ce que je vous ai prescrit » :** y compris le grand commandement. Faire des disciples, c'est former d'autres porteurs de l'image restaurée.
+- **« Je suis avec vous tous les jours » :** jusqu'à son retour (2405).
+
+**Application.** Aimer son prochain, c'est d'abord lui annoncer Christ. Qui, cette semaine, entendra de vous l'Évangile?
 
 ---
 
 ## Conclusion et appel (3 min)
 
-- **Récapitulation :** créés à son image, ternis par le péché, restaurés en Christ, promis à sa ressemblance, transformés par l'Esprit, rendus à Dieu dans l'amour.
-- **À l'incroyant :** vous portez l'image de Dieu, et vous n'avez jamais aimé Dieu de tout votre cœur. Christ seul pardonne et restaure : repentez-vous et soumettez-vous à lui comme Seigneur.
-- **Au croyant :** Dieu achèvera en vous ce qu'il a décidé avant la fondation du monde; nous serons semblables à lui (1 Jean 3.2). Contemplez Christ dans sa Parole; c'est ainsi que l'Esprit vous transforme.
+- **Récapitulation :** créés à son image, ternis par le péché, restaurés en Christ, promis à sa ressemblance, transformés par l'Esprit, renouvelés au cœur, envoyés en son nom.
+- **À l'incroyant :** vous portez l'image de Dieu, et vous n'avez jamais aimé Dieu de tout votre cœur. Christ seul pardonne et restaure : repentez-vous, croyez en lui et soumettez-vous à lui comme Seigneur.
+- **Au croyant :** Dieu achèvera en vous ce qu'il a décidé avant la fondation du monde; nous serons semblables à lui (1 Jean 3.2). Contemplez Christ dans sa Parole; c'est ainsi que l'Esprit vous transforme. Et allez : faites des disciples.
 - **Verset final :** 2 Corinthiens 3.18.
 
 ---
@@ -147,5 +180,16 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 3. Contourner l'élection de Romains 8.29 pour ne garder qu'un « imitez Jésus ».
 4. Présenter « premier-né » comme un ordre de naissance.
 5. Transformer la domination en écologie moralisante ou en licence d'exploiter.
-6. Laisser le « reflète » de la NEG79 effacer le moyen : le croyant reflète Christ parce qu'il le contemple dans la Parole.
-7. Prêcher Matthieu 22.37-40 comme une exhortation à aimer davantage, sans la loi qui accuse, la croix qui pardonne et l'Esprit qui rend capable.
+6. Faire de l'égalité de l'homme et de la femme une négation des rôles distincts, ou des rôles une négation de l'égalité.
+7. Laisser le « reflète » de la NEG79 effacer le moyen : le croyant reflète Christ parce qu'il le contemple dans la Parole.
+8. Prêcher Matthieu 22.37-40 comme une exhortation à aimer davantage, sans la loi qui accuse, la croix qui pardonne et l'Esprit qui écrit la loi sur le cœur.
+9. Spéculer sur la périchorèse : le mot nomme la communion trinitaire, il ne remplace pas le texte.
+10. Réduire Matthieu 28.19-20 à un appel aux missionnaires : l'envoi concerne tout disciple.
+
+---
+
+## Avant de monter en chaire
+
+- Relire à voix haute les citations bibliques dans votre Bible NEG79; Jérémie 31.33 est cité en NBS.
+- Chronométrer une répétition : les points III et VI sont les plus faciles à raccourcir.
+- Imprimer la version PDF de ce plan.
