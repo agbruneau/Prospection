@@ -130,7 +130,7 @@ function header(slide, kicker, title, phrase, step) {
     disc(s, ic, x, 5.6, 0.6);
     text(s, t, x + 0.75, 5.55, 1.75, 0.95, { fontSize: 15 });
   });
-  s.addNotes("8 min. A. « Faisons » : jusqu'au verset 24, Dieu commande; au verset 26, « jamais Dieu n'a parlé au pluriel » (90-218). Première indication claire de la Trinité (3.22; 11.7). Périchorèse : le mot nomme, il ne spécule pas. B. Tselem et demuth sont synonymes (90-218). Par la raison, l'homme est comme Dieu; moralement, il était comme Dieu. Centre : « la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218). C. Domination : roi de la terre (90-219; Ps 8.7-9). Homme et femme égaux en dignité, rôles distincts (Gn 2.18-23; 1 Tm 2.13); montrer le pluriel « qu'ils dominent » que la NEG79 efface. Application : la dignité repose sur l'acte créateur, non sur l'utilité. Transition : Gn 5.3; l'image demeure (Gn 9.6), la ressemblance morale est perdue.");
+  s.addNotes("8 min. A. « Faisons » : jusqu'au verset 24, Dieu commande; au verset 26, « jamais Dieu n'a parlé au pluriel » (90-218). Première indication claire de la Trinité (3.22; 11.7). Périchorèse (Jn 14.10-11; 17.21) : le mot nomme, il ne spécule pas. Ce conseil exécute un dessein arrêté avant la fondation du monde (Ép 1.4) : pierre d'attente du point III. B. Tselem et demuth sont synonymes (90-218). Par la raison, l'homme est comme Dieu; moralement, il était comme Dieu. Centre : « la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218) : pierre d'attente du point V. Bara' trois fois au verset 27 : Dieu seul crée, et l'homme est le seul être vivant fait sur le modèle divin (90-219). C. Domination : roi de la terre, chargé de la cultiver et de la garder (90-219; Ps 8.7-9). Homme et femme égaux en dignité, rôles distincts (Gn 2.18-23; 1 Tm 2.13); montrer le pluriel « qu'ils dominent » que la NEG79 efface. Application : la dignité repose sur l'acte créateur, non sur l'utilité. Transition, l'image ternie : Adam déchu engendre « à sa ressemblance » (Gn 5.3); l'image demeure (Gn 9.6; Jc 3.9), mais la ressemblance morale est perdue et l'homme ne peut la restaurer. Où voir encore l'image telle que Dieu l'a voulue?");
 }
 
 // 5. II. L'image parfaite
@@ -154,13 +154,13 @@ function header(slide, kicker, title, phrase, step) {
     text(s, [{ text: w, options: { italic: true, bold: true, color: OR_LT } }, { text: "  " + d, options: { fontSize: 14, color: MUTED } }], x, 6.25, 3.2, 0.6, { fontSize: 18, align: "center", valign: "middle" });
     if (i < 2) s.addShape(pres.shapes.LINE, { x: x + 3.28, y: 6.55, w: 0.6, h: 0, line: { color: OR, width: 2, endArrowType: "triangle" } });
   });
-  s.addNotes("6 min. La Septante rend l'image de Gn 1.27 par eikôn, le mot que Paul applique à Christ (aussi 2 Co 4.4). Mais en un autre sens : l'homme porte l'image comme créature; Christ est, de toute éternité, la ressemblance parfaite de Dieu, une reproduction exacte, sans rien de manquant ni d'altéré (2135; Hé 1.3; Ph 2.6; Jn 14.9). Premier-né : le rang d'héritier, non la naissance (Ex 4.22; Jr 31.9, Éphraïm avant Manassé). Il a créé toutes choses (1.16). Application : qui veut connaître Dieu le voit en Christ.");
+  s.addNotes("6 min. La Septante rend l'image de Gn 1.27 par eikôn, le mot que Paul applique à Christ (aussi 2 Co 4.4). Mais en un autre sens : l'homme porte l'image comme créature; Christ est, de toute éternité, la ressemblance parfaite de Dieu, une reproduction exacte, sans rien de manquant ni d'altéré (2135; Hé 1.3; Ph 2.6; Jn 14.9). Premier-né : le rang d'héritier, non la naissance (Ex 4.22; Jr 31.9, Éphraïm avant Manassé). Il a créé toutes choses (1.16). Application : qui veut savoir ce qu'est l'homme tel que Dieu l'a voulu regarde Christ; qui veut connaître Dieu le voit en Christ, sans intermédiaire. Transition : si Christ est l'image parfaite, que Dieu fait-il de ceux qu'il sauve?");
 }
 
 // 6. III. L'image promise
 {
   const s = pres.addSlide();
-  header(s, "III · ROMAINS 8.29-30", "L'image promise", "Dieu a décidé d'avance la fin de votre salut, et cette fin, c'est Christ en vous.", 2);
+  header(s, "III · ROMAINS 8.29", "L'image promise", "Dieu a décidé d'avance la fin de votre salut, et cette fin, c'est Christ en vous.", 2);
   ["Connus d'avance", "Prédestinés", "Appelés", "Justifiés", "Glorifiés"].forEach((t, i) => {
     const x = 0.79 + i * 2.3, hi = i === 1;
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y: 2.15, w: 2.55, h: 0.95, rectRadius: 0.47,
@@ -176,7 +176,7 @@ function header(slide, kicker, title, phrase, step) {
     card(s, 4.9, y, 7.83, 0.86, i === 1);
     text(s, [{ text: t, options: { bold: true, color: OR_LT, breakLine: true } }, { text: d }], 5.15, y, 7.4, 0.86, { fontSize: 17, valign: "middle" });
   });
-  s.addNotes("5 min. « Connus d'avance » : non une simple prévision de qui croirait, mais le choix d'aimer, l'élection (Ac 2.23; 1 P 1.2, 20). Le même conseil éternel que le « Faisons ». « Le but de votre salut était que vous soyez rendus semblables à l'image de son Fils » (90-180). Premier-né de beaucoup de frères : la fin dernière est la gloire du Fils. Application : ce que Dieu a décrété, il l'achèvera (8.30); les épreuves de 8.28 servent ce but.");
+  s.addNotes("5 min. « Connus d'avance » : non une simple prévision de qui croirait, mais le choix d'aimer, l'élection (Ac 2.23; 1 P 1.2, 20). Le même conseil éternel que le « Faisons ». « Le but de votre salut était que vous soyez rendus semblables à l'image de son Fils » (90-180). Premier-né de beaucoup de frères : la fin dernière est la gloire du Fils. Application : ce que Dieu a décrété, il l'achèvera (8.30); les épreuves de 8.28 servent ce but. Transition : nous ne voyons pas encore cette ressemblance achevée. Comment Dieu nous y conduit-il, aujourd'hui?");
 }
 
 // 7. IV. L'image transformée
@@ -197,7 +197,7 @@ function header(slide, kicker, title, phrase, step) {
   });
   text(s, [{ text: "de gloire en gloire", options: { italic: true, bold: true, fontSize: 21, color: OR_LT, breakLine: true } },
     { text: "jusqu'à lui être semblables (1 Jn 3.2)", options: { color: MUTED } }], 10.06, 5.05, 2.7, 1.2, { fontSize: 15 });
-  s.addNotes("6 min. A. Moïse voilait son visage (Ex 34.29-35); en Christ, le voile est ôté. « Nous tous » : tous les croyants (47-22). B. La NEG79 dit « reflète »; le grec, avec la S21, la LSG, Darby et la KJF, dit contempler comme dans un miroir. Le miroir, c'est l'Écriture, où la gloire de Dieu se voit sur la face de Jésus-Christ (90-75; 4.6). Relier au Rappel. C. Metamorphoô, présent passif : « une action de transformation continue et progressive » (47-21). « C'est là toute la sanctification progressive » (90-75). Application : celui qui délaisse l'Écriture se prive du miroir.");
+  s.addNotes("6 min. A. Moïse voilait son visage (Ex 34.29-35); en Christ, le voile est ôté. « Nous tous » : tous les croyants (47-22). B. La NEG79 dit « reflète »; le grec, avec la S21, la LSG, Darby et la KJF, dit contempler comme dans un miroir. Le miroir, c'est l'Écriture, où la gloire de Dieu se voit sur la face de Jésus-Christ (90-75; 4.6). Relier au Rappel. C. Metamorphoô, présent passif : « une action de transformation continue et progressive » (47-21). « C'est là toute la sanctification progressive » (90-75). Le terme : « Le dessein salvateur de Dieu était de créer une humanité rachetée qui serait semblable à son Fils » (47-21). Application : contempler Christ dans sa Parole, et l'Esprit fait l'œuvre; celui qui délaisse l'Écriture se prive du miroir. Transition : à quoi reconnaît-on cette image qui grandit? À ce que Dieu avait mis au centre : le cœur qui aime.");
 }
 
 // 8. V. L'image qui aime
@@ -219,7 +219,7 @@ function header(slide, kicker, title, phrase, step) {
     disc(s, ic, 7.6, y + 0.21, 0.7);
     text(s, [{ text: t, options: { bold: true, fontSize: 18, breakLine: true } }, { text: d, options: { color: MUTED } }], 8.5, y + 0.08, 4.1, 0.96, { fontSize: 15, valign: "middle" });
   });
-  s.addNotes("7 min. A. Le piège des 613 commandements; Jésus répond par le Shema (Dt 6.5) et Lv 19.18 (2358). « Quand vous aimez Dieu comme il faut, vous aimez les gens comme il faut » (2358). B. « Parce que nous n'avons pas aimé ainsi, nous avons besoin du pardon, et parce que nous ne pouvons pas aimer ainsi, nous avons besoin d'une capacité nouvelle » (2358). C. Lire Jérémie 31.33 (NBS). La nouvelle alliance : « le pardon de tous nos péchés et l'écriture de la loi de Dieu sur nos cœurs » (80-286). Le cœur (1 Ch 28.9) : rationnel, moral, relationnel. Application : nous l'aimons parce qu'il nous a aimés le premier (1 Jn 4.19), et cet amour se prouve par l'obéissance (Jn 14.15).");
+  s.addNotes("7 min. A. Le piège des 613 commandements; Jésus répond par le Shema (Dt 6.5) et Lv 19.18 (2358). « Quand vous aimez Dieu comme il faut, vous aimez les gens comme il faut » (2358). B. « Parce que nous n'avons pas aimé ainsi, nous avons besoin du pardon, et parce que nous ne pouvons pas aimer ainsi, nous avons besoin d'une capacité nouvelle » (2358). C. Lire Jérémie 31.33 (NBS). La nouvelle alliance : « le pardon de tous nos péchés et l'écriture de la loi de Dieu sur nos cœurs » (80-286). Le cœur (1 Ch 28.9) : rationnel, moral, relationnel. Application : nous l'aimons parce qu'il nous a aimés le premier (1 Jn 4.19), et cet amour se prouve par l'obéissance (Jn 14.15). Transition : et le prochain que nous aimons, que lui devons-nous d'abord?");
 }
 
 // 9. VI. L'image envoyée
@@ -244,7 +244,7 @@ function header(slide, kicker, title, phrase, step) {
   disc(s, "main", 5.55, 5.5, 0.56);
   text(s, "« Je suis avec vous tous les jours, jusqu'à la fin du monde. »", 6.3, 5.42, 6.3, 0.72, { fontSize: 17, italic: true, valign: "middle" });
   text(s, "Qui, cette semaine, entendra de vous l'Évangile?", 5.4, 6.35, 7.33, 0.45, { fontSize: 21, bold: true, color: OR_LT, align: "center" });
-  s.addNotes("5 min. Un seul impératif : « faites des disciples »; aller, baptiser, enseigner en décrivent le chemin (2405). Le disciple : « un croyant qui apprend »; « on ne peut être disciple de Christ sans un cœur obéissant » (2405). « Au nom » : « un seul nom et trois personnes » (2405); le Dieu du « Faisons ». Le baptême, signe extérieur d'une foi déjà reçue. « Tout ce que je vous ai prescrit » inclut le grand commandement. Application : aimer son prochain, c'est d'abord lui annoncer Christ.");
+  s.addNotes("5 min. Un seul impératif : « faites des disciples »; aller, baptiser, enseigner en décrivent le chemin (2405). Le disciple : « un croyant qui apprend »; « on ne peut être disciple de Christ sans un cœur obéissant » (2405); la foi salvatrice se soumet à Christ comme Seigneur. « Au nom » : « un seul nom et trois personnes » (2405); le Dieu du « Faisons ». Le baptême, signe extérieur d'une foi déjà reçue. « Tout ce que je vous ai prescrit » inclut le grand commandement : faire des disciples, c'est former d'autres porteurs de l'image restaurée. « Je suis avec vous tous les jours » : jusqu'à son retour (2405). Application : aimer son prochain, c'est d'abord lui annoncer Christ.");
 }
 
 // 10. Conclusion et appel
@@ -268,10 +268,10 @@ function header(slide, kicker, title, phrase, step) {
       cx(i) - 0.85, y + 0.3, 1.7, 0.75, { fontSize: 16, align: "center" });
   });
   [["À l'incroyant", "Vous portez l'image de Dieu, et vous ne l'avez jamais aimé de tout votre cœur. Christ seul pardonne et restaure : repentez-vous, croyez en lui, soumettez-vous à lui comme Seigneur."],
-   ["Au croyant", "Dieu achèvera ce qu'il a résolu : nous serons semblables à lui (1 Jn 3.2). Contemplez Christ dans sa Parole. Et allez : faites des disciples."]].forEach(([t, d], i) => {
+   ["Au croyant", "Dieu achèvera ce qu'il a décidé avant la fondation du monde : nous serons semblables à lui (1 Jn 3.2). Contemplez Christ dans sa Parole; ainsi l'Esprit vous transforme. Et allez : faites des disciples."]].forEach(([t, d], i) => {
     const x = 0.6 + i * 6.2;
-    card(s, x, 4.95, 5.93, 1.5, true);
-    text(s, [{ text: t, options: { bold: true, fontSize: 19, color: OR_LT, breakLine: true } }, { text: d }], x + 0.25, 5.05, 5.45, 1.35, { fontSize: 15, valign: "middle" });
+    card(s, x, 4.95, 5.93, 1.75, true);
+    text(s, [{ text: t, options: { bold: true, fontSize: 19, color: OR_LT, breakLine: true } }, { text: d }], x + 0.25, 5.1, 5.45, 1.5, { fontSize: 15, valign: "top" });
   });
   s.addNotes("3 min. Récapitulation : créés à son image, ternis par le péché, restaurés en Christ, promis à sa ressemblance, transformés par l'Esprit, renouvelés au cœur, envoyés en son nom. Appel à l'incroyant, puis au croyant.");
 }
