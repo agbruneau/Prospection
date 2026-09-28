@@ -254,7 +254,7 @@ function header(slide, kicker, title, phrase, step) {
   text(s, "CONCLUSION ET APPEL", 0.6, 0.42, 8, 0.32, { fontSize: 13, bold: true, color: OR_LT, charSpacing: 3 });
   text(s, "Créés à son image, restaurés en Christ,\ntransformés par l'Esprit, envoyés en son nom.", 0.6, 0.8, 12.1, 1.15, { fontFace: HEAD, fontSize: 30, bold: true });
   const nodes = [["Créés", "Gn 1.27", 2.45], ["Ternis", "Gn 5.3", 3.75], ["Restaurés en Christ", "Col 1.15", 3.4], ["Promis", "Rm 8.29", 3.1],
-    ["Transformés", "2 Co 3.18", 2.8], ["Renouvelés au cœur", "Jr 31.33", 2.5], ["Envoyés", "Mt 28.19", 2.2]];
+    ["Transformés", "", 2.8], ["Renouvelés au cœur", "Jr 31.33", 2.5], ["Envoyés", "Mt 28.19", 2.2]];
   const cx = (i) => 1.25 + i * 1.8, D = 0.4;
   nodes.slice(1).forEach((n, k) => {
     const [x1, y1, x2, y2] = [cx(k), nodes[k][2], cx(k + 1), n[2]];
@@ -264,7 +264,7 @@ function header(slide, kicker, title, phrase, step) {
   nodes.forEach(([t, r, y], i) => {
     const fall = i === 1, last = i === 6;
     s.addShape(pres.shapes.OVAL, { x: cx(i) - D / 2, y: y - D / 2, w: D, h: D, fill: { color: fall ? ASH : last ? OR_LT : BG }, line: { color: fall ? ASH : OR_LT, width: 3 } });
-    text(s, [{ text: t, options: { bold: true, breakLine: true, color: fall ? MUTED : INK } }, { text: r, options: { fontSize: 13, color: MUTED } }],
+    text(s, [{ text: t, options: { bold: true, breakLine: !!r, color: fall ? MUTED : INK } }, ...(r ? [{ text: r, options: { fontSize: 13, color: MUTED } }] : [])],
       cx(i) - 0.85, y + 0.3, 1.7, 0.75, { fontSize: 16, align: "center" });
   });
   [["À l'incroyant", "Vous portez l'image de Dieu, et vous ne l'avez jamais aimé de tout votre cœur. Christ seul pardonne et restaure : repentez-vous, croyez en lui, soumettez-vous à lui comme Seigneur."],
