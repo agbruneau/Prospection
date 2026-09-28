@@ -10,7 +10,7 @@ const CSS = `@page { size: Letter; margin: 18mm 18mm 16mm; }
 body { font-family: Georgia, "Times New Roman", serif; font-size: 11pt; line-height: 1.45; color: #1a1a1a; max-width: none; margin: 0; }
 h1 { font-size: 22pt; color: #1A2A40; margin: 0 0 4pt; border-bottom: 2px solid #B8862B; padding-bottom: 4pt; }
 h2 { font-size: 13.5pt; color: #1A2A40; margin: 16pt 0 5pt; border-bottom: 1px solid #d9c9a3; padding-bottom: 2pt; page-break-after: avoid; }
-p, li { margin: 3pt 0; }
+p, li { margin: 3pt 0; text-align: justify; hyphens: auto; }
 ul, ol { margin: 3pt 0 3pt 16pt; padding: 0; }
 em { color: #5a4a2a; }
 strong { color: #1A2A40; }
