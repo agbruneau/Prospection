@@ -54,7 +54,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 *Phrase clé : l'homme est fait à l'image d'un Dieu qui n'a jamais été seul.*
 
-**A. Le Dieu qui dit « Faisons »** (1.26)
+**A. Le Dieu qui dit « Faisons » (Périchorèse)** (1.26)
 - Jusqu'au verset 24, Dieu commande : « Que la terre produise ». Au verset 26, pour la première fois, il parle au pluriel : « Jamais Dieu n'a parlé au pluriel » (90-218). Puis il agit au singulier (1.27).
 - Première indication claire de la Trinité (cf. 3.22; 11.7). Un seul Dieu, trois personnes en communion parfaite : la tradition appelle cette habitation mutuelle la périchorèse (Jean 14.10-11; 17.21). Le mot sert à nommer, non à spéculer.
 - Ce conseil n'est pas improvisé : il exécute un dessein arrêté avant la fondation du monde (Éphésiens 1.4). *Pierre d'attente du point III.*
