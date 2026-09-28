@@ -46,7 +46,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 - **Accroche.** Dans l'Antiquité, l'« image » d'un dieu, c'était le roi. En Égypte, le pharaon en portait le titre : Toutânkhamon signifie « image vivante d'Amon ». En Mésopotamie, le roi dressait son effigie aux confins de ses territoires pour y marquer sa souveraineté. Genèse 1.27 accorde ce titre à l'être humain comme tel, homme et femme, sans rang ni lignée.
 - **Question.** Vous aussi, vous portez une image. Laquelle? Qu'est-il arrivé à cette image, et que Dieu en fait-il?
-- **Parcours.** Six textes, un seul arc : l'image **créée**, **parfaite**, **promise**, **transformée**, **qui aime**, **envoyée**.
+- **Parcours.** Six étapes, un seul arc : l'image **créée**, **parfaite**, **promise**, **transformée**, **qui aime**, **envoyée**.
 
 ---
 
