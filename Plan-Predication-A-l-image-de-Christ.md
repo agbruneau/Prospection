@@ -77,11 +77,12 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 ## II. L'image parfaite : Christ, image du Dieu invisible (Colossiens 1.15) · 6 min
 
-*Phrase clé : Christ est ce que l'homme n'est plus.*
+*Phrase clé : Christ est ce que l'homme n'est plus.* (Kénose - Philippiens 2)
 
 **A. L'Image incréée**
 - La Septante rend l'« image » de Genèse 1.27 par <i>eikôn</i>, le mot que Paul applique à Christ (aussi 2 Corinthiens 4.4).
 - Mais en un autre sens : l'homme porte l'image comme créature; Christ est, de toute éternité, la ressemblance parfaite de Dieu, sa représentation et sa manifestation (Philippiens 2.6; Jean 14.9), une reproduction exacte, sans rien de manquant ni d'altéré (2135; Hébreux 1.3).
+- Kénose (Philippiens 2.6-7) : existant en forme de Dieu, « il s'est dépouillé lui-même, en prenant une forme de serviteur ». Non de sa divinité : « Il n'a jamais cessé d'être Dieu » (50-16); mais de sa gloire céleste et de l'usage volontaire de ses prérogatives.
 
 **B. Premier-né : le rang, non la naissance**
 - Le premier-né est l'héritier, qu'il soit l'aîné ou non (Exode 4.22; Jérémie 31.9).
@@ -184,6 +185,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 8. Prêcher Matthieu 22.37-40 comme une exhortation à aimer davantage, sans la loi qui accuse, la croix qui pardonne et l'Esprit qui écrit la loi sur le cœur.
 9. Spéculer sur la périchorèse : le mot nomme la communion trinitaire, il ne remplace pas le texte.
 10. Réduire Matthieu 28.19-20 à un appel aux missionnaires : l'envoi concerne tout disciple.
+11. Faire de la kénose un abandon de la divinité : Christ s'est dépouillé de sa gloire et de l'usage de ses prérogatives, jamais de ce qu'il est (50-16).
 
 ---
 
