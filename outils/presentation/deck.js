@@ -136,7 +136,8 @@ function header(slide, kicker, title, phrase, step) {
 // 5. II. L'image parfaite
 {
   const s = pres.addSlide();
-  header(s, "II · COLOSSIENS 1.15", "L'image parfaite", "Christ est ce que l'homme n'est plus.", 1);
+  header(s, "II · COLOSSIENS 1.15", "L'image parfaite", [{ text: "Christ est ce que l'homme n'est plus. " },
+    { text: "(Kénose - Philippiens 2)", options: { color: MUTED } }], 1);
   s.addImage({ path: img("ternie"), x: 1.95, y: 2.05, w: 2.6, h: 2.6, altText: "Une pièce à l'effigie humaine, fêlée et ternie" });
   s.addImage({ path: img("parfaite"), x: 8.75, y: 2.05, w: 2.6, h: 2.6, altText: "Une couronne rayonnante : Christ, l'image parfaite" });
   s.addShape(pres.shapes.LINE, { x: 5.2, y: 3.35, w: 2.95, h: 0, line: { color: OR_LT, width: 3, endArrowType: "triangle" } });
