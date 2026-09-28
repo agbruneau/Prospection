@@ -90,9 +90,9 @@ function header(slide, kicker, title, phrase, step) {
   header(s, "INTRODUCTION · GENÈSE 1.27", "Qui porte l'image de Dieu?", "L'image représentait, et rendait présent, celui qu'elle figurait.");
   s.addImage({ path: img("deux-images"), x: 0.5, y: 2.0, w: 7.2, h: 3.6, altText: "Le pharaon, « image vivante » du dieu, puis une personne à l'image de Dieu" });
   text(s, [{ text: "Autour d'Israël : le roi seul", options: { bold: true, color: INK, breakLine: true } }, { text: "le pharaon, « image vivante » du dieu", options: { color: MUTED } }],
-    0.4, 5.6, 3.8, 0.75, { align: "center" });
+    0.5556, 5.6, 3.4722, 0.75, { align: "center" });
   text(s, [{ text: "Genèse 1.27 : tout être humain", options: { bold: true, color: OR_LT, breakLine: true } }, { text: "homme et femme, sans rang ni lignée", options: { color: MUTED } }],
-    4.0, 5.6, 3.8, 0.75, { align: "center" });
+    4.1667, 5.6, 3.4722, 0.75, { align: "center" });
   text(s, "Vous aussi, vous portez une image. Laquelle?", 0.6, 6.5, 7.1, 0.45, { fontSize: 21, italic: true, align: "center" });
   card(s, 8.15, 2.0, 4.58, 4.95);
   text(s, [{ text: "tselem", options: { italic: true, bold: true, color: OR_LT } }, { text: " : image, effigie", options: { color: MUTED } }], 8.45, 2.2, 4.0, 0.4, { fontSize: 17 });
@@ -112,7 +112,7 @@ function header(slide, kicker, title, phrase, step) {
   header(s, "I · GENÈSE 1.26-27", "L'image créée", "L'homme est fait à l'image d'un Dieu qui n'a jamais été seul.", 0);
   s.addImage({ path: img("trinite"), x: 0.5, y: 2.05, w: 4.3, h: 3.87, altText: "Père, Fils et Esprit en communion : un seul Dieu" });
   text(s, [{ text: "« Faisons » (Périchorèse) : ", options: { bold: true, color: OR_LT } },
-    { text: "pour la première fois, Dieu parle au pluriel. Un seul Dieu, trois personnes en communion." }], 0.6, 5.95, 4.2, 0.95, { fontSize: 16 });
+    { text: "pour la première fois, Dieu parle au pluriel. Un seul Dieu, trois personnes en communion." }], 0.6, 5.95, 4.2, 1.1667, { fontSize: 16 });
   text(s, [{ text: "Ce qu'est l'image  " , options: { bold: true } }, { text: "tselem = demuth : image = ressemblance", options: { italic: true, color: OR_LT, fontSize: 16 } }],
     5.2, 2.05, 7.5, 0.4, { fontSize: 19 });
   [["cerveau", "Raison", "Il est comme Dieu : il pense, veut, ressent."],
