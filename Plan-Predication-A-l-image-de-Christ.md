@@ -30,7 +30,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 | IV. L'image transformée | 2 Corinthiens 3.18 | 6 min |
 | V. L'image qui aime | Matthieu 22.37-40; Jérémie 31.33 | 7 min |
 | VI. L'image envoyée | Matthieu 28.19-20 | 5 min |
-| Conclusion et appel | 2 Corinthiens 3.18 | 3 min |
+| Conclusion et appel | — | 3 min |
 
 ---
 
@@ -169,7 +169,6 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 - **Récapitulation :** créés à son image, ternis par le péché, restaurés en Christ, promis à sa ressemblance, transformés par l'Esprit, renouvelés au cœur, envoyés en son nom.
 - **À l'incroyant :** vous portez l'image de Dieu, et vous n'avez jamais aimé Dieu de tout votre cœur. Christ seul pardonne et restaure : repentez-vous, croyez en lui et soumettez-vous à lui comme Seigneur.
 - **Au croyant :** Dieu achèvera en vous ce qu'il a décidé avant la fondation du monde; nous serons semblables à lui (1 Jean 3.2). Contemplez Christ dans sa Parole; c'est ainsi que l'Esprit vous transforme. Et allez : faites des disciples.
-- **Verset final :** 2 Corinthiens 3.18.
 
 ---
 
