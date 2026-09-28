@@ -111,7 +111,7 @@ function header(slide, kicker, title, phrase, step) {
   const s = pres.addSlide();
   header(s, "I · GENÈSE 1.26-27", "L'image créée", "L'homme est fait à l'image d'un Dieu qui n'a jamais été seul.", 0);
   s.addImage({ path: img("trinite"), x: 0.5, y: 2.05, w: 4.3, h: 3.87, altText: "Père, Fils et Esprit en communion : un seul Dieu" });
-  text(s, [{ text: "« Faisons » : ", options: { bold: true, color: OR_LT } },
+  text(s, [{ text: "« Faisons » (Périchorèse) : ", options: { bold: true, color: OR_LT } },
     { text: "pour la première fois, Dieu parle au pluriel. Un seul Dieu, trois personnes en communion." }], 0.6, 5.95, 4.2, 0.95, { fontSize: 16 });
   text(s, [{ text: "Ce qu'est l'image  " , options: { bold: true } }, { text: "tselem = demuth : image = ressemblance", options: { italic: true, color: OR_LT, fontSize: 16 } }],
     5.2, 2.05, 7.5, 0.4, { fontSize: 19 });
