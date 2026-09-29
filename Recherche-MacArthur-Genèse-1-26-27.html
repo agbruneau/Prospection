@@ -737,7 +737,7 @@
       entries.forEach(function(e){
         if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
       });
-    }, {threshold:0.12});
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
     document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
 
     // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
