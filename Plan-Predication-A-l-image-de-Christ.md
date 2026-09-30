@@ -2,7 +2,7 @@
 
 **Plan de prédication** · 30 septembre 2026 · André-Guy Bruneau
 
-**Texte central :** Genèse 1.26-27 · **Textes d'appui :** Colossiens 1.15; Romains 8.29; 2 Corinthiens 3.18; Matthieu 22.37-40; Matthieu 28.19-20 · **Rappel :** 2 Timothée 3.16-17 · **Le cœur :** Jérémie 31.33 (NBS). Autres citations : NEG79.
+**Texte central :** Genèse 1.26-27 · **Textes d'appui :** Genèse 5.1-2; Colossiens 1.15; Philippiens 2.6-7; Romains 8.29; Éphésiens 1.4; 2 Corinthiens 3.18; Matthieu 22.37-40; Matthieu 28.19-20 · **Rappel :** 2 Timothée 3.16-17 · **Le cœur :** Jérémie 31.33 (NBS). Autres citations : NEG79.
 
 **Source :** [Recherche-MacArthur-Genèse-1-26-27](Recherche-MacArthur-Genèse-1-26-27.md) (sermons Grace to You, notes de *La Sainte Bible avec commentaires de John MacArthur*)
 
@@ -24,13 +24,13 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 |---|---|---|
 | Rappel | 2 Timothée 3.16-17 | 2 min |
 | Introduction | Genèse 1.27 | 3 min |
-| I. L'image créée | Genèse 1.26-27 | 8 min |
-| II. L'image parfaite | Colossiens 1.15 | 6 min |
-| III. L'image promise | Romains 8.29 | 5 min |
+| I. L'image créée | Genèse 1.26-27; 5.1-2 | 8 min |
+| II. L'image parfaite | Colossiens 1.15; Philippiens 2.6-7 | 6 min |
+| III. L'image promise | Romains 8.29; Éphésiens 1.4 | 5 min |
 | IV. L'image transformée | 2 Corinthiens 3.18 | 6 min |
 | V. L'image qui aime | Matthieu 22.37-40; Jérémie 31.33 | 7 min |
 | VI. L'image envoyée | Matthieu 28.19-20 | 5 min |
-| Conclusion et appel | — | 3 min |
+| Conclusion et appel | 2 Corinthiens 3.18 | 3 min |
 
 ---
 
@@ -39,6 +39,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 - **Lire 2 Timothée 3.16-17.**
 - Toute l'Écriture est « soufflée par Dieu » (<i>theopneustos</i>) : « Ce que l'Écriture dit, Dieu le dit » (55-17).
 - Elle enseigne, convainc, corrige et forme dans la justice, pour que l'homme de Dieu soit propre non à la plupart des bonnes œuvres, mais à toutes (55-19).
+- **Lecture recommandée** (couverture à l'écran) : Stephen Yuille, *Le sentier de la vie. La richesse du Psaume 119* (Europresse).
 
 ---
 
@@ -50,7 +51,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 ---
 
-## I. L'image créée : Dieu fait l'homme pour lui ressembler (Genèse 1.26-27) · 8 min
+## I. L'image créée : Dieu fait l'homme pour lui ressembler (Genèse 1.26-27; 5.1-2) · 8 min
 
 *Phrase clé : l'homme est fait à l'image d'un Dieu qui n'a jamais été seul.*
 
@@ -61,8 +62,11 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 **B. Ce qu'est l'image**
 - *Tselem* (image) et *demuth* (ressemblance) : « synonymes », répétés pour insister (90-218).
-- Deux plans (note sur Gn 1.26) : par la raison, l'homme **est** comme Dieu (intelligence, volonté, émotions); moralement, il **était** comme Dieu, bon et sans péché.
-- Le centre : « la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218). *Pierre d'attente du point V.*
+- Trois dimensions (note sur Gn 1.26; 90-218) :
+  - **Raison – Logos** : l'homme **est** comme Dieu, il pense, veut et ressent (intelligence, volonté, émotions); il est fait pour recevoir la Parole du Dieu qui parle (Jean 1.1).
+  - **Morale – Valeur** : il **était** comme Dieu, bon et sans péché.
+  - **Relation – Amour** : le centre, « la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218).
+- *Pierre d'attente du point V : ces trois dimensions sont celles du cœur que Dieu renouvelle.*
 - *Bara'* (créer) trois fois au verset 27 : Dieu seul crée, et l'homme est le seul être vivant fait sur le modèle divin (90-219).
 
 **C. La vocation de l'image** (1.26-28)
@@ -71,13 +75,13 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 **Application.** La dignité humaine repose sur l'acte créateur, non sur l'utilité : l'enfant à naître, la personne handicapée, l'aîné atteint de démence portent l'image.
 
-**Transition : l'image ternie.** Adam déchu engendre « à sa ressemblance » (Genèse 5.3). L'image demeure (Genèse 9.6; Jacques 3.9), mais la ressemblance morale est perdue et l'homme ne peut la restaurer. Où voir encore l'image telle que Dieu l'a voulue?
+**Transition : l'image ternie.** Genèse 5.1-2 reprend 1.27 presque mot pour mot : Dieu avait fait l'homme « à la ressemblance de Dieu ». Aussitôt après, Adam déchu engendre « à sa ressemblance » (Genèse 5.3). L'image demeure (Genèse 9.6; Jacques 3.9), mais la ressemblance morale est perdue et l'homme ne peut la restaurer. Où voir encore l'image telle que Dieu l'a voulue?
 
 ---
 
-## II. L'image parfaite : Christ, image du Dieu invisible (Colossiens 1.15) · 6 min
+## II. L'image parfaite : Christ, image du Dieu invisible (Colossiens 1.15; Philippiens 2.6-7) · 6 min
 
-*Phrase clé : Christ est ce que l'homme n'est plus.* (Kénose - Philippiens 2)
+*Phrase clé : Christ est ce que l'homme n'est plus (Kénose).*
 
 **A. L'Image incréée**
 - La Septante rend l'« image » de Genèse 1.27 par <i>eikôn</i>, le mot que Paul applique à Christ (aussi 2 Corinthiens 4.4).
@@ -94,15 +98,15 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 ---
 
-## III. L'image promise : prédestinés à lui ressembler (Romains 8.29) · 5 min
+## III. L'image promise : prédestinés à lui ressembler (Romains 8.29; Éphésiens 1.4) · 5 min
 
 *Phrase clé : Dieu a décidé d'avance la fin de votre salut, et cette fin, c'est Christ en vous.*
 
-- **« Connus d'avance » :** non une simple prévision de qui croirait, mais le choix d'aimer, l'élection (note sur Rm 8.29; Actes 2.23; 1 Pierre 1.2, 20). Le même conseil éternel que le « Faisons ».
+- **« Connus d'avance » :** non une simple prévision de qui croirait, mais le choix d'aimer, l'élection (note sur Rm 8.29; Actes 2.23; 1 Pierre 1.2, 20). Le même conseil éternel que le « Faisons » : « En lui Dieu nous a élus avant la fondation du monde » (Éphésiens 1.4).
 - **« Prédestinés à être semblables à l'image de son Fils » :** « Le but de votre salut était que vous soyez rendus semblables à l'image de son Fils » (90-180) : sainteté maintenant, corps glorifié à la fin (Philippiens 3.21).
 - **« Premier-né de beaucoup de frères » :** la fin dernière du salut est la gloire du Fils; ses frères lui ressemblent sans jamais être ses égaux.
 
-**Application.** Ce que Dieu a décrété, il l'achèvera (8.30) : c'est la sécurité du croyant. Les épreuves de 8.28 servent ce but.
+**Application.** Connus d'avance, prédestinés, appelés, justifiés, glorifiés (8.29-30) : aucun maillon ne manque. Ce que Dieu a décrété, il l'achèvera : c'est la sécurité du croyant. Les épreuves de 8.28 servent ce but.
 
 **Transition.** Nous ne voyons pas encore cette ressemblance achevée. Comment Dieu nous y conduit-il, aujourd'hui?
 
@@ -119,7 +123,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 **C. Transformés par l'Esprit.**
 - <i>Metamorphoô</i>, au présent passif : « une action de transformation continue et progressive » (47-21). Nous ne nous transformons pas; nous sommes transformés.
 - « C'est là toute la sanctification progressive […] passer d'un degré de gloire au suivant en contemplant la gloire du Seigneur » (90-75).
-- Le terme : « Le dessein salvateur de Dieu était de créer une humanité rachetée qui serait semblable à son Fils » (47-21).
+- Le terme : « Le dessein salvateur de Dieu était de créer une humanité rachetée qui serait semblable à son Fils » (47-21), jusqu'à ce que nous lui soyons semblables (1 Jean 3.2).
 
 **Application.** Le moyen est fixé : contempler Christ dans sa Parole, et l'Esprit fait l'œuvre. Celui qui délaisse l'Écriture se prive du miroir.
 
@@ -140,7 +144,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 **C. La loi écrite sur le cœur** (lire Jérémie 31.33, NBS)
 - La nouvelle alliance tient en deux éléments : « le pardon de tous nos péchés et l'écriture de la loi de Dieu sur nos cœurs » (80-286).
-- Le cœur, dans la Bible, c'est la personne intérieure (1 Chroniques 28.9) :
+- Le cœur, dans la Bible, c'est la personne intérieure (1 Chroniques 28.9); ses trois dimensions sont celles de l'image (point I.B), que Dieu renouvelle :
   - **Rationnel** (Jean 1.1; 1 Jean 1.1) : le cœur qui pense. Dieu parle en Christ, le *Logos* (43-2), et il renouvelle la pensée.
   - **Moral** (Psaume 51.12) : le cœur pur qui juge le bien et le mal. Le cœur est tortueux (Jérémie 17.9); Dieu seul en crée un pur.
   - **Relationnel** (Matthieu 22.37-40) : le cœur qui aime. Dieu répand son amour dans nos cœurs par l'Esprit (Romains 5.5).
@@ -165,9 +169,10 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 
 ---
 
-## Conclusion et appel (3 min)
+## Conclusion et appel : Christ, la Parole (2 Corinthiens 3.18) · 3 min
 
-- **Récapitulation :** créés à son image, ternis par le péché, restaurés en Christ, promis à sa ressemblance, transformés par l'Esprit, renouvelés au cœur, envoyés en son nom.
+- **Récapitulation :** créés à son image, ternis par le péché, restaurés en Christ, promis à sa ressemblance, transformés par l'Esprit, renouvelés au cœur, aimés et envoyés en son nom.
+- **Christ, la Parole :** le Dieu qui a soufflé l'Écriture (Rappel) se fait voir en son Fils, le *Logos* (Jean 1.1). C'est dans la Parole qu'on le contemple, et l'Esprit transforme en son image, de gloire en gloire.
 - **À l'incroyant :** vous portez l'image de Dieu, et vous n'avez jamais aimé Dieu de tout votre cœur. Christ seul pardonne et restaure : repentez-vous, croyez en lui et soumettez-vous à lui comme Seigneur.
 - **Au croyant :** Dieu achèvera en vous ce qu'il a décidé avant la fondation du monde; nous serons semblables à lui (1 Jean 3.2). Contemplez Christ dans sa Parole; c'est ainsi que l'Esprit vous transforme. Et allez : faites des disciples.
 
