@@ -39,7 +39,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 - **Lire 2 Timothée 3.16-17.**
 - Toute l'Écriture est « soufflée par Dieu » (<i>theopneustos</i>) : « Ce que l'Écriture dit, Dieu le dit » (55-17).
 - Elle enseigne, convainc, corrige et forme dans la justice, pour que l'homme de Dieu soit propre non à la plupart des bonnes œuvres, mais à toutes (55-19).
-- **Lecture recommandée** (couverture à l'écran) : Stephen Yuille, *Le sentier de la vie. La richesse du Psaume 119* (Europresse).
+- **Lectures recommandées** (couvertures à l'écran) : Stephen Yuille, *Le sentier de la vie. La richesse du Psaume 119* (Europresse); John Owen, *Communion with God* (Puritan Paperbacks, abrégé par R. J. K. Law).
 
 ---
 
@@ -175,6 +175,7 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 - **Christ, la Parole :** le Dieu qui a soufflé l'Écriture (Rappel) se fait voir en son Fils, le *Logos* (Jean 1.1). C'est dans la Parole qu'on le contemple, et l'Esprit transforme en son image, de gloire en gloire.
 - **À l'incroyant :** vous portez l'image de Dieu, et vous n'avez jamais aimé Dieu de tout votre cœur. Christ seul pardonne et restaure : repentez-vous, croyez en lui et soumettez-vous à lui comme Seigneur.
 - **Au croyant :** Dieu achèvera en vous ce qu'il a décidé avant la fondation du monde; nous serons semblables à lui (1 Jean 3.2). Contemplez Christ dans sa Parole; c'est ainsi que l'Esprit vous transforme. Et allez : faites des disciples.
+- **Prière** (à l'écran) : « La Régénération », prière puritaine de *La Vallée de la vision* (réunies par Arthur Bennett). Elle reprend le parcours : l'Esprit qui vivifie (Éphésiens 2.1, 5), rien ne sépare de l'amour de Dieu (Romains 8.35-39), sel de la terre (Matthieu 5.13).
 
 ---
 

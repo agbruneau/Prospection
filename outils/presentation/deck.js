@@ -14,6 +14,7 @@ pres.title = "À l'image de Christ-Jésus";
 const BG = "0D0B0A", CARD = "1A1411", DISC = "2A1A10", OR = "CC5500", OR_LT = "E8742A", INK = "F4EDE4", MUTED = "A89A8C", DIM = "968A80", ASH = "6E5A4C", TRACK = "3A312C";
 const HEAD = "Cambria", BODY = "Calibri";
 const img = (n) => path.join(__dirname, "img", n + ".png");
+const pt = (v) => v / 72; // positions retouchées dans PowerPoint, en points
 const NBSP = "\u00A0";
 const nb = (s) => s.replace(/« /g, "«" + NBSP).replace(/ »/g, NBSP + "»").replace(/ :/g, NBSP + ":")
   .replace(/\b([1-3]) ([A-ZÉ][a-zé]{0,3})\b/g, "$1" + NBSP + "$2").replace(/\b([A-ZÉ][a-zé]{0,3}) (\d+\.\d+)/g, "$1" + NBSP + "$2");
@@ -32,10 +33,12 @@ function disc(slide, name, x, y, d) {
   slide.addShape(pres.shapes.OVAL, { x, y, w: d, h: d, fill: { color: DISC }, line: { color: OR, width: 1 } });
   slide.addImage({ path: img("i-" + name), x: x + d * 0.2, y: y + d * 0.2, w: d * 0.6, h: d * 0.6, altText: "Icône : " + ICONES[name] });
 }
-// Barre de progression : n segments allumés sur 10 (regroupés par retouche()).
+// Barre de progression : un segment par diapositive, de 43 à 917 pt, 6 pt d'écart; n segments allumés (regroupés par retouche()).
+const NB_DIAPOS = 11;
 function barre(slide, n) {
-  for (let i = 0; i < 10; i++)
-    slide.addShape(pres.shapes.RECTANGLE, { x: (43 + i * 88) / 72, y: 514 / 72, w: 82 / 72, h: 5 / 72, fill: { color: i < n ? OR_LT : TRACK }, line: { type: "none" }, objectName: `Progression ${i + 1}` });
+  const w = (874 - (NB_DIAPOS - 1) * 6) / NB_DIAPOS;
+  for (let i = 0; i < NB_DIAPOS; i++)
+    slide.addShape(pres.shapes.RECTANGLE, { x: pt(43 + i * (w + 6)), y: pt(514), w: pt(w), h: pt(5), fill: { color: i < n ? OR_LT : TRACK }, line: { type: "none" }, objectName: `Progression ${i + 1}` });
 }
 
 const STEPS = ["créée", "parfaite", "promise", "transformée", "qui aime", "envoyée"];
@@ -78,34 +81,38 @@ function header(slide, kicker, title, phrase, step) {
 {
   const s = pres.addSlide();
   header(s, "RAPPEL · 2 TIMOTHÉE 3.16-17", "Toute l'Écriture est soufflée par Dieu", "« Ce que l'Écriture dit, Dieu le dit. »  (MacArthur)");
-  s.addImage({ path: img("souffle"), x: 0.708, y: 2.361, w: 3.333, h: 3.333, altText: "Bible ouverte d'où s'élève un souffle : l'Écriture soufflée par Dieu" });
+  s.addImage({ path: img("souffle"), x: pt(61), y: pt(182), w: pt(200), h: pt(200), altText: "Bible ouverte d'où s'élève un souffle : l'Écriture soufflée par Dieu" });
   text(s, [{ text: "theopneustos", options: { italic: true, bold: true, color: OR_LT } }, { text: " = « soufflée par Dieu »" }],
-    0.597, 6.167, 3.569, 0.694, { fontSize: 18, align: "center" });
+    pt(43), pt(444), pt(237), pt(50), { fontSize: 18, align: "center" });
   const rows = [
     ["Enseigner", "donne la vérité qui fait vivre selon Dieu"],
     ["Convaincre", "met le péché et l'erreur en lumière"],
     ["Corriger", "relève et redresse"],
     ["Instruire dans la justice", "fait grandir jusqu'à la maturité"],
   ];
-  s.addShape(pres.shapes.LINE, { x: 4.875, y: 2.569, w: 0, h: 2.7, line: { color: OR, width: 2 } });
+  s.addShape(pres.shapes.LINE, { x: pt(301), y: pt(185), w: 0, h: 2.7, line: { color: OR, width: 2 } });
   rows.forEach(([t, d], i) => {
-    const y = 2.264 + i * 0.9028;
-    s.addShape(pres.shapes.OVAL, { x: 4.583, y, w: 0.6, h: 0.6, fill: { color: OR }, line: { color: OR } });
-    text(s, String(i + 1), 4.583, y, 0.6, 0.6, { fontSize: 20, bold: true, align: "center", valign: "middle", color: "FFFFFF" });
-    text(s, [{ text: t, options: { bold: true, fontSize: 21, breakLine: true } }, { text: d, options: { color: MUTED } }], 5.431, y - 0.042, 4.583, 0.8, { fontSize: 17 });
+    const y = pt(163 + i * 65);
+    s.addShape(pres.shapes.OVAL, { x: pt(280), y, w: 0.6, h: 0.6, fill: { color: OR }, line: { color: OR } });
+    text(s, String(i + 1), pt(280), y, 0.6, 0.6, { fontSize: 20, bold: true, align: "center", valign: "middle", color: "FFFFFF" });
+    text(s, [{ text: t, options: { bold: true, fontSize: 21, breakLine: true } }, { text: d, options: { color: MUTED } }], pt(341), y - pt(3), pt(300), 0.8, { fontSize: 17 });
   });
-  card(s, 4.583, 6.167, 8.111, 0.694, true);
+  card(s, pt(280), pt(444), pt(637), pt(50), true);
   text(s, [{ text: "But : ", options: { bold: true, color: OR_LT } }, { text: "que l'homme de Dieu soit propre, non à la plupart, mais à toutes les bonnes œuvres." }],
-    4.833, 6.167, 7.611, 0.694, { fontSize: 17, valign: "middle" });
-  s.addImage({ path: path.join(__dirname, "couverture-le-sentier-de-la-vie.png"), x: 10.444, y: 2.167, w: 2.25, h: 3.583, objectName: "Couverture du livre",
+    pt(298), pt(444), pt(601), pt(50), { fontSize: 17, valign: "middle" });
+  s.addImage({ path: path.join(__dirname, "couverture-le-sentier-de-la-vie.png"), x: pt(624.1), y: pt(186.95), w: pt(137.1), h: pt(219.36), objectName: "Couverture du livre",
     altText: "Couverture du livre « Le sentier de la vie – La richesse du Psaume 119 », de Stephen Yuille (Europresse)" });
   barre(s, 2);
+  s.addImage({ path: path.join(__dirname, "couverture-communion-with-god.jpg"), x: pt(784.37), y: pt(190.49), w: pt(145.51), h: pt(219.36), objectName: "Couverture du livre (Owen)",
+    altText: "Couverture du livre « Communion with God », de John Owen (Puritan Paperbacks)" });
   s.addNotes(`# 2 min · 2 Timothée 3.16-17
 - **Lire** 2 Timothée 3.16-17.
 - **Theopneustos :** « soufflée par Dieu ». « Ce que l'Écriture dit, Dieu le dit » (55-17).
 - **Quatre œuvres :** enseigner, convaincre, corriger, instruire dans la justice (55-19).
 - **But :** que l'homme de Dieu soit propre non à la plupart des bonnes œuvres, mais à toutes (55-19).
-- **Lecture recommandée :** Stephen Yuille, Le sentier de la vie. La richesse du Psaume 119 (Europresse).
+- **Lectures recommandées :**
+  - Stephen Yuille, Le sentier de la vie. La richesse du Psaume 119 (Europresse);
+  - John Owen, Communion with God (Puritan Paperbacks, abrégé par R. J. K. Law).
 - **Pierre d'attente → IV :** l'Écriture est le miroir.`);
 }
 
@@ -120,7 +127,7 @@ function header(slide, kicker, title, phrase, step) {
     4.1667, 5.6, 3.4722, 0.75, { align: "center" });
   text(s, "Vous aussi, vous portez une image. Laquelle?", 0.6, 6.5, 7.1, 0.45, { fontSize: 21, italic: true, align: "center" });
   card(s, 8.15, 2.0, 4.58, 4.95);
-  text(s, [{ text: "tselem", options: { italic: true, bold: true, color: OR_LT } }, { text: " : image, effigie", options: { color: MUTED } }], 8.45, 2.2, 4.0, 0.4, { fontSize: 17 });
+  text(s, [{ text: "Tselem / eikôn", options: { italic: true, bold: true, color: OR_LT } }, { text: " : image, effigie", options: { color: MUTED } }], 8.45, 2.2, 4.0, 0.4, { fontSize: 17 });
   text(s, "UN SEUL PARCOURS", 8.45, 2.75, 4.0, 0.3, { fontSize: 14, bold: true, color: DIM, charSpacing: 3 });
   ["I", "II", "III", "IV", "V", "VI"].forEach((r, i) => {
     const y = 3.15 + i * 0.6;
@@ -156,7 +163,7 @@ function header(slide, kicker, title, phrase, step) {
    ["relation", "Communion - Affection", "Le cœur de l'image : connaître Dieu personnellement."]].forEach(([ic, t, d], i) => {
     const x = 5.2 + i * 2.6;
     card(s, x, 2.6, 2.35, 2.35, i === 2);
-    disc(s, ic, x + 0.2, 2.8, 0.7);
+    disc(s, ic, x + 0.825, 2.8, 0.7);
     text(s, t, x + 0.05, 3.62, 2.25, 0.4, { fontSize: 16, bold: true, align: "center" });
     text(s, d, x + 0.2, 4.02, 2.0, 0.85, { fontSize: 15, color: MUTED, align: "center" });
   });
@@ -168,9 +175,10 @@ function header(slide, kicker, title, phrase, step) {
   });
   barre(s, 4);
   // Schéma Trinité (regroupé par retouche()) : au premier plan, comme dans la version retouchée.
-  s.addImage({ path: img("trinite"), x: 0, y: 1.469, w: 5.2, h: 4.68, altText: "Père, Fils et Esprit en communion autour du nom de Dieu", objectName: "Trinité" });
-  text(s, "Périchorèse", 87 / 72, 5.4875, 200 / 72, 24 / 72, { fontFace: HEAD, fontSize: 24, bold: true, italic: true, color: OR_LT, align: "center", valign: "middle",
-    wrap: false, margin: undefined, objectName: "Légende : Périchorèse" });
+  s.addImage({ path: img("trinite"), x: pt(7.65), y: pt(125.6), w: pt(352.44), h: pt(317.15), altText: "Père, Fils et Esprit en communion autour du nom de Dieu", objectName: "Trinité" });
+  const legende = { fontFace: HEAD, fontSize: 24, bold: true, italic: true, color: OR_LT, align: "center", valign: "middle", wrap: false, margin: undefined };
+  text(s, "Périchorèse", pt(76.56), pt(393.37), pt(207.26), pt(38.24), { ...legende, objectName: "Légende : Périchorèse" });
+  text(s, "Relation Divine", pt(79.78), pt(133.17), pt(207.26), pt(38.24), { ...legende, objectName: "Légende : Relation Divine" });
   s.addNotes(`# 8 min · Genèse 1.26-27; 5.1-2
 - **Phrase clé :** l'homme est fait à l'image d'un Dieu qui n'a jamais été seul.
 # A. Le Dieu qui dit « Faisons » (1.26)
@@ -456,6 +464,28 @@ function header(slide, kicker, title, phrase, step) {
 # Appel
 - **À l'incroyant :** vous portez l'image de Dieu, et vous n'avez jamais aimé Dieu de tout votre cœur. Christ seul pardonne et restaure : repentez-vous, croyez en lui et soumettez-vous à lui comme Seigneur.
 - **Au croyant :** Dieu achèvera en vous ce qu'il a décidé avant la fondation du monde; nous serons semblables à lui (1 Jn 3.2). Contemplez Christ dans sa Parole; c'est ainsi que l'Esprit vous transforme. Et allez : faites des disciples.`);
+}
+
+// 11. Prière puritaine
+{
+  const s = pres.addSlide();
+  header(s, "PRIÈRE", "Prière Puritaine - Vallée de la vision", "La Régénération");
+  card(s, 0.6, 2.1, 7.6, 4.85);
+  const priere = ["Occupe le trône de mon cœur,", "Tu es digne d’être loué de tout mon souffle,", "Tu m’as aimé, épousé et reçu,", "J’étais mort dans l’iniquité,",
+    "Mais ton Esprit m’a vivifié,", "Ta présence est pour moi un trésor de paix sans fin ;", "Aucune provocation ne peut me séparer de ta bienveillance,",
+    "Aide-moi alors à marcher d’une manière digne de ton amour,", "Protège-moi afin qu’aucun mal ne m’infecte ;", "Laisse-moi mettre de côté tous les péchés admirés de beaucoup ;",
+    "Aide-moi à marcher à tes côtés,", "Que je sois désormais sel de la terre et bénédiction pour tous."];
+  text(s, [{ text: "Dieu des cieux les plus élevés", options: { bold: true, color: OR_LT, breakLine: true } },
+    ...priere.map((l, i) => ({ text: l, options: { breakLine: i < priere.length - 1 } }))], 0.9, 2.3, 7.0, 4.45, { fontSize: 18, valign: "middle", objectName: "Prière" });
+  s.addImage({ path: img("medaillon"), x: 8.55, y: 2.1, w: 4.2, h: 4.2, altText: "Silhouette humaine dans un médaillon rayonnant : l'image de Dieu", objectName: "Illustration" });
+  text(s, "La Vallée de la vision,\nprières puritaines réunies par Arthur Bennett", 8.3, 6.4, 4.7, 0.5, { fontSize: 14, italic: true, color: MUTED, align: "center", objectName: "Source" });
+  barre(s, 11);
+  s.addNotes(`# Prière · La Régénération
+- **Source :** La Vallée de la vision, prières puritaines réunies par Arthur Bennett.
+- **Échos du message :**
+  - « J’étais mort dans l’iniquité, mais ton Esprit m’a vivifié » : Ép 2.1, 5; l'Esprit qui transforme (IV).
+  - « Aucune provocation ne peut me séparer de ta bienveillance » : Rm 8.35-39; ce que Dieu a décrété, il l'achèvera (III).
+  - « Que je sois désormais sel de la terre » : Mt 5.13; l'image envoyée (VI).`);
 }
 
 // pptxgenjs ne sait ni faire du titre un espace réservé (plan, lecteurs d'écran), ni grouper des objets, ni mettre en forme
