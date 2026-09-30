@@ -64,8 +64,8 @@ Dieu a créé l'homme à son image pour le représenter et l'aimer; le péché l
 - *Tselem* (image) et *demuth* (ressemblance) : « synonymes », répétés pour insister (90-218).
 - Trois dimensions (note sur Gn 1.26; 90-218) :
   - **Raison – Logos** : l'homme **est** comme Dieu, il pense, veut et ressent (intelligence, volonté, émotions); il est fait pour recevoir la Parole du Dieu qui parle (Jean 1.1).
-  - **Morale – Valeur** : il **était** comme Dieu, bon et sans péché.
-  - **Relation – Amour** : le centre, « la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218).
+  - **Morale – Éthique** : il **était** comme Dieu, bon et sans péché.
+  - **Communion – Affection** : le centre, « la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218).
 - *Pierre d'attente du point V : ces trois dimensions sont celles du cœur que Dieu renouvelle.*
 - *Bara'* (créer) trois fois au verset 27 : Dieu seul crée, et l'homme est le seul être vivant fait sur le modèle divin (90-219).
 

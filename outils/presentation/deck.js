@@ -152,12 +152,12 @@ function header(slide, kicker, title, phrase, step) {
   text(s, [{ text: "Ce qu'est l'image  " , options: { bold: true } }, { text: "tselem = demuth : image = ressemblance", options: { italic: true, color: OR_LT, fontSize: 16 } }],
     5.2, 2.05, 7.5, 0.4, { fontSize: 19 });
   [["cerveau", "Raison - Logos", "Il est comme Dieu : il pense, veut, ressent."],
-   ["balance", "Morale - Valeur", "Il était comme Dieu : bon, sans péché."],
-   ["relation", "Relation - Amour", "Le cœur de l'image : connaître Dieu personnellement."]].forEach(([ic, t, d], i) => {
+   ["balance", "Morale - Éthique", "Il était comme Dieu : bon, sans péché."],
+   ["relation", "Communion - Affection", "Le cœur de l'image : connaître Dieu personnellement."]].forEach(([ic, t, d], i) => {
     const x = 5.2 + i * 2.6;
     card(s, x, 2.6, 2.35, 2.35, i === 2);
     disc(s, ic, x + 0.2, 2.8, 0.7);
-    text(s, t, x + 0.2, 3.62, 2.0, 0.4, { fontSize: 20, bold: true });
+    text(s, t, x + 0.05, 3.62, 2.25, 0.4, { fontSize: 16, bold: true, align: "center" });
     text(s, d, x + 0.2, 4.02, 2.0, 0.85, { fontSize: 15, color: MUTED, align: "center" });
   });
   text(s, "Sa vocation", 5.2, 5.1, 7.5, 0.4, { fontSize: 19, bold: true });
@@ -181,9 +181,9 @@ function header(slide, kicker, title, phrase, step) {
 # B. Ce qu'est l'image
 - **Tselem et demuth :** « synonymes », répétés pour insister (90-218).
 - **Trois dimensions** (note sur Gn 1.26; 90-218) :
-  - **Raison :** l'homme est comme Dieu; il pense, veut et ressent, fait pour recevoir la Parole du Dieu qui parle (Jn 1.1).
-  - **Morale :** il était comme Dieu, bon et sans péché.
-  - **Relation :** le centre, « la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218).
+  - **Raison – Logos :** l'homme est comme Dieu; il pense, veut et ressent, fait pour recevoir la Parole du Dieu qui parle (Jn 1.1).
+  - **Morale – Éthique :** il était comme Dieu, bon et sans péché.
+  - **Communion – Affection :** le centre, « la capacité de relations personnelles et, par-dessus tout, d'une relation personnelle avec Dieu » (90-218).
 - **Pierre d'attente → V :** ces trois dimensions sont celles du cœur que Dieu renouvelle.
 - **Bara'** trois fois au verset 27 : Dieu seul crée, et l'homme est le seul être vivant fait sur le modèle divin (90-219).
 # C. La vocation de l'image (1.26-28)
