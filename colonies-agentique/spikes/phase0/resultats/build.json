@@ -1,0 +1,12 @@
+{
+  "identiques": true,
+  "sha256": {
+    "html": "3e15f3d7d9e447db75e966770032e3ca4cdfb87faa9436aebaa24847ab6c6264",
+    "worker": "6216998df2f631f6cecbfc4f37f60a8ffb42a23a056d0faeb404fb51ed8dbd11"
+  },
+  "octets": {
+    "page": 14199,
+    "worker": 4639,
+    "html": 14698
+  }
+}

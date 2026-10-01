@@ -885,5 +885,5 @@ Ces critères alimentent les critères de réussite CS0.1 à CS0.3, CS0.5, CS0.1
 13. **« Modifier la règle » (V0).** Le document de vulgarisation prévoit un éditeur de règle exécuté dans un worker isolé; la section 14 l'admet à cette condition (sans réseau, avec quota, jamais dans l'URL, résultat exploratoire). Le quota de pas et de temps reste à fixer [à confirmer].
 14. **TypeScript sur le poste.** La fiche S0 le dit absent; ce document l'a trouvé en version 7.0.2 installé globalement. À revérifier sur le poste avant d'écrire `package.json`.
 15. **Contrôles de la cible A (fiche S0).** La fiche numérote ses contrôles de spike (i) à (vi) dans une section non encore écrite; la correspondance avec SPK1 à SPK12 (section 12) s'établit quand elle l'est.
-16. **Tests de pages.** Les critères TV0.n de V0 se placent dans `tests/pages/`; le choix du pilote de navigateur et du vérificateur d'accessibilité est ouvert [à confirmer].
+16. **Tests de pages.** Les critères TV0.n de V0 se placent dans `tests/pages/`. Pilote de navigateur proposé par le spike : Playwright (Chromium par le Chrome installé, Firefox et WebKit téléchargés; [rapport du spike](../spikes/phase0/rapport.md)); le vérificateur d'accessibilité reste ouvert [à confirmer].
 

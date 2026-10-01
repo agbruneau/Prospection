@@ -2,3 +2,5 @@ node_modules/
 data/runs/
 # manifestes par répétition : régénérables depuis scénario et graine (verdict et runs.csv versionnés)
 data/results/*/*/
+# build du spike, régénérable par node spikes/phase0/build.ts
+spikes/phase0/dist/

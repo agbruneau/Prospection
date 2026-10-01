@@ -1,0 +1,182 @@
+{
+  "moteur": "chromium 154.0.8037.93",
+  "t01": [
+    11520,
+    0,
+    5927040,
+    70819200,
+    2031721883,
+    1637235492,
+    1287239034,
+    3734860849,
+    3729100597,
+    4258142804
+  ],
+  "t03": [
+    "1985237415132408290",
+    "2979275885539914483",
+    "13511426838097143398"
+  ],
+  "t01Identique": true,
+  "t03Identique": true,
+  "spk1MemeNavigateur": true,
+  "jouetPremierPasDivergent": null,
+  "jouetEmpreinte1000": "cb3d388e73a2449d",
+  "e05": {
+    "exp": {
+      "blocsDifferents": 1000,
+      "sortiesDifferentes": 97391
+    },
+    "log": {
+      "blocsDifferents": 1000,
+      "sortiesDifferentes": 9307
+    },
+    "powEntier": {
+      "blocsDifferents": 0,
+      "sortiesDifferentes": 0
+    },
+    "powReel": {
+      "blocsDifferents": 0,
+      "sortiesDifferentes": 0
+    },
+    "sin": {
+      "blocsDifferents": 1000,
+      "sortiesDifferentes": 34057
+    },
+    "cos": {
+      "blocsDifferents": 1000,
+      "sortiesDifferentes": 33601
+    }
+  },
+  "workers": {
+    "blob": "ok",
+    "fichier": "ok",
+    "violations": []
+  },
+  "transfert": {
+    "mediane": 0,
+    "p95": 0.10000000149011612,
+    "detache": true,
+    "crossOriginIsolated": false,
+    "octets": 1600000
+  },
+  "perf": {
+    "10000/principal/pixels": {
+      "images": 1265,
+      "medianeImage": 8.299999999999272,
+      "p95Image": 12.5,
+      "medianePas": 8.199999999254942,
+      "p95Pas": 9.400000002235174,
+      "pasParSeconde": 126.5
+    },
+    "10000/principal/chemin": {
+      "images": 1207,
+      "medianeImage": 8.299999999999272,
+      "p95Image": 12.5,
+      "medianePas": 8.199999999254942,
+      "p95Pas": 9.400000002235174,
+      "pasParSeconde": 120.7
+    },
+    "10000/worker/pixels": {
+      "images": 2401,
+      "medianeImage": 4.19999999999709,
+      "p95Image": 4.299999999995634,
+      "medianePas": 7.199999999254942,
+      "p95Pas": 8.400000002235174,
+      "pasParSeconde": 115.6
+    },
+    "10000/worker/chemin": {
+      "images": 2401,
+      "medianeImage": 4.19999999999709,
+      "p95Image": 4.299999999995634,
+      "medianePas": 7.199999999254942,
+      "p95Pas": 9,
+      "pasParSeconde": 111
+    },
+    "10000/offscreen": {
+      "disponible": true,
+      "images": 1255,
+      "medianeImage": 4.299999999995634,
+      "p95Image": 12.599999999998545,
+      "medianePas": 7.199999999254942
+    },
+    "100000/principal/pixels": {
+      "images": 175,
+      "medianeImage": 58.29999999998836,
+      "p95Image": 66.69999999999709,
+      "medianePas": 56.100000001490116,
+      "p95Pas": 65.80000000074506,
+      "pasParSeconde": 17.5
+    },
+    "100000/principal/chemin": {
+      "images": 156,
+      "medianeImage": 62.5,
+      "p95Image": 74.90000000000873,
+      "medianePas": 53.29999999701977,
+      "p95Pas": 67.09999999776483,
+      "pasParSeconde": 15.6
+    },
+    "100000/worker/pixels": {
+      "images": 2387,
+      "medianeImage": 4.19999999999709,
+      "p95Image": 4.30000000000291,
+      "medianePas": 52.80000000074506,
+      "p95Pas": 70.40000000223517,
+      "pasParSeconde": 17.4
+    },
+    "100000/worker/chemin": {
+      "images": 484,
+      "medianeImage": 4.2000000000116415,
+      "p95Image": 62.39999999999418,
+      "medianePas": 51.100000001490116,
+      "p95Pas": 62.400000002235174,
+      "pasParSeconde": 15.2
+    },
+    "100000/offscreen": {
+      "disponible": true,
+      "images": 198,
+      "medianeImage": 50,
+      "p95Image": 58.40000000000873,
+      "medianePas": 49.399999998509884
+    }
+  },
+  "cadence": {
+    "aucun": {
+      "empreinte": "cb3d388e73a2449d",
+      "compteur": 1000,
+      "images": 0,
+      "visibilite": "visible"
+    },
+    "chaque": {
+      "empreinte": "cb3d388e73a2449d",
+      "compteur": 1000,
+      "images": 44,
+      "visibilite": "visible"
+    },
+    "quart": {
+      "empreinte": "cb3d388e73a2449d",
+      "compteur": 1000,
+      "images": 39,
+      "visibilite": "visible"
+    },
+    "masquee": {
+      "empreinte": "cb3d388e73a2449d",
+      "compteur": 1000,
+      "images": 45,
+      "visibilite": "visible"
+    }
+  },
+  "spk6Identiques": true,
+  "export": {
+    "page": {
+      "spike.series.csv": "999af98ed5947f1e996b7c1b0bb79be8fd1e58d11cf6793ecfb48823d2a2b293",
+      "spike.manifest.json": "0d75132cfe4572aae6ca40ac9397855b25632cfe0d1b6c7ebf0b60fb57cc1929"
+    },
+    "recus": {
+      "spike.series.csv": "999af98ed5947f1e996b7c1b0bb79be8fd1e58d11cf6793ecfb48823d2a2b293",
+      "spike.manifest.json": "0d75132cfe4572aae6ca40ac9397855b25632cfe0d1b6c7ebf0b60fb57cc1929"
+    },
+    "identiques": true
+  },
+  "erreursConsole": []
+}

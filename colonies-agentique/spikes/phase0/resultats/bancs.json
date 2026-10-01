@@ -1,0 +1,44 @@
+{
+  "coeurs": 24,
+  "travailleurs": 23,
+  "debitsParSeconde": {
+    "khuong": 50959179.149542235,
+    "ssa": 15725746.801822279,
+    "couzin": 689144255.1212032,
+    "grille": 2094264526.9402258,
+    "sondes": 35552142.54987076,
+    "vicsek": 238.67419349603267
+  },
+  "estimations": [
+    {
+      "projet": "P9",
+      "charge": "Khuong et al. 2016 : 2,6×10¹¹ déplacements pour 96 h simulées, 10 simulations par durée de vie, 5 durées supposées",
+      "heures": 3.08,
+      "sousSeuil24h": true
+    },
+    {
+      "projet": "P5",
+      "charge": "SSA de M1c : N = 50 à 200, 200 runs par cellule, 20 cellules supposées (N × σ)",
+      "heures": 0.0000575,
+      "sousSeuil24h": true
+    },
+    {
+      "projet": "P6",
+      "charge": "Couzin et al. 2002 : 1,5×10⁹ paires par combinaison, 100 combinaisons supposées",
+      "heures": 0.00263,
+      "sousSeuil24h": true
+    },
+    {
+      "projet": "P6",
+      "charge": "Aswale et al. 2022 : 6,5×10⁹ mises à jour de grille et 1,6×10⁹ lectures par run, 20 runs par configuration, 10 configurations supposées",
+      "heures": 0.116,
+      "sousSeuil24h": true
+    },
+    {
+      "projet": "P9",
+      "charge": "Vicsek et al. 1995 : N = 10⁴, 3 000 pas, 20 graines, 20 valeurs de η supposées",
+      "heures": 0.0607,
+      "sousSeuil24h": true
+    }
+  ]
+}

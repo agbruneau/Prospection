@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Coordination sans contrôle central : fourmilières, ruches et systèmes d'agents (moteur de simulation)",
-  "engines": { "node": ">=24.12" },
+  "engines": {
+    "node": ">=24.12"
+  },
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.browser.json",
     "test": "node --test \"tests/core/**/*.test.ts\" \"tests/cli/**/*.test.ts\" \"tests/models/**/*.test.ts\" tests/determinism.test.ts tests/conformance.test.ts tests/verify.test.ts \"outils/*.test.ts\"",
@@ -14,6 +16,8 @@
   },
   "devDependencies": {
     "@types/node": "^24",
+    "esbuild": "^0.28.2",
+    "playwright": "^1.63.0",
     "typescript": "7.0.2"
   }
 }
