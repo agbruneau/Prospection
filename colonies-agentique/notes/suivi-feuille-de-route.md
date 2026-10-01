@@ -32,7 +32,7 @@ Tableau de suivi prévu par la [feuille de route](../docs/09-feuille-de-route.md
 | C-05 | C | Conformité (motifs interdits, imports) | T0.21 | Fait | `tests/conformance.test.ts` |
 | C-06 | C | Harnais de cibles, garde de puissance | UC-003, T0.13 (n requis) | Fait | `src/cli/reproduce.ts`, `tests/cli/reproduce.test.ts` |
 | C-07 | C | Chaîne de vérification | UC-008 | Fait | `npm run verify` sort à 0 |
-| C-08 | C | Euler–Maruyama | T0.27 | À faire | — |
+| C-08 | C | Euler–Maruyama et modèle d’Ornstein–Uhlenbeck (p5-pais-2013-ou) | T0.27 | Fait | `tests/core/euler-maruyama.test.ts` (dt et dt/2) |
 | C-09 | C | Commutateur d'ordre, contrôle positif | T0.28 | À faire | — |
 | C-10 | C | Bibliothèque statistique : n_sim, K-S, ES de Monte Carlo | T0.12, T0.14, T0.16 | À faire | T0.13 fait en partie (n requis, TOST) |
 | C-11 | C | Formules d'évaluation pour P7 | T0.8 à T0.11, T0.15 | À faire | consommateur : P7 |
