@@ -3,6 +3,7 @@
 // Code de sortie 1 s'il reste une erreur. Les avertissements n'échouent pas.
 import fs from 'node:fs'
 import path from 'node:path'
+import { verifierMatrice, verifierTypologie } from './verifier-matrice.ts'
 
 const racine = path.resolve(import.meta.dirname, '..')
 const erreurs: string[] = []
@@ -96,6 +97,9 @@ for (const d of ['docs/00-cadre.md', 'docs/01-audit-v3.md', 'docs/02-architectur
   'docs/07-vulgarisation-evaluation.md', 'docs/08-science-ouverte-ethique.md', 'docs/09-feuille-de-route.md',
   'docs/10-glossaire.md', 'docs/11-bibliographie.md', 'README.md'])
   if (!fs.existsSync(path.join(racine, d))) erreurs.push(`document attendu absent : ${d}`)
+
+// 7. Matrice et jeu de la typologie (fiche S0 §4.5 et §8.1; CS0.10, CS0.13)
+erreurs.push(...verifierMatrice(racine), ...verifierTypologie(racine))
 
 // 6. Dispositions d'audit : aucune entrée laissée « à renseigner »
 for (const f of tous.filter(p => /constats-.*\.md$/.test(p))) {

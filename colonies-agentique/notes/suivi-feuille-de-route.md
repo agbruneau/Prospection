@@ -22,6 +22,7 @@ Tableau de suivi prévu par la [feuille de route](../docs/09-feuille-de-route.md
 | D-12 | Décisions D1 à D5 du spike : **rendues le 2026-10-01** (approuvées telles que proposées). Reste : voie de rattrapage pour Firefox ([rapport](../spikes/phase0/rapport.md), section 5) | avant la clause de CS0.2 | GF4 | Décision |
 | D-13 | UC-006 (résumés de page) : **approuvé le 2026-10-01**, puis implanté; page-pilote construite | — | GF4 | Fait |
 | D-14 | Points de revue de la page-pilote ([définition](../pages/p1-v1-pont.json)) : (1) titre « Le pont à mémoire » (« Le pont qui se souvient » de la fiche P1 dépasse 4 mots); (2) encart « Ce que fait vraiment la reine » omis : à faire valider (fiche P1, Explorer); (3) étapes 4 et 5 du parcours Voir absentes (T1.2 et V4 non faites). Tranché le 2026-10-01 : répétition typique sur la part majoritaire max(s, 1 − s) (UC-006, BR-027 modifiée) | avant publication | GF4 | Décision |
+| D-15 | Déposer sur OSF le [préenregistrement de S0](../preregistrements/S0.md) (H0.1 à H0.5) après avoir tranché sa section 12 (graines, seuils, niveaux) : condition de CS0.14 | avant toute exécution confirmatoire de S0 | GF4 | Décision |
 | D-11 | Supprimer les fichiers parasites non suivis : `projets/zz-test-temp.md`, `recherche/verifications/*.v1-precedent.md` | dès que possible | — | Décision |
 
 ## 2. Phase 0 : tâches du socle S0 (lots de la [fiche S0](../projets/S0-socle.md))
@@ -48,10 +49,10 @@ Tableau de suivi prévu par la [feuille de route](../docs/09-feuille-de-route.md
 | D-SP | D | Spike navigateur | SPK1 à SPK12; décisions D1 à D5 | En cours | [rapport](../spikes/phase0/rapport.md) : porte 0 réussie sur Node, Chromium et WebKit; D1 à D5 rendues; restent Firefox (ne démarre pas sur le poste) et la cible B |
 | H-01 | H | Dépôt jetable, webhook Zenodo, DOI de version et de concept | E0.6, CS0.15 | Bloqué | attend D-02 |
 | B-01 | B | Métriques R et G | T0.29 à T0.32, T0.36; E0.2, E0.7, E0.8; UC-007 (Implemented) | En cours | `npm run metrics`, `src/analysis/metrics.ts`; T0.29 à T0.32 passent (`tests/core/metriques.test.ts`, `tests/cli/metrics.test.ts`); restent T0.36 (non bloquante) et E0.2, E0.7, E0.8 (confirmatoires : préenregistrement OSF d'abord, CS0.14) |
-| A-01 | A | Typologie : cas d'école, indicateurs, jeu de données, page | T0.33, T0.34; E0.1; CS0.9, CS0.10 | À faire | — |
+| A-01 | A | Typologie : cas d'école, indicateurs, jeu de données, page | T0.33, T0.34; E0.1; CS0.9, CS0.10 | En cours | jeu de données `data/typologie.csv` (21 entrées, validé à l'étape 4 de `verify` : CS0.10); restent les cas d'école CE1 à CE6 et CE2p, les indicateurs C_* (cas d'utilisation à rédiger), E0.1 (confirmatoire) et la page de typologie |
 | E-01 | E | Gabarit de page et page-pilote | UC-006, UC-010 à UC-012 (Implemented); CS0.12 | En cours | `src/browser/`, `src/cli/summarize.ts`, `tests/pages/` (axe-core : 0 violation); page-pilote `pages/p1-v1-pont.json` sur le résumé de T1.1 (`tests/pages/pilote.test.ts`); restent la liste manuelle d'accessibilité de 07 §8 et D-14 |
-| F-01 | F | Matrice concept × espèce × modèle | CS0.13 | À faire | structure dans la fiche S0 |
-| G-01 | G | Gabarits et registre des déviations | CS0.14 | En cours | première fiche de reproduction rédigée (T1.1); chemin du registre par projet à fixer |
+| F-01 | F | Matrice concept × espèce × modèle | CS0.13 | Fait | `data/matrice.csv` (17 lignes : P1, P5, P8 pour les deux taxons ou asymétrie justifiée), `outils/verifier-matrice.ts` à l'étape 4 de `verify` |
+| G-01 | G | Gabarits, registre des déviations, préenregistrement | CS0.14 | En cours | `gabarits/` (extraits de 04, test de synchronisation), `registre/deviations-S0.md` (D-0-001, D-0-002), brouillon `preregistrements/S0.md` (H0.1 à H0.5); reste le dépôt OSF horodaté (D-15) |
 | I-01 | I | Porte de sortie de la phase 0 | `notes/S0-porte-de-sortie.md`; CS0.1 à CS0.16 | À faire | dernière tâche du lot |
 
 ## 3. Phase 1 : travaux commencés
