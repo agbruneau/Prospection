@@ -10,7 +10,7 @@ Dossier documentaire du Projet 2 de la proposition v3. Rédigé le 2026-10-01.
 - **[R]** : résumé lu (métadonnées et résumé : Crossref, Semantic Scholar, arXiv, Consensus).
 - **[M]** : métadonnées bibliographiques seulement; le contenu n'a pas été lu.
 - **[S]** : source secondaire lue, nommée entre crochets (ici : le rapport de vérification indépendante du 2026-10-01).
-- **[I]** : inférence ou calcul de l'auteur du dossier, non publié dans les sources citées. **[PILOTE]** en est un cas particulier : résultat d'une simulation exploratoire réalisée pour ce dossier (scripts dans `scratchpad/p2src/`).
+- **[I]** : inférence ou calcul de l'auteur du dossier, non publié dans les sources citées. **[PILOTE]** en est un cas particulier : résultat d'une simulation exploratoire réalisée pour ce dossier (scripts dans [`recherche/verifications-numeriques/`](../verifications-numeriques/), préfixe `p2_`).
 - **[non vérifiée]** : référence dont le contenu cité n'a pas pu être confirmé (texte fermé, résumé masqué). **[à confirmer]** : valeur non confirmée dans une source.
 
 ---
@@ -412,12 +412,12 @@ Il faut y ajouter une référence non agentique (2-opt ou LKH) et le décompte d
 7. **Équivalence du budget agentique** : comment convertir des jetons ou des appels LLM en « évaluations » comparables pour C12 et pour l'expérience agentique du §8 ?
 8. **Sélection d'ABC** : roulette ou 0,9/0,1 ? Le pilote (§4.1) ne montre pas d'écart significatif sur la Table 3 de Karaboga et Basturk 2008. Il reste à vérifier si l'écart apparaît en petite colonie (Table 5) ou sur des optimums décalés.
 
-**Fichiers de vérification** (dans `scratchpad/p2src/`) :
+**Fichiers de vérification** (dans [`recherche/verifications-numeriques/`](../verifications-numeriques/); les textes extraits des sources, sous droits d’auteur, ne sont pas versionnés) :
 
-- `oliver30_check.py` : recalcul de l'optimum d'Oliver30, avec un `assert`.
-- `as_oliver30_pilot.py` : pilote AS (arguments : τ0, e, essais, NC_MAX).
-- `abc_pilot.py` : pilote ABC (Karaboga et Basturk 2008) (arguments : fonction, essais, MCN, sélection).
-- Textes extraits des sources : `as1996.txt`, `acs1997.txt`, `acor2008.txt`, `abc_tr06.txt`, `abc2008.txt`, `history.txt`, `stig2000.txt`.
+- `p2_oliver30_check.py` : recalcul de l'optimum d'Oliver30, avec un `assert`.
+- `p2_as_oliver30_pilote.py` : pilote AS (arguments : τ0, e, essais, NC_MAX).
+- `p2_abc_pilote.py` : pilote ABC (Karaboga et Basturk 2008) (arguments : fonction, essais, MCN, sélection).
+- Textes extraits des sources (non versionnés) : `as1996.txt`, `acs1997.txt`, `acor2008.txt`, `abc_tr06.txt`, `abc2008.txt`, `history.txt`, `stig2000.txt`.
 
 ---
 

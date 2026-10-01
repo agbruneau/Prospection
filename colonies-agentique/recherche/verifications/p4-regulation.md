@@ -11,7 +11,7 @@ Vérificateur : passe sceptique du 2026-10-01. J'ai consulté chaque source moi-
   - anderson_ratnieks1999a (White Rose);
   - edwards2011 (préprint arXiv);
   - little2011, jacobson1988 et gordon2016.
-  Les extraits sont dans `scratchpad/verif-p4/*.txt`.
+  Les extraits de travail (textes sous droits d’auteur) ne sont pas versionnés.
 - **Résumés lus** dans Europe PMC ou chez l'éditeur : pinterwollman2013, gordon2002, gordon2013, greene2007, ratnieks_anderson1999b, gregson2003, thom2003, seeley_tovey1994 (via OpenAlex) et davidson2016 (Frontiers).
 - **Inaccessibles** :
   - Springer (*Behav Ecol Sociobiol*) bloque l'accès, et les résumés y sont masqués partout (Semantic Scholar, OpenAlex). Le contenu de seeley1989, seeley1992, kirchner1993, kirchner_lindauer1994, nieh1993, biesmeijer2003, anderson_ratnieks1999bes et hart_ratnieks2001 reste donc **non vérifié**. Leurs métadonnées, elles, sont confirmées.

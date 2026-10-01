@@ -99,7 +99,7 @@
 | **plan global** (A1) | global plan | Description explicite du comportement collectif attendu, écrite avant l'exécution et projetable sur les participants. Absent chez les insectes sociaux. Le « chorégraphe » de la colonie est la sélection naturelle; celui du système d'agents est le concepteur du prompt et des protocoles. | transversal | [OMG 2013]; cadre | S0; 06 |
 | **polyéthisme** | polyethism | Division du travail par variation des tâches entre individus : physique (castes) ou temporel (âge). Chez *Apis mellifera*, polyéthisme d'âge, plastique et régulé par les interactions entre ouvrières. Le polyéthisme temporel peut être une propriété émergente plutôt qu'un principe d'organisation. | myrmécologie, apiculture | [Tofts et Franks 1992], [Seeley 1982], [Huang et Robinson 1992] | P3 |
 | **projection** (EPP) | endpoint projection | Traduction d'une chorégraphie en processus locaux dont la correspondance avec la source est prouvée; fonde l'absence d'interblocage par construction. | informatique répartie | [Montesi 2023], [Carbone et Montesi 2013] | S0, P7 |
-| **pub/sub** | publish/subscribe | Les producteurs publient sur un canal, les abonnés reçoivent; découplage en temps, en espace et en synchronisation (Eugster et al. 2003, absent de la bibliographie). La danse n'est pas du pub/sub : c'est un échantillonnage aléatoire local. | informatique répartie | audit chorégraphie-agentique; cadre | S0, P7; 06 |
+| **pub/sub** | publish/subscribe | Les producteurs publient sur un canal, les abonnés reçoivent; découplage en temps, en espace et en synchronisation [Eugster et al. 2003]. La danse n'est pas du pub/sub : c'est un échantillonnage aléatoire local. | informatique répartie | audit chorégraphie-agentique; cadre | S0, P7; 06 |
 | **quorum** | quorum | Seuil sur une population perçue localement, à réponse fortement non linéaire et réglable entre vitesse et justesse; déclenche le transport (*Temnothorax*) ou le piping (essaim). Pour les agents, le programme parle d'agrégation à seuil, exprimée en n effectif. Voir « Homonymies à lever ». | myrmécologie, apiculture | [Sumpter et Pratt 2009], [Franks et al. 2003], [Pratt et Sumpter 2006], [Pratt et al. 2002] | P5, P8 |
 | **receveuse** | nectar receiver | Abeille qui reçoit le nectar des butineuses. L'attente d'une receveuse est un indice (non un signal) qui règle le choix entre danse frétillante et trémulation. | apiculture | [Seeley et al. 1996], [Seeley et Tovey 1994] | P4 |
 | **recrutement** | recruitment | Processus qui amène des individus vers une source ou un site. Stratégies graduées selon la taille de colonie, de l'individuel au recrutement de masse. Il est volontaire (tiré) : la recrue choisit de suivre, contrairement à la délégation. | myrmécologie, apiculture | [Beckers et al. 1989], [Detrain et Deneubourg 2008] | P1 |
@@ -153,14 +153,14 @@ Un mot qui a un sens biologique et un sens informatique ne s'emploie jamais seul
 | **signal** | Stimulus émis pour modifier le comportement d'autrui (danse, phéromone, signal d'arrêt); distinct de l'indice [Feinerman et Korman 2017]. | Événement Signal de BPMN : sans destinataire précis, visible de tous les participants [OMG 2013]; en statistique, ce qu'on distingue du bruit. | Signal = émis exprès, décrit par la richesse du signal R; indice, message et trace sont distingués (voir l'entrée). |
 | **bruit** | Variabilité comportementale, parfois utile [Deneubourg et al. 1983], [Dussutour et al. 2009] [non vérifiée]. | Terme stochastique d'un modèle (processus de Wiener) [Marshall et al. 2009]; variance entre exécutions de LLM, sans graine [Atil et al. 2024]. | Toujours qualifié : *bruit comportemental* (variable manipulée), *bruit d'intégration* (terme du modèle), *variance entre exécutions* (nuisance statistique). |
 
-## Références employées mais absentes de la bibliographie
+## Références ajoutées à la validation finale
 
-Employées par le cadre ou par les audits, absentes de `11-bibliographie.md`; à ajouter ou à écarter. Aucune valeur n'en est tirée ici.
+Employées par le cadre ou par les audits, absentes des dossiers de recherche. Elles figurent maintenant dans la section « Compléments de la validation finale » de [11-bibliographie.md](11-bibliographie.md) (métadonnées vérifiées, contenu non relu). Aucune valeur n'en est tirée ici.
 
-- Perna et al. 2012 (réponse de type Weber, forme du sigmoïde; citée par le cadre).
-- Eugster et al. 2003 (découplage du pub/sub; audit chorégraphie-agentique).
-- Fischer, Lynch et Paterson 1985 (impossibilité du consensus asynchrone avec une panne; audit chorégraphie-agentique).
-- OpenAI Swarm (audit chorégraphie-agentique, constat C4).
+- [Perna et al. 2012] (réponse de type Weber, forme du sigmoïde; citée par le cadre).
+- [Eugster et al. 2003] (découplage du pub/sub; audit chorégraphie-agentique).
+- [Fischer et al. 1985] (impossibilité du consensus asynchrone avec une panne; audit chorégraphie-agentique).
+- OpenAI Swarm (audit chorégraphie-agentique, constat C4) : dépôt logiciel sans publication, non ajouté.
 
 ## Contrôles
 

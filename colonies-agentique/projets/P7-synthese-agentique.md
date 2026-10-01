@@ -425,7 +425,7 @@ Langage : TypeScript partout (Node exécute le `.ts`; `tsc --noEmit` vérifie le
 
 | Modèle | Identifiant | $ US par million de jetons : entrée / sortie / lecture de cache | Raisonnement et effort | Échantillonnage | Retrait (au plus tôt) |
 |---|---|---|---|---|---|
-| Claude Haiku 4.5 | `claude-haiku-4-5` (dossier); `claude-haiku-4-5-20251001` (documentation) : écart à lever, consigner `response.model` | 1 / 5 / 0,10 [à confirmer] (règle générale : 0,1 fois l'entrée) | Sans raisonnement par défaut; le paramètre `effort` échoue | `temperature` réglable : laissée à la valeur par défaut | **2026-10-15** (provisoire) |
+| Claude Haiku 4.5 | alias `claude-haiku-4-5` = identifiant complet `claude-haiku-4-5-20251001` [Anthropic 2026b] : figer l'identifiant complet, consigner `response.model` | 1 / 5 / 0,10 [à confirmer] (règle générale : 0,1 fois l'entrée) | Sans raisonnement par défaut; le paramètre `effort` échoue | `temperature` réglable : laissée à la valeur par défaut | **2026-10-15** (provisoire) |
 | Claude Sonnet 5.5 | `claude-sonnet-5-5` | 2 / 10 / 0,20 | Raisonnement coupé par `thinking: {type: "between_tools"}` (effort ≤ `high`); effort par défaut `high`, fixé à `low` ou `medium` | Valeur non par défaut rejetée (400) | 2027-09-28 |
 | Claude Opus 5.5 | `claude-opus-5-5` | 4 / 20 / 0,20 | Raisonnement non désactivable; effort par défaut `medium`, fixé à `low` | `temperature`, `top_p` rejetés (400) | 2027-09-22 |
 | Claude Fable 5.1 (option) | `claude-fable-5-1` | 10 / 50 / 0,25 | Raisonnement toujours actif; rétention de 30 jours obligatoire | `temperature`, `top_p` rejetés (400) | 2027-09-01 |

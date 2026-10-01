@@ -48,15 +48,24 @@ const biblio = path.join(racine, 'docs', '11-bibliographie.md')
 const etiquettes = new Set<string>()
 if (fs.existsSync(biblio)) {
   for (const m of lire(biblio).matchAll(/^\|\s*\*\*(.+?)\*\*\s*\|/gm)) etiquettes.add(m[1].trim())
-  const base = (l: string) => l.replace(/[a-f]$/, '')
+  const base = (l: string) => l.replace(/(\d{4})[a-f]$/, '$1')
+  const connues = new Set([...etiquettes, ...[...etiquettes].map(base)])
+  // Un crochet peut grouper plusieurs citations ([A 2001; B 2002]) et porter un statut de lecture
+  // ([T, A 2001], [A 2001, T*], [I, d'après A 2001]) : chaque année doit terminer une étiquette connue.
+  const citationOk = (morceau: string) => {
+    const annees = [...morceau.matchAll(/\b(?:1[5-9]|20)\d\d[a-f]?\b/g)]
+    return annees.length > 0 && annees.every(a => {
+      const avant = morceau.slice(0, a.index! + a[0].length)
+      return [...connues].some(l => avant.endsWith(l) && (avant.length === l.length || /[\s,«(;'’]/.test(avant[avant.length - l.length - 1])))
+    })
+  }
   const manquantes = new Map<string, string[]>()
   for (const f of tous) {
     const r = rel(f)
     if (r === 'docs/11-bibliographie.md' || r.startsWith('docs/annexes/') || r.startsWith('recherche/')) continue
-    for (const m of sansCode(lire(f)).matchAll(/\[([^\[\]\n]{2,80}? (?:1[5-9]|20)\d\d[a-f]?)\](?![(\[])/g)) {
-      const l = m[1].trim()
-      if (!etiquettes.has(l) && !etiquettes.has(base(l)) && ![...etiquettes].some(e => base(e) === l))
-        manquantes.set(l, [...(manquantes.get(l) ?? []), r])
+    for (const m of sansCode(lire(f)).matchAll(/\[([^\[\]\n]{2,200}?(?:1[5-9]|20)\d\d[a-f]?[^\[\]\n]{0,12})\](?![(\[])/g)) {
+      for (const morceau of m[1].split(';').map(s => s.trim()).filter(s => /\b(?:1[5-9]|20)\d\d/.test(s)))
+        if (!citationOk(morceau)) manquantes.set(morceau, [...(manquantes.get(morceau) ?? []), r])
     }
   }
   for (const [l, fs_] of manquantes) erreurs.push(`étiquette absente de la bibliographie : [${l}] (${[...new Set(fs_)].join(', ')})`)

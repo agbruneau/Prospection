@@ -281,7 +281,7 @@ Conventions : « runs » = répétitions indépendantes à graines différentes;
 
 ## 5. Pré-test numérique (exploratoire)
 
-Script : `C:\Users\agbru\AppData\Local\Temp\claude\C--Users-agbru-OneDrive-Documents-GitHub-Prospection\bba40ebf-390d-4bb9-96e9-420b96912426\scratchpad\check_p5.py` (Python, bibliothèque standard; `python check_p5.py`, environ 1 min). Ce qui a été fait :
+Script : [`p5_check_quorum.py`](../verifications-numeriques/p5_check_quorum.py) (Python, bibliothèque standard; `python p5_check_quorum.py`, environ 1 min). Ce qui a été fait :
 
 - **M1c** (γ = 3, α = 1/3, ρ = 3) : σ\* = 1,6875. Euler (dt = 10⁻³, t = 200) : σ = 1 → (0,4585; 0,4585), égal à la formule analytique; σ = 10 → (0,0392; 0,8497), égal au point fixe dérivé en M1c. Près de σ\* (±5 %), la divergence est très lente (ralentissement critique) : allonger l'intégration pour A1.
 - **M2** : l'identité 4v³/(v²−1)² = 4αγρ/(ρ−α)² avec γ = ρ = v, α = 1/v est vérifiée pour v ∈ {2; 4; 10} (3,556; 1,138; 0,408).

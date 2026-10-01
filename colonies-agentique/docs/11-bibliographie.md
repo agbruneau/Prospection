@@ -1,7 +1,7 @@
 # Bibliographie consolidée
 
 **Statut :** fusion des références des 12 dossiers de recherche consolidés après vérification indépendante (2026-10-01).
-**615 œuvres** : 451 vérifiées, 113 corrigées après vérification, 51 non vérifiées.
+**626 œuvres** : 451 vérifiées, 113 corrigées après vérification, 51 non vérifiées, et 11 compléments de la validation finale (métadonnées vérifiées; voir la dernière section).
 
 **Lecture.** Chaque étiquette `[Nom année]` utilisée dans `docs/` et `projets/` renvoie à une entrée ci-dessous. Statuts :
 - **vérifiée** : la source a été consultée et la citation confirmée par un vérificateur indépendant;
@@ -639,3 +639,23 @@ Deux œuvres distinctes portent la même étiquette dans des dossiers différent
 | **Zheng et al. 2026** | Zheng, W., Yang, Y., Qu, H., Wang, X. E. et Jeong, H. (2026). Absorbing State Phase Transitions in Multi-Agent Search. arXiv:2609.38327 (déposé le 2026-09-29). <https://arxiv.org/abs/2609.38327> | vérifiée | P7, P9 | p9-mouvement-collectif |
 | **Zhuge et al. 2024** | Zhuge, M., Wang, W., Kirsch, L., Faccio, F., Khizbullin, D. et Schmidhuber, J. (2024). Language Agents as Optimizable Graphs (GPTSwarm). arXiv:2402.16823 (ICML 2024, champ comments). <https://arxiv.org/abs/2402.16823> | vérifiée | P7, P9 | p9-mouvement-collectif |
 | **Zohar et Ginossar 1998** | Zohar, A., Ginossar, S. (1998). Lifting the taboo regarding teleology and anthropomorphism in biology education — heretical suggestions. Science Education, 82(6), 679–697. <https://doi.org/10.1002/(SICI)1098-237X(199811)82:6<679::AID-SCE3>3.0.CO;2-E> | vérifiée | V0 | x-vulgarisation |
+
+## Compléments de la validation finale
+
+Références citées par le cadre, les audits ou les documents du programme, mais absentes des dossiers de recherche. Ajoutées le 2026-10-01 lors de la validation finale : **métadonnées confirmées** auprès de Crossref ou de l'éditeur, **contenu non relu** dans ce cadre. N'en tirer aucune valeur chiffrée sans la marque **[à confirmer]**.
+
+| Étiquette | Citation | Statut | Projets | Dossiers |
+|---|---|---|---|---|
+| **Eugster et al. 2003** | Eugster, P. Th., Felber, P. A., Guerraoui, R. et Kermarrec, A.-M. (2003). The many faces of publish/subscribe. ACM Computing Surveys, 35(2), 114–131. <https://doi.org/10.1145/857076.857078> | vérifiée (métadonnées) | S0, P7 | — |
+| **Fischer et al. 1985** | Fischer, M. J., Lynch, N. A. et Paterson, M. S. (1985). Impossibility of distributed consensus with one faulty process. Journal of the ACM, 32(2), 374–382. <https://doi.org/10.1145/3149.214121> | vérifiée (métadonnées) | P5, P7 | — |
+| **Khoury et al. 2011** | Khoury, D. S., Myerscough, M. R. et Barron, A. B. (2011). A quantitative model of honey bee colony population dynamics. PLoS ONE, 6(4), e18491. <https://doi.org/10.1371/journal.pone.0018491> | vérifiée (métadonnées) | P3, P6 | — |
+| **Leoncini et al. 2004** | Leoncini, I., Le Conte, Y., Costagliola, G., Plettner, E., Toth, A. L., Wang, M., Huang, Z., Bécard, J.-M., Crauser, D., Slessor, K. N. et Robinson, G. E. (2004). Regulation of behavioral maturation by a primer pheromone produced by adult worker honey bees. PNAS, 101(50), 17559–17564. <https://doi.org/10.1073/pnas.0407652101> | vérifiée (métadonnées) | P3 | — |
+| **Nieh 2004** | Nieh, J. C. (2004). Recruitment communication in stingless bees (Hymenoptera, Apidae, Meliponini). Apidologie, 35(2), 159–182. <https://doi.org/10.1051/apido:2004007> | vérifiée (métadonnées) | P1 | — |
+| **Nieh 2010** | Nieh, J. C. (2010). A negative feedback signal that is triggered by peril curbs honey bee recruitment. Current Biology, 20(4), 310–315. <https://doi.org/10.1016/j.cub.2009.12.060> | vérifiée (métadonnées) | P1, P6 | — |
+| **Perna et al. 2012** | Perna, A., Granovskiy, B., Garnier, S., Nicolis, S. C., Labédan, M., Theraulaz, G., Fourcassié, V. et Sumpter, D. J. T. (2012). Individual rules for trail pattern formation in Argentine ants (*Linepithema humile*). PLoS Computational Biology, 8(7), e1002592. <https://doi.org/10.1371/journal.pcbi.1002592> | vérifiée (métadonnées) | P1, P8 | — |
+| **Perry et al. 2015** | Perry, C. J., Søvik, E., Myerscough, M. R. et Barron, A. B. (2015). Rapid behavioral maturation accelerates failure of stressed honey bee colonies. PNAS, 112(11), 3427–3432. <https://doi.org/10.1073/pnas.1422089112> | vérifiée (métadonnées) | P3, P6 | — |
+| **Reid et al. 2011** | Reid, C. R., Sumpter, D. J. T. et Beekman, M. (2011). Optimisation in a natural system: Argentine ants solve the Towers of Hanoi. Journal of Experimental Biology, 214(1), 50–58. <https://doi.org/10.1242/jeb.048173> | vérifiée (métadonnées) | P1 | — |
+| **Schürch et Ratnieks 2015** | Schürch, R. et Ratnieks, F. L. W. (2015). The spatial information content of the honey bee waggle dance. Frontiers in Ecology and Evolution, 3, 22. <https://doi.org/10.3389/fevo.2015.00022> | vérifiée (métadonnées) | P1, P7, S0 | — |
+| **Stroeymeyt et al. 2018** | Stroeymeyt, N., Grasse, A. V., Crespi, A., Mersch, D. P., Cremer, S. et al. (2018; 6 auteurs). Social network plasticity decreases disease transmission in a eusocial insect. Science, 362(6417), 941–945. <https://doi.org/10.1126/science.aat4793> | vérifiée (métadonnées) | P6 | — |
+
+« OpenAI Swarm » (cité par l'audit chorégraphie-agentique) est un dépôt logiciel sans publication; il n'est pas ajouté.

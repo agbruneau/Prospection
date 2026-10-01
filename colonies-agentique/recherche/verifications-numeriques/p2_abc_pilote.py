@@ -3,7 +3,7 @@ Colonie 100 (SN=50 sources), limit = ne*D, au plus 1 éclaireuse/cycle, MCN=5000
 Recherche locale v_j = x_j + phi*(x_j - x_kj), phi~U[-1,1], une dimension (implémentation de référence de l'auteur).
 fit = 1/(1+f) si f>=0 sinon 1+|f|. Sélection des observatrices : roulette P_i = fit_i/sum fit (Eq. 1 du texte 2008)
 ou variante du code de référence 0.9*fit/maxfit+0.1 (arg 'ref').
-Usage : python abc_pilot.py <func> <runs> <mcn> <sel: roulette|ref>
+Usage : python p2_abc_pilote.py <func> <runs> <mcn> <sel: roulette|ref>
 """
 import sys, numpy as np
 FUN = {
@@ -11,6 +11,7 @@ FUN = {
     "rastrigin": (lambda x: (x ** 2 - 10 * np.cos(2 * np.pi * x) + 10).sum(), -5.12, 5.12),
     "rosenbrock": (lambda x: (100 * (x[1:] - x[:-1] ** 2) ** 2 + (x[:-1] - 1) ** 2).sum(), -50, 50),
 }
+if len(sys.argv) != 5: sys.exit(__doc__)
 name, runs, mcn, sel = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), sys.argv[4]
 f, lo, hi = FUN[name]; Dm, SN = 50, 50; limit = SN * Dm
 fitf = lambda v: 1 / (1 + v) if v >= 0 else 1 + abs(v)

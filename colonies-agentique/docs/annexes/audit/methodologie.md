@@ -4,7 +4,7 @@ Auditeur : angle « méthodologie » · Date : 2026-10-01 · Objet : `propositio
 
 Légende des preuves : **[L]** lu dans la source primaire (ou son texte intégral extrait) · **[M]** métadonnées bibliographiques vérifiées (Crossref, éditeur), contenu non lu · **[S]** vérifié par source secondaire (résumé, moteur de recherche) · **[I]** inféré par l'auditeur, non vérifié · **[NV]** non vérifiable avec les outils disponibles.
 
-Limites de l'audit : le quota WebSearch de la session et celui de l'outil Consensus ont été épuisés en cours de route; la suite a reposé sur WebFetch (arXiv, Crossref, documentation Anthropic, éditeurs) et sur les textes intégraux déjà extraits dans le scratchpad par d'autres auditeurs (`dorigo96.txt`, `pais2013.txt`, `p2src/`, `p4src/`). Plusieurs PDF n'ont pas pu être lus (Goss et al. 1989, Wilensky et Rand 2007).
+Limites de l'audit : le quota WebSearch de la session et celui de l'outil Consensus ont été épuisés en cours de route; la suite a reposé sur WebFetch (arXiv, Crossref, documentation Anthropic, éditeurs) et sur les textes intégraux déjà extraits dans l'espace de travail de la session (non versionné) par d'autres auditeurs (`dorigo96.txt`, `pais2013.txt`, `p2src/`, `p4src/`). Plusieurs PDF n'ont pas pu être lus (Goss et al. 1989, Wilensky et Rand 2007).
 
 ---
 

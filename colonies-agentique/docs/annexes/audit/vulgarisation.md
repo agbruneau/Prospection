@@ -2,7 +2,7 @@
 
 Date : 2026-10-01. Objet : `proposition-v3.md` (lue en entier). Régime : production (livrable sur lequel le chercheur va agir).
 
-**Méthode et limites.** Chaque constat indique sa preuve : **[lu]** = vérifié dans la source citée (page primaire ou notice bibliographique consultée); **[recherche]** = vérifié seulement par résultats de recherche ou notice secondaire; **[inféré]** = raisonnement de l'auditeur, sans source; **[calculé]** = calcul reproductible (script `scratchpad/cvd.py`). Limites : le budget WebSearch et le quota de l'outil de recherche scientifique se sont épuisés en cours d'audit; le site de l'EPTC 2 (ethics.gc.ca) a été refusé par l'outil (certificat); Slessor et al. 1988, la palette Okabe-Ito et le *Debunking Handbook* n'ont pas été lus à la source. Ces points sont signalés au cas par cas.
+**Méthode et limites.** Chaque constat indique sa preuve : **[lu]** = vérifié dans la source citée (page primaire ou notice bibliographique consultée); **[recherche]** = vérifié seulement par résultats de recherche ou notice secondaire; **[inféré]** = raisonnement de l'auditeur, sans source; **[calculé]** = calcul reproductible (script [`v0_cvd.py`](../../../recherche/verifications-numeriques/v0_cvd.py)). Limites : le budget WebSearch et le quota de l'outil de recherche scientifique se sont épuisés en cours d'audit; le site de l'EPTC 2 (ethics.gc.ca) a été refusé par l'outil (certificat); Slessor et al. 1988, la palette Okabe-Ito et le *Debunking Handbook* n'ont pas été lus à la source. Ces points sont signalés au cas par cas.
 
 ---
 

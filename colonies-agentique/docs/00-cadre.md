@@ -58,7 +58,7 @@ Ces corrections s'imposent à tous les documents.
 2. **Moulin :** le modèle fourmi est Couzin et Franks 2003 (suivi de piste). Couzin et al. 2002 est un modèle 3D de poissons et d'oiseaux, sans phéromone : contrepoint, pas modèle.
 3. **Fonction de choix de Deneubourg :** n = 2; k ≈ 20 à confirmer dans le texte de 1990; A et B sont des passages cumulés. La réponse individuelle est de type Weber; le sigmoïde est un ajustement collectif (Perna et al. 2012).
 4. **Ant System (1996) :** ρ est la *persistance* (τ ← ρτ + Δτ). La forme τ ← (1−ρ)τ + Δτ est une convention postérieure.
-5. **Analogie TCP :** absente de Prabhakar et al. 2012; elle vient du communiqué de Stanford (2012) et de Gordon (2014).
+5. **Analogie TCP :** absente de Prabhakar et al. 2012; elle vient du communiqué de Stanford (Carey 2012) et de Gordon (2014).
 6. **Loi de Little :** déjà appliquée à ce contexte (Anderson et Ratnieks 1999, annexe C). « Deux lectures de la même file » est inexact : la fourmi lit un débit sur la boucle de terrain, l'abeille un délai sur une file d'appariement.
 7. **Signal d'arrêt :** une inhibition, pas un veto.
 8. **Interblocage ≠ scission :** Lindauer 1955 décrit une scission (deux décisions); l'interblocage est l'absence de décision.
@@ -154,5 +154,5 @@ Deux sorties : un moteur **headless Node** (balayages, tests, rejeu) et une **co
 ## 10. Réserves ouvertes
 
 - Des sources primaires n'ont pas pu être lues en texte intégral (accès fermé, quotas de recherche épuisés). Les dossiers les signalent référence par référence.
-- Les valeurs de k (Deneubourg 1990), de paramètres de Bonabeau et al. 1996, de Camazine et Sneyd 1991 et de Pratt et al. 2005 restent à confirmer dans les textes.
+- Les valeurs de k (Deneubourg et al. 1990), de paramètres de Bonabeau et al. 1996, de Camazine et Sneyd 1991 et de Pratt et al. 2005 restent à confirmer dans les textes.
 - Les identifiants et tarifs des modèles LLM, et les versions A2A et MCP, se vérifient de nouveau avant toute exécution de P7.

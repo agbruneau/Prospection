@@ -20,7 +20,7 @@ Les références sont nommées par leur étiquette « Nom année » (section 2).
 
 Limites d'accès rencontrées : Royal Society, Science, Annual Reviews et ResearchGate renvoient 403; PMC affiche un CAPTCHA (non contourné); le quota WebSearch de la session et le quota Consensus ont été épuisés en cours de travail. Conséquence majeure : **le texte de Bonabeau et al. 1996 [non vérifiée] et celui de Jones et al. 2004 n'ont pas été lus**; le résumé de Bonabeau et al. 1996, que la première version disait avoir lu, n'a pas pu être relu à la vérification (masqué par l'éditeur). Leurs équations sont reconstituées à partir de sources lues (Theraulaz et al. 1998, mêmes auteurs; Ulrich et al. 2021; Fontanari et al. 2024) et les valeurs de paramètres de 1996 restent à vérifier [à confirmer].
 
-Vérification de calcul : le script `scratchpad/p3_check.js` compare le champ moyen et une simulation agent du modèle à seuils fixes (section 3.1); il contient une auto-vérification `console.assert`.
+Vérification de calcul : le script [`p3_check_seuils.js`](../verifications-numeriques/p3_check_seuils.js) compare le champ moyen et une simulation agent du modèle à seuils fixes (section 3.1); il contient une auto-vérification `console.assert`.
 
 ## 1. Synthèse
 

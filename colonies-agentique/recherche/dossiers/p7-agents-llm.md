@@ -307,7 +307,7 @@ La question transversale de v3 devient : « comment G_int varie-t-il avec R2, à
 - **Unité statistique** : l'exécution. Les décisions d'agents à l'intérieur d'une exécution sont groupées; on utilise la SE groupée (Miller 2024, éq. 4).
 - **Plan apparié** : mêmes graines dans toutes les cellules d'une comparaison, avec SE appariée (éq. 7). Le gain de puissance est gratuit quand Corr > 0.
 - **Taille** : un pilote de 10 exécutions par cellule estime σ; on fixe ensuite n par l'éq. 9.
-  - Test bilatéral, α = 0,05, puissance 0,8, échantillons indépendants : n = 63 pour d = 0,5; 29 pour d = 0,74; 25 pour d = 0,8; 16 pour d = 1,0 (calcul : `scratchpad/cout_p7.py`).
+  - Test bilatéral, α = 0,05, puissance 0,8, échantillons indépendants : n = 63 pour d = 0,5; 29 pour d = 0,74; 25 pour d = 0,8; 16 pour d = 1,0 (calcul : [`p7_cout.py`](../verifications-numeriques/p7_cout.py)).
   - Choix : **30 exécutions par cellule LLM** (d détectable ≈ 0,74 sans appariement, moins avec); 1 000 par cellule pour les agents à règle.
 - **Comparaisons multiples** : correction de Holm sur les contrastes primaires (H1–H5, environ 6 contrastes). Pour les contrastes clés, passer à n = 40 si le pilote montre d < 0,8.
 - **Fiabilité** : rapporter pass^k pour k ∈ {1, 3, 5} sur les issues binaires (Yao et al. 2024).
