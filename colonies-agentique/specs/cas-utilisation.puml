@@ -18,6 +18,7 @@ rectangle "SIM : moteur de simulation" {
   usecase "UC-006 Préparer les résumés d'une page" as UC006
   usecase "UC-007 Calculer les métriques R et G" as UC007
   usecase "UC-008 Vérifier le dépôt" as UC008
+  usecase "UC-009 Classer le régime de coordination" as UC009
 }
 
 rectangle "PAGES : vulgarisation" {
@@ -42,6 +43,7 @@ Chercheur --> UC005
 Chercheur --> UC006
 Chercheur --> UC007
 Chercheur --> UC008
+Chercheur --> UC009
 CI --> UC008
 
 Lecteur --> UC010

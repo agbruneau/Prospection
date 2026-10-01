@@ -6,9 +6,9 @@ Généré par `node outils/verifier-specs.ts --ecrire` : ne pas modifier à la m
 
 | Catégorie | Total | Terminées | En cours | Non commencées | Couverture |
 |---|---:|---:|---:|---:|---:|
-| Exigences fonctionnelles | 20 | 0 | 13 | 7 | 0 % |
-| Cas d'utilisation | 16 | 0 | 11 | 5 | 0 % |
-| Cas à couverture de spécification complète | 16 | 10 | 1 | 5 | 63 % |
+| Exigences fonctionnelles | 21 | 0 | 14 | 7 | 0 % |
+| Cas d'utilisation | 17 | 0 | 12 | 5 | 0 % |
+| Cas à couverture de spécification complète | 17 | 10 | 2 | 5 | 59 % |
 
 ## Suivi par cas
 
@@ -22,6 +22,7 @@ Généré par `node outils/verifier-specs.ts --ecrire` : ne pas modifier à la m
 | [UC-006](cas-utilisation/UC-006-preparer-resumes.md) | Préparer les résumés d'une page | FR-006 | Implemented | ✔ | ✔ | — | 6 sur 6 | Partielle |
 | [UC-007](cas-utilisation/UC-007-calculer-metriques.md) | Calculer les métriques R et G | FR-007 | Implemented | ✔ | ✔ | — | 10 sur 10 | Partielle |
 | [UC-008](cas-utilisation/UC-008-verifier-depot.md) | Vérifier le dépôt | FR-008 | Implemented | ✔ | ✔ | — | 5 sur 5 | Partielle |
+| [UC-009](cas-utilisation/UC-009-classer-regime.md) | Classer le régime de coordination | FR-009 | Review | ✕ | ✕ | — | 0 sur 9 | Faible |
 | [UC-010](cas-utilisation/UC-010-suivre-recit-guide.md) | Suivre un récit guidé | FR-010, FR-017 | Implemented | ✔ | ✕ | ✔ | 7 sur 7 | Partielle |
 | [UC-011](cas-utilisation/UC-011-explorer-modele.md) | Explorer un modèle | FR-011, FR-014, FR-017 | Implemented | ✔ | ✕ | ✔ | 8 sur 8 | Partielle |
 | [UC-012](cas-utilisation/UC-012-verifier-reproduction.md) | Vérifier une reproduction | FR-012, FR-017 | Implemented | ✔ | ✕ | ✔ | 5 sur 5 | Partielle |

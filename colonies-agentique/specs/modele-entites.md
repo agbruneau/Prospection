@@ -128,6 +128,15 @@ Comparaison du modèle chorégraphique, configuré comme la référence, à cett
 | observables, level, margin, cells | déclarés avant les exécutions (BR-034) | `level` ∈ {`implementations`, `relational`, `distributional`}; marge requise pour `distributional` |
 | outcome | énuméré | `aligned` ou `not-aligned` |
 
+### Rapport de régime (`RegimeReport`)
+Indicateurs de régime d'un cas d'école sur N graines et régime assigné (06 §1.4 et §2; UC-009).
+
+| Attribut | Type | Règles de validation |
+|---|---|---|
+| case, size, declared | cas d'école, taille, architecture déclarée | fixés avant les exécutions |
+| indicators | C_ctrl, C_spec (e, χ), C_med, C_stig, C_mem, C_amp : valeur par exécution, estimation, IC à 95 % | « non défini » avec raison quand l'indicateur n'a pas d'objet |
+| regime | régime de 06 §1.4, « hybride » ou « non classé » | A1 lu dans l'architecture déclarée (BR-041) |
+
 ### Métriques (`R`, `G`)
 Calculées par `src/analysis/` sur des résultats : **R** est un vecteur (nominal, information effective, persistance, portée, adressage), jamais un scalaire; **G** est accompagné de la différence appariée Δ et vaut « indéfini » quand P_max − P_ref est sous le seuil du plan de recherche ([06](../docs/06-metriques-et-typologie.md)).
 
