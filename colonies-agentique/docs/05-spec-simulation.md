@@ -522,27 +522,27 @@ colonies-agentique/
                             (model.ts, scenario.json, README = ODD du modèle)
       choreography/         model.ts, channels/ (field.ts dance-floor.ts blackboard.ts messages.ts)
     policies/               policy.ts rule.ts llm.ts cassette.ts llm-log.ts     (llm et cassette : voir fiche P7)
-    analysis/               equivalence.ts (TOST, n requis, quantiles de t, règles de décision) bootstrap.ts sensitivity.ts (OFAT, Morris, Sobol) power.ts holm.ts
+    analysis/               equivalence.ts (TOST, n requis, quantiles de t, règles de décision) descriptif.ts (statistiques et format PageSummary des résumés) bootstrap.ts sensitivity.ts (OFAT, Morris, Sobol) power.ts holm.ts
                             mc-error.ts miller.ts (formules d'évaluation des LLM)
     sweep/                  plan.ts executor.ts (worker_threads) worker.ts aggregate.ts
-    cli/                    run.ts replay.ts reproduce.ts sweep.ts export.ts
-    browser/                contrat.ts (définition et résumé d'une page) sim-worker.ts page.ts (gabarit à trois niveaux, UC-010 à UC-012)    (aucun calcul de simulation)
+    cli/                    run.ts replay.ts reproduce.ts summarize.ts sweep.ts export.ts
+    browser/                contrat.ts (définition d'une page) sim-worker.ts page.ts (gabarit à trois niveaux, UC-010 à UC-012)    (aucun calcul de simulation)
   scenarios/                <modèle>/<nom>.json (sources) et compiled/ (littéraux calculés sous Node)
   targets/                  <projet>/T<projet>.<n>.json : extrait exécutable de la fiche de reproduction, une cible par fichier
   tests/
     core/                   random, rk4, euler-maruyama, ssa, events, grid, analysis (T0.1, T0.3 à T0.16, T0.27 et les tests de grille, d'événements et de Poisson)
-    cli/                    run et replay (UC-001, UC-002)
+    cli/                    run, replay, reproduce, summarize (UC-001 à UC-003, UC-006)
     determinism.test.ts     T0.26 et test d'agrégation
     verify.test.ts          chaîne de vérification (UC-008)
     conformance.test.ts     interdits et imports (T0.21)
     reproduction/<projet>/  un fichier par cible, piloté par targets/
     docking/<projet>.test.ts
-    pages/                  UC-010 à UC-012 et critères TV0.n (Playwright, Chrome installé; axe-core), même exécuteur (section 13)
+    pages/                  UC-010 à UC-012, page-pilote et critères TV0.n (Playwright, Chrome installé; axe-core), même exécuteur (section 13)
     __snapshots__/          traces dorées (section 9.4)
   data/
     figures/                figures publiées numérisées (CSV) + erreur de lecture
     oracles/                valeurs des scripts Python de recherche/verifications-numeriques/
-    results/<projet>/       résultats précalculés (JSON, CSV) et manifestes
+    results/<projet>/       verdicts, listes des répétitions et résumés (versionnés); manifestes par répétition (hors git)
   pages/                    définitions <id>.json; dist/ : HTML générés par `npm run build:pages` (esbuild; hors git)
   spikes/phase0/            protocole, code du spike, rapport (section 12)
   outils/                   verifier-docs.ts, verifier-specs.ts, verifier-cibles.ts, verify.ts (chaîne de npm run verify); compile-scenarios.ts à venir
@@ -615,7 +615,7 @@ Un modèle de référence suit **l'ordre de sa source** : par exemple, [Couzin e
 
 ### 8.3 Résumés précalculés pour les pages
 
-JSON rangé dans `data/results/<projet>/<cible>.summary.json` (UC-006) : `{schema, target, targetHash, verdict, regime, provenance, preregisteredN, measure, cells: [{scenario, scenarioHash, source, params, n, mean, se, interval95, values, missing, replay: {rep, seed, fnv1a64}}]}`; une cellule par scénario de la cible. `source` est le scénario de base, pour que la page puisse rejouer la répétition typique. `preregisteredN` est le N que la page affiche dans son compteur « n sur N »; La graine rejouée (`replay.seed`) est choisie **une fois, avant publication**, comme celle dont l'observable principale est la plus proche de la médiane de la distribution, la plus petite par rang en cas d'égalité (choix de conception [I]; UC-006, BR-027), et consignée. Une page doit tenir dans la limite de 16 Mo d'un artifact (audit simulation-technique, m8; description de l'outil Artifact); au-delà, agrégats ou capacité `assets`. La condition témoin statique de V0 se fabrique à partir de ces mêmes JSON ([07-vulgarisation-evaluation.md](07-vulgarisation-evaluation.md)).
+JSON rangé dans `data/results/<projet>/<cible>.summary.json` (UC-006) : `{schema, target, targetHash, verdict, regime, provenance, preregisteredN, measure, cells: [{scenario, scenarioHash, source, params, n, mean, se, interval95, values, missing, replay: {rep, seed, fnv1a64}}]}`; une cellule par scénario de la cible, dans l'ordre des critères. `values` garde une valeur par répétition, à son rang, et `null` pour une répétition sans valeur (BR-029); N couvre toutes les répétitions exécutées, extension de UC-003 (A4) comprise. `source` est le scénario de base, pour que la page puisse rejouer la répétition typique. `preregisteredN` est le N que la page affiche dans son compteur « n sur N »; La graine rejouée (`replay.seed`) est choisie **une fois, avant publication**, comme celle dont l'observable principale est la plus proche de la médiane de la distribution, la plus petite par rang en cas d'égalité (choix de conception [I]; UC-006, BR-027), et consignée. Une page doit tenir dans la limite de 16 Mo d'un artifact (audit simulation-technique, m8; description de l'outil Artifact); au-delà, agrégats ou capacité `assets`. La condition témoin statique de V0 se fabrique à partir de ces mêmes JSON ([07-vulgarisation-evaluation.md](07-vulgarisation-evaluation.md)).
 
 ### 8.4 Figures publiées numérisées
 

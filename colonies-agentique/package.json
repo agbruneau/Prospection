@@ -13,6 +13,7 @@
     "verify": "node outils/verify.ts",
     "replay": "node src/cli/replay.ts",
     "reproduce": "node src/cli/reproduce.ts",
+    "summarize": "node src/cli/summarize.ts",
     "build:pages": "node outils/construire-pages.ts"
   },
   "devDependencies": {

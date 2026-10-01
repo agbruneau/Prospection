@@ -1,11 +1,11 @@
 // Gabarit de page à trois niveaux (07 §4; UC-010 Voir, UC-011 Explorer, UC-012 Vérifier).
 // Aucun calcul de simulation ni de statistique ici : le worker exécute le noyau, src/analysis résume (05 §14).
-import { intervalle95, mediane, moyenne } from '../analysis/descriptif.ts'
+import { intervalle95, mediane, moyenne, type Cellule } from '../analysis/descriptif.ts'
 import { gainCollectif } from '../analysis/gain.ts'
 import { CORE_VERSION } from '../core/manifest.ts'
 import { graineDeRepetition } from '../core/random.ts'
 import type { Intervention } from '../core/scenario.ts'
-import { LIBELLES_STATUT, type Cellule, type DonneesPage, type Niveau, type Statut } from './contrat.ts'
+import { LIBELLES_STATUT, type DonneesPage, type Niveau, type Statut } from './contrat.ts'
 import type { Demande, Execution } from './sim-worker.ts'
 
 declare const __SOURCE_WORKER__: string
@@ -57,23 +57,32 @@ function simuler(d: Omit<Demande, 'id'>, surExecution: (i: number, e: Execution)
     worker.postMessage({ ...d, id })
   })
 }
+const MESURES_SCENE = ['S0', 'L0', 'S1', 'L1', 'crossings']   // ponytail: mesures de la scène du pont (p1-goss-1989), avec le registre de scènes
 const mesuresRegles = [...new Set((D.explorer?.individus ?? []).flatMap(i => [...i.regle.matchAll(/\{(\w+)\}/g)].map(m => m[1]!)))]
-const MESURES = [...new Set([D.mesure.nom, D.graphe.nom, ...mesuresRegles])]
+const MESURES = [...new Set([D.mesure.nom, D.graphe.nom, ...mesuresRegles, ...MESURES_SCENE])]
 const echantillonnage = (c: Cellule) => { const t = c.source.time as { horizon: number; dt: number }; return Math.max(t.dt, Math.round(t.horizon / 100 / t.dt) * t.dt) }
 
 // ---------- Z3 Distribution (07 §4.8; BR-017) ----------
-function distribution(valeurs: number[], courante: number | null, o: { N: number; regime: Regime; statut: Statut; complete: boolean; titre: string; graines?: string }) {
+function distribution(parRang: readonly (number | null)[], courante: number | null, o: { N: number; regime: Regime; statut: Statut; complete: boolean; titre: string; graines?: string; marque?: string }) {
+  const valeurs = parRang.filter((v): v is number => v != null)   // null : répétition sans valeur, comptée dans N (UC-006, BR-029)
   const [a, b] = intervalle95(valeurs), med = mediane(valeurs)
-  const w = 320, h = o.complete ? 90 : 46, x = (v: number) => 8 + (v - Math.min(0, a)) / ((Math.max(1, b) - Math.min(0, a)) || 1) * (w - 16)
-  const points = valeurs.map((v, i) => `<circle cx="${x(v).toFixed(1)}" cy="${(h - 14 - ((i * 37) % (h - 24))).toFixed(1)}" r="2" class="point"/>`).join('')
-  const marque = courante == null ? '' : `<line x1="${x(courante)}" x2="${x(courante)}" y1="2" y2="${h - 10}" class="courante"/>`
-  const resume = `${courante == null ? '' : `Exécution typique : ${fmt(courante)} · `}médiane : ${fmt(med)} · intervalle à 95 % des exécutions : [${fmt(a)} ; ${fmt(b)}] · n = ${valeurs.length} sur N = ${o.N}`
+  const lo = Math.min(0, ...valeurs), hi = Math.max(1, ...valeurs), etendue = hi - lo || 1
+  const w = 320, h = o.complete ? 100 : 70, base = h - 20, x = (v: number) => 8 + (v - lo) / etendue * (w - 16)
+  // Nuage empilé (Wilkinson) : chaque point s'empile dans sa colonne, et la hauteur des colonnes montre la forme (p. ex. bimodale).
+  const colonnes = 60, col = (v: number) => Math.min(colonnes - 1, Math.floor((v - lo) / etendue * colonnes))
+  const comptes = new Array<number>(colonnes).fill(0)
+  for (const v of valeurs) comptes[col(v)]!++
+  const pas = Math.min(4, (base - 6) / Math.max(1, ...comptes)), empiles = new Array<number>(colonnes).fill(0)
+  const points = valeurs.map(v => `<circle cx="${x(v).toFixed(1)}" cy="${(base - 2 - empiles[col(v)]!++ * pas).toFixed(1)}" r="2" class="point"/>`).join('')
+  const marque = courante == null ? '' : `<line x1="${x(courante)}" x2="${x(courante)}" y1="2" y2="${base + 2}" class="courante"/>`
+  const graduations = `<text x="8" y="${h - 4}" class="graduation">${fmt(lo)}</text><text x="${w - 8}" y="${h - 4}" text-anchor="end" class="graduation">${fmt(hi)}</text>`
+  const resume = `${courante == null ? '' : `${o.marque ?? 'Exécution typique'} : ${fmt(courante)} · `}médiane : ${fmt(med)} · intervalle à 95 % des exécutions : [${fmt(a)} ; ${fmt(b)}] · n = ${valeurs.length} sur N = ${o.N}`
   return el('figure', { class: 'distribution', 'data-statut': o.statut, 'data-regime': o.regime },
-    svg(`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${o.titre} : ${resume}"><line x1="8" x2="${w - 8}" y1="${h - 8}" y2="${h - 8}" class="axe"/>${points}${marque}</svg>`),
+    svg(`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${o.titre} : ${resume}"><line x1="8" x2="${w - 8}" y1="${base}" y2="${base}" class="axe"/>${points}${marque}${graduations}</svg>`),
     el('figcaption', {}, badge(o.statut), ` ${o.titre}. ${resume}${o.graines ? ` · ${o.graines}` : ''}`),
     o.complete && el('details', {}, el('summary', {}, 'Données'), el('table', {}, el('caption', {}, `${o.titre} (${D.mesure.etiquette})`),
       el('thead', {}, el('tr', {}, el('th', { scope: 'col' }, 'Exécution'), el('th', { scope: 'col' }, `${D.mesure.etiquette} (${D.mesure.unite})`))),
-      el('tbody', {}, ...valeurs.slice(0, 200).map((v, i) => el('tr', {}, el('td', {}, String(i)), el('td', {}, fmt(v))))))))
+      el('tbody', {}, ...parRang.map((v, i) => el('tr', {}, el('td', {}, String(i)), el('td', {}, v == null ? 'sans valeur' : fmt(v))))))))
 }
 
 // ---------- Z1 Scène et Z2 Graphe ----------
@@ -97,7 +106,7 @@ function scene() {
       }
       ctx.globalAlpha = 1
     }
-    texte.textContent = `Phéromone : courte ${fmt(o.S0, 0)} au nid, ${fmt(o.S1, 0)} à la nourriture; longue ${fmt(o.L0, 0)} et ${fmt(o.L1, 0)}. Passages : ${fmt(o.crossings, 0)}.`
+    texte.textContent = `Phéromone sur la branche du haut : ${fmt(o.S0, 0)} au nid, ${fmt(o.S1, 0)} à la nourriture; sur celle du bas : ${fmt(o.L0, 0)} et ${fmt(o.L1, 0)}. Passages : ${fmt(o.crossings, 0)}.`
   }
   return { element: el('div', { class: 'scene' }, canvas, texte), dessiner }
 }
@@ -233,6 +242,8 @@ function niveauExplorer() {
     const interventions: Intervention[] = [...valeurs].filter(([k, v]) => v !== defauts.get(k)).map(([type, value]) => ({ time: 0, type, value }))
     const graines = Array.from({ length: X.repetitions }, (_, i) => graineDeRepetition(BigInt(R.provenance.masterSeed), i))
     const finales: number[] = []
+    const montrerDistribution = () => zoneDistribution.replaceChildren(el('p', { class: 'etiquette-calcul' }, `calcul navigateur, non confirmatoire · ${finales.length} sur ${X.repetitions}`),   // BR-021
+      distribution(finales, derniere?.finales[D.mesure.nom] ?? null, { N: X.repetitions, regime: 'exploratoire', statut: 'simplifie', complete: true, titre: 'Distribution des exécutions calculées dans le navigateur', marque: 'Exécution affichée (graine 0)' }))
     annoncer('Calcul en cours.')
     await simuler({ scenario: c.source, graines, interventions, echantillonnage: echantillonnage(c), mesures: MESURES }, (i, e) => {
       if (g !== generation) return
@@ -246,10 +257,10 @@ function niveauExplorer() {
       }
       const v = e.finales[D.mesure.nom]
       if (v != null) finales.push(v)
-      zoneDistribution.replaceChildren(el('p', { class: 'etiquette-calcul' }, `calcul navigateur, non confirmatoire · ${finales.length} sur ${X.repetitions}`),   // BR-021
-        distribution(finales, derniere?.finales[D.mesure.nom] ?? null, { N: X.repetitions, regime: 'exploratoire', statut: 'simplifie', complete: true, titre: 'Distribution des exécutions calculées dans le navigateur' }))
+      if ((i + 1) % 50 === 0) montrerDistribution()   // par lots : un rendu par exécution coûterait O(N²)
     })
     if (g !== generation) return
+    montrerDistribution()
     const m = mediane(finales), atteint = X.defi.sens === '>=' ? m >= X.defi.seuil : m <= X.defi.seuil
     zoneDefi.textContent = atteint ? `Défi réussi : médiane ${fmt(m)} ${D.mesure.unite}.` : `Défi : ${X.defi.texte} (médiane actuelle ${fmt(m)}).`
     if (X.gain) {   // A3, BR-022
@@ -292,7 +303,7 @@ function niveauVerifier() {
         const egale = ex!.empreinte === c.replay.fnv1a64
         rejeu.replaceChildren(el('pre', { class: 'manifeste' }, JSON.stringify({ moteur: { kind: 'browser', version: navigator.userAgent }, noyau: CORE_VERSION, graine: ex!.graine, empreinte: ex!.empreinte, empreinteConsignee: c.replay.fnv1a64 }, null, 2)),
           // BR-007 : la page n'est jamais le moteur du manifeste (Node) : identité non affirmée.
-          el('p', { class: 'verdict-rejeu' }, `Autre moteur : trajectoire non garantie identique, distributions équivalentes. Empreinte finale ${egale ? 'égale' : 'différente'} de celle du manifeste.`))
+          el('p', { class: 'verdict-rejeu' }, `Autre moteur : trajectoire non garantie identique, distributions équivalentes. Empreinte finale ${egale ? 'égale à' : 'différente de'} celle du manifeste.`))
       } catch (e) {
         rejeu.replaceChildren(el('p', {}, `Rejeu impossible : ${(e as Error).message}`))
       }

@@ -200,7 +200,7 @@ test('UC-012 nominal : cible, niveau, marge, verdict, distribution, petits multi
   assert.equal(await page.locator('.cellule').count(), 3)
   await page.locator('[data-cellule="2"]').click()
   await page.locator('.verdict-rejeu').waitFor()
-  assert.match(await texte(page, '.verdict-rejeu'), /Autre moteur : trajectoire non garantie identique, distributions équivalentes\. Empreinte finale égale/)
+  assert.match(await texte(page, '.verdict-rejeu'), /Autre moteur : trajectoire non garantie identique, distributions équivalentes\. Empreinte finale égale à celle du manifeste\./)
   assert.match(await texte(page, '.rejeu .manifeste'), new RegExp(resume.cells[2]!.replay.seed))
 })
 

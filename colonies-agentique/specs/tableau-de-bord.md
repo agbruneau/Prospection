@@ -8,7 +8,7 @@ Généré par `node outils/verifier-specs.ts --ecrire` : ne pas modifier à la m
 |---|---:|---:|---:|---:|---:|
 | Exigences fonctionnelles | 20 | 0 | 10 | 10 | 0 % |
 | Cas d'utilisation | 16 | 0 | 8 | 8 | 0 % |
-| Cas à couverture de spécification complète | 16 | 7 | 1 | 8 | 44 % |
+| Cas à couverture de spécification complète | 16 | 8 | 0 | 8 | 50 % |
 
 ## Suivi par cas
 
@@ -19,7 +19,7 @@ Généré par `node outils/verifier-specs.ts --ecrire` : ne pas modifier à la m
 | [UC-003](cas-utilisation/UC-003-verifier-cible.md) | Vérifier une cible de reproduction | FR-003 | Implemented | ✔ | ✔ | — | 13 sur 13 | Partielle |
 | UC-004 | Balayer des paramètres | — | non rédigé | ✕ | ✕ | — | — | Faible |
 | UC-005 | Aligner par docking | — | non rédigé | ✕ | ✕ | — | — | Faible |
-| [UC-006](cas-utilisation/UC-006-preparer-resumes.md) | Préparer les résumés d'une page | FR-006 | Review | ✕ | ✕ | — | 0 sur 6 | Faible |
+| [UC-006](cas-utilisation/UC-006-preparer-resumes.md) | Préparer les résumés d'une page | FR-006 | Implemented | ✔ | ✔ | — | 6 sur 6 | Partielle |
 | UC-007 | Calculer les métriques R et G | — | non rédigé | ✕ | ✕ | — | — | Faible |
 | [UC-008](cas-utilisation/UC-008-verifier-depot.md) | Vérifier le dépôt | FR-008 | Implemented | ✔ | ✔ | — | 5 sur 5 | Partielle |
 | [UC-010](cas-utilisation/UC-010-suivre-recit-guide.md) | Suivre un récit guidé | FR-010, FR-017 | Implemented | ✔ | ✕ | ✔ | 7 sur 7 | Partielle |

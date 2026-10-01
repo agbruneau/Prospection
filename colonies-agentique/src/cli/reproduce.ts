@@ -77,7 +77,7 @@ export interface Ligne { cible: string; etat: string; issue: string; n: number; 
 
 const fmt = (x: number) => (Number.isFinite(x) ? Number(x.toPrecision(4)).toString() : '—')
 const texteMarge = (m?: Marge) => (m ? `marge ±${m.delta} ${m.scale}` : 'sans marge')
-const projetDe = (id: string) => { const k = id.match(/^T(\d+)\./)?.[1]; return k === undefined ? undefined : k === '0' ? 'S0' : `P${k}` }
+export const projetDe = (id: string) => { const k = id.match(/^T(\d+)\./)?.[1]; return k === undefined ? undefined : k === '0' ? 'S0' : `P${k}` }
 
 /** Vérifie une cible (étapes 2 à 7); renvoie la ligne du tableau d'A6, dont le code de sortie (BR-013). */
 export function verifierCible(id: string, options: OptionsReproduction = {}): Ligne {

@@ -1,6 +1,6 @@
 // Contrat des données d'une page (07 §4; UC-010 à UC-012) : définition éditoriale + résumés et verdicts injectés au build.
 // Aucun calcul de simulation ici : seulement des formes de données et leur validation.
-import type { Verdict } from '../core/manifest.ts'
+import type { PageSummary } from '../analysis/descriptif.ts'
 
 export type Niveau = 'voir' | 'explorer' | 'verifier'
 export type Statut = 'reproduit' | 'publie' | 'simplifie' | 'hypothese' | 'analogie'
@@ -46,40 +46,10 @@ export interface PageDefinition {
   limites: string
 }
 
-/** Résumé d'une cible (UC-006; 05 §8.3). */
-export interface Cellule {
-  scenario: string
-  scenarioHash: string
-  source: Record<string, unknown>   // scénario de base, pour rejouer
-  params: Record<string, number | string | boolean>
-  n: number
-  mean: number
-  se: number
-  interval95: [number, number]
-  values: number[]
-  missing: number
-  replay: { rep: number; seed: string; fnv1a64: string }
-}
-export interface Resume {
-  schema: 1
-  target: string
-  targetHash: string
-  regime: 'confirmatory' | 'exploratory'
-  state: 'blocked' | 'provisional' | 'frozen'
-  verdict: Verdict
-  level: string
-  margin?: { delta: number; scale: string }
-  blockedReason?: string
-  provenance: { commit: string; engine: { kind: string; version: string; platform: string; arch: string }; coreVersion: string; masterSeed: string }
-  preregisteredN: number
-  measure: string
-  toConfirm: readonly string[]      // paramètres au statut to-confirm dans les scénarios (BR-026)
-  cells: Cellule[]
-}
-export interface DonneesPage { definition: PageDefinition; resume: Resume; version: { coreVersion: string; commit: string } }
+export interface DonneesPage { definition: PageDefinition; resume: PageSummary; version: { coreVersion: string; commit: string } }
 
 /** Erreurs de définition détectées au build (liste vide : définition acceptée). */
-export function validerDefinition(d: PageDefinition, r: Resume): string[] {
+export function validerDefinition(d: PageDefinition, r: PageSummary): string[] {
   const e: string[] = []
   const mots = d.titre.trim().split(/\s+/).length
   if (mots < 2 || mots > 4) e.push(`titre : 2 à 4 mots (${mots})`)

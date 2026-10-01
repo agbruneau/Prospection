@@ -61,6 +61,6 @@ Un cas présent au diagramme sans fichier est « non rédigé ». On le rédige 
 
 ## Par où commencer
 
-1. Les sept cas de la phase 0 sont approuvés (2026-10-01) et `Implemented`, à couverture de spécification complète : leur passage à `Verified` attend la revue des tests par le chercheur. UC-006 (résumés de page) est en `Review`.
-2. Suite de la phase 0 ([fiche S0](../projets/S0-socle.md)) et tâches ouvertes : [suivi](../notes/suivi-feuille-de-route.md). Le gabarit de page (UC-010 à UC-012) vient après le spike.
+1. Les sept cas de la phase 0 et UC-006 (résumés de page) sont approuvés (2026-10-01) et `Implemented`, à couverture de spécification complète : leur passage à `Verified` attend la revue des tests par le chercheur.
+2. Suite de la phase 0 ([fiche S0](../projets/S0-socle.md)) et tâches ouvertes : [suivi](../notes/suivi-feuille-de-route.md). La page-pilote du pont de Goss (`pages/p1-v1-pont.json`) est construite sur le résumé de T1.1.
 3. Rédiger UC-004 à UC-007 quand le noyau passe ses cibles T0; UC-013 à UC-015 avec la première page; UC-020 et UC-021 avant la phase 3, ou plus tôt si la porte GF1 retient la collecte anticipée de Haiku 4.5 ([09](../docs/09-feuille-de-route.md)).

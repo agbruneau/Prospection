@@ -6,8 +6,8 @@ import os from 'node:os'
 import path from 'node:path'
 import { after, before } from 'node:test'
 import { chromium, type Browser, type Page } from 'playwright'
-import { intervalle95, moyenne, erreurType, rangTypique } from '../../src/analysis/descriptif.ts'
-import type { DonneesPage, PageDefinition, Resume } from '../../src/browser/contrat.ts'
+import { intervalle95, moyenne, erreurType, rangTypique, type PageSummary } from '../../src/analysis/descriptif.ts'
+import type { DonneesPage, PageDefinition } from '../../src/browser/contrat.ts'
 import { CORE_VERSION } from '../../src/core/manifest.ts'
 import { graineDeRepetition } from '../../src/core/random.ts'
 import { enregistrer } from '../../src/core/recorder.ts'
@@ -21,7 +21,7 @@ const SCENARIOS = ['fig2a-r1', 'fig2b-r1_4', 'fig2c-r2'].map(n => `scenarios/p1-
 const lire = (f: string) => JSON.parse(fs.readFileSync(path.join(RACINE, f), 'utf8')) as Record<string, any>
 
 /** Résumé au format de UC-006, calculé ici à partir de N exécutions par scénario. */
-export function resumeFixture(etat: Resume['state'] = 'frozen', issue: Resume['verdict']['outcome'] = 'satisfied'): Resume {
+export function resumeFixture(etat: PageSummary['state'] = 'frozen', issue: PageSummary['verdict']['outcome'] = 'satisfied'): PageSummary {
   const cells = SCENARIOS.map(chemin => {
     const source = lire(chemin)
     const runs = Array.from({ length: N }, (_, i) => {

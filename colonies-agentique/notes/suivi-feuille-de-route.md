@@ -20,7 +20,8 @@ Tableau de suivi prévu par la [feuille de route](../docs/09-feuille-de-route.md
 | D-09 | Soumission ou non de la typologie à Blue Sky Ideas (DC9) | avant 2026-11-12 | GF15 | Décision |
 | D-10 | Enveloppe d'API de P7; budget égal K = 4 ou 7,45; disponibilité de R (modèles mixtes) | avant le harnais de P7 | GF11, GF12 | Décision |
 | D-12 | Décisions D1 à D5 du spike : **rendues le 2026-10-01** (approuvées telles que proposées). Reste : voie de rattrapage pour Firefox ([rapport](../spikes/phase0/rapport.md), section 5) | avant la clause de CS0.2 | GF4 | Décision |
-| D-13 | Revoir et approuver UC-006 (résumés de page) : débloque la page-pilote du pont de Goss (CS0.12) | avant la page-pilote | GF4 | Décision |
+| D-13 | UC-006 (résumés de page) : **approuvé le 2026-10-01**, puis implanté; page-pilote construite | — | GF4 | Fait |
+| D-14 | Points de revue de la page-pilote ([définition](../pages/p1-v1-pont.json)) : (1) la règle de la médiane (BR-027) choisit à r = 1 un partage presque égal (0,514), l'issue rare d'une distribution bimodale; garder, ou choisir la typique sur une autre statistique; (2) titre « Le pont à mémoire » (« Le pont qui se souvient » de la fiche P1 dépasse 4 mots); (3) encart « Ce que fait vraiment la reine » omis : à faire valider (fiche P1, Explorer); (4) étapes 4 et 5 du parcours Voir absentes (T1.2 et V4 non faites) | avant publication | GF4 | Décision |
 | D-11 | Supprimer les fichiers parasites non suivis : `projets/zz-test-temp.md`, `recherche/verifications/*.v1-precedent.md` | dès que possible | — | Décision |
 
 ## 2. Phase 0 : tâches du socle S0 (lots de la [fiche S0](../projets/S0-socle.md))
@@ -47,7 +48,7 @@ Tableau de suivi prévu par la [feuille de route](../docs/09-feuille-de-route.md
 | H-01 | H | Dépôt jetable, webhook Zenodo, DOI de version et de concept | E0.6, CS0.15 | Bloqué | attend D-02 |
 | B-01 | B | Métriques R et G | T0.29 à T0.32, T0.36; E0.2, E0.7, E0.8; UC-007 (à rédiger) | À faire | attend D-07 |
 | A-01 | A | Typologie : cas d'école, indicateurs, jeu de données, page | T0.33, T0.34; E0.1; CS0.9, CS0.10 | À faire | — |
-| E-01 | E | Gabarit de page | UC-010 à UC-012 (Implemented); CS0.12 | En cours | `src/browser/`, `outils/construire-pages.ts`, `tests/pages/` (axe-core : 0 violation); restent la page-pilote (attend D-13) et la liste manuelle d'accessibilité de 07 §8 |
+| E-01 | E | Gabarit de page et page-pilote | UC-006, UC-010 à UC-012 (Implemented); CS0.12 | En cours | `src/browser/`, `src/cli/summarize.ts`, `tests/pages/` (axe-core : 0 violation); page-pilote `pages/p1-v1-pont.json` sur le résumé de T1.1 (`tests/pages/pilote.test.ts`); restent la liste manuelle d'accessibilité de 07 §8 et D-14 |
 | F-01 | F | Matrice concept × espèce × modèle | CS0.13 | À faire | structure dans la fiche S0 |
 | G-01 | G | Gabarits et registre des déviations | CS0.14 | En cours | première fiche de reproduction rédigée (T1.1); chemin du registre par projet à fixer |
 | I-01 | I | Porte de sortie de la phase 0 | `notes/S0-porte-de-sortie.md`; CS0.1 à CS0.16 | À faire | dernière tâche du lot |
@@ -87,6 +88,6 @@ Un jalon est atteint quand son critère est vrai; un écart de plus de 15 % sur 
 ## 5. Prochaines tâches recommandées
 
 1. D-01 (GF1), puis D-02 et D-03 : elles conditionnent JF1 et la semaine 1.
-2. D-13 : approuver UC-006, puis page-pilote du pont de Goss (E-01) et liste manuelle d'accessibilité.
+2. D-14 (points de revue de la page-pilote), puis la liste manuelle d'accessibilité de 07 §8 (E-01).
 3. C-08 et C-09 (Euler–Maruyama, ordre), puis C-10 : fin du lot C bloquant.
 4. P1-04 dès que D-05 est tranchée : T1.2 n'exige que sa fiche.

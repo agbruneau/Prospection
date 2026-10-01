@@ -1,7 +1,7 @@
 ---
 id: UC-006
 name: Préparer les résumés d'une page
-status: Review
+status: Implemented
 context: SIM
 actors: [Chercheur]
 linkedRequirements: [FR-006, NFR-001, NFR-007, C-004, C-007]
@@ -14,7 +14,7 @@ entities: [PageSummary, ReproductionTarget, Verdict, Scenario]
 
 - **Acteur principal :** Chercheur
 - **But :** obtenir, pour une cible vérifiée, le résumé que lit une page (distribution sur N graines, exécution typique de chaque condition), sans aucun calcul dans le navigateur.
-- **Statut :** Review
+- **Statut :** Implemented
 
 ## Préconditions
 

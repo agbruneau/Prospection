@@ -6,7 +6,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { build } from 'esbuild'
-import { validerDefinition, type DonneesPage, type PageDefinition, type Resume } from '../src/browser/contrat.ts'
+import type { PageSummary } from '../src/analysis/descriptif.ts'
+import { validerDefinition, type DonneesPage, type PageDefinition } from '../src/browser/contrat.ts'
 import { CORE_VERSION } from '../src/core/manifest.ts'
 
 const RACINE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -34,7 +35,7 @@ input[type=range]{min-height:44px;flex:1 1 12rem}
 .enonce{border-left:4px solid var(--trait);padding:.3rem .6rem;margin:.6rem 0}.mention{color:var(--doux)}
 .nepas{border:1px solid var(--trait);border-radius:6px;padding:.5rem .8rem;margin:.6rem 0}
 figure{margin:.6rem 0}svg{max-width:100%;height:auto}.axe{stroke:var(--trait)}.point{fill:var(--fourmi)}
-.courante{stroke:var(--texte);stroke-width:2}.serie{fill:none;stroke:var(--fourmi);stroke-width:2}
+.courante{stroke:var(--texte);stroke-width:2}.graduation{fill:var(--texte);font-size:8px}.serie{fill:none;stroke:var(--fourmi);stroke-width:2}
 canvas{max-width:100%;height:auto;border:1px solid var(--trait)}.manifeste{white-space:pre-wrap;font-size:.85rem;overflow-wrap:anywhere}
 .multiples{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}
 .annonce{min-height:1.5em;color:var(--doux)}table{border-collapse:collapse}td,th{padding:.15rem .5rem;border-bottom:1px solid var(--trait)}
@@ -61,7 +62,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const projet = definition.cible.startsWith('T0.') ? 'S0' : `P${definition.cible.match(/^T(\d+)\./)?.[1]}`
   const chemin = path.join(RACINE, 'data/results', projet, `${definition.cible}.summary.json`)
   if (!fs.existsSync(chemin)) { console.error(`Résumé absent : ${path.relative(RACINE, chemin)} (npm run summarize -- ${definition.cible}, UC-006)`); process.exit(1) }
-  const resume = JSON.parse(fs.readFileSync(chemin, 'utf8')) as Resume
+  const resume = JSON.parse(fs.readFileSync(chemin, 'utf8')) as PageSummary
   const commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: RACINE, encoding: 'utf8' }).trim()
   const donnees: DonneesPage = { definition, resume, version: { coreVersion: CORE_VERSION, commit } }
   try {
