@@ -20,18 +20,18 @@ for (const f of fs.readdirSync(dirAudit).filter(n => /^constats-.*\.md$/.test(n)
   const fermer = () => { if (cur && !cur.vu) erreurs.push(`${f} : ${cur.id} sans disposition`) }
   for (const l of fs.readFileSync(path.join(dirAudit, f), 'utf8').split(/\r?\n/)) {
     let m: RegExpMatchArray | null
-    if ((m = l.match(/^### (\S+) · (critique|majeur|mineur)(?: |$)/))) { fermer(); cur = { id: m[1], fichier: f, genre: 'constat', gravite: m[2], vu: false } }
-    else if ((m = l.match(/^### (\S+) · ajout/))) { fermer(); cur = { id: m[1], fichier: f, genre: 'ajout', gravite: 'ajout', vu: false } }
+    if ((m = l.match(/^### (\S+) · (critique|majeur|mineur)(?: |$)/))) { fermer(); cur = { id: m[1]!, fichier: f, genre: 'constat', gravite: m[2]!, vu: false } }
+    else if ((m = l.match(/^### (\S+) · ajout/))) { fermer(); cur = { id: m[1]!, fichier: f, genre: 'ajout', gravite: 'ajout', vu: false } }
     else if (l.startsWith('### ')) { fermer(); cur = null; erreurs.push(`${f} : entrée non reconnue « ${l} »`) }
     else if (l.startsWith('**Disposition.**')) {
       const texte = l.slice('**Disposition.**'.length).replace(/ — Traité dans :.*$/, '').trim()
-      const verdict = texte.split(' —')[0]
+      const verdict = texte.split(' —')[0]!
       if (!cur) { erreurs.push(`${f} : disposition hors entrée`); continue }
       if (cur.vu) erreurs.push(`${f} : ${cur.id} a plusieurs dispositions`)
       if (!VERDICTS.includes(verdict)) erreurs.push(`${f} : ${cur.id} verdict inconnu « ${verdict} »`)
       cur.vu = true
       const marqueur = /(?:^|[ .;(])Écarts? ?:/.test(texte) ? 'Écart' : /(?:^|[ .;(])Adaptations? ?:/.test(texte) ? 'Adaptation' : ''
-      const points = [...l.matchAll(/§2\.4[^;)]*/g)].flatMap(x => [...(x[0].match(/points? ([\d, et]+)/)?.[1].match(/\d+/g) ?? [])].map(Number))
+      const points = [...l.matchAll(/§2\.4[^;)]*/g)].flatMap(x => [...(x[0].match(/points? ([\d, et]+)/)?.[1]!.match(/\d+/g) ?? [])].map(Number))
       entrees.push({ id: cur.id, fichier: cur.fichier, genre: cur.genre, gravite: cur.gravite, verdict, marqueur, points })
     }
   }

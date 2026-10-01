@@ -1,7 +1,7 @@
 ---
 id: UC-012
 name: Vérifier une reproduction
-status: Review
+status: Approved
 context: PAGES
 actors: [Lecteur]
 linkedRequirements: [FR-012, FR-017, NFR-001, NFR-003, C-008]
@@ -14,7 +14,7 @@ entities: [Page, Statement, ReproductionTarget, Verdict, Deviation, RunManifest,
 
 - **Acteur principal :** Lecteur
 - **But :** juger la solidité d'un résultat affiché à partir de sa cible, de son verdict, de sa distribution et du manifeste d'une exécution rejouée.
-- **Statut :** Review
+- **Statut :** Approved
 
 ## Préconditions
 

@@ -520,7 +520,9 @@ colonies-agentique/
   targets/                  <projet>/T<projet>.<n>.json : extrait exécutable de la fiche de reproduction, une cible par fichier
   tests/
     core/                   random, rk4, euler-maruyama, ssa, events, grid, analysis (T0.1, T0.3 à T0.16, T0.27 et les tests de grille, d'événements et de Poisson)
+    cli/                    run et replay (UC-001, UC-002)
     determinism.test.ts     T0.26 et test d'agrégation
+    verify.test.ts          chaîne de vérification (UC-008)
     conformance.test.ts     interdits et imports (T0.21)
     reproduction/<projet>/  un fichier par cible, piloté par targets/
     docking/<projet>.test.ts
@@ -532,7 +534,7 @@ colonies-agentique/
     results/<projet>/       résultats précalculés (JSON, CSV) et manifestes
   pages/                    HTML générés (esbuild) pour artifact ou page statique
   spikes/phase0/            protocole, code du spike, rapport (section 12)
-  outils/                   verifier-docs.ts et verifier-specs.ts (existent), verifier-cibles.ts, compile-scenarios.ts
+  outils/                   verifier-docs.ts, verifier-specs.ts, verifier-cibles.ts, verify.ts (chaîne de npm run verify); compile-scenarios.ts à venir
 ```
 
 ---
@@ -644,7 +646,7 @@ La durée cible du niveau « à chaque commit » est de [à confirmer] secondes;
 
 Le gabarit de la **fiche de reproduction** (un fichier Markdown par cible, quinze champs) est fixé par [04-protocole-reproduction.md](04-protocole-reproduction.md); la fiche reste la source de lecture et de gel. `targets/<projet>/T<projet>.<n>.json` en est l'**extrait exécutable** : source et emplacement (champs 1 et 2), paramètres (4), protocole (5), niveau (7), critère et marge (8 et 9), répétitions (10), graines (11), règle de décision (12), statut de lecture (13), portes (14). Le type `ReproductionTarget` (section 5) en est le contrat. Les états d'une cible avant exécution sont ceux du protocole : `blocked`, `provisional`, `frozen`.
 
-- **Correspondance fiche ↔ cible :** `outils/verifier-cibles.ts` vérifie que chaque identifiant `T<projet>.<n>` défini dans une fiche de projet a exactement un fichier dans `targets/`, avec le même niveau, le même n et la même marge, et réciproquement. Toute différence est une erreur.
+- **Correspondance fiche ↔ cible :** un projet est contrôlé dès que son dossier `targets/<projet>/` existe (ouverture de sa phase). `outils/verifier-cibles.ts` vérifie que chaque identifiant `T<projet>.<n>` défini dans une fiche de projet a exactement un fichier dans `targets/`, avec le même niveau, le même n et la même marge, et réciproquement. Toute différence est une erreur.
 - **Cible bloquée ou provisoire :** une cible `blocked` (source non lue; paramètres issus d'un résumé, d'une notice ou d'une source secondaire) est exécutée en `todo` : aucun code de modèle n'est requis, elle est listée dans le rapport. Une cible `provisional` (valeur marquée **[à confirmer]**) ne produit que des runs `exploratory` et, au mieux, un verdict « sous réserve ». Ni l'une ni l'autre n'est jamais comptée comme réussie. Un run `confirmatory` exige une cible `frozen`, exécutée **une fois** sur la liste de graines gelée (aucun ajustement de paramètre pour franchir la cible : calage sur une cible distincte, protocole de reproduction).
 - **Garde de puissance :** à la création du test, si le niveau est distributionnel (`TOST`), le harnais calcule `requiredNTost` et **échoue** si le n prévu est inférieur. Sans cette garde, une marge trop étroite passerait en silence. C'est la règle que le protocole de reproduction (section sur le choix de n) confie à ce harnais.
 - **Issues :** `satisfied`, `unsatisfied` ou `inconclusive` (issue indéterminée : le harnais augmente n jusqu'à `maxRepetitions`, sinon la cible le reste), selon les quatre cas du protocole. Les critères d'une même cible sont conjonctifs.
@@ -680,7 +682,7 @@ La colonne « Dossier » donne l'identifiant du dossier x-methodes. `T0.n` repre
 | T0.1 | xoshiro128**, état [1, 2, 3, 4] | les 10 premières sorties (11520, 0, 5927040, 70819200, 2031721883, 1637235492, 1287239034, 3734860849, 3729100597, 4258142804) à l'identité, sous Node et trois navigateurs | X1 |
 | T0.3 | SplitMix64, graine 1477776061723855037 | les 3 premières sorties (1985237415132408290, 2979275885539914483, 13511426838097143398) à l'identité | X3 |
 | T0.4 | ordre de RK4 sur M1c (σ = 10, γ = 3, α = 1/3, ρ = 3, T = 4, y₀ = (0,01; 0,0101)) | rapport des erreurs maximales quand h → h/2 ∈ [12; 20] (référence h = T/64 000) | X4 |
-| T0.5 | équilibre de M1c à σ = 10 | (Ψ_A, Ψ_B) = (0,8497; 0,0392) à ±10⁻³, t = 200, h = 0,01 | X5 |
+| T0.5 | équilibre de M1c à σ = 10 | (Ψ_A, Ψ_B) = (0,8497; 0,0392) à ±10⁻³, t = 200, h = 0,01, y₀ = (0,0101; 0,01) (A favorisée; avec le y₀ de T0.4, B l'emporte et l'ordre s'inverse) | X5 |
 | T0.6 | SSA direct, U→A seul | moyenne de A(t = 2), N = 200, γ = 0,5, sur 2 000 runs, à moins de 3 erreurs-types de 126,42 (mesuré dans le dossier : 126,16 ± 0,15) | X6 |
 | T0.7 | docking EDO ↔ SSA de M1c (exploratoire, aucune valeur publiée) | P(|A−B|/N > 0,3 à t = 40) sur 200 runs : à σ < σ* (1,6875), décroît avec N (0,445 ± 0,035 à N = 50; 0,105 ± 0,022 à N = 200); à σ = 10, tend vers 1 (0,950 ± 0,015; 1,000) | X7 |
 | T0.8 à T0.16 | `analysis/` : formules statistiques reprises par le protocole | retrouve : n = 969 et MDE 13,27 % et 7,57 % de [Miller 2024] (X8, X9); facteur (1 + 2/K)/3 (X10); exemple du §4.2 à 1/12 et non 1/9 (X11); n_sim = 1 900 (couverture 95 %, ES = 0,5 %) et 10 000 au pire cas (X12); n par groupe de TOST 70, 191, 429 à ±2 (X13); seuil K-S 0,3037 pour n = 40 (X14); interaction ×2 et ×16 (X15); erreur-type de l'écart-type empirique EmpSE/√(2(n−1)) (X16) | X8 à X16 |

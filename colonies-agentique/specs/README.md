@@ -61,6 +61,6 @@ Un cas présent au diagramme sans fichier est « non rédigé ». On le rédige 
 
 ## Par où commencer
 
-1. Revoir les sept cas au statut `Review` (UC-001, UC-002, UC-003, UC-008, UC-010, UC-011, UC-012) avec leurs « Points soumis à la revue », puis passer ceux que tu acceptes à `Approved`.
-2. Implanter dans l'ordre de la phase 0 ([fiche S0](../projets/S0-socle.md)) : UC-008 (chaîne de vérification), UC-001 et UC-002 (noyau), puis UC-003 (premières cibles de P1); le gabarit de page (UC-010 à UC-012) après le spike.
+1. Les sept cas de la phase 0 sont approuvés (2026-10-01). UC-001, UC-002 et UC-008 sont `Implemented`, à couverture de spécification complète : leur passage à `Verified` attend la revue des tests par le chercheur.
+2. Suite de la phase 0 ([fiche S0](../projets/S0-socle.md)) : UC-003 (harnais de cibles, premières cibles de P1); le gabarit de page (UC-010 à UC-012) après le spike.
 3. Rédiger UC-004 à UC-007 quand le noyau passe ses cibles T0; UC-013 à UC-015 avec la première page; UC-020 et UC-021 avant la phase 3, ou plus tôt si la porte GF1 retient la collecte anticipée de Haiku 4.5 ([09](../docs/09-feuille-de-route.md)).

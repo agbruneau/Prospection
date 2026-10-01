@@ -31,11 +31,11 @@ const lignes = doc.slice(debut, fin).split('\n').filter(l => /^\|\s*T\d+\.\d+(?:
 const vues = new Map<string, string>()
 for (const l of lignes) {
   const cellules = l.split('|').slice(1, -1).map(c => c.trim())
-  const etat = cellules[cellules.length - 1].split(/[ (;,]/)[0]
+  const etat = (cellules[cellules.length - 1] ?? '').split(/[ (;,]/)[0]!
   if (cellules.length !== 7) erreurs.push(`${cellules[0]} : ${cellules.length} colonnes au lieu de 7`)
   if (!ETATS.includes(etat)) erreurs.push(`${cellules[0]} : état « ${etat} » hors vocabulaire`)
   // Une ligne peut regrouper une plage « T0.23 à T0.25 » (numéros réservés par la fiche S0).
-  const plage = cellules[0].match(/^(T\d+)\.(\d+)(?: à T\d+\.(\d+))?$/)
+  const plage = (cellules[0] ?? '').match(/^(T\d+)\.(\d+)(?: à T\d+\.(\d+))?$/)
   if (!plage) { erreurs.push(`${cellules[0]} : identifiant illisible`); continue }
   const [, tete, de, a] = plage
   for (let k = Number(de); k <= Number(a ?? de); k++) {

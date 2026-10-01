@@ -1,7 +1,7 @@
 ---
 id: UC-008
 name: Vérifier le dépôt
-status: Review
+status: Implemented
 context: SIM
 actors: [Pipeline CI, Chercheur]
 linkedRequirements: [FR-008, NFR-006, NFR-010, C-001, C-002, C-007]
@@ -14,7 +14,7 @@ entities: [ReproductionTarget]
 
 - **Acteur principal :** Pipeline CI (le chercheur peut lancer la même commande)
 - **But :** savoir, à chaque commit, si le comportement spécifié tient : types, tests du noyau, conformité, documentation, cibles et traçabilité de la spécification.
-- **Statut :** Review
+- **Statut :** Implemented
 
 ## Préconditions
 

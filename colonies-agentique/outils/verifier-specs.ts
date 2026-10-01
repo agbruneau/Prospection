@@ -21,11 +21,11 @@ export function lireMeta(texte: string): Record<string, string | string[]> | nul
   const m = texte.match(/^---\r?\n([\s\S]*?)\r?\n---/)
   if (!m) return null
   const meta: Record<string, string | string[]> = {}
-  for (const ligne of m[1].split(/\r?\n/)) {
+  for (const ligne of m[1]!.split(/\r?\n/)) {
     const kv = ligne.match(/^(\w+):\s*(.*)$/)
     if (!kv) continue
-    const v = kv[2].trim()
-    meta[kv[1]] = v.startsWith('[') ? v.slice(1, -1).split(',').map(s => s.trim()).filter(Boolean) : v
+    const v = kv[2]!.trim()
+    meta[kv[1]!] = v.startsWith('[') ? v.slice(1, -1).split(',').map(s => s.trim()).filter(Boolean) : v
   }
   return meta
 }
@@ -39,8 +39,8 @@ export function lireCas(texte: string, fichier: string): CasUtilisation {
   return {
     id: String(meta.id ?? ''), fichier, meta,
     etapes: (nominal.match(/^\d+\. /gm) ?? []).length,
-    flots: [...texte.matchAll(/^### ([AE]\d+)\./gm)].map(m => m[1]),
-    regles: [...texte.matchAll(/^- \*\*(BR-\d{3})\*\*/gm)].map(m => m[1]),
+    flots: [...texte.matchAll(/^### ([AE]\d+)\./gm)].map(m => m[1]!),
+    regles: [...texte.matchAll(/^- \*\*(BR-\d{3})\*\*/gm)].map(m => m[1]!),
     references: [...new Set(texte.match(/\bBR-\d{3}\b/g) ?? [])],
   }
 }
@@ -65,20 +65,20 @@ export function analyser(racine: string): Rapport {
   for (const m of lire('catalogue-exigences.md').matchAll(/^\| (FR|NFR|C)-(\d{3}) \| ([^|]+)\|/gm)) {
     const id = `${m[1]}-${m[2]}`
     if (exigences.has(id)) erreurs.push(`catalogue : ${id} défini deux fois`)
-    exigences.set(id, m[3].trim())
+    exigences.set(id, m[3]!.trim())
   }
 
   // Modèle d'entités : noms canoniques entre accents graves dans les titres ###
   const entites = new Set<string>()
   for (const m of lire('modele-entites.md').matchAll(/^### .*$/gm))
-    for (const n of m[0].matchAll(/`([^`]+)`/g)) entites.add(n[1])
+    for (const n of m[0].matchAll(/`([^`]+)`/g)) entites.add(n[1]!)
 
   // Diagramme : liste de contrôle des cas
   const diagramme = new Map<string, string>()
   for (const m of lire('cas-utilisation.puml').matchAll(/usecase "UC-(\d{3}) ([^"]+)"/g)) {
     const id = `UC-${m[1]}`
     if (diagramme.has(id)) erreurs.push(`diagramme : ${id} présent deux fois`)
-    diagramme.set(id, m[2].trim())
+    diagramme.set(id, m[2]!.trim())
   }
 
   // Cas d'utilisation rédigés
@@ -106,7 +106,7 @@ export function analyser(racine: string): Rapport {
     if (uc.etapes === 0) e('scénario nominal sans étape numérotée')
     for (const m of texte.matchAll(/^### ([AE]\d+)\.[^\n]*\n\*\*Déclencheur :\*\*([^\n]*)/gm)) {
       // « à l'étape N » ou, pour un même traitement à plusieurs étapes, « à l'une des étapes N à M »
-      const etape = m[2].match(/à l'(?:une des )?étapes? (\d+)(?: à (\d+))?/)
+      const etape = m[2]!.match(/à l'(?:une des )?étapes? (\d+)(?: à (\d+))?/)
       if (!etape) e(`${m[1]} : déclencheur sans « à l'étape N »`)
       else for (const n of [etape[1], etape[2]].filter(Boolean).map(Number))
         if (n < 1 || n > uc.etapes) e(`${m[1]} : étape ${n} hors du scénario nominal (1 à ${uc.etapes})`)
@@ -119,7 +119,7 @@ export function analyser(racine: string): Rapport {
       if (definitions.has(br)) e(`${br} déjà défini dans ${definitions.get(br)}`)
       definitions.set(br, nom)
     }
-    const sansRevue = texte.split(/^## Points soumis à la revue/m)[0]
+    const sansRevue = texte.split(/^## Points soumis à la revue/m)[0]!
     for (const m of sansRevue.matchAll(FLOUS)) avertissements.push(`${nom} : mot flou « ${m[1]} »`)
   }
   for (const uc of cas.values())
@@ -143,7 +143,7 @@ export function analyser(racine: string): Rapport {
     }
     if (rel.startsWith('tests/'))
       for (const m of texte.matchAll(/\b(?:test|it)\(\s*['"`]([^'"`]+)/g))
-        if (!/^UC-\d{3} /.test(m[1])) erreurs.push(`${rel} : nom de test sans identifiant de cas : « ${m[1]} »`)
+        if (!/^UC-\d{3} /.test(m[1]!)) erreurs.push(`${rel} : nom de test sans identifiant de cas : « ${m[1]} »`)
   }
 
   return { erreurs, avertissements, tableau: tableauDeBord(exigences, diagramme, cas, couverture) }

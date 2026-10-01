@@ -1,7 +1,7 @@
 ---
 id: UC-002
 name: Rejouer une exécution
-status: Review
+status: Implemented
 context: SIM
 actors: [Chercheur]
 linkedRequirements: [FR-002, NFR-001, C-002]
@@ -14,7 +14,7 @@ entities: [RunManifest, Scenario]
 
 - **Acteur principal :** Chercheur
 - **But :** savoir si une exécution passée se reproduit au bit près, ou seulement en distribution, sur le poste courant.
-- **Statut :** Review
+- **Statut :** Implemented
 
 ## Préconditions
 

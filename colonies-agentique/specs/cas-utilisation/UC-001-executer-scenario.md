@@ -1,7 +1,7 @@
 ---
 id: UC-001
 name: Exécuter un scénario
-status: Review
+status: Implemented
 context: SIM
 actors: [Chercheur]
 linkedRequirements: [FR-001, NFR-001, NFR-009, C-001, C-002, C-006]
@@ -14,7 +14,7 @@ entities: [Scenario, ReferenceModel, RunManifest]
 
 - **Acteur principal :** Chercheur
 - **But :** obtenir, pour un scénario et sa graine, des séries et un manifeste qui permettent de rejouer l'exécution au bit près.
-- **Statut :** Review
+- **Statut :** Implemented
 
 ## Préconditions
 

@@ -1,7 +1,7 @@
 ---
 id: UC-010
 name: Suivre un récit guidé
-status: Review
+status: Approved
 context: PAGES
 actors: [Lecteur]
 linkedRequirements: [FR-010, FR-017, NFR-003, NFR-009, C-004, C-008]
@@ -14,7 +14,7 @@ entities: [Page, PageSummary, Statement]
 
 - **Acteur principal :** Lecteur
 - **But :** comprendre un mécanisme en prédisant le résultat d'une exécution, puis en le comparant à l'exécution typique et à sa distribution sur N graines.
-- **Statut :** Review
+- **Statut :** Approved
 
 ## Préconditions
 

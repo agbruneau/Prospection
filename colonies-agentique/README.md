@@ -4,7 +4,7 @@ Programme de recherche en ingénierie des systèmes : étudier la fourmilière *
 
 ## État
 
-Documentation et recherche prêtes. **Aucun code de simulation n'est encore écrit** : ni noyau, ni modèle de référence, ni page interactive, ni harnais. Le seul code présent sert à contrôler le reste : des scripts de recoupement numérique exploratoires (`recherche/verifications-numeriques/`, plus `recherche/dossiers/p9_checks.py`) et trois outils de contrôle de la documentation (`outils/`).
+Phase 0 commencée (2026-10-01). Le **noyau minimal** existe : PRNG à flux nommés (T0.1, T0.3), empreinte d'état, scénario, enregistreur, manifeste, RK4 (T0.4, T0.5), un premier modèle de référence (M1c de [Seeley et al. 2012], banc d'essai du socle) et les commandes `run.ts` et `replay.ts` (cas UC-001 et UC-002), avec la chaîne `npm run verify` (UC-008). Rien encore du spike navigateur, du SSA, d'Euler–Maruyama, des statistiques, des métriques R et G, du harnais de cibles (UC-003) ni des pages. Les scripts de `recherche/verifications-numeriques/` restent des recoupements exploratoires (oracles), hors du moteur.
 
 ## Carte des documents
 
@@ -49,7 +49,10 @@ colonies-agentique/
 │   ├── dossiers/    p1… p9, x-choregraphie, x-methodes, x-vulgarisation (+ p9_checks.py)
 │   ├── verifications/
 │   └── verifications-numeriques/
-└── outils/          verifier-docs.ts, verifier-architecture.ts, compter-dispositions.ts, verifier-specs.ts
+├── src/             core/ (noyau), models/ (modèles de référence), cli/ (run, replay)
+├── scenarios/       scénarios JSON par modèle
+├── tests/           core/, cli/, determinism, conformance, verify (noms de tests = identifiants UC)
+└── outils/          verify.ts, verifier-docs.ts, verifier-specs.ts, verifier-cibles.ts, verifier-architecture.ts, compter-dispositions.ts
 ```
 
 ## Par où commencer
@@ -68,17 +71,19 @@ colonies-agentique/
 
 ## Prochaines étapes (phase 0)
 
-Prérequis : Node 24.12 ou plus récent ([`docs/05-spec-simulation.md`](docs/05-spec-simulation.md); exécute le `.ts` directement), TypeScript pour `tsc --noEmit`, Python 3 avec numpy pour les scripts de recoupement.
+Prérequis : Node 24.12 ou plus récent ([`docs/05-spec-simulation.md`](docs/05-spec-simulation.md); exécute le `.ts` directement), `npm ci` (TypeScript et `@types/node` en dépendances de développement), Python 3 avec numpy pour les scripts de recoupement. Exemple : `node src/cli/run.ts scenarios/p5-seeley-2012/m1c-sigma10.json`, puis `node src/cli/replay.ts <manifeste>`.
 
 **Décisions du chercheur à dater d'abord** ([`docs/09-feuille-de-route.md`](docs/09-feuille-de-route.md), jalons et portes GF) : la plus urgente est la porte GF1, à trancher avant le 2026-10-15 (retrait possible de Haiku 4.5; par défaut, perte déclarée du point historique de P7). Suivent l'enveloppe d'API de P7, le dépôt dédié et les licences (`docs/08-science-ouverte-ethique.md`), et les échéances de publication.
 
 1. S0 : écrire les gabarits (fiche de reproduction, ODD, préenregistrement) et le registre des déviations; préenregistrer les hypothèses du socle avant tout run confirmatoire.
 2. Spike navigateur : mesurer hébergement, worker et rendu à grand N, puis consigner les décisions D1 à D5 du spike (`docs/05-spec-simulation.md`; à ne pas confondre avec les décisions d’architecture D1 à D18 de `docs/02-architecture-programme.md`).
-3. Noyau, métriques R et G, harnais et tests; recoupement par les scripts existants. Critère : `tsc --noEmit` puis `node --test` sortent à 0.
+3. Noyau (fait en partie : PRNG, scénario, manifeste, RK4, run et replay), puis SSA et Euler–Maruyama (T0.6, T0.7, T0.27), statistiques, métriques R et G, harnais de cibles (UC-003) et tests; recoupement par les scripts existants. Critère : `npm run verify` sort à 0.
 4. V0 : gabarit de page, charte et page de typologie; aucune collecte d'évaluation avant l'avis du comité d'éthique.
 5. Décision de la porte de sortie de la phase 0 (go, go conditionnel, no-go; critères dans la fiche S0), puis phase 1 : P1, P8, P5.
 
-## Vérifier la documentation
+## Vérifier le dépôt
+
+`npm run verify` (cas UC-008) enchaîne la vérification des types sous les deux configurations, les tests (`npm test`), puis les trois contrôles ci-dessous, et s'arrête à la première étape en échec. Les outils se lancent aussi seuls.
 
 `node outils/verifier-docs.ts` contrôle les liens relatifs et les ancres, les étiquettes de citation contre la bibliographie, les identifiants H, T et E contre les fiches, le gabarit à treize sections des fiches, la présence des documents attendus et le renseignement de chaque disposition d'audit (`constats-*.md`). Code de sortie 1 s'il reste une erreur; les avertissements n'échouent pas. 
 

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "regime": "exploratory",
+  "model": { "id": "p5-seeley-2012", "version": "1", "article": "Seeley et al. 2012" },
+  "time": { "unit": "cycle", "dt": 0.01, "horizon": 200, "sampling": 1 },
+  "order": "synchronous",
+  "seed": "20261001",
+  "streams": [],
+  "parameters": {
+    "sigma": { "value": 10, "unit": "1", "source": "Seeley et al. 2012, SOM, Fig. S3B", "status": "published" },
+    "gamma": { "value": 3, "unit": "1", "source": "Seeley et al. 2012, SOM, Fig. S3", "status": "published" },
+    "alpha": { "value": 0.3333333333333333, "unit": "1", "source": "Seeley et al. 2012, SOM, Fig. S3 (1/3)", "status": "published" },
+    "rho": { "value": 3, "unit": "1", "source": "Seeley et al. 2012, SOM, Fig. S3", "status": "published" }
+  },
+  "initial": { "A": 0.0101, "B": 0.01 },
+  "measures": ["A", "B", "U"],
+  "interventions": []
+}
