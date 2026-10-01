@@ -294,11 +294,23 @@
     ]
   },
   "targetHash": "6afc150e289e66e4",
+  "scenarios": {
+    "scenarios/p1-goss-1989/fig2a-r1.json": "2536d63061484e1a",
+    "scenarios/p1-goss-1989/fig2b-r1_4.json": "1cd9bcee82a87b9c",
+    "scenarios/p1-goss-1989/fig2c-r2.json": "733b7bb545a6689f"
+  },
   "regime": "exploratory",
   "code": {
-    "commit": "3c5a5d0731920ffb24e321e354d33ed760196a5e",
+    "commit": "7c7075971cb21cd90b235e40e005d854c1e6a8f1",
     "cleanTree": true
   },
+  "engine": {
+    "kind": "node",
+    "version": "24.19.0",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "coreVersion": "0.1.0",
   "verdict": {
     "id": "T1.1",
     "outcome": "satisfied",

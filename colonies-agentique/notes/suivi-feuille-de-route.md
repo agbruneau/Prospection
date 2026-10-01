@@ -58,7 +58,7 @@ Tableau de suivi prévu par la [feuille de route](../docs/09-feuille-de-route.md
 |---|---|---|---|---|
 | P1-01 | P1 | Fiche de reproduction T1.1 | En cours | [brouillon](../projets/reproduction/T1.1.md); gel : D-05 |
 | P1-02 | P1 | Modèle p1-goss-1989 et scénarios de la fig. 2a-c | Fait | accord avec l'oracle Python à moins de 3 ES (`tests/models/goss.test.ts`) |
-| P1-03 | P1 | Pilote exploratoire de T1.1 | Fait | satisfaite sous réserve, 15 cellules sur 15, commit 3c5a5d0 ([verdict](../data/results/P1/T1.1.verdict.json)) |
+| P1-03 | P1 | Pilote exploratoire de T1.1 | Fait | satisfaite sous réserve, 15 cellules sur 15, commit 7c70759 (modèle version 2) ([verdict](../data/results/P1/T1.1.verdict.json)) |
 | P1-04 | P1 | Fiche de reproduction T1.2 (courte tardive, même modèle) | À faire | — |
 | P1-05 | P1 | Modèle à sept compartiments de Seeley et al. 1991 et fiche T1.4 | À faire | oracle présent dans `p1_verif_recrutement.py` |
 | P1-06 | P1 | Cibles T1.3, T1.5 à T1.9 | Bloqué | causes dans `targets/P1/` (`npm run reproduce -- P1`) |
