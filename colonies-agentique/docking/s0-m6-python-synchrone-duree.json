@@ -1,0 +1,30 @@
+{
+  "id": "s0-m6-python-synchrone-duree",
+  "level": "implementations",
+  "candidate": {
+    "scenario": "scenarios/s0-m6-quorum/m6-synchrone.json"
+  },
+  "reference": {
+    "oracle": "data/oracles/x-methodes-m6.json",
+    "field": "duree"
+  },
+  "cells": [
+    {
+      "id": "synchrone-k1",
+      "parameters": {
+        "k": 1
+      }
+    },
+    {
+      "id": "synchrone-k9",
+      "parameters": {
+        "k": 9
+      }
+    }
+  ],
+  "observable": {
+    "name": "duree"
+  },
+  "repetitions": 1000,
+  "masterSeed": "20261001"
+}

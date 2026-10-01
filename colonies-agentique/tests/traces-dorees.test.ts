@@ -17,6 +17,7 @@ const p = (value: number) => ({ value, unit: '1', source: 'Seeley et al. 2012, S
 
 // Un scénario par modèle, chacun d'au moins 1 000 pas, échantillonné tous les 100 pas.
 const goss = lire('scenarios/p1-goss-1989/fig2c-r2.json')
+const m6 = lire('scenarios/s0-m6-quorum/m6-sequentiel.json')
 const SCENARIOS: Record<string, Record<string, unknown>> = {
   'p1-goss-1989': { ...goss, time: { ...goss.time, horizon: 1000, sampling: 100 }, parameters: { ...goss.parameters, countTo: { ...goss.parameters.countTo, value: 100_000 } } },
   'p5-seeley-2012': { ...lire('scenarios/p5-seeley-2012/m1c-sigma10.json'), time: { unit: 'cycle', dt: 0.01, horizon: 10, sampling: 1 } },
@@ -27,6 +28,9 @@ const SCENARIOS: Record<string, Record<string, unknown>> = {
   'p5-pais-2013-ou': {
     schema: 1, regime: 'exploratory', model: { id: 'p5-pais-2013-ou', version: '1', article: 'Pais et al. 2013' }, time: { unit: 'cycle', dt: 0.01, horizon: 10, sampling: 1 },
     order: 'synchronous', seed: '1', streams: ['noise'], parameters: { a: p(0), b: p(-1), c: p(0.5) }, initial: { x: 1 }, measures: ['x'], interventions: [],
+  },
+  's0-m6-quorum': {   // r = 0,001 : la colonie n'est pas toute engagée avant le pas 1 000
+    ...m6, time: { ...m6.time, horizon: 1000, sampling: 100 }, parameters: { ...m6.parameters, r: { ...m6.parameters.r, value: 0.001 } },
   },
   's0-j4-copie': {
     schema: 1, regime: 'exploratory', model: { id: 's0-j4-copie', version: '1', article: 'Huberman et Glance 1993' }, time: { unit: 'cycle', dt: 1, horizon: 1000, sampling: 100 },

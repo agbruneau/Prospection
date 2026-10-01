@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "plan": {
+    "id": "s0-m6-python-sequentiel-fraction",
+    "level": "implementations",
+    "candidate": {
+      "scenario": "scenarios/s0-m6-quorum/m6-sequentiel.json"
+    },
+    "reference": {
+      "oracle": "data/oracles/x-methodes-m6.json",
+      "field": "fractionX"
+    },
+    "cells": [
+      {
+        "id": "sequentiel-k1",
+        "parameters": {
+          "k": 1
+        }
+      },
+      {
+        "id": "sequentiel-k9",
+        "parameters": {
+          "k": 9
+        }
+      }
+    ],
+    "observable": {
+      "name": "fractionX"
+    },
+    "repetitions": 1000,
+    "masterSeed": "20261001"
+  },
+  "scenarios": {
+    "scenarios/s0-m6-quorum/m6-sequentiel.json": "bcff74eeb861e37c"
+  },
+  "seeds": {
+    "master": "20261001",
+    "repetitions": 1000,
+    "pairing": "by-repetition"
+  },
+  "cells": [
+    {
+      "id": "sequentiel-k1",
+      "candidate": {
+        "estimate": 0.755250000000001,
+        "se": 0.004302871390385982,
+        "n": 1000
+      },
+      "reference": {
+        "estimate": 0.7612,
+        "se": 0.004002884345454298
+      }
+    },
+    {
+      "id": "sequentiel-k9",
+      "candidate": {
+        "estimate": 0.821175,
+        "se": 0.0047047187752036436,
+        "n": 1000
+      },
+      "reference": {
+        "estimate": 0.8279,
+        "se": 0.004392423406660995
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "sujet": "sequentiel-k1",
+      "ecart": -0.005949999999999012,
+      "critere": "|écart| ≤ 3 ES combinées (0.01763)",
+      "aligne": true
+    },
+    {
+      "sujet": "sequentiel-k9",
+      "ecart": -0.006724999999999981,
+      "critere": "|écart| ≤ 3 ES combinées (0.01931)",
+      "aligne": true
+    }
+  ],
+  "outcome": "aligned",
+  "code": {
+    "commit": "53c2f0b72f61d620b48a8814893e1452e18dbe60",
+    "cleanTree": false
+  },
+  "engine": {
+    "kind": "node",
+    "version": "24.19.0",
+    "platform": "win32",
+    "arch": "x64"
+  }
+}

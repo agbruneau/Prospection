@@ -18,7 +18,7 @@ export interface PlanDocking {
   id: string
   level: Niveau
   candidate: { scenario: string }
-  reference: { oracle?: string; scenario?: string; relation?: string }
+  reference: { oracle?: string; field?: string; scenario?: string; relation?: string }   // field : observable d'une cellule d'oracle à plusieurs grandeurs
   cells: readonly { id: string; parameters: Readonly<Record<string, number>> }[]
   observable: { name: string; threshold?: Seuil | readonly Seuil[] }
   relations?: readonly { from: string; to: string; expected: 'increasing' | 'decreasing' }[]
@@ -46,7 +46,8 @@ function valider(plan: PlanDocking, id: string, racine: string) {
   let oracle: Record<string, Estimation> | undefined, reference: Record<string, any> | undefined
   if (plan.level === 'implementations') {
     if (!plan.reference?.oracle) throw invalide('reference.oracle', 'oracle requis au niveau implementations')
-    oracle = lire(plan.reference.oracle, 'reference.oracle').cells as Record<string, Estimation>
+    const cellules = lire(plan.reference.oracle, 'reference.oracle').cells as Record<string, any>
+    oracle = Object.fromEntries(Object.entries(cellules ?? {}).map(([c, v]) => [c, (plan.reference.field ? v?.[plan.reference.field] : v) as Estimation]))
     for (const c of ids) if (!oracle?.[c]) throw invalide('reference.oracle', `cellule absente de l'oracle : ${c}`)
   }
   if (plan.level === 'relational') {

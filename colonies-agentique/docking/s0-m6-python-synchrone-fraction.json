@@ -1,0 +1,30 @@
+{
+  "id": "s0-m6-python-synchrone-fraction",
+  "level": "implementations",
+  "candidate": {
+    "scenario": "scenarios/s0-m6-quorum/m6-synchrone.json"
+  },
+  "reference": {
+    "oracle": "data/oracles/x-methodes-m6.json",
+    "field": "fractionX"
+  },
+  "cells": [
+    {
+      "id": "synchrone-k1",
+      "parameters": {
+        "k": 1
+      }
+    },
+    {
+      "id": "synchrone-k9",
+      "parameters": {
+        "k": 9
+      }
+    }
+  ],
+  "observable": {
+    "name": "fractionX"
+  },
+  "repetitions": 1000,
+  "masterSeed": "20261001"
+}

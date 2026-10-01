@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "plan": {
+    "id": "s0-m6-python-synchrone-duree",
+    "level": "implementations",
+    "candidate": {
+      "scenario": "scenarios/s0-m6-quorum/m6-synchrone.json"
+    },
+    "reference": {
+      "oracle": "data/oracles/x-methodes-m6.json",
+      "field": "duree"
+    },
+    "cells": [
+      {
+        "id": "synchrone-k1",
+        "parameters": {
+          "k": 1
+        }
+      },
+      {
+        "id": "synchrone-k9",
+        "parameters": {
+          "k": 9
+        }
+      }
+    ],
+    "observable": {
+      "name": "duree"
+    },
+    "repetitions": 1000,
+    "masterSeed": "20261001"
+  },
+  "scenarios": {
+    "scenarios/s0-m6-quorum/m6-synchrone.json": "a7dab50b0ae7232c"
+  },
+  "seeds": {
+    "master": "20261001",
+    "repetitions": 1000,
+    "pairing": "by-repetition"
+  },
+  "cells": [
+    {
+      "id": "synchrone-k1",
+      "candidate": {
+        "estimate": 276.466,
+        "se": 2.1587841932887124,
+        "n": 1000
+      },
+      "reference": {
+        "estimate": 276.574,
+        "se": 2.257014097571532
+      }
+    },
+    {
+      "id": "synchrone-k9",
+      "candidate": {
+        "estimate": 325.566,
+        "se": 2.389468812352487,
+        "n": 1000
+      },
+      "reference": {
+        "estimate": 325.268,
+        "se": 2.5365986100501807
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "sujet": "synchrone-k1",
+      "ecart": -0.10800000000000409,
+      "critere": "|écart| ≤ 3 ES combinées (9.37)",
+      "aligne": true
+    },
+    {
+      "sujet": "synchrone-k9",
+      "ecart": 0.2980000000000018,
+      "critere": "|écart| ≤ 3 ES combinées (10.45)",
+      "aligne": true
+    }
+  ],
+  "outcome": "aligned",
+  "code": {
+    "commit": "53c2f0b72f61d620b48a8814893e1452e18dbe60",
+    "cleanTree": false
+  },
+  "engine": {
+    "kind": "node",
+    "version": "24.19.0",
+    "platform": "win32",
+    "arch": "x64"
+  }
+}
