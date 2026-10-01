@@ -138,7 +138,7 @@ Ce qui est resté, a bougé, a été ajouté ou recadré. Sources : cadre (secti
 
 ## 4. Matrice de traçabilité
 
-Une ligne par cible de reproduction de chaque fiche (190 identifiants; T0.23 à T0.25, numéros réservés et non définis par S0, tiennent sur une ligne), qui croise concept, espèce (préréglage), type de modèle, source, cible T, statut de lecture et état. Elle prépare le fichier `donnees/matrice.csv` de S0 (source de vérité prévue par la fiche S0, validateur `outils/verifier-matrice.ts` à écrire) sans le remplacer : les colonnes `canal`, `niveau`, `etat` et `parite` de S0 se remplissent à partir des fiches, et **la fiche du projet prévaut** en cas d'écart. Contrôle de couverture : `node outils/verifier-architecture.ts` compare cette matrice aux identifiants T définis dans les fiches (section « Contrôles » en fin de document).
+Une ligne par cible de reproduction de chaque fiche (190 identifiants; T0.23 à T0.25, numéros réservés et non définis par S0, tiennent sur une ligne), qui croise concept, espèce (préréglage), type de modèle, source, cible T, statut de lecture et état. Elle prépare le fichier `data/matrice.csv` de S0 (source de vérité prévue par la fiche S0, validateur `outils/verifier-matrice.ts` à écrire) sans le remplacer : les colonnes `canal`, `niveau`, `etat` et `parite` de S0 se remplissent à partir des fiches, et **la fiche du projet prévaut** en cas d'écart. Contrôle de couverture : `node outils/verifier-architecture.ts` compare cette matrice aux identifiants T définis dans les fiches (section « Contrôles » en fin de document).
 
 ### Identifiants de cibles et correspondance avec les dossiers
 
@@ -516,7 +516,7 @@ Hors S0, **60 cibles de fourmi contre 48 d'abeille**, plus T4.12 commune [I, cal
 
 | Artefact | Producteur | Consommateurs | Remarque |
 |---|---|---|---|
-| `donnees/typologie.csv`, `donnees/matrice.csv` | S0 | P7, V0, tous | validateur à écrire (`outils/verifier-matrice.ts`) |
+| `data/typologie.csv`, `data/matrice.csv` | S0 | P7, V0, tous | validateur à écrire (`outils/verifier-matrice.ts`) |
 | `targets/<projet>.json` et `outils/verifier-cibles.ts` | spécification; P4 | tous | dérive fiche ↔ cibles exécutables (risque R25 de la spécification) |
 | `data/figures/<étiquette>-<figure>.csv` (colonnes x, y, yLow, yHigh) | spécification (numérisations) | tous | licence de redistribution à vérifier ([08-science-ouverte-ethique.md](08-science-ouverte-ethique.md)) |
 | Manifeste de run et manifeste de campagne | spécification; P7 | tous | manifeste et graine rejouent un modèle déterministe sur le même moteur |

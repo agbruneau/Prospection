@@ -532,7 +532,7 @@ colonies-agentique/
     results/<projet>/       résultats précalculés (JSON, CSV) et manifestes
   pages/                    HTML générés (esbuild) pour artifact ou page statique
   spikes/phase0/            protocole, code du spike, rapport (section 12)
-  outils/                   verifier-docs.ts (existe), verifier-cibles.ts, compile-scenarios.ts
+  outils/                   verifier-docs.ts et verifier-specs.ts (existent), verifier-cibles.ts, compile-scenarios.ts
 ```
 
 ---
@@ -627,7 +627,7 @@ Un appel égale une ligne JSONL, compressée (gzip) et archivée hors git, dans 
 
 ### 9.1 Niveaux
 
-Exécuteur : `node:test` (stable depuis Node v20.0.0; ramasse `**/*.test.ts` quand le type stripping est actif; snapshots stables depuis v23.4.0, audit M13). Commande unique : `npm run verify` = `tsc --noEmit` (deux configurations) → `node --test tests/core tests/determinism.test.ts tests/conformance.test.ts` → `node outils/verifier-docs.ts` → `node outils/verifier-cibles.ts`.
+Exécuteur : `node:test` (stable depuis Node v20.0.0; ramasse `**/*.test.ts` quand le type stripping est actif; snapshots stables depuis v23.4.0, audit M13). Commande unique : `npm run verify` = `tsc --noEmit` (deux configurations) → `node --test tests/core tests/determinism.test.ts tests/conformance.test.ts` → `node outils/verifier-docs.ts` → `node outils/verifier-cibles.ts` → `node outils/verifier-specs.ts` (traçabilité du noyau de spécification `specs/`, cas UC-008).
 
 | Niveau | Contenu | Cadence |
 |---|---|---|

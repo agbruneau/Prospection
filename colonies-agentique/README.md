@@ -24,6 +24,8 @@ Le cadre prime sur tout : en cas de conflit, on corrige l'autre document.
 | [`docs/09-feuille-de-route.md`](docs/09-feuille-de-route.md) | Séquence des phases, portes, effort | Implante |
 | [`docs/10-glossaire.md`](docs/10-glossaire.md) | Termes FR/EN, homonymies biologie/informatique | Tous |
 | [`docs/11-bibliographie.md`](docs/11-bibliographie.md) | Une entrée par étiquette de citation, avec statut (*vérifiée*, *corrigée*, *non vérifiée*) et étiquettes ambiguës | Tous |
+| [`specs/`](specs/README.md) | Noyau de spécification du logiciel (AI Unified Process) : vision, exigences FR/NFR/C, modèle d’entités, cas d’utilisation `UC-###`, tableau de bord généré. Fait foi pour le comportement du logiciel | Implante, relecteur |
+| [`CLAUDE.md`](CLAUDE.md) | Consignes pour les agents qui modifient le code : spécification d’abord, synchronisation, tests dérivés des cas | Agents |
 | [`projets/`](projets/) | Une fiche par projet (S0, P1 à P9), treize sections numérotées : hypothèses, cibles T, expériences E, risques, livrables, critères d'achèvement | Implante |
 | [`recherche/dossiers/`](recherche/dossiers/) | Dossiers vérifiés, source des équations, paramètres, cibles chiffrées et réserves | Implante, relecteur |
 | [`recherche/verifications/`](recherche/verifications/) | Rapport de vérification indépendante de chaque dossier | Relecteur |
@@ -40,17 +42,19 @@ colonies-agentique/
 ├── README.md
 ├── docs/            00-cadre.md … 11-bibliographie.md
 │   └── annexes/     proposition-v3.md, audit/ (rapports et constats-*.md)
+├── CLAUDE.md        consignes d’agent
+├── specs/           vision, catalogue-exigences, modele-entites, cas-utilisation.puml, cas-utilisation/, tableau-de-bord
 ├── projets/         S0-socle.md, P1-… à P9-…
 ├── recherche/
 │   ├── dossiers/    p1… p9, x-choregraphie, x-methodes, x-vulgarisation (+ p9_checks.py)
 │   ├── verifications/
 │   └── verifications-numeriques/
-└── outils/          verifier-docs.ts, verifier-architecture.ts, compter-dispositions.ts
+└── outils/          verifier-docs.ts, verifier-architecture.ts, compter-dispositions.ts, verifier-specs.ts
 ```
 
 ## Par où commencer
 
-- **Chercheur qui implante :** `docs/00-cadre.md`, puis `docs/02-architecture-programme.md`, la fiche [`S0`](projets/S0-socle.md) avec `docs/05-spec-simulation.md` et `docs/04-protocole-reproduction.md`, enfin la fiche et le dossier du projet de la phase en cours. Règle : la fiche de reproduction s'écrit avant le code.
+- **Chercheur qui implante :** [`specs/README.md`](specs/README.md) (processus et cas d’utilisation à approuver), `docs/00-cadre.md`, puis `docs/02-architecture-programme.md`, la fiche [`S0`](projets/S0-socle.md) avec `docs/05-spec-simulation.md` et `docs/04-protocole-reproduction.md`, enfin la fiche et le dossier du projet de la phase en cours. Règle : la fiche de reproduction s'écrit avant le code.
 - **Lecteur curieux :** `docs/00-cadre.md` (thèse, taxons, corrections factuelles), `docs/07-vulgarisation-evaluation.md`, `docs/10-glossaire.md`. Aucune page interactive n'existe encore.
 - **Relecteur méthodologique :** `docs/04-protocole-reproduction.md`, `docs/03-plan-de-recherche.md`, `docs/01-audit-v3.md` avec les `constats-*.md`, `recherche/verifications/`, puis `docs/08-science-ouverte-ethique.md`.
 
@@ -78,4 +82,4 @@ Prérequis : Node 24.12 ou plus récent ([`docs/05-spec-simulation.md`](docs/05-
 
 `node outils/verifier-docs.ts` contrôle les liens relatifs et les ancres, les étiquettes de citation contre la bibliographie, les identifiants H, T et E contre les fiches, le gabarit à treize sections des fiches, la présence des documents attendus et le renseignement de chaque disposition d'audit (`constats-*.md`). Code de sortie 1 s'il reste une erreur; les avertissements n'échouent pas. 
 
-`node outils/verifier-architecture.ts` vérifie que chaque cible T des fiches figure une et une seule fois dans la matrice de traçabilité de `docs/02-architecture-programme.md`. `node outils/compter-dispositions.ts` recompte les dispositions d'audit et les compare à la ligne de contrôle de `docs/01-audit-v3.md`. Les trois outils sortent à 0 quand tout concorde; ils se lancent avant chaque commit de documentation.
+`node outils/verifier-specs.ts` vérifie la traçabilité du noyau de spécification (exigences, entités, cas, règles BR, noms de tests) et que le tableau de bord est à jour (`--ecrire` le régénère). `node outils/verifier-architecture.ts` vérifie que chaque cible T des fiches figure une et une seule fois dans la matrice de traçabilité de `docs/02-architecture-programme.md`. `node outils/compter-dispositions.ts` recompte les dispositions d'audit et les compare à la ligne de contrôle de `docs/01-audit-v3.md`. Les trois outils sortent à 0 quand tout concorde; ils se lancent avant chaque commit de documentation.

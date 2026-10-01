@@ -1,7 +1,7 @@
 # Bibliographie consolidée
 
 **Statut :** fusion des références des 12 dossiers de recherche consolidés après vérification indépendante (2026-10-01).
-**628 œuvres** : 451 vérifiées, 113 corrigées après vérification, 51 non vérifiées, et 13 compléments de la validation finale (métadonnées vérifiées; voir la dernière section).
+**629 œuvres** : 451 vérifiées, 113 corrigées après vérification, 51 non vérifiées, et 14 compléments ajoutés après la validation des dossiers (voir la dernière section).
 
 **Lecture.** Chaque étiquette `[Nom année]` utilisée dans `docs/` et `projets/` renvoie à une entrée ci-dessous. Statuts :
 - **vérifiée** : la source a été consultée et la citation confirmée par un vérificateur indépendant;
@@ -646,7 +646,7 @@ Même œuvre sous deux étiquettes, venues de dossiers différents : les deux so
 
 ## Compléments de la validation finale
 
-Références citées par le cadre, les audits ou les documents du programme, mais absentes des dossiers de recherche. Ajoutées le 2026-10-01 lors de la validation finale : **métadonnées confirmées** auprès de Crossref ou de l'éditeur, **contenu non relu** dans ce cadre. N'en tirer aucune valeur chiffrée sans la marque **[à confirmer]**.
+Références citées par le cadre, les audits ou les documents du programme, mais absentes des dossiers de recherche. Ajoutées le 2026-10-01 lors de la validation finale : **métadonnées confirmées** auprès de Crossref ou de l'éditeur, **contenu non relu** dans ce cadre, sauf mention contraire dans la colonne « Statut ». N'en tirer aucune valeur chiffrée sans la marque **[à confirmer]**.
 
 | Étiquette | Citation | Statut | Projets | Dossiers |
 |---|---|---|---|---|
@@ -656,6 +656,7 @@ Références citées par le cadre, les audits ou les documents du programme, mai
 | **Greenwald et al. 2015** | Greenwald, E., Segre, E. et Feinerman, O. (2015). Ant trophallactic networks: simultaneous measurement of interaction patterns and food dissemination. Scientific Reports, 5, 12496. <https://doi.org/10.1038/srep12496> | vérifiée (métadonnées) | P4 | — |
 | **Khoury et al. 2011** | Khoury, D. S., Myerscough, M. R. et Barron, A. B. (2011). A quantitative model of honey bee colony population dynamics. PLoS ONE, 6(4), e18491. <https://doi.org/10.1371/journal.pone.0018491> | vérifiée (métadonnées) | P3, P6 | — |
 | **Leoncini et al. 2004** | Leoncini, I., Le Conte, Y., Costagliola, G., Plettner, E., Toth, A. L., Wang, M., Huang, Z., Bécard, J.-M., Crauser, D., Slessor, K. N. et Robinson, G. E. (2004). Regulation of behavioral maturation by a primer pheromone produced by adult worker honey bees. PNAS, 101(50), 17559–17564. <https://doi.org/10.1073/pnas.0407652101> | vérifiée (métadonnées) | P3 | — |
+| **Martinelli 2026** | Martinelli, S. (2026). *Spec-Driven Development*. Apress Pocket Guides. Apress. <https://doi.org/10.1007/979-8-8688-2851-5> | vérifiée (texte intégral lu, PDF de l’éditeur) | S0 | — |
 | **Nieh 2004** | Nieh, J. C. (2004). Recruitment communication in stingless bees (Hymenoptera, Apidae, Meliponini). Apidologie, 35(2), 159–182. <https://doi.org/10.1051/apido:2004007> | vérifiée (métadonnées) | P1 | — |
 | **Nieh 2010** | Nieh, J. C. (2010). A negative feedback signal that is triggered by peril curbs honey bee recruitment. Current Biology, 20(4), 310–315. <https://doi.org/10.1016/j.cub.2009.12.060> | vérifiée (métadonnées) | P1, P6 | — |
 | **Perna et al. 2012** | Perna, A., Granovskiy, B., Garnier, S., Nicolis, S. C., Labédan, M., Theraulaz, G., Fourcassié, V. et Sumpter, D. J. T. (2012). Individual rules for trail pattern formation in Argentine ants (*Linepithema humile*). PLoS Computational Biology, 8(7), e1002592. <https://doi.org/10.1371/journal.pcbi.1002592> | vérifiée (métadonnées) | P1, P8 | — |

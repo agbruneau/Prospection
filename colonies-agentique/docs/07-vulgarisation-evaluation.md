@@ -258,12 +258,13 @@ Chaque énoncé et chaque graphe porte une étiquette de statut et une étiquett
 |---|---|---|---|
 | *Résultat reproduit* | modèle publié réimplanté, cible chiffrée atteinte selon le critère d'acceptation | carré plein | l'identifiant de la cible, le niveau d'accord, le verdict, les déviations; mention « réplication d'un modèle publié, non validation empirique » |
 | *Modèle simplifié* | réduction ou abstraction à écarts documentés | carré à coin coupé | ce qui est omis ou fixé; en particulier le curseur leurre révélé |
+| *Résultat publié (non reproduit)* | résultat d’une source, non encore reproduit par le programme (cadre 4.1, principe 7) | carré vide | la source et la raison : cible bloquée, non satisfaite ou pas encore exécutée |
 | *Hypothèse de l'auteur* | énoncé non testé, ou règle modifiée par l'utilisateur | cercle pointillé | ce qui la réfuterait |
 | *Analogie* | rapprochement fourmi, abeille, agent | double flèche | relation conservée et endroit où elle casse; si validée par les trois experts |
 
 Régime : « confirmatoire » (runs préenregistrés, Vérifier seulement) ou « exploratoire » (tout le reste). Marques de réserve affichées telles quelles : « valeur à confirmer », « référence non vérifiée ». Une valeur issue d'une source marquée [à confirmer] dans le dossier ne s'affiche jamais sans cette marque.
 
-**Contrôle automatique.** Chaque bloc d'énoncé et chaque `<figure>` porte `data-statut="reproduit|simplifie|hypothese|analogie"` et `data-regime="confirmatoire|exploratoire"`; le harnais refuse la version si un bloc en manque (TV0.13).
+**Contrôle automatique.** Chaque bloc d'énoncé et chaque `<figure>` porte `data-statut="reproduit|publie|simplifie|hypothese|analogie"` et `data-regime="confirmatoire|exploratoire"`; le harnais refuse la version si un bloc en manque (TV0.13).
 
 **Lien avec le texte.** « Résultat reproduit » ne s'emploie que si la fiche de reproduction a un verdict acquis; une cible en échec ou bloquée s'affiche « non reproduit » ou « bloqué » avec la raison. Une extension agentique qui n'a pas de référence publiée s'affiche *Hypothèse de l'auteur*.
 
