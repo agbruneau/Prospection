@@ -42,7 +42,8 @@ Tableau de suivi prévu par la [feuille de route](../docs/09-feuille-de-route.md
 | C-12 | C | Schéma du journal LLM | T0.22 | Fait | `src/policies/llm-log.ts`; `tests/core/journal-llm.test.ts` |
 | C-13 | C | Grille et événements discrets (tests propres au moteur, 05 §9.6) | — | Fait | `src/core/events.ts`, `grid.ts`; `tests/core/events.test.ts`, `grid.test.ts` (Poisson : déjà dans `random.test.ts`) |
 | C-14 | C | Traces dorées (05 §9.4) | — | Fait | `tests/traces-dorees.test.ts`, `tests/__snapshots__/traces-dorees.json` (Node v24.19.0, win32, x64) |
-| C-15 | C | Balayages, agrégation indépendante du nombre de travailleurs | UC-004 (à rédiger), SPK11 | À faire | — |
+| C-15 | C | Balayages, agrégation indépendante du nombre de travailleurs | UC-004 (Implemented), SPK11 | Fait | `npm run sweep`, `src/sweep/`; `tests/cli/sweep.test.ts` (1, 2 et 4 travailleurs : mêmes SHA-256); balayage de bifurcation de M1c `sweeps/s0-m1c-bifurcation.json` |
+| C-17 | C | Docking du socle | UC-005 (Implemented); T0.7; CS0.4, CS0.5 | Fait | `npm run dock`; rapports `data/docking/s0-m1c-edo-ssa.report.json` (relationnel) et `s0-m1c-ssa-python.report.json` (TypeScript contre Python) : `aligned` |
 | C-16 | C | Deux implémentations des modèles du socle | CS0.4 (T0.4 à T0.7) | Fait | TypeScript et `x_methodes_checks.py` concordent |
 | D-SP | D | Spike navigateur | SPK1 à SPK12; décisions D1 à D5 | En cours | [rapport](../spikes/phase0/rapport.md) : porte 0 réussie sur Node, Chromium et WebKit; D1 à D5 rendues; restent Firefox (ne démarre pas sur le poste) et la cible B |
 | H-01 | H | Dépôt jetable, webhook Zenodo, DOI de version et de concept | E0.6, CS0.15 | Bloqué | attend D-02 |

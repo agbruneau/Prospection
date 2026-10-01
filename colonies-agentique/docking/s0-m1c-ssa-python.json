@@ -1,0 +1,15 @@
+{
+  "id": "s0-m1c-ssa-python",
+  "level": "implementations",
+  "candidate": { "scenario": "scenarios/p5-seeley-2012/m1c-ssa.json" },
+  "reference": { "oracle": "data/oracles/x-methodes-m1c-ssa.json" },
+  "cells": [
+    { "id": "s1N50", "parameters": { "sigma": 1, "N": 50 } },
+    { "id": "s1N200", "parameters": { "sigma": 1, "N": 200 } },
+    { "id": "s10N50", "parameters": { "sigma": 10, "N": 50 } },
+    { "id": "s10N200", "parameters": { "sigma": 10, "N": 200 } }
+  ],
+  "observable": { "name": "D", "threshold": { "op": ">", "value": 0.3 } },
+  "repetitions": 200,
+  "masterSeed": "20261001"
+}

@@ -1,7 +1,7 @@
 ---
 id: UC-005
 name: Aligner par docking
-status: Approved
+status: Implemented
 context: SIM
 actors: [Chercheur]
 linkedRequirements: [FR-005, NFR-001, C-005]
@@ -14,7 +14,7 @@ entities: [DockingReport, ReferenceModel, Scenario, RunManifest]
 
 - **Acteur principal :** Chercheur
 - **But :** établir si un modèle candidat produit les mêmes résultats qu'une référence, au niveau d'accord déclaré, et consigner la décision (`aligned` ou `not-aligned`) dans un rapport de docking rejouable.
-- **Statut :** Approved
+- **Statut :** Implemented
 
 ## Préconditions
 

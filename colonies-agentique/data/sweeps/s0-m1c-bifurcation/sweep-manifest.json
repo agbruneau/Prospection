@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "plan": {
+    "base": "scenarios/p5-seeley-2012/m1c-sigma10.json",
+    "axes": [
+      {
+        "parameter": "sigma",
+        "values": [
+          0.25,
+          0.5,
+          0.75,
+          1,
+          1.25,
+          1.5,
+          1.625,
+          1.75,
+          2,
+          2.5,
+          3,
+          5,
+          10
+        ]
+      }
+    ],
+    "repetitions": 1,
+    "observables": [
+      {
+        "name": "A"
+      },
+      {
+        "name": "B"
+      }
+    ],
+    "masterSeed": "20261001",
+    "pairing": "by-repetition"
+  },
+  "planHash": "beb4b84209f28ab2",
+  "points": 13,
+  "runs": 13,
+  "workers": 1,
+  "wallMs": 27,
+  "code": {
+    "commit": "5bdbf23073706742ed96b6b5c71ae08b358650d9",
+    "cleanTree": false
+  },
+  "engine": {
+    "kind": "node",
+    "version": "24.19.0",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "missing": [],
+  "files": {
+    "results.csv": "cedca360580cadf80809744f0af39f4762990f6fdcaa2bb7b294affdd24d012d",
+    "summary.csv": "5518195e32e2248582e8b57e2f28c734fa867ed272293d94bf2ca2c9ec30a17b"
+  }
+}

@@ -527,7 +527,7 @@ colonies-agentique/
     analysis/               equivalence.ts (TOST, n requis, quantiles de t, règles de décision) descriptif.ts (statistiques et format PageSummary des résumés) bootstrap.ts sensitivity.ts (OFAT, Morris, Sobol) power.ts holm.ts
                             mc-error.ts miller.ts (formules d'évaluation des LLM)
     sweep/                  plan.ts executor.ts (worker_threads) worker.ts aggregate.ts
-    cli/                    run.ts replay.ts reproduce.ts summarize.ts sweep.ts export.ts
+    cli/                    run.ts replay.ts reproduce.ts summarize.ts sweep.ts dock.ts metrics.ts export.ts
     browser/                contrat.ts (définition d'une page) sim-worker.ts page.ts (gabarit à trois niveaux, UC-010 à UC-012)    (aucun calcul de simulation)
   scenarios/                <modèle>/<nom>.json (sources) et compiled/ (littéraux calculés sous Node)
   targets/                  <projet>/T<projet>.<n>.json : extrait exécutable de la fiche de reproduction, une cible par fichier

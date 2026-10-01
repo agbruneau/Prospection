@@ -104,3 +104,8 @@ export function createStream(masterSeed: bigint, name: string): Prng {
 export function graineDeRepetition(masterSeed: bigint, i: number): string {
   return splitMix64(masterSeed ^ BigInt('0x' + fnv1a64Texte(`run/${i}`)))().toString()
 }
+
+/** Graine du couple (point, répétition) d'un balayage au pairage by-cell (05 §7.4) : graines indépendantes entre points. */
+export function graineDeCellule(masterSeed: bigint, point: number, i: number): string {
+  return splitMix64(masterSeed ^ BigInt('0x' + fnv1a64Texte(`run/${point}/${i}`)))().toString()
+}
