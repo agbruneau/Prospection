@@ -47,7 +47,7 @@ Tableau de suivi prévu par la [feuille de route](../docs/09-feuille-de-route.md
 | C-16 | C | Deux implémentations des modèles du socle | CS0.4 (T0.4 à T0.7) | Fait | TypeScript et `x_methodes_checks.py` concordent |
 | D-SP | D | Spike navigateur | SPK1 à SPK12; décisions D1 à D5 | En cours | [rapport](../spikes/phase0/rapport.md) : porte 0 réussie sur Node, Chromium et WebKit; D1 à D5 rendues; restent Firefox (ne démarre pas sur le poste) et la cible B |
 | H-01 | H | Dépôt jetable, webhook Zenodo, DOI de version et de concept | E0.6, CS0.15 | Bloqué | attend D-02 |
-| B-01 | B | Métriques R et G | T0.29 à T0.32, T0.36; E0.2, E0.7, E0.8; UC-007 (à rédiger) | À faire | attend D-07 |
+| B-01 | B | Métriques R et G | T0.29 à T0.32, T0.36; E0.2, E0.7, E0.8; UC-007 (Implemented) | En cours | `npm run metrics`, `src/analysis/metrics.ts`; T0.29 à T0.32 passent (`tests/core/metriques.test.ts`, `tests/cli/metrics.test.ts`); restent T0.36 (non bloquante) et E0.2, E0.7, E0.8 (confirmatoires : préenregistrement OSF d'abord, CS0.14) |
 | A-01 | A | Typologie : cas d'école, indicateurs, jeu de données, page | T0.33, T0.34; E0.1; CS0.9, CS0.10 | À faire | — |
 | E-01 | E | Gabarit de page et page-pilote | UC-006, UC-010 à UC-012 (Implemented); CS0.12 | En cours | `src/browser/`, `src/cli/summarize.ts`, `tests/pages/` (axe-core : 0 violation); page-pilote `pages/p1-v1-pont.json` sur le résumé de T1.1 (`tests/pages/pilote.test.ts`); restent la liste manuelle d'accessibilité de 07 §8 et D-14 |
 | F-01 | F | Matrice concept × espèce × modèle | CS0.13 | À faire | structure dans la fiche S0 |

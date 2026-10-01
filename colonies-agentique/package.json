@@ -16,6 +16,7 @@
     "summarize": "node src/cli/summarize.ts",
     "sweep": "node src/cli/sweep.ts",
     "dock": "node src/cli/dock.ts",
+    "metrics": "node src/cli/metrics.ts",
     "build:pages": "node outils/construire-pages.ts"
   },
   "devDependencies": {
