@@ -124,8 +124,8 @@ Comparaison du modèle chorégraphique, configuré comme la référence, à cett
 
 | Attribut | Type | Règles de validation |
 |---|---|---|
-| reference | identifiant de `ReferenceModel` | sa cible principale est `satisfied` |
-| observables, level, margin | déclarés avant les exécutions | marge requise pour `distributional` |
+| reference | identifiant de `ReferenceModel`, ou oracle d'une implantation indépendante | pour un modèle chorégraphique candidat : sa cible principale est `satisfied` |
+| observables, level, margin, cells | déclarés avant les exécutions (BR-034) | `level` ∈ {`implementations`, `relational`, `distributional`}; marge requise pour `distributional` |
 | outcome | énuméré | `aligned` ou `not-aligned` |
 
 ### Métriques (`R`, `G`)

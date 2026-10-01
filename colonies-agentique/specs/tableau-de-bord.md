@@ -6,9 +6,9 @@ Généré par `node outils/verifier-specs.ts --ecrire` : ne pas modifier à la m
 
 | Catégorie | Total | Terminées | En cours | Non commencées | Couverture |
 |---|---:|---:|---:|---:|---:|
-| Exigences fonctionnelles | 20 | 0 | 10 | 10 | 0 % |
-| Cas d'utilisation | 16 | 0 | 8 | 8 | 0 % |
-| Cas à couverture de spécification complète | 16 | 8 | 0 | 8 | 50 % |
+| Exigences fonctionnelles | 20 | 0 | 13 | 7 | 0 % |
+| Cas d'utilisation | 16 | 0 | 11 | 5 | 0 % |
+| Cas à couverture de spécification complète | 16 | 8 | 3 | 5 | 50 % |
 
 ## Suivi par cas
 
@@ -17,10 +17,10 @@ Généré par `node outils/verifier-specs.ts --ecrire` : ne pas modifier à la m
 | [UC-001](cas-utilisation/UC-001-executer-scenario.md) | Exécuter un scénario | FR-001 | Implemented | ✔ | ✔ | — | 10 sur 10 | Partielle |
 | [UC-002](cas-utilisation/UC-002-rejouer-execution.md) | Rejouer une exécution | FR-002 | Implemented | ✔ | ✔ | — | 8 sur 8 | Partielle |
 | [UC-003](cas-utilisation/UC-003-verifier-cible.md) | Vérifier une cible de reproduction | FR-003 | Implemented | ✔ | ✔ | — | 13 sur 13 | Partielle |
-| UC-004 | Balayer des paramètres | — | non rédigé | ✕ | ✕ | — | — | Faible |
-| UC-005 | Aligner par docking | — | non rédigé | ✕ | ✕ | — | — | Faible |
+| [UC-004](cas-utilisation/UC-004-balayer-parametres.md) | Balayer des paramètres | FR-004 | Review | ✕ | ✕ | — | 0 sur 8 | Faible |
+| [UC-005](cas-utilisation/UC-005-aligner-docking.md) | Aligner par docking | FR-005 | Review | ✕ | ✕ | — | 0 sur 7 | Faible |
 | [UC-006](cas-utilisation/UC-006-preparer-resumes.md) | Préparer les résumés d'une page | FR-006 | Implemented | ✔ | ✔ | — | 6 sur 6 | Partielle |
-| UC-007 | Calculer les métriques R et G | — | non rédigé | ✕ | ✕ | — | — | Faible |
+| [UC-007](cas-utilisation/UC-007-calculer-metriques.md) | Calculer les métriques R et G | FR-007 | Review | ✕ | ✕ | — | 0 sur 10 | Faible |
 | [UC-008](cas-utilisation/UC-008-verifier-depot.md) | Vérifier le dépôt | FR-008 | Implemented | ✔ | ✔ | — | 5 sur 5 | Partielle |
 | [UC-010](cas-utilisation/UC-010-suivre-recit-guide.md) | Suivre un récit guidé | FR-010, FR-017 | Implemented | ✔ | ✕ | ✔ | 7 sur 7 | Partielle |
 | [UC-011](cas-utilisation/UC-011-explorer-modele.md) | Explorer un modèle | FR-011, FR-014, FR-017 | Implemented | ✔ | ✕ | ✔ | 8 sur 8 | Partielle |
