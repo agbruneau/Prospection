@@ -32,6 +32,7 @@ const SCENARIOS: Record<string, Record<string, unknown>> = {
   's0-m6-quorum': {   // r = 0,001 : la colonie n'est pas toute engagée avant le pas 1 000
     ...m6, time: { ...m6.time, horizon: 1000, sampling: 100 }, parameters: { ...m6.parameters, r: { ...m6.parameters.r, value: 0.001 } },
   },
+  's0-j6-marcheurs': { ...lire('scenarios/s0-j6-marcheurs/tore-32.json'), time: { unit: 'cycle', dt: 1, horizon: 1000, sampling: 100 } },
   's0-j4-copie': {
     schema: 1, regime: 'exploratory', model: { id: 's0-j4-copie', version: '1', article: 'Huberman et Glance 1993' }, time: { unit: 'cycle', dt: 1, horizon: 1000, sampling: 100 },
     order: 'sequential-random', seed: '1', streams: ['order'], parameters: {}, initial: { x0: 0, x1: 1 }, measures: ['consensus'], interventions: [],

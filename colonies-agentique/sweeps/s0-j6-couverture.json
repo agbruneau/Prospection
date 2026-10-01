@@ -1,0 +1,27 @@
+{
+  "base": "scenarios/s0-j6-marcheurs/tore-32.json",
+  "axes": [
+    {
+      "parameter": "N",
+      "values": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128,
+        256
+      ]
+    }
+  ],
+  "repetitions": 200,
+  "observables": [
+    {
+      "name": "tempsCouverture"
+    }
+  ],
+  "masterSeed": "20261036",
+  "pairing": "by-repetition"
+}
