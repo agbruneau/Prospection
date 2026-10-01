@@ -165,20 +165,26 @@ function niveauVoir() {
   const z = { scene: scene(), zoneGraphe: el('div') }
   const corps = el('div'), resultat = el('div', { class: 'resultat' })
   zone.append(corps, z.scene.element, z.zoneGraphe, resultat)   // Z5 consignes, Z1 scène, Z2 graphe, puis le résultat
-  const afficher = (i: number) => {
+  const afficher = (i: number, viaClavierOuClic = false) => {
     const s = etapes[i]!, c = R.cells[s.cellule]!
     const champ = el('input', { type: 'range', id: 'prediction', min: s.prediction.min, max: s.prediction.max, step: s.prediction.pas, value: (s.prediction.min + s.prediction.max) / 2 })
     const valeur = el('output', { for: 'prediction' }, fmt(Number(champ.value)))
     champ.addEventListener('input', () => { valeur.textContent = fmt(Number(champ.value)) })
     const lancer = el('button', { type: 'button' }, 'Lancer'), passer = el('button', { type: 'button' }, 'Passer'), pause = el('button', { type: 'button', hidden: true, 'aria-pressed': 'false' }, 'Pause')
     resultat.replaceChildren()
+    const titre = el('h3', { tabindex: -1 }, `Étape ${i + 1} sur ${etapes.length}`)
     corps.replaceChildren(
-      el('h3', {}, `Étape ${i + 1} sur ${etapes.length}`), el('p', {}, s.question),
+      titre, el('p', {}, s.question),
       el('p', {}, `Variable de l’étape : ${s.variable} = ${fmt(c.params[s.variable] as number)} ${unite(s.variable)}${aConfirmer(s.variable)}`),
       el('div', { class: 'controle' }, el('label', { for: 'prediction' }, `Votre prédiction (${D.mesure.etiquette}, ${D.mesure.unite})`), champ, valeur),
       el('div', { class: 'boutons' }, lancer, passer, pause))
+    if (viaClavierOuClic) titre.focus()   // « Étape suivante » disparaît avec le résultat : le focus passe au titre de l'étape
+    let enCours = false
     const jouer = async (prediction: number | null) => {
-      lancer.disabled = passer.disabled = champ.disabled = true
+      if (enCours) return
+      enCours = true   // aria-disabled plutôt que disabled : le bouton activé au clavier garde le focus (2.4.3)
+      for (const b of [lancer, passer]) b.setAttribute('aria-disabled', 'true')
+      champ.disabled = true
       annoncer('Exécution typique en cours.')
       let ex: Execution | undefined
       z.scene.element.dataset.graine = c.replay.seed   // BR-018
@@ -191,7 +197,7 @@ function niveauVoir() {
         enonce(s.conclusion.texte, s.conclusion.statut, 'exploratoire'),
         el('aside', { class: 'nepas' }, el('h4', {}, 'Ce que ça ne veut pas dire'), el('p', {}, s.nePasConfondre)),
         i + 1 < etapes.length ? el('button', { type: 'button', class: 'suivante' }, 'Étape suivante') : el('div', { class: 'carte' }, el('h4', {}, 'Carte agentique'), carte()))
-      resultat.querySelector('.suivante')?.addEventListener('click', () => afficher(i + 1))
+      resultat.querySelector('.suivante')?.addEventListener('click', () => afficher(i + 1, true))
       annoncer('Résultat affiché.')
     }
     lancer.addEventListener('click', () => jouer(Number(champ.value)))
@@ -298,7 +304,8 @@ function niveauVerifier() {
     const rejeu = el('div', { class: 'rejeu', 'aria-live': 'polite' }), bouton = el('button', { type: 'button', 'data-cellule': i }, 'Rejouer cette exécution')
     const params = Object.entries(c.params).map(([k, x]) => `${k} = ${fmt(x as number)} ${unite(k)}${aConfirmer(k)}`).join(' · ')   // BR-026
     bouton.addEventListener('click', async () => {
-      bouton.disabled = true
+      if (bouton.getAttribute('aria-disabled') === 'true') return
+      bouton.setAttribute('aria-disabled', 'true')   // le focus reste sur le bouton (2.4.3)
       try {
         let ex: Execution | undefined
         await simuler({ scenario: c.source, graines: [c.replay.seed], interventions: [], mesures: [D.mesure.nom] }, (_, e) => { ex = e })
@@ -309,7 +316,7 @@ function niveauVerifier() {
       } catch (e) {
         rejeu.replaceChildren(el('p', {}, `Rejeu impossible : ${(e as Error).message}`))
       }
-      bouton.disabled = false
+      bouton.removeAttribute('aria-disabled')
     })
     multiples.append(el('div', { class: 'cellule' }, el('h4', {}, params),
       distribution(c.values, c.values[c.replay.rep] ?? null, { N: R.preregisteredN, regime, statut: statutResultats, complete: true, titre: `Distribution sur ${R.preregisteredN} graines`, graines, regle: regleTypique(c) }), bouton, rejeu))

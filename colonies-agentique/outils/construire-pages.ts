@@ -27,7 +27,7 @@ const STYLES = `
 h1{font-size:1.6rem;margin:1rem 0 .25rem}h2{font-size:1.3rem}h3{font-size:1.1rem}a{color:var(--accent)}
 nav{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0}
 button{min-height:44px;min-width:44px;padding:.4rem .9rem;font:inherit;border:1px solid var(--trait);border-radius:6px;background:var(--fond);color:var(--texte);cursor:pointer}
-button[aria-pressed="true"]{border-width:2px;font-weight:600}button:disabled{opacity:.6;cursor:default}
+button[aria-pressed="true"]{border-width:2px;font-weight:600}button:disabled,button[aria-disabled="true"]{opacity:.6;cursor:default}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .boutons{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0}.controle{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:.5rem 0}
 input[type=range]{min-height:44px;flex:1 1 12rem}
