@@ -475,7 +475,7 @@ export interface LlmCallRecord {
   agentId: number
   requestedModel: string
   responseModel: string             // response.model
-  effort?: string
+  effort: string                    // fixé et consigné (C-009; T0.22)
   thinking?: unknown                // configuration de réflexion telle qu'envoyée
   request: unknown                  // corps complet de la requête
   requestHash: string               // clé de cassette avec (runId, step, agentId)

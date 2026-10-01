@@ -6,8 +6,9 @@ import { goss1989 } from './reference/p1-goss-1989/model.ts'
 import { pais2013Ou } from './reference/p5-pais-2013-ou/model.ts'
 import { seeley2012 } from './reference/p5-seeley-2012/model.ts'
 import { seeley2012Ssa } from './reference/p5-seeley-2012/ssa.ts'
+import { j4Copie } from './reference/s0-j4-copie/model.ts'
 
-export const MODELES: ReadonlyMap<string, ReferenceModel> = new Map([goss1989, pais2013Ou, seeley2012, seeley2012Ssa].map(m => [m.id, m]))
+export const MODELES: ReadonlyMap<string, ReferenceModel> = new Map([goss1989, pais2013Ou, seeley2012, seeley2012Ssa, j4Copie].map(m => [m.id, m]))
 
 export function trouverModele(id: string, modeles = MODELES): ReferenceModel {
   const m = modeles.get(id)

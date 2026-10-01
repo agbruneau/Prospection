@@ -36,12 +36,12 @@ Tableau de suivi prévu par la [feuille de route](../docs/09-feuille-de-route.md
 | C-06 | C | Harnais de cibles, garde de puissance | UC-003, T0.13 (n requis) | Fait | `src/cli/reproduce.ts`, `tests/cli/reproduce.test.ts` |
 | C-07 | C | Chaîne de vérification | UC-008 | Fait | `npm run verify` sort à 0 |
 | C-08 | C | Euler–Maruyama et modèle d’Ornstein–Uhlenbeck (p5-pais-2013-ou) | T0.27 | Fait | `tests/core/euler-maruyama.test.ts` (dt et dt/2) |
-| C-09 | C | Commutateur d'ordre, contrôle positif | T0.28 | À faire | — |
-| C-10 | C | Bibliothèque statistique : n_sim, K-S, ES de Monte Carlo | T0.12, T0.14, T0.16 | À faire | T0.13 fait en partie (n requis, TOST) |
-| C-11 | C | Formules d'évaluation pour P7 | T0.8 à T0.11, T0.15 | À faire | consommateur : P7 |
-| C-12 | C | Schéma du journal LLM | T0.22 | À faire | — |
-| C-13 | C | Grille et événements discrets (tests propres au moteur, 05 §9.6) | — | À faire | premier consommateur : P6, P9 |
-| C-14 | C | Traces dorées (05 §9.4) | — | À faire | — |
+| C-09 | C | Commutateur d'ordre, contrôle positif | T0.28 | Fait | `src/core/ordre.ts`, jouet J4 `s0-j4-copie`; `tests/core/ordre.test.ts` : consensus 0 sur 1 000 en synchrone, 1 sur 1 000 en séquentiel aléatoire |
+| C-10 | C | Bibliothèque statistique : n_sim, K-S, ES de Monte Carlo | T0.12 à T0.14, T0.16 | Fait | `src/analysis/mc-error.ts`, `power.ts`; `tests/core/statistiques.test.ts`; U critique de Mann-Whitney (23) recalculé exactement, non plus repris d'une table |
+| C-11 | C | Formules d'évaluation pour P7 | T0.8 à T0.11, T0.15 | Fait | `src/analysis/power.ts`; `tests/core/statistiques.test.ts`; T0.11 épingle 1/12 (D-0-001 à inscrire au registre, G-01) |
+| C-12 | C | Schéma du journal LLM | T0.22 | Fait | `src/policies/llm-log.ts`; `tests/core/journal-llm.test.ts` |
+| C-13 | C | Grille et événements discrets (tests propres au moteur, 05 §9.6) | — | Fait | `src/core/events.ts`, `grid.ts`; `tests/core/events.test.ts`, `grid.test.ts` (Poisson : déjà dans `random.test.ts`) |
+| C-14 | C | Traces dorées (05 §9.4) | — | Fait | `tests/traces-dorees.test.ts`, `tests/__snapshots__/traces-dorees.json` (Node v24.19.0, win32, x64) |
 | C-15 | C | Balayages, agrégation indépendante du nombre de travailleurs | UC-004 (à rédiger), SPK11 | À faire | — |
 | C-16 | C | Deux implémentations des modèles du socle | CS0.4 (T0.4 à T0.7) | Fait | TypeScript et `x_methodes_checks.py` concordent |
 | D-SP | D | Spike navigateur | SPK1 à SPK12; décisions D1 à D5 | En cours | [rapport](../spikes/phase0/rapport.md) : porte 0 réussie sur Node, Chromium et WebKit; D1 à D5 rendues; restent Firefox (ne démarre pas sur le poste) et la cible B |

@@ -1,7 +1,7 @@
 ---
 id: UC-004
 name: Balayer des paramètres
-status: Review
+status: Approved
 context: SIM
 actors: [Chercheur]
 linkedRequirements: [FR-004, NFR-001, C-006, C-007]
@@ -14,7 +14,7 @@ entities: [SweepPlan, Scenario, RunManifest]
 
 - **Acteur principal :** Chercheur
 - **But :** exécuter un scénario sur le produit cartésien de valeurs de paramètres et de répétitions, et obtenir une ligne par exécution et un résumé par point, identiques quel que soit le nombre de travailleurs.
-- **Statut :** Review
+- **Statut :** Approved
 
 ## Préconditions
 

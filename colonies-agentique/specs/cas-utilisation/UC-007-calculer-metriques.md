@@ -1,7 +1,7 @@
 ---
 id: UC-007
 name: Calculer les métriques R et G
-status: Review
+status: Approved
 context: SIM
 actors: [Chercheur]
 linkedRequirements: [FR-007, NFR-001, C-007]
@@ -14,7 +14,7 @@ entities: [R, G, RunManifest]
 
 - **Acteur principal :** Chercheur
 - **But :** obtenir, sur des exécutions appariées, le gain collectif G avec sa différence appariée Δ et leurs intervalles, et le vecteur R du canal, sans jamais réduire R à un nombre ni chiffrer un G non défini.
-- **Statut :** Review
+- **Statut :** Approved
 
 ## Préconditions
 
