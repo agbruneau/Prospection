@@ -4,7 +4,7 @@ Programme de recherche en ingénierie des systèmes : étudier la fourmilière *
 
 ## État
 
-Documentation et recherche prêtes. **Aucun code de simulation n'est encore écrit** : ni noyau, ni modèle de référence, ni page interactive, ni harnais. Le seul code présent sert à contrôler le reste : des scripts de recoupement numérique exploratoires (`recherche/verifications-numeriques/`, plus `recherche/dossiers/p9_checks.py`) et `outils/verifier-docs.ts`.
+Documentation et recherche prêtes. **Aucun code de simulation n'est encore écrit** : ni noyau, ni modèle de référence, ni page interactive, ni harnais. Le seul code présent sert à contrôler le reste : des scripts de recoupement numérique exploratoires (`recherche/verifications-numeriques/`, plus `recherche/dossiers/p9_checks.py`) et trois outils de contrôle de la documentation (`outils/`).
 
 ## Carte des documents
 
@@ -13,7 +13,7 @@ Le cadre prime sur tout : en cas de conflit, on corrige l'autre document.
 | Fichier | À quoi il sert | Pour qui |
 |---|---|---|
 | [`docs/00-cadre.md`](docs/00-cadre.md) | Cadre arrêté : thèse, typologie à trois axes, taxons, corrections factuelles de la v3, questions de recherche, construits R et G, principes de rigueur | Tous |
-| [`docs/01-audit-v3.md`](docs/01-audit-v3.md) | Ce que l'audit de la proposition v3 a changé, constat par constat | Relecteur |
+| [`docs/01-audit-v3.md`](docs/01-audit-v3.md) | Synthèse de l'audit de la proposition v3 : décomptes des dispositions, erreurs corrigées, ajouts, restes ouverts (le détail par constat est dans `docs/annexes/audit/constats-*.md`) | Relecteur |
 | [`docs/02-architecture-programme.md`](docs/02-architecture-programme.md) | Projets, rôles, dépendances, phases, parité fourmi/abeille | Implante, relecteur |
 | [`docs/03-plan-de-recherche.md`](docs/03-plan-de-recherche.md) | Questions de recherche traduites en hypothèses; opérationnalisation finale de R et G | Implante, relecteur |
 | [`docs/04-protocole-reproduction.md`](docs/04-protocole-reproduction.md) | Réplication avant extension : critères d'acceptation, TOST, registre des déviations, portes | Implante, relecteur |
@@ -45,7 +45,7 @@ colonies-agentique/
 │   ├── dossiers/    p1… p9, x-choregraphie, x-methodes, x-vulgarisation (+ p9_checks.py)
 │   ├── verifications/
 │   └── verifications-numeriques/
-└── outils/          verifier-docs.ts
+└── outils/          verifier-docs.ts, verifier-architecture.ts, compter-dispositions.ts
 ```
 
 ## Par où commencer
@@ -66,12 +66,16 @@ colonies-agentique/
 
 Prérequis : Node 24.12 ou plus récent ([`docs/05-spec-simulation.md`](docs/05-spec-simulation.md); exécute le `.ts` directement), TypeScript pour `tsc --noEmit`, Python 3 avec numpy pour les scripts de recoupement.
 
+**Décisions du chercheur à dater d'abord** ([`docs/09-feuille-de-route.md`](docs/09-feuille-de-route.md), jalons et portes GF) : la plus urgente est la porte GF1, à trancher avant le 2026-10-15 (retrait possible de Haiku 4.5; par défaut, perte déclarée du point historique de P7). Suivent l'enveloppe d'API de P7, le dépôt dédié et les licences (`docs/08-science-ouverte-ethique.md`), et les échéances de publication.
+
 1. S0 : écrire les gabarits (fiche de reproduction, ODD, préenregistrement) et le registre des déviations; préenregistrer les hypothèses du socle avant tout run confirmatoire.
-2. Spike navigateur : mesurer hébergement, worker et rendu à grand N, puis consigner les décisions D1 à D5 (`docs/05-spec-simulation.md`).
+2. Spike navigateur : mesurer hébergement, worker et rendu à grand N, puis consigner les décisions D1 à D5 du spike (`docs/05-spec-simulation.md`; à ne pas confondre avec les décisions d’architecture D1 à D18 de `docs/02-architecture-programme.md`).
 3. Noyau, métriques R et G, harnais et tests; recoupement par les scripts existants. Critère : `tsc --noEmit` puis `node --test` sortent à 0.
 4. V0 : gabarit de page, charte et page de typologie; aucune collecte d'évaluation avant l'avis du comité d'éthique.
 5. Décision de la porte de sortie de la phase 0 (go, go conditionnel, no-go; critères dans la fiche S0), puis phase 1 : P1, P8, P5.
 
-## Vérifier les liens et les identifiants
+## Vérifier la documentation
 
-`node outils/verifier-docs.ts` contrôle les liens relatifs et les ancres, les étiquettes de citation contre la bibliographie, les identifiants H, T et E contre les fiches, le gabarit à treize sections des fiches, la présence des documents attendus et le renseignement de chaque disposition d'audit (`constats-*.md`). Code de sortie 1 s'il reste une erreur; les avertissements n'échouent pas. À lancer avant chaque commit de documentation.
+`node outils/verifier-docs.ts` contrôle les liens relatifs et les ancres, les étiquettes de citation contre la bibliographie, les identifiants H, T et E contre les fiches, le gabarit à treize sections des fiches, la présence des documents attendus et le renseignement de chaque disposition d'audit (`constats-*.md`). Code de sortie 1 s'il reste une erreur; les avertissements n'échouent pas. 
+
+`node outils/verifier-architecture.ts` vérifie que chaque cible T des fiches figure une et une seule fois dans la matrice de traçabilité de `docs/02-architecture-programme.md`. `node outils/compter-dispositions.ts` recompte les dispositions d'audit et les compare à la ligne de contrôle de `docs/01-audit-v3.md`. Les trois outils sortent à 0 quand tout concorde; ils se lancent avant chaque commit de documentation.

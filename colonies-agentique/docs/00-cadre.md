@@ -1,7 +1,7 @@
 # Cadre de recherche v4 — Coordination sans contrôle central : fourmilières, ruches et systèmes d'agents
 
-**Statut :** cadre arrêté après audit de la proposition v3 (7 audits indépendants, 8 dossiers de recherche vérifiés). Tous les documents du programme s'y conforment. En cas de conflit, ce document prime, puis on corrige l'autre.
-**Date :** 2026-10-01. **Langue :** français canadien; termes techniques et identifiants en anglais.
+**Statut :** cadre arrêté après audit de la proposition v3 (7 audits indépendants, 12 dossiers de recherche vérifiés). Tous les documents du programme s'y conforment. En cas de conflit, ce document prime, puis on corrige l'autre.
+**Date :** 2026-10-01. **Révision 4.1** (même jour, validation finale) : entérine les précisions demandées par les rédacteurs des documents et des fiches; la section 11 en donne la liste. **Langue :** français canadien; termes techniques et identifiants en anglais.
 
 ## 1. Intention
 
@@ -32,7 +32,9 @@ Quatre régimes en découlent :
 - **Orchestration** : A1 oui, A2 oui (BPMN exécuté par un moteur, orchestrateur LLM).
 - **Chorégraphie spécifiée** : A1 oui, A2 non (WS-CDL, types de session, Choral).
 - **Auto-organisation stigmergique** : A1 non, A2 non, état partagé persistant (piste, tableau noir).
-- **Auto-organisation par signaux directs** : A1 non, A2 non, diffusion éphémère (danse, quorum).
+- **Auto-organisation par signaux directs** : A1 non, A2 non, diffusion éphémère ou messages dirigés locaux (danse, quorum, tandem, signal d'arrêt par contact).
+
+Les régimes hybrides (p. ex. tableau noir à focus d'attention central) et la référence nulle (aucun canal) ne forment pas de régime supplémentaire : ils se classent par les indicateurs de `06-metriques-et-typologie.md`, qui fait foi pour la typologie. Le classement se fait au niveau du mécanisme étudié : au niveau de la boucle algorithmique, ACO et ABC comportent des éléments centraux (mise à jour globale, évaluateur), ce que la fiche P2 déclare.
 
 Le « chorégraphe » de la colonie est la sélection naturelle; celui du système d'agents est le concepteur du prompt et des protocoles. Le **problème inverse** (spécifier des règles locales qui garantissent une propriété globale) est une question de recherche du programme (P7).
 
@@ -44,12 +46,15 @@ Le « chorégraphe » de la colonie est la sélection naturelle; celui du systè
 | Recrutement par piste de masse | *Linepithema humile*, *Lasius niger* |
 | Castes et seuils de réponse | *Pheidole* |
 | Fourragement réglé par les contacts, sans piste | *Pogonomyrmex barbatus* |
-| Tandem et quorum | *Temnothorax albipennis* |
+| Tandem et quorum | *Temnothorax albipennis*; variantes publiées : *T. curvispinosus* (P5), *T. rugatulus* (P8) |
 | Raids et moulin | *Eciton*, *Labidus* |
+| Transport coopératif | *Paratrechina longicornis* |
+| Auto-assemblage | *Eciton* (ponts), *Solenopsis invicta* (radeaux) |
+| Construction stigmergique | *Lasius niger* (les modèles de termites et de guêpes servent de contrepoint, hors couple fourmi-abeille) |
 | Danse, essaim, polyéthisme d'âge | *Apis mellifera* |
 | Contre-exemple (pistes chez l'abeille) | Meliponini |
 
-Le canal (« piste » ou « danse ») est une **variable du modèle**, jamais un attribut du taxon.
+Le canal (« piste » ou « danse ») est une **variable du modèle**, jamais un attribut du taxon. Une fiche peut ajouter un taxon : elle le nomme, le justifie et l'inscrit dans son préréglage.
 
 ### 2.4 Corrections factuelles de la v3 (liste fermée)
 Ces corrections s'imposent à tous les documents.
@@ -69,7 +74,7 @@ Ces corrections s'imposent à tous les documents.
 13. **« Agents LLM identiques oscillent » :** hypothèse sans acquis; contre-preuves publiées. À tester, jamais à affirmer.
 14. **Oubli :** trois formes distinctes (évaporation, abandon, attrition des danses); « attrition des danses » n'est pas le mécanisme général.
 15. **« Piste = chemin, danse = lieu » :** réfuté comme frontière algorithmique (ACO_R, ABC combinatoire). Reformulé en **granularité de la mémoire partagée**.
-16. **Paramètres LLM :** `temperature` non réglable sur les modèles récents; la réflexion et l'effort varient avec le modèle; retrait possible de Haiku 4.5 dès le 2026-10-15. À vérifier de nouveau avant toute exécution.
+16. **Paramètres LLM :** `temperature` non réglable sur les modèles récents; la réflexion et l'effort varient avec le modèle; retrait possible de Haiku 4.5 dès le 2026-10-15; Sonnet 4.5 déprécié le 2026-09-30, retrait le 2026-11-30 [Anthropic 2026a]. À vérifier de nouveau avant toute exécution.
 
 ## 3. Questions de recherche
 
@@ -84,7 +89,7 @@ Chaque projet traduit ces questions en **hypothèses directionnelles falsifiable
 ## 4. Construits mesurables
 
 - **R, richesse du signal** : un **vecteur**, jamais une échelle. Composantes : bits par message (nominal), information effective I(M;W)/H(W), **persistance** τ, **portée** (localité), **adressage**. Pour les LLM, on fait varier le format (scalaire, tuple symbolique, texte plafonné) à modèle fixe. On ne confond pas R avec le taxon.
-- **G, gain collectif** : gain d'interaction apparié, G = (P_coll − P_ref)/(P_max − P_ref), à **budget de calcul égal**, avec trois références préenregistrées : agents indépendants sans canal, agent unique à budget égal, colonie à règles. Décomposé en **agrégation** (effet du vote) et **interaction** (effet de la communication).
+- **G, gain collectif** : gain d'interaction apparié, G = (P_coll − P_ref)/(P_max − P_ref), à **budget de calcul égal**, avec trois références préenregistrées : agents indépendants sans canal, agent unique à budget égal, colonie à règles. Décomposé en **agrégation** (effet du vote) et **interaction** (effet de la communication). Le rapport est instable quand P_max − P_ref est petit : on rapporte **toujours d'abord la différence appariée** Δ = P_coll − P_ref avec son intervalle, et G seulement si l'écart P_max − P_ref dépasse le seuil fixé au plan de recherche. La définition de P_max par type de score et ce seuil sont fixés dans `03-plan-de-recherche.md`; la notation (Δ_k, G_agg, G_com) suit `06-metriques-et-typologie.md`.
 - **Robustesse** : variation de G après perturbation (retrait de 30 % des agents, changement d'environnement).
 - **Coût** : jetons, appels, latence; messages échangés.
 - **Échecs** : taxonomie MAST pour les agents; taxonomie propre à P6 pour les colonies.
@@ -109,7 +114,7 @@ La numérotation P1 à P7 de la v3 est conservée. Deux projets s'ajoutent (P8, 
 | P7 | Synthèse agentique | Fourmi, abeille, agent LLM; témoin orchestré | 3 | p7-agents-llm |
 | P2 | Mémoire partagée et métaheuristiques *(annexe, go/no-go)* | ACO, ABC, allocation dynamique | 3 | p2-optimisation |
 
-Dépendances : S0 précède tout. V0 fournit le gabarit avant P1. P7 dépend de P1, P3, P5 et P8 (résultats reproduits) et de la typologie de S0. P2 n'est lancé que si les phases 1 et 2 sont achevées.
+Dépendances : S0 précède tout. V0 fournit le gabarit éditorial avant P1 : S0 livre la coquille technique de page (build reproductible, accessibilité de base), V0 la charte, les composants et l'évaluation. P7 dépend de P1, P3, P5 et P8 (résultats reproduits) et de la typologie de S0. P2 n'est lancé que si les phases 1 et 2 sont achevées. Les dépendances fines ajoutées par les fiches (P8 ← P1, P5; P6 ← P1, P5, P9) et les volets LLM de P6, P8 et P9, qui exigent le harnais de P7 et passent donc en phase 3, sont tenus dans `02-architecture-programme.md` (graphe) et `09-feuille-de-route.md` (séquence), qui font foi sur ces points.
 
 **Parité :** chaque projet traite les deux espèces avec le même niveau d'exigence (modèle, cible, visuel). Une asymétrie est signalée et justifiée dans la fiche.
 
@@ -117,35 +122,38 @@ Dépendances : S0 précède tout. V0 fournit le gabarit avant P1. P7 dépend de 
 
 1. **Réplication avant extension.** Chaque modèle reproduit un résultat publié avant toute extension. La **réplication** d'un modèle n'est pas la **validation** contre des données empiriques; on ne confond jamais les deux.
 2. **Fiche de reproduction avant le code.** Équations, paramètres, unités, protocole, figure cible numérisée, critère d'acceptation chiffré, écrits avant de coder.
-3. **Critère d'acceptation explicite.** Niveau visé (alignement relationnel ou équivalence distributionnelle), marge d'équivalence (TOST), nombre de répétitions, règle de décision, porte go/no-go, registre des déviations.
+3. **Critère d'acceptation explicite.** Niveau visé (identité numérique à tolérance pour les modèles déterministes, alignement relationnel ou équivalence distributionnelle), marge d'équivalence (TOST), nombre de répétitions, règle de décision, porte go/no-go, registre des déviations. Le détail est dans `04-protocole-reproduction.md`.
 4. **Séparation.** Le **confirmatoire** (préenregistré) se distingue de l'**exploratoire** (pages interactives).
 5. **Description des modèles** au format ODD (Grimm et al. 2020), ordre de mise à jour et stochasticité explicites.
-6. **Docking.** Le modèle chorégraphique commun est validé contre chaque modèle de référence.
-7. **Statut épistémique** sur chaque énoncé et chaque graphe : *Résultat reproduit*, *Modèle simplifié*, *Hypothèse de l'auteur*, *Analogie*.
+6. **Docking.** Le modèle chorégraphique commun est **aligné par docking** sur chaque modèle de référence. Le docking est un alignement entre modèles, pas une validation : la validation est réservée à la comparaison avec des données empiriques (principe 1).
+7. **Statut épistémique** sur chaque énoncé et chaque graphe : *Résultat reproduit*, *Résultat publié (non reproduit)*, *Modèle simplifié*, *Hypothèse de l'auteur*, *Analogie*.
 8. **Références vérifiées.** Toute référence porte son statut (*vérifiée*, *corrigée*, *non vérifiée*). Aucune valeur numérique n'apparaît sans source ou sans la marque **[à confirmer]**.
 
 ## 7. Architecture de simulation
 
 Un moteur unique « fourmi ou abeille » est abandonné : les résultats publiés viennent de modèles de natures différentes (EDO, Monte Carlo, Poisson à temps discret, champ moyen, modèles à agents, métaheuristiques). Trois couches :
 
-1. **Noyau commun** : PRNG à graine, horloge à pas fixe, intégrateur RK4, algorithme de Gillespie (SSA), événements discrets, grille, enregistreur, scénario, manifeste de run.
-2. **Modèles de référence** : un par article, validé contre la figure ou le tableau publié.
-3. **Modèle chorégraphique commun** : seul le canal est interchangeable (persistance, portée, adressage, format); validé par docking sur les modèles de référence.
+1. **Noyau commun** : PRNG à graine, horloge à pas fixe, intégrateurs RK4 et Euler–Maruyama (équations stochastiques de P1, P3 à P6 et P8), algorithme de Gillespie (SSA), événements discrets, grille, enregistreur, scénario, manifeste de run. Le choix des algorithmes (générateur, méthode de Gillespie) est fixé dans `05-spec-simulation.md`.
+2. **Modèles de référence** : un par article, répliqué contre la figure ou le tableau publié.
+3. **Modèle chorégraphique commun** : seul le canal est interchangeable (persistance, portée, adressage, format); aligné par docking sur les modèles de référence.
 
-Deux sorties : un moteur **headless Node** (balayages, tests, rejeu) et une **couche navigateur** (visuels). Langage : TypeScript partout. Node exécute le `.ts` directement; `tsc --noEmit` vérifie les types. Aucune frontière entre langages au départ (WASM seulement si N dépasse ce que Canvas tient, avec mesure à l'appui).
+Deux sorties : un moteur **headless Node** (balayages, tests, rejeu) et une **couche navigateur** (visuels). Langage : TypeScript pour le moteur et les pages. Node exécute le `.ts` directement; `tsc --noEmit` vérifie les types. Hors du moteur, Python (oracles de vérification, deuxième implémentation) et R (modèles mixtes de P7) sont admis : la frontière passe par des fichiers CSV ou JSON, jamais par une liaison en mémoire. WASM seulement si une mesure du spike de la phase 0 l'exige, en navigateur ou pour un noyau headless lourd.
 
 ## 8. Vulgarisation (V0)
 
 - **Trois niveaux, réordonnés :** *Voir* (récit guidé, avec prédiction), *Explorer* (bac à sable étayé, « Vue de l'agent », « Modifier la règle »), *Vérifier* (reproduction, distribution sur N graines, code, limites).
 - **Publics :** grand public, étudiants, praticiens de l'agentique, chercheurs. Chaque page déclare son public principal.
 - **Évaluation :** objectifs d'apprentissage mesurables, pré-test et post-test, condition témoin statique.
-- **Accessibilité :** WCAG 2.2 AA, daltonisme, `prefers-reduced-motion`, clavier, mobile.
+- **Accessibilité :** WCAG 2.2 AA, daltonisme, clavier, mobile; `prefers-reduced-motion` (critère AAA 2.3.3) retenu comme bonne pratique.
 - **Charte :** fourmi #D55E00, abeille #0072B2, agent #CC79A7, doublées de pictogrammes; viridis ou cividis pour les grandeurs continues.
-- **Garde-fous :** pas d'anthropomorphisme ni de téléologie; encart « Ce que fait vraiment la reine ».
+- **Garde-fous :** aucune explication causale anthropomorphe ou téléologique; les termes imagés de la littérature (« décision », « vote ») sont admis comme vocabulaire étiqueté et leur effet sur la compréhension est mesuré. Encart « Ce que fait vraiment la reine », à valider par un myrmécologue et un apidologue.
+- **Règle de séquence :** les pages de la phase 1 sont publiées et évaluées avant celles de la phase 2. C'est une règle de publication, pas un verrou sur le travail de simulation.
+
+Science ouverte, licences, archivage, éthique et limites de portée : `08-science-ouverte-ethique.md` fait foi.
 
 ## 9. Conventions de documentation
 
-- **Identifiants :** projets `S0`, `V0`, `P1`…`P9`; hypothèses `H<projet>.<n>`; cibles de reproduction `T<projet>.<n>`; expériences originales `E<projet>.<n>`; risques `R<n>`.
+- **Identifiants :** projets `S0`, `V0`, `P1`…`P9`; hypothèses `H<projet>.<n>`; cibles de reproduction `T<projet>.<n>`; expériences originales `E<projet>.<n>` (S0 utilise `H0.n`, `T0.n`, `E0.n`; V0 utilise `HV0.n`, `TV0.n`, `EV0.n`). Seuls H, T et E sont uniques dans tout le programme. Les autres identifiants (risques `R`, décisions `D`, portes, visuels, objectifs) sont **locaux** au document qui les définit et se citent avec lui (« R7 de P6 », « D3 de 02 », « D1 à D5 du spike de 05 »). Font foi pour le programme : le registre consolidé des risques (`R200` et suivants) et les portes `GF<n>` de `09-feuille-de-route.md`, les décisions d'architecture `D<n>` de `02-architecture-programme.md`, les décisions de science ouverte `DC<n>` de `08-science-ouverte-ethique.md`.
 - **Citations :** `[Auteur et al. année]`, ou `[Auteur année]` pour un ou deux auteurs, avec suffixe `a`, `b` en cas de conflit. Chaque étiquette a une entrée dans `docs/11-bibliographie.md`.
 - **Chemins :** fiches de projet dans `projets/`; dossiers de recherche dans `recherche/dossiers/`; rapports d'audit dans `docs/annexes/audit/`.
 - **Longueur :** celle que la tâche exige, sans remplissage ni résumé redondant.
@@ -156,3 +164,8 @@ Deux sorties : un moteur **headless Node** (balayages, tests, rejeu) et une **co
 - Des sources primaires n'ont pas pu être lues en texte intégral (accès fermé, quotas de recherche épuisés). Les dossiers les signalent référence par référence.
 - Les valeurs de k (Deneubourg et al. 1990), de paramètres de Bonabeau et al. 1996, de Camazine et Sneyd 1991 et de Pratt et al. 2005 restent à confirmer dans les textes.
 - Les identifiants et tarifs des modèles LLM, et les versions A2A et MCP, se vérifient de nouveau avant toute exécution de P7.
+- Les décisions qui reviennent au chercheur (collecte de Haiku 4.5 avant son retrait, enveloppe de P7, dépôt dédié et licences, échéances de publication, budget égal) sont datées dans `09-feuille-de-route.md` (jalons, portes GF, décisions à dater).
+
+## 11. Révision 4.1 : précisions entérinées
+
+Tensions relevées par les rédacteurs et tranchées dans ce cadre : Euler–Maruyama au noyau (section 7); « aligné par docking » au lieu de « validé » (principe 6, section 7); niveau « identité numérique à tolérance » (principe 3); statut *Résultat publié (non reproduit)* (principe 7); garde de G et renvoi de P_max au plan de recherche (section 4); régime « signaux directs » étendu aux messages dirigés locaux, hybrides et référence nulle classés par `06` (section 2.2); taxons ajoutés (section 2.3); retrait de Sonnet 4.5 (correction 16); frontière S0/V0 et dépendances fines (section 5); Python et R hors moteur (section 7); garde-fous de vulgarisation, règle de séquence et renvoi à `08` (section 8); identifiants locaux (risques, décisions, portes) et documents qui font foi (section 9).

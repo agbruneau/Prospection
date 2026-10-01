@@ -30,7 +30,7 @@ Abréviations : **ES** erreur standard de Monte Carlo (§6.2); **TOST** deux tes
 
 | Prérequis | Sert à | Contrôle d'achèvement |
 |---|---|---|
-| Noyau S0 : PRNG `xoshiro128**` avec SplitMix64, RK4, SSA, enregistreur, manifeste de run (cadre §7; spécification dans `05-spec-simulation.md`) | tout le reste | les cibles TS0 du noyau passent (§6.9) |
+| Noyau S0 : PRNG `xoshiro128**` avec SplitMix64, RK4, SSA, enregistreur, manifeste de run (cadre §7; spécification dans `05-spec-simulation.md`) | tout le reste | les cibles T0.n du noyau passent (§6.9) |
 | Harnais de `05-spec-simulation.md` : `npm run verify` (`tsc --noEmit`, `node --test`, vérification des fiches et des cibles); Node exécute le `.ts` | vérifications de code, critères automatisés | la commande sort à 0 en intégration continue [audit simulation-technique, M13] |
 | Script de contrôle numérique `../recherche/verifications-numeriques/x_methodes_checks.py` (Python, bibliothèque standard; sections `prng stats rk4 ssa order tost ntable mcse`) | recalcul indépendant des formules de ce document | aucune ligne `FAIL` (exécuté le 2026-10-01, toutes les sections : les valeurs de X1 à X7 et X12 à X19 citées dans ce document sont retrouvées) |
 | Outil de numérisation de figures (p. ex. WebPlotDigitizer, cité par l'audit simulation-technique) et dossier `donnees/` versionné | champ 6 de la fiche | CSV avec SHA, calibration des axes, incertitude de lecture |
@@ -56,7 +56,7 @@ Le cadre (principe 1) interdit de les confondre. Cinq opérations, cinq énoncé
 
 | Opération | Question | Comparé à | Énoncé permis | Énoncé interdit |
 |---|---|---|---|---|
-| Vérification de code | L'implantation calcule-t-elle ce qu'on croit? | identité mathématique, vecteur de test, ordre de convergence | « passe TS0.n » | toute conclusion biologique |
+| Vérification de code | L'implantation calcule-t-elle ce qu'on croit? | identité mathématique, vecteur de test, ordre de convergence | « passe T0.n » | toute conclusion biologique |
 | Réplication | Redonne-t-elle les résultats du modèle publié (sa figure, son tableau)? | résultats simulés publiés | *Résultat reproduit* (niveau déclaré) | « validé » |
 | Docking | Deux modèles ou deux implantations donnent-ils les mêmes sorties? | un autre modèle | « aligné par docking, niveau X » | « validé » |
 | Validation | Le modèle prédit-il des données empiriques non utilisées pour l'ajuster? | données de terrain ou de laboratoire | « validé contre [données] » | « validé » si les paramètres ont été ajustés sur ces données |
@@ -362,7 +362,7 @@ Une extraction automatique de l'article donnait EmpSE² comme ES de l'ES empiriq
 ### 6.7 Déterminisme entre moteurs
 
 Plusieurs fonctions `Math` ont une précision dépendante de l'implémentation, même sur un autre système d'exploitation avec le même moteur [MDN 2026; audit simulation-technique, M1]. Conséquences :
-- L'**identité numérique** ne vaut que pour les entiers du PRNG (X1 et X3; TS0.1 et TS0.2).
+- L'**identité numérique** ne vaut que pour les entiers du PRNG (X1 et X3; T0.1 et T0.3).
 - Les **traces dorées** (hachage de l'état à t = 100 et 1000 pour quelques graines) ne valent que pour le moteur et la version de Node figés en intégration continue [audit simulation-technique, M13].
 - Les **critères statistiques** valent partout.
 - Le moteur de référence sans affichage (Node, version figée) produit tous les résultats confirmatoires; le navigateur rejoue des traces (cadre §7). Les constantes dérivées (facteur de décroissance par pas) se calculent une fois sous Node et s'écrivent comme littéraux dans le fichier de scénario [audit simulation-technique, M1, [I]].
@@ -373,22 +373,22 @@ L'ordre est un paramètre du modèle : les résultats d'un modèle spatial diff�
 
 - Facteur du scénario : `synchrone` (double tampon) ou `asynchrone` (permutation tirée du PRNG à chaque pas), testé **une fois par modèle à agents**.
 - Critère « sans effet » : écart < 3 ES de Monte Carlo [`x-methodes`, M10d, [I]].
-- Test fait sur M6 (**HS0.1**, X17, 1000 runs par condition) : à k = 1, asynchrone 76,1 % et 276,7 ± 67,6 pas, synchrone 76,0 % et 276,6 ± 71,4 pas; à k = 9, 82,8 % et 323,2 ± 79,0 contre 82,7 % et 325,3 ± 80,2 : ordre sans effet [I].
+- Test fait sur M6 (**H0.1**, X17, 1000 runs par condition) : à k = 1, asynchrone 76,1 % et 276,7 ± 67,6 pas, synchrone 76,0 % et 276,6 ± 71,4 pas; à k = 9, 82,8 % et 323,2 ± 79,0 contre 82,7 % et 325,3 ± 80,2 : ordre sans effet [I].
 
-### 6.9 Contrôles de code et de formules (cibles TS0)
+### 6.9 Contrôles de code et de formules (cibles T0.n)
 
-Les cibles de vérification du socle portent des identifiants `TS0.n`, définis dans `05-spec-simulation.md` (table « Cibles de vérification du socle », qui donne la correspondance avec les `X<n>` du dossier `x-methodes`). Ce protocole les désigne par leur identifiant de dossier, pour ne pas dupliquer la numérotation, et en fixe le rôle : elles précèdent toute réplication (porte de code).
+Les cibles de vérification du socle portent des identifiants `T0.n` (fiche S0, qui fait foi; T0.n reprend Xn), détaillés dans `05-spec-simulation.md` (table « Cibles de vérification du socle », qui donne la correspondance avec les `X<n>` du dossier `x-methodes`). Ce protocole les désigne par leur identifiant de dossier, pour ne pas dupliquer la numérotation, et en fixe le rôle : elles précèdent toute réplication (porte de code).
 
-| Contrôle (dossier) | Cible TS0 | Critère |
+| Contrôle (dossier) | Cible T0.n | Critère |
 |---|---|---|
-| X1 : 10 premières sorties de `xoshiro128**`, état [1, 2, 3, 4] : 11520, 0, 5927040, 70819200, 2031721883, 1637235492, 1287239034, 3734860849, 3729100597, 4258142804 [rust-random 2026] | TS0.1 | égalité exacte, sous Node et trois navigateurs |
-| X3 : SplitMix64, graine 1477776061723855037 : 1985237415132408290, 2979275885539914483, 13511426838097143398 [rust-random 2026] | TS0.2 | égalité exacte |
-| X4 : RK4 sur M1c (σ = 10, γ = 3, α = 1/3, ρ = 3, T = 4, y₀ = (0,01 ; 0,0101)), rapport des erreurs maximales pour h → h/2 (référence h = T/64 000) | TS0.3 | rapport ∈ [12 ; 20]; mesuré 19,3 ; 16,6 ; 16,2 (Euler 1,8 ; 1,9 ; 2,0) [I] |
-| X5 : équilibre de M1c à σ = 10, t = 200, h = 0,01 | TS0.4 | (0,8497 ; 0,0392) à ±10⁻³ |
-| X6 : SSA direct [Gillespie 2007] pour U→A seul, E[A(t)] = N(1 − e^{−γt}), N = 200, γ = 0,5, t = 2 | TS0.5 | 2 000 runs, écart < 3 ES; mesuré 126,16 ± 0,15 contre 126,42 (1,7 ES) |
-| X7 : M1c à N fini par SSA, P(\|A − B\|/N > 0,3 à t = 40), 200 runs (exploratoire, aucune valeur publiée) : σ = 1 : 0,445 ± 0,035 (N = 50), 0,105 ± 0,022 (N = 200); σ = 10 : 0,950 ± 0,015 (N = 50), 1,000 (N = 200) | TS0.6 | docking EDO et SSA : à σ < σ\* = 1,6875 la probabilité **décroît** avec N; à σ > σ\*, elle tend vers 1; écart entre implémentations < 3 ES |
-| X12 à X14, X16 : n_sim 1 900 et 10 000; n de TOST 70, 191, 429 (±2); seuil K-S 0,304; ES de Monte Carlo (rapports 0,990 ; 1,002 ; 0,988 ; 0,989) | TS0.14 | valeurs retrouvées par `analysis/` |
-| X21 : aucun `Math.random` dans la logique de simulation | TS0.13 | contrôle par `grep` en intégration continue |
+| X1 : 10 premières sorties de `xoshiro128**`, état [1, 2, 3, 4] : 11520, 0, 5927040, 70819200, 2031721883, 1637235492, 1287239034, 3734860849, 3729100597, 4258142804 [rust-random 2026] | T0.1 | égalité exacte, sous Node et trois navigateurs |
+| X3 : SplitMix64, graine 1477776061723855037 : 1985237415132408290, 2979275885539914483, 13511426838097143398 [rust-random 2026] | T0.3 | égalité exacte |
+| X4 : RK4 sur M1c (σ = 10, γ = 3, α = 1/3, ρ = 3, T = 4, y₀ = (0,01 ; 0,0101)), rapport des erreurs maximales pour h → h/2 (référence h = T/64 000) | T0.4 | rapport ∈ [12 ; 20]; mesuré 19,3 ; 16,6 ; 16,2 (Euler 1,8 ; 1,9 ; 2,0) [I] |
+| X5 : équilibre de M1c à σ = 10, t = 200, h = 0,01 | T0.5 | (0,8497 ; 0,0392) à ±10⁻³ |
+| X6 : SSA direct [Gillespie 2007] pour U→A seul, E[A(t)] = N(1 − e^{−γt}), N = 200, γ = 0,5, t = 2 | T0.6 | 2 000 runs, écart < 3 ES; mesuré 126,16 ± 0,15 contre 126,42 (1,7 ES) |
+| X7 : M1c à N fini par SSA, P(\|A − B\|/N > 0,3 à t = 40), 200 runs (exploratoire, aucune valeur publiée) : σ = 1 : 0,445 ± 0,035 (N = 50), 0,105 ± 0,022 (N = 200); σ = 10 : 0,950 ± 0,015 (N = 50), 1,000 (N = 200) | T0.7 | docking EDO et SSA : à σ < σ\* = 1,6875 la probabilité **décroît** avec N; à σ > σ\*, elle tend vers 1; écart entre implémentations < 3 ES |
+| X12 à X14, X16 : n_sim 1 900 et 10 000; n de TOST 70, 191, 429 (±2); seuil K-S 0,304; ES de Monte Carlo (rapports 0,990 ; 1,002 ; 0,988 ; 0,989) | T0.12 à T0.14, T0.16 | valeurs retrouvées par `analysis/` |
+| X21 : aucun `Math.random` dans la logique de simulation | T0.21 | contrôle par `grep` en intégration continue |
 | X2 : PCG32 (`Lcg64Xsh32::new(42, 54)`) : 0xa15c02b7, 0x7b47f409, 0xba1d3330, 0x83d2f293, 0xbfa4784b, 0xcbed606e [rust-random 2026] | aucune (PCG32 non retenu) | à exécuter seulement si PCG32 est adopté |
 | X8 à X11, X15 : formules de [Miller 2024] et de [Gelman 2018] : n = 969 (éq. 9); MDE 13,27 % et 7,57 % (les valeurs publiées 13,2 et 7,5 sont tronquées); facteur (1 + 2/K)/3 (2/3 ; 1/2 ; 4/9); exemple du §4.2 à 1/12 et non 1/9; interaction ×2 et ×16 | aucune | contrôle par `x_methodes_checks.py` (sections `stats`, `ntable`); à ajouter aux cibles du socle si `analysis/` implante le module d'évaluation des LLM |
 
@@ -410,7 +410,7 @@ Les cibles de vérification du socle portent des identifiants `TS0.n`, définis 
 | Porte | Moment | Condition de passage (vérifiable) | Si échec |
 |---|---|---|---|
 | Lecture | avant le code du modèle | fiche complète (champs 1 à 13); paramètres [T] ou [T\*]; aucune valeur [à confirmer]; fiche gelée; marge et n calculés | cible bloquée (paramètres) ou provisoire (autre composante ou valeur [à confirmer]) |
-| Code | avant la première réplication | `npm run verify` de `05-spec-simulation.md` sort à 0 (cibles TS0 du noyau, du déterminisme et de la conformité; typage) | corriger le noyau; aucune réplication |
+| Code | avant la première réplication | `npm run verify` de `05-spec-simulation.md` sort à 0 (cibles T0.n du noyau, du déterminisme et de la conformité; typage) | corriger le noyau; aucune réplication |
 | Réplication | après les runs | chaque cible *requise* par la fiche de projet est satisfaite à son niveau; le modèle reproduit au moins trois patrons à deux niveaux [`x-methodes`, M2, [I]]; toute déviation est au registre | diagnostic (§7.4); extensions dépendantes suspendues |
 | Docking | après la réplication de la référence | critère du §12 | les résultats du modèle chorégraphique commun ne sont pas rapportés comme confirmatoires |
 | Extension | avant tout E\<projet\>.\<n\> | porte de réplication franchie pour les cibles dont E dépend; préenregistrement déposé si E est confirmatoire (§11) | E reste exploratoire et étiquetée, ou est suspendue |
@@ -427,7 +427,7 @@ Les fiches de projet nomment leurs portes à leur manière (A à E, PR-0 à PR-6
 ### 7.4 Diagnostic quand une cible n'est pas satisfaite
 
 Dans cet ordre, en consignant chaque étape :
-1. **Code** : cibles TS0 du noyau et tests unitaires des équations transcrites (champ 3).
+1. **Code** : cibles T0.n du noyau et tests unitaires des équations transcrites (champ 3).
 2. **Lecture de la source** : paramètres, unités, conventions, sens du « ± », lecture de r (M6); code ou matériel supplémentaire des auteurs; question aux auteurs.
 3. **Pas de temps et grille** : même résultat à dt/2 et à Δx/2 [audit simulation-technique, M3].
 4. **Ordre de mise à jour** : test de §6.8.
@@ -558,7 +558,7 @@ Les onze noms de concepts sont la liste standard d'ODD; le dossier `x-methodes` 
 - **Global** quand k ≤ ~15 : Sobol' avec N ≥ 1 000 et IC bootstrap; k plus grand : criblage de Morris, puis Sobol' sur les paramètres retenus.
 - Sortie = moyenne sur une fenêtre après rodage; sortie bimodale : probabilité de chaque mode.
 - L'ordre de mise à jour est un facteur catégoriel de toute analyse.
-- Les deux positions se concilient ainsi : OFAT pour les mécanismes, global pour attribuer la variance [`x-methodes`, §1 pt 5, [I]]; l'essai ES0.1 (§16) le met à l'épreuve.
+- Les deux positions se concilient ainsi : OFAT pour les mécanismes, global pour attribuer la variance [`x-methodes`, §1 pt 5, [I]]; l'essai E0.3 (§16) le met à l'épreuve.
 
 ## 11. Confirmatoire et exploratoire; préenregistrement
 
@@ -577,7 +577,7 @@ Le cadre (principe 4) sépare les deux; les pages interactives sont déclarées 
 ### 11.2 Quand et comment
 
 - **Un enregistrement OSF par projet**, avant la première exécution confirmatoire [`x-methodes`, M8, [I]]. Version horodatée, en lecture seule; embargo possible jusqu'à quatre ans; une mise à jour est un processus transparent distinct; modèles disponibles : *OSF Preregistration*, *Open-Ended*, *Registered Report Protocol*, AsPredicted [OSF 2026, T\*].
-- **Registered Report pour P7** : étape 1 = protocole, variance et coût du pilote (ES0.2); étape 2 = résultats, les analyses non prévues allant dans une section exploratoire [Chambers 2013; Chambers et Tzavella 2022; OSF 2026].
+- **Registered Report pour P7** : étape 1 = protocole, variance et coût du pilote (pilote de variance B0b de P7 (X20)); étape 2 = résultats, les analyses non prévues allant dans une section exploratoire [Chambers 2013; Chambers et Tzavella 2022; OSF 2026].
 - **Études de simulation** : gabarit ADEMP-PreReg [Siepe et al. 2024].
 - Les revues cibles offrant le format sont traitées dans `08-science-ouverte-ethique.md` (le format n'a pas été trouvé pour plusieurs revues cibles, négatif non démontrable [`x-methodes`, M8]).
 
@@ -633,7 +633,7 @@ Valeurs marquées [à confirmer].
 
 ### 12.1 Objet
 
-Le docking aligne deux modèles (ou deux implantations) pour établir s'ils produisent les mêmes résultats [Axtell et al. 1996]. Le cadre (principe 6) écrit que le modèle chorégraphique commun est « validé contre chaque modèle de référence » : au sens du principe 1 du même cadre, c'est un **alignement par docking**, non une validation empirique. Trois usages : (a) modèle chorégraphique commun (couche 3) contre modèle de référence (couche 2); (b) deux implantations du même modèle (TypeScript et Python); (c) EDO contre SSA (X7, TS0.6).
+Le docking aligne deux modèles (ou deux implantations) pour établir s'ils produisent les mêmes résultats [Axtell et al. 1996]. Le cadre (principe 6) écrit que le modèle chorégraphique commun est « validé contre chaque modèle de référence » : au sens du principe 1 du même cadre, c'est un **alignement par docking**, non une validation empirique. Trois usages : (a) modèle chorégraphique commun (couche 3) contre modèle de référence (couche 2); (b) deux implantations du même modèle (TypeScript et Python); (c) EDO contre SSA (X7, T0.7).
 
 ### 12.2 Procédure
 
@@ -649,9 +649,9 @@ Le docking aligne deux modèles (ou deux implantations) pour établir s'ils prod
 
 | Composante | Critère |
 |---|---|
-| Relationnel | signes, ordre et monotonie des sorties identiques à ceux du modèle de référence. Exemple chiffré (X7, TS0.6) : à σ < σ\* = 1,6875, P(\|A − B\|/N > 0,3) décroît avec N (0,445 à N = 50, 0,105 à N = 200); à σ = 10, elle tend vers 1 (0,950, puis 1,000) |
+| Relationnel | signes, ordre et monotonie des sorties identiques à ceux du modèle de référence. Exemple chiffré (X7, T0.7) : à σ < σ\* = 1,6875, P(\|A − B\|/N > 0,3) décroît avec N (0,445 à N = 50, 0,105 à N = 200); à σ = 10, elle tend vers 1 (0,950, puis 1,000) |
 | Distributionnel | TOST sur chaque sortie primaire, avec une marge δ_dock au plus égale à la marge de la réplication de la référence [I] (les écarts se cumulent : B à δ_dock de A, A à δ de la publication); n selon §5.3; mêmes graines maîtres dans les deux modèles (`05-spec-simulation.md`), analyse appariée par graine |
-| Implantations indépendantes | écart < 3 ES de Monte Carlo (exemple X6, TS0.5 : 1,7 ES) |
+| Implantations indépendantes | écart < 3 ES de Monte Carlo (exemple X6, T0.6 : 1,7 ES) |
 | Pas de temps et grille | résultat inchangé à dt/2 et à Δx/2 [audit simulation-technique, M3] |
 | Ordre de mise à jour | §6.8 |
 
@@ -788,7 +788,7 @@ ODD complet; fiches T<projet>.<n> gelées; registre des déviations; préenregis
 - [ ] Niveau, critère, marge, n et graines écrits avant le code; n au moins égal au plancher (§6.4) et au n requis (§5.3).
 
 **Code**
-- [ ] `npm run verify` de `05-spec-simulation.md` sort à 0 (cibles TS0 comprises).
+- [ ] `npm run verify` de `05-spec-simulation.md` sort à 0 (cibles T0.n comprises).
 - [ ] Aucun `Math.random` ni `Date.now` dans la logique de simulation (contrôle par `grep`).
 - [ ] Unités physiques; pas de temps découplé du rendu; constantes dérivées en littéraux dans le scénario.
 - [ ] ODD complet; ordre de mise à jour déclaré et testé une fois.
@@ -816,11 +816,11 @@ ODD complet; fiches T<projet>.<n> gelées; registre des déviations; préenregis
 
 | ID | Définition |
 |---|---|
-| HS0.1 | L'ordre de mise à jour (synchrone, asynchrone) n'a pas d'effet sur les sorties de M6 de [Sumpter et Pratt 2009] : écart < 3 ES de Monte Carlo sur la fraction vers X et sur la durée, à k = 1 et à k = 9, 1 000 runs par condition. Réfutée si l'écart atteint 3 ES sur l'une des quatre sorties. Pilote exploratoire (X17) : non réfutée; à refaire en confirmatoire sur le moteur de référence |
-| ES0.1 | Comparer OFAT étendue, criblage de Morris et Sobol' sur M1 avec un même paramétrage (γ, α, ρ, σ, N) pour trancher entre [Broeke et al. 2016] et [Saltelli et al. 2019]. Achèvement : tableau du classement des paramètres par méthode, avec le coût en exécutions; §10.3 révisé si les classements divergent (`x-methodes`, question ouverte 17) |
-| ES0.2 | Pilote de variance des agents LLM : au moins 10 répétitions par cellule; mesure du coefficient de variation entre exécutions d'une configuration identique, de E[σ²], Var(x), ω²; en tirer K et n. Achèvement : seuil de non-répétabilité écrit dans le préenregistrement de P7 avant la campagne (X20) |
+| H0.1 (S0) | L'ordre de mise à jour (synchrone, asynchrone) n'a pas d'effet sur les sorties de M6 de [Sumpter et Pratt 2009] : écart < 3 ES de Monte Carlo sur la fraction vers X et sur la durée, à k = 1 et à k = 9, 1 000 runs par condition. Réfutée si l'écart atteint 3 ES sur l'une des quatre sorties. Pilote exploratoire (X17) : non réfutée; à refaire en confirmatoire sur le moteur de référence |
+| E0.3 (S0) | Comparer OFAT étendue, criblage de Morris et Sobol' sur M1 avec un même paramétrage (γ, α, ρ, σ, N) pour trancher entre [Broeke et al. 2016] et [Saltelli et al. 2019]. Achèvement : tableau du classement des paramètres par méthode, avec le coût en exécutions; §10.3 révisé si les classements divergent (`x-methodes`, question ouverte 17) |
+| X20 → P7 (lot B0b) | Pilote de variance des agents LLM : au moins 10 répétitions par cellule; mesure du coefficient de variation entre exécutions d'une configuration identique, de E[σ²], Var(x), ω²; en tirer K et n. Achèvement : seuil de non-répétabilité écrit dans le préenregistrement de P7 avant la campagne (X20) |
 
-Les cibles de vérification du socle (`TS0.n`) sont définies dans `05-spec-simulation.md`, non ici (§6.9). Les risques de méthode occupent la plage R60 à R69 (§16.2). Les identifiants HS0.n et ES0.n suivent la forme de `TS0.n` : l'identifiant du projet S0 est écrit tel quel après le préfixe.
+Les cibles de vérification du socle (`T0.n`) sont définies par la fiche S0 et détaillées dans `05-spec-simulation.md`, non ici (§6.9). Les risques de méthode occupent la plage R60 à R69 (§16.2), locale à ce document. À la validation finale, les identifiants HS0.1, ES0.1, ES0.2 et TS0.n de la première version ont été alignés sur la fiche S0 : H0.1, E0.3, pilote de variance B0b de P7 (X20) et T0.n = Xn.
 
 ### 16.2 Risques de méthode
 
@@ -857,10 +857,10 @@ Plage R60 à R69 réservée à ce document, à fusionner dans le registre de `09
 |---|---|
 | Lecture de r et sens du « ± » de [Sumpter et Pratt 2009] | code ou matériel supplémentaire des auteurs; question aux auteurs |
 | Marges δ et n_max par cible | numérisation de chaque figure (champ 6), puis choix du chercheur selon le budget de calcul |
-| Seuil de non-répétabilité LLM | pilote ES0.2 |
+| Seuil de non-répétabilité LLM | pilote pilote de variance B0b de P7 (X20) |
 | Textes non lus : Lakens 2024 (chapitre 13), Lakens et al. 2018, Morris et al. 2019 (numérotation), Grimm et al. 2020 (liste des concepts) | accès institutionnel ou préimpressions |
 | Protocole OPE de [Planque et al. 2022] [non vérifiée] | lecture du texte publié avant toute adoption (non utilisé ici comme norme) |
 | Conditions de republication des journaux d'appels | lecture des conditions d'utilisation d'Anthropic (voir `08-science-ouverte-ethique.md`) |
 | Revues offrant le Registered Report | lignes directrices aux auteurs ou courriel aux éditeurs (voir `08-science-ouverte-ethique.md`) |
 | Nomenclature des portes : types fonctionnels ici (lecture, code, réplication, docking, extension), lettres A à E ou PR-0 à PR-6 dans les fiches de projet, « porte C » et « porte D » dans `08-science-ouverte-ethique.md` (autre sens), « porte 0 » dans `05-spec-simulation.md` | harmonisation dans `09-feuille-de-route.md` (correspondance type par type) |
-| Identifiants HS0.n et ES0.n | reprise telle quelle par la fiche S0, ou renumérotation en une passe |
+| Identifiants du socle | résolu à la validation finale : alignement sur H0.n, T0.n, E0.n de la fiche S0 |

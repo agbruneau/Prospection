@@ -27,6 +27,8 @@ Les deux boucles relèvent, selon la fiche [I], de l'**auto-organisation par sig
 | **QR3** (contrôle) | Témoin orchestré et structure de tâche (décomposable ou séquentielle) dans un modèle de file. H4.5 |
 | QR1, QR4 | **Non servies directement.** QR1 relève de P8. QR4 (diversité) relève de P3 et P7; H4.6 n'en teste que l'effet sur les oscillations de régulation |
 
+**Hors portée.** Réseaux trophallactiques (diffusion de nourriture et d’état par échanges oraux entre ouvrières, chez la fourmi [Greenwald et al. 2015] comme chez l’abeille) : mécanisme de régulation pertinent, analogue aux protocoles de rumeur, mais sans modèle de référence lu dans les dossiers. Reporté comme extension possible de P4 après la phase 2 (audit, constat LA-12).
+
 **Rôle dans le programme.** Fournir (1) cinq modèles ou protocoles de référence, soit 12 cibles de reproduction; (2) une bibliothèque de contrôleurs de flux (indice de débit, indice de délai, signal explicite, double message, orchestré), en entrée optionnelle de P7; (3) la correction des erreurs de la v3 sur TCP, la loi de Little et les « deux lectures de la même file » (§2). P7 ne dépend pas de P4 (cadre); P4 ne lance aucun agent LLM.
 
 ---

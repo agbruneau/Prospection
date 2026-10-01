@@ -14,7 +14,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Reformuler la question : « dans quels environnements la richesse du signal paie-t-elle, et quand nuit-elle à l'exploration ? » Reproduire Sherman & Visscher 2002 (danses orientées vs désorientées) et le modèle de Beekman & Lew. Faire varier l'habitat (sources uniformes vs rares et riches). Transposer ce plan factoriel aux agents LLM.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — Question reformulée comme recommandé (« dans quels environnements la richesse du signal paie-t-elle, et quand nuit-elle à l'exploration? ») avec réplication de la littérature apicole d'abord, et l'axe d'habitat est cartographié dans P8 (T8.8 : I'Anson Price 2019, même contraste danses orientées/désorientées; T8.9 : Okada 2014; E8.4 : densité × durée de vie × erreur angulaire), croisé avec la volatilité dans P1 (E1.6) et repris pour les LLM par P7 (S1, S3, S5; information redondante ou distribuée, H7.6). Écart : Sherman et Visscher 2002 et le modèle de Beekman et Lew 2008 ne sont pas des cibles de reproduction (cités, [R], paramètres non lus; T8.9 en no-go), et P7 n'a pas de facteur explicite « sources rares ou riches ». — Traité dans : ../../00-cadre.md (§2.4 point 12; §3 QR0); ../../../projets/P8-individu-et-colonie.md (§2; §3 H8.9; §5 T8.8, T8.9; §6 E8.4); ../../../projets/P1-recrutement-verrouillage.md (§6 E1.6); ../../../projets/P7-synthese-agentique.md (§1; §3.2 H7.6)
 
 ### BA-02 · majeur · Tableau, ligne « Oubli » (Attrition des danses / TTL vs expiration des messages)
 
@@ -24,7 +24,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Scinder la ligne. Fourmi : évaporation (côté canal). Abeille, butinage : abandon de la source + modulation des danses. Abeille, essaim : attrition (engagement de l'émetteur). Agentique : TTL côté canal vs décroissance de l'engagement de l'agent.
 
-**Disposition.** _à renseigner_
+**Disposition.** Accepté — La ligne « Oubli » est scindée en trois formes selon qui oublie : évaporation (environnement, fourmi), abandon puis attrition des danses (émetteur, abeille; l'attrition est propre à la décision de nid et la danse n'a aucune persistance) et, côté agents, TTL du canal contre troncature du contexte. P5 oppose le TTL (propriété du canal) à l'expiration de l'engagement de l'émetteur, et la spécification range l'abandon dans la politique, non dans le canal. — Traité dans : ../../00-cadre.md (§2.4 point 14); ../../06-metriques-et-typologie.md (§6.2 « Oubli, en trois formes »; §7 homonymie 11); ../../10-glossaire.md (« oubli », « attrition des danses »); ../../05-spec-simulation.md (§2.3); ../../../projets/P5-decision-par-quorum.md (§7.2 « Oubli »)
 
 ### BA-03 · majeur · Projet 6 et tableau (« indécision et essaim scindé sans signaux d'arrêt »; « interblocage quand on supprime l'inhibition croisée »)
 
@@ -34,7 +34,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Reformuler en deux modes. Interblocage : prédit par modèle, adaptatif si les options sont médiocres. Scission : observée quand un quorum est atteint sans consensus. Simuler les deux séparément en faisant varier δ (inhibition croisée) et le seuil de quorum. Rattacher le veto agentique à l'inhibition croisée seulement.
 
-**Disposition.** _à renseigner_
+**Disposition.** Accepté — Les corrections 7 et 8 du cadre séparent l'interblocage (résultat de modèle, adaptatif si les options sont médiocres) de la scission (quorum atteint avant le consensus), et le signal d'arrêt est une inhibition, non un veto. P5 simule les deux séparément (E5.1 : carte de l'inhibition σ × quorum Q; E5.4) et P6 les range en D3 et D4 (H6.4, H6.5), le veto agentique n'étant rattaché qu'à l'inhibition ciblée. — Traité dans : ../../00-cadre.md (§2.4 points 7, 8); ../../../projets/P5-decision-par-quorum.md (§1 vocabulaire fixé; §3 H5.5; §4.4 étape 7; §6 E5.1, E5.4); ../../../projets/P6-defaillances-et-defenses.md (§7.1 D3, D4; §3 H6.4, H6.5)
 
 ### BA-04 · majeur · Projet 4 (« loi de Little; rapprochement non publié, de l'auteur »)
 
@@ -44,7 +44,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Citer ces trois travaux et restreindre l'originalité revendiquée à la comparaison fourmi/abeille. Modéliser une file d'appariement butineuses-receveuses. Paramètres vérifiés : trémulation au-delà d'environ 40 s de recherche; receveuses de 17 % à 30-50 % de la colonie en moins de 9 h.
 
-**Disposition.** _à renseigner_
+**Disposition.** Accepté — Le cadre (point 6) et P4 n'affirment aucune nouveauté sur la loi de Little (Seeley et Tovey 1994, Anderson et Ratnieks 1999, Ratnieks et Anderson 1999a cités) et restreignent l'apport à la mise en regard de ce que lit chaque boucle (« deux files »), avec la file d'appariement butineuses-receveuses modélisée (T4.8, T4.9). Les paramètres vérifiés sont repris : trémulation probable au-delà de 40 s de recherche, receveuses de 17 % à 30-50 % de la colonie (T4.6, T4.7). — Traité dans : ../../00-cadre.md (§2.4 point 6); ../../../projets/P4-regulation-sans-vue-densemble.md (§2 Positionnement; §4.6 à §4.8; §5 T4.6 à T4.9); ../../06-metriques-et-typologie.md (§6.2 « Régulation de la charge »)
 
 ### BA-05 · majeur · Projet 3 (« une ruche homogène oscille »; Jones et al. 2004)
 
@@ -54,7 +54,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Écrire « moins stable » et préciser « diversité génétique des seuils ». Reproduire le modèle de Graham et al. 2006 (Insectes Soc 53:226-232). Mentionner la réplication partielle négative. Ajouter Mattila & Seeley 2007 comme appui sur la diversité génétique.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — P3 corrige « oscille » en « moins stable » (l'oscillation est une inférence), précise que la diversité en cause est génétique (patrilignes, seuils), retient le modèle de Graham 2006 comme cible (T3.11, T3.12, bloquées avant lecture, reconstruction [I]) et signale la réplication partielle négative de Simone-Finstrom 2014. Écart : Mattila et Seeley 2007 n'est pas cité comme appui (simplement listé « à ajouter », R14) et Simone-Finstrom 2014 n'a pas d'entrée de bibliographie. — Traité dans : ../../../projets/P3-division-du-travail.md (§1 corrections de la v3; §2 Positionnement; §5 T3.11, T3.12; §11 R4, R14); ../../06-metriques-et-typologie.md (§6.1 « Division du travail et diversité »)
 
 ### BA-06 · majeur · Projet 3 – parité (retrait de caste chez Pheidole sans équivalent apicole)
 
@@ -64,7 +64,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Ajouter « retrait des butineuses → maturation précoce » comme pendant du retrait de caste chez Pheidole, et modéliser l'inhibition sociale par contact. Pendant agentique : pool d'agents de réserve et promotion réglée par la densité des agents seniors (inféré).
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — P3 modélise le pendant « retrait des butineuses, maturation précoce » avec inhibition sociale activable (H3.6, E3.6, T3.10), et propose des pendants agentiques (promotion freinée tant que le rôle est peuplé, promotion prématurée sous charge; capacité de réserve), en corrigeant toutefois l'audit : l'expérience de Huang et Robinson 1992 est un transplant d'abeilles âgées et le paradigme du retrait n'est pas sourcé (R5). Écart : Leoncini 2004 (éthyl oléate transmis par trophallaxie) n'est pas modélisé (inhibition générique seulement) et aucune fiche ne reprend la trophallaxie (L12). — Traité dans : ../../../projets/P3-division-du-travail.md (§1 corrections; §3 H3.6; §5 T3.10; §6 E3.6; §7 lignes 6 et 8; §11 R5, R14); ../../02-architecture-programme.md (§3 ligne « Lacune L12 »; §5 Tableau B)
 
 ### BA-07 · majeur · Projet 5 (quorum chez l'abeille)
 
@@ -74,7 +74,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Modéliser une chaîne symétrique pour les deux espèces : quorum → changement de mode. Citer Seeley & Visscher 2003, Seeley & Tautz 2001 et Rittschof & Seeley 2008. Pendant agentique : engagement en deux phases avec annulation possible. Signaler que la décision a été prise avec la reine en cage, ce qui appuie la thèse.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — P5 construit la chaîne quorum, piping, échauffement (35 °C ou plus, environ 1 h), buzz-run, décollage en parallèle du passage tandem, transport (E5.3, H5.6), cite Seeley et Visscher 2003 pour le seuil (10 à 20 éclaireuses), note la décision prise avec la reine en cage et transpose en engagement en deux phases annulable. Écart : Seeley et Tautz 2001 et Rittschof et Seeley 2008 restent « à ajouter à la bibliographie après lecture », la durée de préparation D est un paramètre libre [à confirmer] et E5.3 reste exploratoire (R8). — Traité dans : ../../../projets/P5-decision-par-quorum.md (§4.4 Chaîne décision, action; §6 E5.3; §7.1 « Décision puis action, en deux temps »; §8 Voir écran 5; §11 R8; §13 « À ajouter à la bibliographie »); ../../06-metriques-et-typologie.md (§6.1 « Plan et contrôle »)
 
 ### BA-08 · majeur · Projet 2 (ACO contre ABC)
 
@@ -84,7 +84,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Reproduire Karaboga & Basturk 2007 plutôt que TR06. Faire tourner les deux familles sur un même problème. Ajouter le Honey Bee Algorithm de Nakrani & Tovey 2004 (allocation dynamique de serveurs), plus fidèle à la biologie et pont direct vers l'agentique.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — P2 reconnaît que la danse d'ABC est une sélection proportionnelle sans direction ni distance, reproduit Karaboga et Basturk 2008 (T2.8, T2.9, texte lu) plutôt que TR06 (gardé en T2.10, priorité basse, domaine [−600, 600] noté tel que publié), fait tourner ACO et ABC sur les mêmes classes de problèmes à budget égal (E2.1) et renvoie le Honey Bee Algorithm de Nakrani et Tovey à T2.12 et E2.4. Écart : Karaboga et Basturk 2007 (article visé par l'audit) n'est pas reproduit (non lu), Nakrani et Tovey 2004 reste bloqué par la porte G3, et l'absence de résultat biologique reproduit est déclarée comme asymétrie, non corrigée. — Traité dans : ../../../projets/P2-memoire-partagee-metaheuristiques.md (§1 Portes G0 à G3; §2 « Thèse remplacée »; §5 T2.8 à T2.10, T2.12; §6 E2.1, E2.4); ../../00-cadre.md (§5 P2 annexe go/no-go); ../../02-architecture-programme.md (§5 Tableau B)
 
 ### BA-09 · majeur · Tableau, lignes « Canal » et « Contenu du signal » (et « Freinage » côté fourmi)
 
@@ -94,7 +94,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Présenter la danse comme un signal multicomposante : vecteur, qualité, odeur, éveil. Signaler à l'audit fourmis l'existence de signaux négatifs actifs chez la fourmi.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — Le canal est déclaré variable du modèle, jamais attribut du taxon (contre-exemple Meliponini), le freinage actif de la fourmi est reconnu (phéromone « no entry » de Monomorium, inhibition par encombrement chez Lasius niger) et la ligne « Codage du signal » décrit la danse comme un vecteur analogique bruité plus une qualité (nombre de circuits), « symbolique » non établi. Écart : les autres composantes de la danse (odeur florale, hydrocarbures qui augmentent les sorties, Thom 2007; communication phéromonale, Slessor 2005) ne sont ni décrites ni citées, et ces deux références n'ont pas d'entrée de bibliographie. — Traité dans : ../../00-cadre.md (§2.3; §2.4 points 9, 10); ../../06-metriques-et-typologie.md (§6.1 « Médium et portée », « Codage du signal »); ../../10-glossaire.md (« danse frétillante », « piste »)
 
 ### BA-10 · majeur · Tableau, ligne « Freinage » (danse de trémulation, signal d'arrêt)
 
@@ -104,7 +104,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Faire trois entrées : rééquilibrage + inhibition (trémulation); disjoncteur par source (butinage); veto entre coalitions (essaim). Chacune a son pendant agentique (inféré).
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — La ligne « Freinage (inhibition) » distingue les trois motifs apicoles (signal d'arrêt à l'essaim = inhibition ciblée; signal d'arrêt au butinage déclenché par le danger; trémulation qui recrute des receveuses et freine le recrutement, « deux publics »), mais en une seule ligne dont les pendants agentiques (contre-pression, limite de concurrence, annulation) ne sont pas appariés un à un. Écart : le signal d'arrêt au butinage ne cite que Nieh 1993 [non vérifiée] (Nieh 2010 n'est pas utilisé), n'a pas d'entrée de glossaire et n'a pas de pendant « disjoncteur par source » (le « disjoncteur local » de P1 vise l'encombrement de la fourmi). — Traité dans : ../../06-metriques-et-typologie.md (§6.2 « Freinage (inhibition) »; §7 homonymie 9); ../../10-glossaire.md (« signal d'arrêt », « trémulation »); ../../../projets/P4-regulation-sans-vue-densemble.md (§4.7; §7 Rel5); ../../../projets/P1-recrutement-verrouillage.md (§7.1); ../../00-cadre.md (§2.4 point 7)
 
 ### BA-11 · majeur · Portée générale (« intelligence individuelle » de l'abeille)
 
@@ -114,7 +114,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Ajouter un axe « capacité individuelle × architecture » pour les deux espèces, ou l'intégrer au projet 7. Dans le moteur : odomètre bruité et dispersion angulaire de la danse (Tanner & Visscher 2010).
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — La cognition individuelle est portée par le projet P8 (individu contre colonie) : individu « riche » de l'abeille à curseurs étiquetés « contesté » ou « débattu » (odomètre bruité par flux optique, carte spatiale, concepts pareil/différent; Esch, Menzel, Giurfa), T8.15 non chiffrée, axe capacité × architecture de P7 (H7.10, H8.4 à H8.8) et reprise de 75 à 88 % de suivis de danse qui réactivent ou confirment (Biesmeijer et Seeley 2005; le complément, 12 à 25 % vers une source nouvelle, est déduit). Écart : Riley 2005 et Tanner et Visscher 2010 ne sont pas cités et l'odomètre n'a volontairement aucune cible chiffrée (controverse). — Traité dans : ../../../projets/P8-individu-et-colonie.md (§1; §2 Positionnement; §4.3 « Individu riche » de l'abeille; §5 T8.15); ../../../projets/P7-synthese-agentique.md (§3.2 H7.10); ../../../projets/P1-recrutement-verrouillage.md (§7.1); ../../06-metriques-et-typologie.md (§6.2 « Mémoire »)
 
 ### BA-12 · majeur · Tableau, ligne « Recrutement → Délégation »
 
@@ -124,7 +124,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Remplacer par « annonce / pull (tableau d'offres) », métaphore employée par Nakrani & Tovey 2004. Garder « délégation » comme contre-exemple d'orchestration.
 
-**Disposition.** _à renseigner_
+**Disposition.** Accepté — « Délégation » est retirée comme analogue du recrutement et réservée à l'orchestration en contre-exemple (homonymie 8, lignes retirées); la ligne « Recrutement : annonce et auto-sélection » (recrutement tiré, la suiveuse tire une danseuse au hasard, aucune comparaison de sources) la remplace, avec DIF contre ORC dans P7. La métaphore de l'annonce sur un tableau s'appuie sur Salemi et al. 2025, l'allocation par annonces de Nakrani et Tovey étant portée par P2 (E2.4). — Traité dans : ../../06-metriques-et-typologie.md (§6.1 « Recrutement : annonce et auto-sélection »; §7 homonymie 8); ../../10-glossaire.md (« délégation »); ../../../projets/P7-synthese-agentique.md (§7.2); ../../../projets/P1-recrutement-verrouillage.md (§7.1)
 
 ### BA-13 · majeur · Projet 6 (Acherontia ↔ prompt injection; pathologies apicoles)
 
@@ -134,7 +134,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Classer les pathologies par couche (identité, canal, dynamique). Associer Acherontia et Phengaris à l'usurpation d'identité. Ajouter Perry et al. 2015 comme résultat empirique reproductible : promotion prématurée d'agents sous charge, puis cascade.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — P6 classe les pathologies par couche (dynamique, identité, canal) et rattache Acherontia (I2), Phengaris et Maculinea (I1) et A. m. capensis (I3) à l'usurpation d'identité plutôt qu'à l'injection de faux signaux; l'effondrement par maturation précoce n'existe que comme extension exploratoire de E3.6 dans P3. Écart : cette pathologie (Perry 2015, Khoury 2011) est une « candidate D5 » absente de la taxonomie de P6 (R12; IC12 de l'architecture) et le mimétisme d'Aethina tumida (Ellis 2002, à vérifier) n'y figure pas. — Traité dans : ../../../projets/P6-defaillances-et-defenses.md (§7.1 Taxonomie P6; §11 R12); ../../../projets/P3-division-du-travail.md (§6 E3.6); ../../02-architecture-programme.md (§8 IC12)
 
 ### BA-14 · majeur · Projet 1 – parité (À reproduire)
 
@@ -144,7 +144,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Adopter un protocole commun : deux sources, inversion de qualité à t, pour les deux espèces. Opposer Beckers et al. 1990 (fourmi, à vérifier) à Seeley et al. 1991 (abeille). Garder le pont double comme expérience propre à la fourmi, en le disant.
 
-**Disposition.** _à renseigner_
+**Disposition.** Accepté — P1 adopte le protocole commun d'inversion de qualité à deux sources, avec les mêmes mesures (p_best, t½, taux de verrouillage) pour ruche-Seeley et dyn-Dussutour (E1.1), garde le pont double et le raccourci tardif comme expériences propres à la fourmi avec l'asymétrie déclarée (E1.2), et oppose Beckers 1990 (fourmi, [R], à lire) à Seeley 1991. La parité est justifiée comme niveau d'exigence, non comme symétrie des expériences. — Traité dans : ../../../projets/P1-recrutement-verrouillage.md (§2 Positionnement; §4.8 Parité fourmi-abeille et asymétries; §6 E1.1, E1.2); ../../02-architecture-programme.md (§5 Tableau B)
 
 ### BA-15 · mineur · Projet 3 (polyéthisme : nourrice → bâtisseuse → butineuse; Seeley 1982)
 
@@ -154,7 +154,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Citer une synthèse pour la séquence (Seeley 1995) et Seeley 1982 pour sa logique spatiale. Indiquer que la séquence est plastique.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — P3 corrige la séquence (quatre sous-castes d'âge : nettoyage de 0 à 2 j, couvain, stockage, butinage; T3.9), la déclare plastique (T3.10) et cite Seeley 1982 pour sa logique spatiale (co-localisation des tâches de même âge). Écart : la synthèse recommandée (Seeley 1995) n'est pas citée par P3 (âges via Kang et Theraulaz 2016 [S]) et la garde reste absente de la séquence. — Traité dans : ../../../projets/P3-division-du-travail.md (§1 corrections; §5 T3.9, T3.10; §7 ligne 9)
 
 ### BA-16 · mineur · Projet 5 (Seeley et Visscher 2004)
 
@@ -164,7 +164,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Préciser lequel est visé et ajouter Seeley & Visscher 2003 (BES 54:511-520).
 
-**Disposition.** _à renseigner_
+**Disposition.** Accepté — La bibliographie distingue Seeley et Visscher 2003 (Behav. Ecol. Sociobiol. 54:511-520) et Seeley et Visscher 2004 (Behav. Ecol. Sociobiol. 56:594-601, quorum), et P5 signale l'article de l'Apidologie (35:101-116) comme distinct, à ajouter après lecture. P5 cite les deux articles à leur place (T5.9, T5.10). — Traité dans : ../../11-bibliographie.md (« Seeley et Visscher 2003 », « Seeley et Visscher 2004 »); ../../../projets/P5-decision-par-quorum.md (§5 T5.9, T5.10; §13 « À ajouter à la bibliographie »)
 
 ### BA-17 · mineur · Projet 1 / tableau (von Frisch, encodage)
 
@@ -174,7 +174,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Citer von Frisch 1967 (Harvard UP). Préciser : angle par rapport à la gravité ↔ direction par rapport au soleil; durée de la course ↔ distance; distance mesurée par flux optique (Esch et al. 2001).
 
-**Disposition.** _à renseigner_
+**Disposition.** Accepté — von Frisch 1967 est cité avec éditeur et DOI (Harvard UP), et l'encodage est précisé : angle de la course par rapport à la verticale vers azimut, durée vers distance, distance mesurée par flux optique (Esch 2001), calibration individuelle et non linéaire. Le glossaire et le visuel V6 reprennent cette formulation. — Traité dans : ../../11-bibliographie.md (« Frisch 1967 »); ../../../projets/P1-recrutement-verrouillage.md (§4.5; §8 V6); ../../06-metriques-et-typologie.md (§6.1 « Codage du signal »); ../../10-glossaire.md (« danse frétillante »)
 
 ### BA-18 · mineur · Tableau, « Direction et distance (symbolique) »
 
@@ -184,7 +184,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Dans les visuels et le moteur, représenter un vecteur continu avec dispersion angulaire, pas un code discret, et ne pas modéliser la danse en rond comme une danse à part.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — « Symbolique » est retiré (« non établi : écrire vecteur codé + intensité ») et la danse est représentée comme un vecteur analogique bruité avec dispersion angulaire (erreur d'Okada, T1.7; V5 éventail, V6 bande d'incertitude). Écart : la danse en rond comme danse non distincte (Gardner et al. 2008) n'est pas abordée (seule Gardner et al. 2007 est citée) et le canal `dance-floor` du moteur reste décrit comme « tuple (direction, durée) ». — Traité dans : ../../06-metriques-et-typologie.md (§6.1 « Codage du signal »); ../../../projets/P1-recrutement-verrouillage.md (§4.5; §5 T1.7; §8 V5, V6); ../../05-spec-simulation.md (§2.3)
 
 ### BA-19 · mineur · Tableau, « piste de danse du nid »
 
@@ -194,7 +194,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Distinguer les deux contextes.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — Les deux contextes sont séparés par la structure des fiches (butinage : ruche-Seeley dans P1; essaim : modèles de P5, dont le visuel place les danseuses sur la grappe), mais la règle n'est écrite nulle part. Écart : le canal `dance-floor` et la ligne « Découplage » parlent d'une « piste de danse » sans préciser qu'elle ne vaut que pour le butinage, l'essaim dansant à la surface de la grappe. — Traité dans : ../../05-spec-simulation.md (§2.3 `dance-floor`); ../../06-metriques-et-typologie.md (§6.1 « Découplage »); ../../../projets/P5-decision-par-quorum.md (§8 Voir, écran 2)
 
 ### BA-20 · mineur · Thèse « la reine ne commande pas »
 
@@ -204,7 +204,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Formuler : « la reine diffuse, elle n'ordonne pas ».
 
-**Disposition.** _à renseigner_
+**Disposition.** Accepté — La thèse est reformulée (la reine régule la reproduction par phéromones; « la reine ne commande pas » reste un constat borné) et l'encart « Ce que fait vraiment la reine » est obligatoire; P5 écrit « elle diffuse, elle n'ordonne pas » avec l'essaim décollé la reine en cage, et 06 la qualifie de contrainte diffusée, non d'ordre. Slessor 2005 n'est pas cité (seule Slessor et al. 1988 l'est), sans effet sur la formulation. — Traité dans : ../../00-cadre.md (§2.1; §8); ../../07-vulgarisation-evaluation.md (§7.3); ../../../projets/P5-decision-par-quorum.md (§8 Voir, écran 5); ../../06-metriques-et-typologie.md (§6.1 « Modulation globale »)
 
 ### BA-21 · mineur · Ensemble des références « abeilles »
 
@@ -214,7 +214,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Reprendre le tableau de la section 1 du rapport.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — La bibliographie consolidée donne volume, pages, DOI et statut pour les références apicoles que le programme cite (Seeley et al. 1991, 1996, 2012; Pais; Okada; Jones; Graham; Huang et Robinson; etc.). Écart : plusieurs références du tableau de l'audit n'ont pas d'entrée (Seeley et Tautz 2001, Rittschof et Seeley 2008, Mattila et Seeley 2007, Simone-Finstrom 2014, Kleinhenz 2003, Seeley et Kolmes 1991, Seeley et Visscher 2008, Grüter et Farina 2009, Thom 2007, Slessor 2005, Riley 2005, Tanner et Visscher 2010, Ellis 2002, Gardner 2008, Griffin 2012, Kühnholz et Seeley 1997, Camazine 1993, Nakrani et Tovey 2004), et Nieh 1993 reste sans DOI. — Traité dans : ../../11-bibliographie.md (§Références; §Compléments de la validation finale); ../../03-plan-de-recherche.md (§11 IN18)
 
 ### BA-22 · mineur · Projet 3 (objets de simulation thermique)
 
@@ -224,7 +224,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Ajouter les deux comme cibles de reproduction.
 
-**Disposition.** _à renseigner_
+**Disposition.** Hors portée — La ventilation collective (Peters 2019, entrée de bibliographie [R]) est déclarée « extension possible, hors noyau » et reportée sans phase attribuée, et les abeilles chauffantes (Kleinhenz 2003) ne figurent que dans la liste des références absentes à ajouter. Les cibles de thermorégulation retenues restent Jones 2004 et Graham 2006 (T3.11, T3.12). — Traité dans : ../../../projets/P3-division-du-travail.md (§2 Positionnement, « Hors périmètre, par décision »; §4 apis-thermoregulation; §11 R14)
 
 ### BA-23 · mineur · Projets 4 et 5 (paramètres)
 
@@ -234,7 +234,7 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 **Recommandation.** Quorum : 10-20 éclaireuses au site (fourmi : 9-17). Attrition : −15,7 à −17,2 circuits par retour. Trémulation au-delà d'environ 40 s de recherche. Receveuses : de 17 % à 30-50 % de la colonie. Piping environ 1 h avant le décollage, échauffement à 35 °C ou plus.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — Les paramètres sont repris là où ils servent : quorum d'environ 15 éclaireuses (10 à 20), piping environ 1 h avant le décollage avec échauffement à 35 °C ou plus (P5), trémulation au-delà de 40 s de recherche et receveuses de 17 % à 30-50 % (P4), attrition d'environ −15,7 circuits par retour [à confirmer] (P6, P5). Écart : −17,2 (Seeley et Visscher 2008) n'apparaît pas, le quorum fourmi est donné à « environ 10 à 20 compagnes » (médianes de 2 à 7,5) et non à 9-17, et plusieurs valeurs portent [à confirmer] ou « lu par l'audit ». — Traité dans : ../../../projets/P5-decision-par-quorum.md (§4.1 Parité; §4.4; §5 T5.13, T5.17); ../../../projets/P4-regulation-sans-vue-densemble.md (§4.6; §4.8; §5 T4.6, T4.7); ../../../projets/P6-defaillances-et-defenses.md (§4; §5 T6.14)
 
 ## Ajouts recommandés
 
@@ -242,71 +242,71 @@ Source : [rapport complet](bio-abeilles.md). 23 constats (1 critiques, 13 majeur
 
 Projet 7 / question transversale : reproduire Sherman & Visscher 2002 (danses orientées vs désorientées) et le modèle de Beekman & Lew 2008, en faisant varier l'habitat; même plan avec les agents LLM.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — Même traitement que BA-01 : cartographie de l'habitat dans P8 (E8.4, après T8.8 et T8.9) et P1 (E1.6), reprise de la forme de la question pour des algorithmes en P2. Écart : Sherman et Visscher 2002 n'est pas reproduit comme tel (I'Anson Price 2019 reproduit un contraste équivalent), le modèle de Beekman et Lew 2008 n'est pas une cible, et le plan factoriel d'habitat n'est pas transposé tel quel aux agents LLM. — Traité dans : ../../../projets/P8-individu-et-colonie.md (§5 T8.8, T8.9; §6 E8.4); ../../../projets/P1-recrutement-verrouillage.md (§6 E1.6); ../../../projets/P7-synthese-agentique.md (§1; §3.2 H7.6); ../../../projets/P2-memoire-partagee-metaheuristiques.md (§2 « Dépendance à l'environnement du signal »)
 
 ### BA-A02 · ajout
 
 Projet 5 : chaîne quorum → piping → échauffement → buzz-run → décollage (Seeley & Visscher 2003; Seeley & Tautz 2001; Rittschof & Seeley 2008), symétrique au passage tandem → transport chez Temnothorax.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — La chaîne quorum, piping, échauffement, buzz-run, décollage est écrite en §4.4 de P5 et simulée en E5.3 (H5.6), en regard du passage tandem, transport. Écart : Seeley et Tautz 2001 et Rittschof et Seeley 2008 restent « à ajouter à la bibliographie après lecture », la durée de préparation D est libre [à confirmer] et E5.3 reste exploratoire. — Traité dans : ../../../projets/P5-decision-par-quorum.md (§4.4; §6 E5.3; §11 R8; §13 « À ajouter à la bibliographie »)
 
 ### BA-A03 · ajout
 
 Projet 3 : expérience « retrait des butineuses → maturation précoce » (Huang & Robinson 1992) et inhibition sociale par l'éthyl oléate (Leoncini et al. 2004), en pendant de Wilson 1984.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — E3.6 (retrait de butineuses × inhibition sociale, avec variante ancrée sur le transplant de Huang et Robinson 1992) est le pendant apicole de Wilson 1984 (T3.2, E3.1). Écart : Leoncini 2004 (éthyl oléate) n'est pas modélisé et le paradigme de retrait reste non sourcé (R5). — Traité dans : ../../../projets/P3-division-du-travail.md (§3 H3.6; §5 T3.2, T3.10; §6 E3.1, E3.6; §11 R5, R14)
 
 ### BA-A04 · ajout
 
 Projet 6 : effondrement par maturation précoce (Khoury et al. 2011; Perry et al. 2015), parasite social clonal A. m. capensis (Oldroyd 2002) et mimétisme comportemental d'Aethina tumida (Ellis et al. 2002, à vérifier).
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — La taxonomie de P6 range Acherontia (I2), Phengaris (I1) et A. m. capensis (I3) en usurpation d'identité, et l'effondrement par maturation précoce n'existe que comme extension exploratoire de E3.6. Écart : Perry 2015 et Khoury 2011 (candidate D5) et Ellis 2002 (Aethina tumida, à vérifier) ne sont pas dans la taxonomie de P6. — Traité dans : ../../../projets/P6-defaillances-et-defenses.md (§7.1 Taxonomie P6; §11 R12); ../../../projets/P3-division-du-travail.md (§6 E3.6); ../../02-architecture-programme.md (§8 IC12)
 
 ### BA-A05 · ajout
 
 Projet 2 : Honey Bee Algorithm de Nakrani & Tovey 2004 (allocation dynamique de serveurs) comme algorithme apicole fidèle et pont vers la répartition de charge agentique; ACO et ABC sur un même problème.
 
-**Disposition.** _à renseigner_
+**Disposition.** Accepté — P2 retient le Honey Bee Algorithm de Nakrani et Tovey 2004 comme cible relationnelle T2.12 et comme pont vers la répartition de charge (E2.4 : annonces, stigmergie distribuée, allocation centrale), et croise ACO et ABC sur les mêmes classes de problèmes à budget égal (E2.1). L'exécution de T2.12 et de E2.4 est conditionnée à la porte G3 (texte non lu, référence absente de la bibliographie consolidée). — Traité dans : ../../../projets/P2-memoire-partagee-metaheuristiques.md (§1 Portes G3; §5 T2.12; §6 E2.1, E2.4)
 
 ### BA-A06 · ajout
 
 Projet 4 : citer la théorie des files déjà publiée (Seeley & Tovey 1994; Anderson & Ratnieks 1999; Ratnieks & Anderson 1999) et étendre aux récoltes d'eau (Kühnholz & Seeley 1997) et de pollen (Camazine 1993).
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — P4 cite la théorie des files déjà publiée (Seeley et Tovey 1994, Anderson et Ratnieks 1999a et 1999b, Ratnieks et Anderson 1999a) sans revendication de nouveauté sur Little, et reproduit la file d'appariement (T4.8, T4.9). Écart : l'extension aux récoltes d'eau (Kühnholz et Seeley 1997) et de pollen (Camazine 1993) n'est ni citée ni planifiée. — Traité dans : ../../../projets/P4-regulation-sans-vue-densemble.md (§2 Positionnement; §5 T4.8, T4.9; §6 E4.4); ../../00-cadre.md (§2.4 point 6)
 
 ### BA-A07 · ajout
 
 Nouvel axe ou extension du projet 7 : cognition individuelle (Menzel 2005; Giurfa 2001; Esch 2001), croisée avec l'architecture collective.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — P8 porte la cognition individuelle de l'abeille (Esch, Menzel, Giurfa; individu « riche » à curseurs, T8.15) et la croise avec l'architecture collective dans E8.3 (information privée contre sociale, variante abeille qualitative) et, côté LLM, dans H7.10 et E8.5. Écart : le volet abeille n'a aucune cible chiffrée (T8.15 en no-go) et aucun croisement abeille × architecture n'est planifié comme tel. — Traité dans : ../../../projets/P8-individu-et-colonie.md (§2; §4.3 « Individu riche » de l'abeille; §5 T8.15; §6 E8.3, E8.5); ../../../projets/P7-synthese-agentique.md (§3.2 H7.10)
 
 ### BA-A08 · ajout
 
 Stigmergie apicole : motif du rayon (Camazine 1991; Jenkins et al. 1992), en pendant de la construction chez la fourmi.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — P9 retient le rayon d'A. mellifera comme pendant apicole de la construction (phase 3), avec Camazine 1991, Camazine et al. 1990 et Jenkins 1992 comme sources, mais la cible exécutée est Johnson 2009 (T9.26, bande de pollen, cible de rejet de la lecture classique de Camazine; H9.16). Écart : Camazine et Jenkins ne sont pas reproduits ([R]; nature des équations de 1990 [à confirmer]). — Traité dans : ../../../projets/P9-mouvement-collectif-et-construction.md (§2 Positionnement; §3 H9.16; §4 « Rayon d'Apis mellifera »; §5 T9.26)
 
 ### BA-A09 · ajout
 
 Thermorégulation : abeilles chauffantes (Kleinhenz et al. 2003) et ventilation collective (Peters et al. 2019).
 
-**Disposition.** _à renseigner_
+**Disposition.** Hors portée — Même renvoi que BA-22 : la ventilation collective (Peters 2019) est une extension hors noyau de P3 sans phase attribuée, et les abeilles chauffantes (Kleinhenz 2003) ne figurent que comme référence absente à ajouter. Les cibles de thermorégulation du programme restent Jones 2004 et Graham 2006. — Traité dans : ../../../projets/P3-division-du-travail.md (§2 « Hors périmètre, par décision »; §11 R14)
 
 ### BA-A10 · ajout
 
 Tableau comparatif : séparer les trois fonctions de freinage (trémulation, arrêt au butinage, arrêt à l'essaim) et les trois formes d'oubli (évaporation, abandon, attrition).
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — Le tableau comparatif de 06 sépare les trois formes d'oubli selon qui oublie (ligne « Oubli, en trois formes ») et nomme les trois motifs de freinage apicole dans la ligne « Freinage (inhibition) ». Écart : le freinage reste une seule ligne, sans trois entrées ni pendant agentique distinct pour chaque fonction. — Traité dans : ../../06-metriques-et-typologie.md (§6.2 « Freinage (inhibition) », « Oubli, en trois formes »; §7 homonymies 9 et 11); ../../10-glossaire.md (« oubli », « signal d'arrêt », « trémulation »)
 
 ### BA-A11 · ajout
 
 Guidage de l'essaim en vol par une minorité informée (« streakers »; références à vérifier : Beekman et al. 2006, Schultz et al. 2008, Couzin et al. 2005).
 
-**Disposition.** _à renseigner_
+**Disposition.** Accepté — P9 reprend le guidage de l'essaim par une minorité informée (H9.11; T9.16 à T9.18 : streaker contre guide subtil de Schultz 2008, p*(N) de Couzin 2005), avec Beekman 2006 marqué [non vérifiée] conformément à « références à vérifier ». L'exécution est conditionnelle à la lecture de Couzin 2005 (porte PR-0, puis PR-3). — Traité dans : ../../../projets/P9-mouvement-collectif-et-construction.md (§2 Positionnement; §3 H9.11; §5 T9.16 à T9.18, portes PR-0 et PR-3)
 
 ### BA-A12 · ajout
 
 Réserve de main-d'œuvre inactive (≥ 50 %) et modèle « foraging for work » (Tofts & Franks 1992) en concurrence avec le polyéthisme d'âge.
 
-**Disposition.** _à renseigner_
+**Disposition.** Modifié — P3 couvre la réserve de main-d'œuvre et le foraging-for-work (Tofts et Franks 1992; T3.7, T3.8; duel FFW contre seuils variables en E3.3, H3.3) et mentionne la réserve apicole (au moins 50 % d'inactives, Seeley et al. 1996, [à confirmer]). Écart : le volet est surtout fourmi (Temnothorax, Myrmica) et aucune expérience n'oppose FFW au polyéthisme d'âge de l'abeille (E3.6 reste séparée). — Traité dans : ../../../projets/P3-division-du-travail.md (§2 Positionnement; §3 H3.3; §5 T3.7, T3.8; §6 E3.3)
 

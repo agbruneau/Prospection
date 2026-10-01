@@ -36,7 +36,7 @@
 
 **Corrections du cadre appliquées** (liste des corrections factuelles : points 7, 8, 10, 13, 14) : signal d'arrêt = inhibition, pas veto; interblocage ≠ scission; fourmi : signal binaire plus latence (le « scalaire » n'est qu'une simplification de modèle) et danse = échantillonnage local, pas publication-abonnement; « agents LLM identiques s'interbloquent » est une hypothèse sans acquis, jamais affirmée ici; trois formes d'oubli (le déclin des danses n'est pas le mécanisme général).
 
-**Hors portée.** Guidage de l'essaim en vol (P9), test d'habitat sur la danse (P1, P7), diversité des seuils (P3), exécution avec agents LLM (P7).
+**Hors portée.** Guidage de l'essaim en vol (P9), test d'habitat sur la danse (P1, P7), diversité des seuils (P3), exécution avec agents LLM (P7). Décision d'essaimer (moment de la reproduction de la colonie, part des ouvrières qui partent) : P5 commence une fois l'essaim sorti (audit, constat LA-20).
 
 ---
 
@@ -76,7 +76,7 @@ Réfutation : la borne inférieure de l'IC à 95 % de la baisse est inférieure 
 
 **H5.4 — Adressage gradué (exploratoire).** Soit p la fraction des signaux d'arrêt dirigés vers les danseuses du site rival (p = 1 : M1c; p = 0 : M1b). Il existe p_min < 1 sous lequel aucun σ ne brise l'égalité; entre p_min et 1, la plage de σ qui la brise est bornée supérieurement : un signal fort mal ciblé ne rétablit pas la décision.
 VI : p, σ. VD : signe de la valeur propre antisymétrique λ = ρΨ_U − α − σ(1−p)Ψ_s au point symétrique [I, dérivation de cette fiche], puis probabilité de sortie à N fini.
-Effet minimal : plage de σ non vide à p = 1 et vide à p = 0; un p_min strictement entre les deux. Calcul préliminaire de rédaction (RK4 ponctuel plus valeur propre, (3, 1/3, 3)) : aucun σ à p = 0,75; plage finie à p = 0,9 [I, à confirmer; script à verser dans `recherche/verifications-numeriques/`].
+Effet minimal : plage de σ non vide à p = 1 et vide à p = 0; un p_min strictement entre les deux. Calcul préliminaire de rédaction (RK4 ponctuel plus valeur propre, (3, 1/3, 3)) : aucun σ à p = 0,75; plage finie à p = 0,9 [I, à confirmer; script [`p5_adressage_gradue.py`](../recherche/verifications-numeriques/p5_adressage_gradue.py)].
 Réfutation : plage non vide à p = 0 (contredirait T5.3), ou plage non bornée pour tout p < 1.
 
 **H5.5 — Scission et interblocage occupent des régions distinctes du plan (σ, Q) (exploratoire).** Avec deux sites égaux, la scission (les deux populations dépassent le quorum Q) n'apparaît que si Q est inférieur à la population engagée à l'équilibre symétrique Ψ_s(σ); au-dessus, on obtient l'interblocage (σ < σ\*) ou une décision (σ > σ\*) si le gagnant dépasse Q. Ancres du dossier p6-pathologies [I] pour v = 2 : Ψ_s(0) ≈ 0,46; à 1,5σ\*, le gagnant n'est qu'à ≈ 0,59, sous un seuil de 0,7 : briser la symétrie ne garantit pas d'atteindre le quorum.
