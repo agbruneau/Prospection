@@ -54,7 +54,7 @@ Tableau de suivi prévu par la [feuille de route](../docs/09-feuille-de-route.md
 | E-01 | E | Gabarit de page et page-pilote | UC-006, UC-010 à UC-012 (Implemented); CS0.12 | En cours | `src/browser/`, `src/cli/summarize.ts`, `tests/pages/` (axe-core : 0 violation); page-pilote `pages/p1-v1-pont.json` sur le résumé de T1.1 (`tests/pages/pilote.test.ts`); [liste d'accessibilité](../evaluation/accessibilite-p1-v1-pont.md) : 13 critères sur 16 vérifiés automatiquement (`tests/pages/accessibilite.test.ts`); restent l'écoute au lecteur d'écran, la revue des flashs et l'orientation sur appareil (une personne), et D-14 |
 | F-01 | F | Matrice concept × espèce × modèle | CS0.13 | Fait | `data/matrice.csv` (17 lignes : P1, P5, P8 pour les deux taxons ou asymétrie justifiée), `outils/verifier-matrice.ts` à l'étape 4 de `verify` |
 | G-01 | G | Gabarits, registre des déviations, préenregistrement | CS0.14 | En cours | `gabarits/` (extraits de 04, test de synchronisation), `registre/deviations-S0.md` (D-0-001, D-0-002), brouillon `preregistrements/S0.md` (H0.1 à H0.5); reste le dépôt OSF horodaté (D-15) |
-| I-01 | I | Porte de sortie de la phase 0 | `notes/S0-porte-de-sortie.md`; CS0.1 à CS0.16 | À faire | dernière tâche du lot |
+| I-01 | I | Porte de sortie de la phase 0 | `notes/S0-porte-de-sortie.md`; CS0.1 à CS0.16 | Décision | [fiche de décision](S0-porte-de-sortie.md) remplie, issue proposée : go conditionnel (D-0-002, D-0-004, D-0-005, D-15); [note de recherche](S0-note-de-recherche.md) et [instruments d'évaluation](../evaluation/S0-typologie.md) en brouillon; E0.3 fait (exploratoire, `data/sensibilite/e03-m1c.json`) |
 
 ## 3. Phase 1 : travaux commencés
 
