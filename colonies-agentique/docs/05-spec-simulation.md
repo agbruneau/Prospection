@@ -526,7 +526,7 @@ colonies-agentique/
                             mc-error.ts miller.ts (formules d'évaluation des LLM)
     sweep/                  plan.ts executor.ts (worker_threads) worker.ts aggregate.ts
     cli/                    run.ts replay.ts reproduce.ts sweep.ts export.ts
-    browser/                sim-worker.ts driver.ts render-canvas.ts export.ts ui/    (aucun calcul de simulation)
+    browser/                contrat.ts (définition et résumé d'une page) sim-worker.ts page.ts (gabarit à trois niveaux, UC-010 à UC-012)    (aucun calcul de simulation)
   scenarios/                <modèle>/<nom>.json (sources) et compiled/ (littéraux calculés sous Node)
   targets/                  <projet>/T<projet>.<n>.json : extrait exécutable de la fiche de reproduction, une cible par fichier
   tests/
@@ -537,13 +537,13 @@ colonies-agentique/
     conformance.test.ts     interdits et imports (T0.21)
     reproduction/<projet>/  un fichier par cible, piloté par targets/
     docking/<projet>.test.ts
-    pages/                  critères d'acceptation des pages de V0 (TV0.n), même exécuteur (section 13)
+    pages/                  UC-010 à UC-012 et critères TV0.n (Playwright, Chrome installé; axe-core), même exécuteur (section 13)
     __snapshots__/          traces dorées (section 9.4)
   data/
     figures/                figures publiées numérisées (CSV) + erreur de lecture
     oracles/                valeurs des scripts Python de recherche/verifications-numeriques/
     results/<projet>/       résultats précalculés (JSON, CSV) et manifestes
-  pages/                    HTML générés (esbuild) pour artifact ou page statique
+  pages/                    définitions <id>.json; dist/ : HTML générés par `npm run build:pages` (esbuild; hors git)
   spikes/phase0/            protocole, code du spike, rapport (section 12)
   outils/                   verifier-docs.ts, verifier-specs.ts, verifier-cibles.ts, verify.ts (chaîne de npm run verify); compile-scenarios.ts à venir
 ```
@@ -615,7 +615,7 @@ Un modèle de référence suit **l'ordre de sa source** : par exemple, [Couzin e
 
 ### 8.3 Résumés précalculés pour les pages
 
-JSON `{schema, scenarioHash, preregisteredN, replaySeed, axes, cells: [{params, n, mean, se, ci95}]}`, rangé dans `data/results/<projet>/`. `preregisteredN` est le N que la page affiche dans son compteur « n sur N »; `replaySeed` est la graine rejouée en direct, choisie **une fois, avant publication**, comme celle dont l'observable principale est la plus proche de la médiane de la distribution (choix de conception [I]) et consignée. Une page doit tenir dans la limite de 16 Mo d'un artifact (audit simulation-technique, m8; description de l'outil Artifact); au-delà, agrégats ou capacité `assets`. La condition témoin statique de V0 se fabrique à partir de ces mêmes JSON ([07-vulgarisation-evaluation.md](07-vulgarisation-evaluation.md)).
+JSON rangé dans `data/results/<projet>/<cible>.summary.json` (UC-006) : `{schema, target, targetHash, verdict, regime, provenance, preregisteredN, measure, cells: [{scenario, scenarioHash, source, params, n, mean, se, interval95, values, missing, replay: {rep, seed, fnv1a64}}]}`; une cellule par scénario de la cible. `source` est le scénario de base, pour que la page puisse rejouer la répétition typique. `preregisteredN` est le N que la page affiche dans son compteur « n sur N »; La graine rejouée (`replay.seed`) est choisie **une fois, avant publication**, comme celle dont l'observable principale est la plus proche de la médiane de la distribution, la plus petite par rang en cas d'égalité (choix de conception [I]; UC-006, BR-027), et consignée. Une page doit tenir dans la limite de 16 Mo d'un artifact (audit simulation-technique, m8; description de l'outil Artifact); au-delà, agrégats ou capacité `assets`. La condition témoin statique de V0 se fabrique à partir de ces mêmes JSON ([07-vulgarisation-evaluation.md](07-vulgarisation-evaluation.md)).
 
 ### 8.4 Figures publiées numérisées
 
@@ -885,5 +885,5 @@ Ces critères alimentent les critères de réussite CS0.1 à CS0.3, CS0.5, CS0.1
 13. **« Modifier la règle » (V0).** Le document de vulgarisation prévoit un éditeur de règle exécuté dans un worker isolé; la section 14 l'admet à cette condition (sans réseau, avec quota, jamais dans l'URL, résultat exploratoire). Le quota de pas et de temps reste à fixer [à confirmer].
 14. **TypeScript sur le poste.** La fiche S0 le dit absent; ce document l'a trouvé en version 7.0.2 installé globalement. À revérifier sur le poste avant d'écrire `package.json`.
 15. **Contrôles de la cible A (fiche S0).** La fiche numérote ses contrôles de spike (i) à (vi) dans une section non encore écrite; la correspondance avec SPK1 à SPK12 (section 12) s'établit quand elle l'est.
-16. **Tests de pages.** Les critères TV0.n de V0 se placent dans `tests/pages/`. Pilote de navigateur proposé par le spike : Playwright (Chromium par le Chrome installé, Firefox et WebKit téléchargés; [rapport du spike](../spikes/phase0/rapport.md)); le vérificateur d'accessibilité reste ouvert [à confirmer].
+16. **Tests de pages.** Les critères TV0.n de V0 se placent dans `tests/pages/`. Pilote de navigateur : Playwright (Chrome installé; Firefox et WebKit téléchargés pour le spike; [rapport du spike](../spikes/phase0/rapport.md)). Vérificateur d'accessibilité : axe-core 4.13, règles WCAG 2.0 à 2.2, niveaux A et AA (gabarit de page, 2026-10-01). La liste manuelle de 07 §8 reste à remplir par une personne (CS0.12).
 

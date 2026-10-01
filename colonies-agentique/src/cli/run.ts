@@ -5,11 +5,12 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { CORE_VERSION, runIdDe, type RunManifest } from '../core/manifest.ts'
-import { createStream } from '../core/random.ts'
 import { EtatInvalide, enregistrer, serieCsv } from '../core/recorder.ts'
 import { compileScenario, invalide, ScenarioError, type CompiledScenario } from '../core/scenario.ts'
 import type { ReferenceModel } from '../core/simulation.ts'
-import { MODELES, trouverModele } from '../models/index.ts'
+import { MODELES, preparer } from '../models/index.ts'
+
+export { preparer }
 
 export const RACINE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 
@@ -32,24 +33,6 @@ export function gitCourant(): EtatGit {
 }
 
 export const moteurCourant = (): RunManifest['engine'] => ({ kind: 'node', version: process.versions.node, platform: process.platform, arch: process.arch })
-
-const hex = (mots: Uint32Array) => Array.from(mots, x => x.toString(16).padStart(8, '0')).join('')
-
-/** Résout le modèle, contrôle les mesures et crée la simulation avec ses flux déclarés. */
-export function preparer(compile: CompiledScenario, modeles = MODELES) {
-  const modele = trouverModele(compile.model.id, modeles)
-  for (const m of compile.measures) if (!(m in modele.measureUnits)) throw invalide('measures', `mesure inconnue du modèle : ${m}`)
-  const flux = new Map(compile.streams.map(n => [n, createStream(BigInt(compile.seed), n)]))
-  const etatsInitiaux = [...flux].map(([name, g]) => ({ name, initialState: hex(g.state()) }))
-  const sim = modele.create(compile, {
-    stream(n) {
-      const g = flux.get(n)
-      if (!g) throw invalide('streams', `flux non déclaré : ${n}`)
-      return g
-    },
-  })
-  return { modele, sim, etatsInitiaux }
-}
 
 function lireJson(fichier: string, quoi: string): unknown {
   try {

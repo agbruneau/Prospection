@@ -4,3 +4,5 @@ data/runs/
 data/results/*/*/
 # build du spike, régénérable par node spikes/phase0/build.ts
 spikes/phase0/dist/
+# pages construites par npm run build:pages (régénérables)
+pages/dist/

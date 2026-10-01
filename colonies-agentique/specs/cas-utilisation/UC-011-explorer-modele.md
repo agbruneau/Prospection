@@ -1,7 +1,7 @@
 ---
 id: UC-011
 name: Explorer un modèle
-status: Approved
+status: Implemented
 context: PAGES
 actors: [Lecteur]
 linkedRequirements: [FR-011, FR-014, FR-017, NFR-003, NFR-005, C-004, C-007, C-008]
@@ -14,7 +14,7 @@ entities: [Page, Scenario, PageSummary, Statement, G]
 
 - **Acteur principal :** Lecteur
 - **But :** voir comment le comportement collectif change quand on règle un paramètre du modèle, et relier ce changement aux règles individuelles.
-- **Statut :** Approved
+- **Statut :** Implemented
 
 ## Préconditions
 

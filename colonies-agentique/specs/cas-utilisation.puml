@@ -57,5 +57,5 @@ UC020 --> API
 
 UC003 ..> UC001 : <<include>>
 UC004 ..> UC001 : <<include>>
-UC006 ..> UC004 : <<include>>
+UC006 ..> UC003 : <<include>>
 @enduml

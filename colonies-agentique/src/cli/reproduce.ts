@@ -6,13 +6,13 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { conjonction, decider, margeAbsolue, nRequis, valeurParExecution, type Criterion, type Decision, type Marge } from '../analysis/equivalence.ts'
 import { fnv1a64Texte } from '../core/fingerprint.ts'
-import type { RunManifest, Verdict } from '../core/manifest.ts'
+import { CORE_VERSION, type RunManifest, type Verdict } from '../core/manifest.ts'
 import { graineDeRepetition } from '../core/random.ts'
 import { EtatInvalide } from '../core/recorder.ts'
 import { compileScenario, jsonCanonique, ScenarioError } from '../core/scenario.ts'
 import type { ReferenceModel } from '../core/simulation.ts'
 import { MODELES } from '../models/index.ts'
-import { executerCompile, gitCourant, RACINE, type EtatGit } from './run.ts'
+import { executerCompile, gitCourant, moteurCourant, RACINE, type EtatGit } from './run.ts'
 
 export type Reading = 'T' | 'T*' | 'R' | 'M' | 'S' | 'I'
 export interface ReproductionTarget {
@@ -150,7 +150,7 @@ export function verifierCible(id: string, options: OptionsReproduction = {}): Li
   for (const [chemin, liste] of runs)
     for (const [i, r] of liste.entries())
       fs.writeFileSync(path.join(dossierRuns, `${path.basename(chemin, '.json')}-rep-${i}.manifest.json`), JSON.stringify({ ...r, verdict, deviations: verdict.deviations }) + '\n')
-  fs.writeFileSync(path.join(dossier, `${id}.verdict.json`), JSON.stringify({ schema: 1, target: cible, targetHash: fnv1a64Texte(jsonCanonique(cible)), regime, code: etatGit, verdict, missing: manquants }, null, 2) + '\n')
+  fs.writeFileSync(path.join(dossier, `${id}.verdict.json`), JSON.stringify({ schema: 1, target: cible, targetHash: fnv1a64Texte(jsonCanonique(cible)), scenarios: Object.fromEntries([...bases].map(([c, b]) => [c, fnv1a64Texte(jsonCanonique(b))])), regime, code: etatGit, engine: moteurCourant(), coreVersion: CORE_VERSION, verdict, missing: manquants }, null, 2) + '\n')
   // Une ligne par répétition, valeur brute de chaque mesure visée (format long de 05 §8.2) : TOST et bootstrap après coup.
   const mesures = [...new Set(criteres.map(k => k.statistic.measure))]
   const lignes = [['scenario', 'rep', 'seed', 'runId', 'fnv1a64', ...mesures].join(',')]

@@ -24,7 +24,11 @@ const puissance = (x: number, n: number) => {
 
 export const goss1989: ReferenceModel = {
   id: 'p1-goss-1989',
-  measureUnits: { shortShare: 'fraction', crossings: 'passage' },
+  measureUnits: {
+    shortShare: 'fraction', crossings: 'passage',
+    S0: 'unité de phéromone', S1: 'unité de phéromone', L0: 'unité de phéromone', L1: 'unité de phéromone',
+    p0: 'probabilité', p1: 'probabilité',   // probabilité de choisir la courte au nid (0) et à la nourriture (1), éq. 3
+  },
   create(s, f) {
     const v: Record<string, number> = {}
     for (const nom of PARAMETRES) {
@@ -34,11 +38,14 @@ export const goss1989: ReferenceModel = {
       v[nom] = x
     }
     const { phi, k, n, r, shortDelay, countFrom, countTo, shortOpensAfter } = v as Record<(typeof PARAMETRES)[number], number>
+    const REGLABLES = ['phi', 'k', 'n']
     if (s.time.unit !== 's' || s.time.dt !== 1) throw invalide('time', 'pas de 1 s requis par le modèle')
     if (!(phi >= 0 && phi <= 1)) throw invalide('parameters.phi', 'probabilité d\'arrivée par seconde dans [0, 1]')
     if (!(k > 0 && n > 0 && r >= 1 && shortDelay >= 1)) throw invalide('parameters', 'k > 0, n > 0, r ≥ 1, shortDelay ≥ 1 s')
     if (!(countFrom < countTo)) throw invalide('parameters.countTo', 'countFrom < countTo')
-    if (s.interventions.length) throw invalide('interventions', 'non prises en charge par ce modèle')
+    for (const [i, x] of s.interventions.entries())
+      if (!REGLABLES.includes(x.type) || typeof x.value !== 'number' || !(x.type === 'phi' ? x.value >= 0 && x.value <= 1 : x.value > 0))
+        throw invalide(`interventions[${i}]`, `type parmi ${REGLABLES.join(', ')}; Φ dans [0, 1], k et n > 0`)
     // Dans un pas, les deux points de choix ne lisent ni n'écrivent la même variable : l'ordre ne change que la
     // numérotation des passages aux bornes de fenêtre. Un seul ordre est donc offert (ODD de T1.1, élément 3).
     if (s.order !== 'sequential-fixed') throw invalide('order', 'sequential-fixed seulement (nid, puis nourriture)')
@@ -48,6 +55,11 @@ export const goss1989: ReferenceModel = {
     const pheromone = new Float64Array(4)     // [S_0, S_1, L_0, L_1] : branche × 2 + point
     const enRoute = new Int32Array(D * 4)     // tampon circulaire des arrivées : créneau × 4 + branche × 2 + point
     const compteurs = new Int32Array(2)       // [passages, passages sur la courte dans la fenêtre]
+    const reglables = new Float64Array([phi, k, n])   // modifiables par intervention datée (niveau Explorer)
+    const pCourte = (j: number) => {
+      const a = puissance(reglables[1]! + pheromone[j]!, reglables[2]!), b = puissance(reglables[1]! + pheromone[2 + j]!, reglables[2]!)
+      return a / (a + b)
+    }
     const arrivees = f.stream('environment'), choix = f.stream('agents')
     const pas = Math.round(s.time.horizon / s.time.dt)
     let t = 0
@@ -58,14 +70,11 @@ export const goss1989: ReferenceModel = {
         const creneau = (t % D) * 4
         for (let i = 0; i < 4; i++) { pheromone[i] = pheromone[i]! + enRoute[creneau + i]!; enRoute[creneau + i] = 0 }
         for (let j = 0; j < 2 && compteurs[0]! < countTo; j++) {
-          if (!(arrivees.uniform() < phi)) continue
+          if (!(arrivees.uniform() < reglables[0]!)) continue
           const passage = compteurs[0]! + 1
           compteurs[0] = passage
           let courte = false
-          if (passage > shortOpensAfter) {
-            const a = puissance(k + pheromone[j]!, n), b = puissance(k + pheromone[2 + j]!, n)
-            courte = choix.uniform() < a / (a + b)
-          }
+          if (passage > shortOpensAfter) courte = choix.uniform() < pCourte(j)
           const branche = courte ? 0 : 1
           pheromone[branche * 2 + j] = pheromone[branche * 2 + j]! + 1
           const arrivee = ((t + retard[branche]!) % D) * 4 + branche * 2 + (1 - j)
@@ -75,9 +84,16 @@ export const goss1989: ReferenceModel = {
       },
       time: () => t * s.time.dt,
       done: () => compteurs[0]! >= countTo || t >= pas,
-      observe: () => ({ shortShare: compteurs[0]! >= countTo ? compteurs[1]! / (countTo - countFrom) : null, crossings: compteurs[0]! }),
-      buffers: () => [pheromone, enRoute, compteurs, arrivees.buffer(), choix.buffer()],
-      apply() {},
+      observe: () => {
+        const ouverte = compteurs[0]! >= shortOpensAfter
+        return {
+          shortShare: compteurs[0]! >= countTo ? compteurs[1]! / (countTo - countFrom) : null, crossings: compteurs[0]!,
+          S0: pheromone[0]!, S1: pheromone[1]!, L0: pheromone[2]!, L1: pheromone[3]!,
+          p0: ouverte ? pCourte(0) : 0, p1: ouverte ? pCourte(1) : 0,
+        }
+      },
+      buffers: () => [pheromone, enRoute, compteurs, reglables, arrivees.buffer(), choix.buffer()],
+      apply(i) { reglables[REGLABLES.indexOf(i.type)] = i.value as number },
     }
   },
 }

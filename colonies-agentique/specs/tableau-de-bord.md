@@ -6,9 +6,9 @@ Généré par `node outils/verifier-specs.ts --ecrire` : ne pas modifier à la m
 
 | Catégorie | Total | Terminées | En cours | Non commencées | Couverture |
 |---|---:|---:|---:|---:|---:|
-| Exigences fonctionnelles | 20 | 0 | 9 | 11 | 0 % |
-| Cas d'utilisation | 16 | 0 | 7 | 9 | 0 % |
-| Cas à couverture de spécification complète | 16 | 4 | 3 | 9 | 25 % |
+| Exigences fonctionnelles | 20 | 0 | 10 | 10 | 0 % |
+| Cas d'utilisation | 16 | 0 | 8 | 8 | 0 % |
+| Cas à couverture de spécification complète | 16 | 7 | 1 | 8 | 44 % |
 
 ## Suivi par cas
 
@@ -19,12 +19,12 @@ Généré par `node outils/verifier-specs.ts --ecrire` : ne pas modifier à la m
 | [UC-003](cas-utilisation/UC-003-verifier-cible.md) | Vérifier une cible de reproduction | FR-003 | Implemented | ✔ | ✔ | — | 13 sur 13 | Partielle |
 | UC-004 | Balayer des paramètres | — | non rédigé | ✕ | ✕ | — | — | Faible |
 | UC-005 | Aligner par docking | — | non rédigé | ✕ | ✕ | — | — | Faible |
-| UC-006 | Préparer les résumés d'une page | — | non rédigé | ✕ | ✕ | — | — | Faible |
+| [UC-006](cas-utilisation/UC-006-preparer-resumes.md) | Préparer les résumés d'une page | FR-006 | Review | ✕ | ✕ | — | 0 sur 6 | Faible |
 | UC-007 | Calculer les métriques R et G | — | non rédigé | ✕ | ✕ | — | — | Faible |
 | [UC-008](cas-utilisation/UC-008-verifier-depot.md) | Vérifier le dépôt | FR-008 | Implemented | ✔ | ✔ | — | 5 sur 5 | Partielle |
-| [UC-010](cas-utilisation/UC-010-suivre-recit-guide.md) | Suivre un récit guidé | FR-010, FR-017 | Approved | ✕ | ✕ | ✕ | 0 sur 7 | Faible |
-| [UC-011](cas-utilisation/UC-011-explorer-modele.md) | Explorer un modèle | FR-011, FR-014, FR-017 | Approved | ✕ | ✕ | ✕ | 0 sur 8 | Faible |
-| [UC-012](cas-utilisation/UC-012-verifier-reproduction.md) | Vérifier une reproduction | FR-012, FR-017 | Approved | ✕ | ✕ | ✕ | 0 sur 5 | Faible |
+| [UC-010](cas-utilisation/UC-010-suivre-recit-guide.md) | Suivre un récit guidé | FR-010, FR-017 | Implemented | ✔ | ✕ | ✔ | 7 sur 7 | Partielle |
+| [UC-011](cas-utilisation/UC-011-explorer-modele.md) | Explorer un modèle | FR-011, FR-014, FR-017 | Implemented | ✔ | ✕ | ✔ | 8 sur 8 | Partielle |
+| [UC-012](cas-utilisation/UC-012-verifier-reproduction.md) | Vérifier une reproduction | FR-012, FR-017 | Implemented | ✔ | ✕ | ✔ | 5 sur 5 | Partielle |
 | UC-013 | Partager l'état d'une page | — | non rédigé | ✕ | ✕ | — | — | Faible |
 | UC-014 | Modifier la règle d'un agent | — | non rédigé | ✕ | ✕ | — | — | Faible |
 | UC-015 | Télécharger les données d'une page | — | non rédigé | ✕ | ✕ | — | — | Faible |

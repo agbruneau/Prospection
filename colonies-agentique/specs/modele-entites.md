@@ -138,10 +138,10 @@ Résultats précalculés d'un scénario sur N graines, lus par une page (05 §8.
 
 | Attribut | Type | Règles de validation |
 |---|---|---|
-| scenarioHash | chaîne | hachage d'un scénario compilé |
-| preregisteredN | entier | > 0; N affiché par la page |
-| replaySeed | chaîne décimale | choisie une fois avant publication, par la règle consignée (médiane) |
-| cells | (paramètres, n, moyenne, erreur-type, IC 95 %) | une cellule par point du balayage |
+| target, targetHash | identifiant et hachage d'une `ReproductionTarget` | la cible n'a pas changé depuis son verdict |
+| preregisteredN | entier | > 0; N affiché par la page; égal au nombre de répétitions de la cible |
+| cells | par scénario : hachage, source, n, moyenne, erreur-type, intervalle à 95 % des valeurs, valeurs, manquantes, répétition typique (rang, graine, empreinte) | une cellule par scénario de la cible |
+| replay.seed | chaîne décimale, par cellule | choisie une fois avant publication, par la règle de la médiane (BR-027) |
 
 ### Page (`Page`)
 Page statique d'un projet, à trois niveaux.

@@ -1,6 +1,6 @@
 # Rapport du spike de la phase 0
 
-**Date :** 2026-10-01. **Protocole :** [protocole.md](protocole.md), commité seul (`de7de82`) avant la première mesure. **Résultats bruts :** `resultats/*.json`. **Portée :** E0.4 (spike navigateur) et E0.5 (fonctions `Math`) de la [fiche S0](../../projets/S0-socle.md); spikes SPK1 à SPK12 de [05](../../docs/05-spec-simulation.md) §12. Les décisions D1 à D5 de la section 7 sont des **propositions** : le chercheur les rend.
+**Date :** 2026-10-01. **Protocole :** [protocole.md](protocole.md), commité seul (`de7de82`) avant la première mesure. **Résultats bruts :** `resultats/*.json`. **Portée :** E0.4 (spike navigateur) et E0.5 (fonctions `Math`) de la [fiche S0](../../projets/S0-socle.md); spikes SPK1 à SPK12 de [05](../../docs/05-spec-simulation.md) §12. Les décisions D1 à D5 de la section 7 ont été **approuvées par le chercheur** le 2026-10-01.
 
 **Reproduire :** `npm ci`, `npx playwright install firefox webkit`, puis `node spikes/phase0/build.ts`, `node spikes/phase0/mesurer.ts`, `node spikes/phase0/bancs.ts` et `node spikes/phase0/balayage.ts`.
 
@@ -101,7 +101,9 @@ Lecture :
 - **Le jouet n'est pas touché :** son empreinte reste identique à celle de Node à chacun des 1 000 pas sur Chromium 154 et WebKit 26.6, et au pas 1 000 sur Chromium 152 (seul pas vérifié). Son état en `Float32Array` arrondit ces écarts d'un ulp en double. Un modèle à état `Float64Array` qui emploie ces fonctions divergera entre moteurs : c'est le régime N2 attendu.
 - La règle de la fiche S0 s'applique (E0.5 : sorties différentes > 0) : les constantes dérivées se précalculent sous Node et s'écrivent en littéraux dans le scénario compilé.
 
-## 7. Décisions proposées (D1 à D5)
+## 7. Décisions D1 à D5
+
+**Rendues par le chercheur le 2026-10-01 : D1 à D5 approuvées telles que proposées ci-dessous.** La voie de rattrapage de Firefox et la mesure de la cible B restent ouvertes (section 5).
 
 | Décision | Proposition | Fondement |
 |---|---|---|
