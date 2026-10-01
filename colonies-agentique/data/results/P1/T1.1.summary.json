@@ -1243,9 +1243,10 @@
       ],
       "missing": 0,
       "replay": {
-        "rep": 299,
-        "seed": "3418713978962426443",
-        "fnv1a64": "9894538056ba70d8"
+        "rep": 315,
+        "seed": "5136552069400539276",
+        "fnv1a64": "6929f788d77d38f2",
+        "statistic": "majority-share"
       }
     },
     {
@@ -2349,9 +2350,10 @@
       ],
       "missing": 0,
       "replay": {
-        "rep": 200,
-        "seed": "2367151956573363713",
-        "fnv1a64": "27908d6f0b21eb0b"
+        "rep": 85,
+        "seed": "11886220580376995073",
+        "fnv1a64": "79de2d45acbd7b52",
+        "statistic": "majority-share"
       }
     },
     {
@@ -3455,9 +3457,10 @@
       ],
       "missing": 0,
       "replay": {
-        "rep": 12,
-        "seed": "15810890023484535677",
-        "fnv1a64": "1196bd9e7dcbfa6e"
+        "rep": 85,
+        "seed": "11886220580376995073",
+        "fnv1a64": "542008fea6aab01b",
+        "statistic": "majority-share"
       }
     }
   ]

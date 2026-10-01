@@ -4,10 +4,12 @@ import path from 'node:path'
 import { test } from 'node:test'
 import { erreurType, intervalle95, moyenne, type PageSummary } from '../../src/analysis/descriptif.ts'
 import { reproduire } from '../../src/cli/reproduce.ts'
+import { RACINE } from '../../src/cli/run.ts'
 import { resumerCible } from '../../src/cli/summarize.ts'
 import { dossierTemp, scenarioM1c } from './aide.ts'
 
-// Dépôt jouet : cible provisoire sur deux scénarios SSA (mesure D brute), vérifiée par UC-003, puis résumée.
+// Dépôt jouet : cible provisoire sur deux scénarios SSA (mesure D brute), vérifiée par UC-003, puis résumée;
+// T5.2 : pont de Goss (shortShare, part d'une branche parmi deux, déclarée par le modèle).
 const p = (value: number, status = 'published') => ({ value, unit: '1', source: 'Seeley et al. 2012, SOM, Fig. S3', status })
 const ssa = scenarioM1c({
   model: { id: 'p5-seeley-2012-ssa', version: '1', article: 'Seeley et al. 2012' }, time: { unit: 'cycle', dt: 40, horizon: 40, sampling: 40 },
@@ -20,21 +22,23 @@ const CIBLE = {
   reading: { equations: 'T', parameters: 'T', protocol: 'T', figure: 'T', dispersion: 'I' },
   criteria: [critere('scenarios/ssa-s1.json'), critere('scenarios/ssa.json'), { ...critere('scenarios/ssa.json'), quantity: 'second critère, même scénario' }],
 }
+const GOSS = { ...CIBLE, id: 'T5.2', rule: 'part dans [0, 1]', criteria: [{ quantity: 'part sur la courte', statistic: { measure: 'shortShare' }, test: 'range', value: [0, 1], scenario: 'scenarios/goss.json' }] }
 
-function depot({ verifier = true } = {}) {
+function depot({ verifier = true, cible = CIBLE } = {}) {
   const racine = dossierTemp()
   fs.mkdirSync(path.join(racine, 'scenarios'))
   fs.writeFileSync(path.join(racine, 'scenarios', 'ssa.json'), JSON.stringify(ssa))
   fs.writeFileSync(path.join(racine, 'scenarios', 'ssa-s1.json'), JSON.stringify({ ...ssa, parameters: { ...ssa.parameters, sigma: p(1) } }))
+  fs.copyFileSync(path.join(RACINE, 'scenarios/p1-goss-1989/fig2a-r1.json'), path.join(racine, 'scenarios', 'goss.json'))
   fs.mkdirSync(path.join(racine, 'targets', 'P5'), { recursive: true })
-  fs.writeFileSync(path.join(racine, 'targets', 'P5', 'T5.1.json'), JSON.stringify(CIBLE))
-  if (verifier) assert.equal(reproduire('T5.1', { racine, git: () => ({ commit: 'abc123', cleanTree: true }), journal: () => {} }), 0)
+  fs.writeFileSync(path.join(racine, 'targets', 'P5', `${cible.id}.json`), JSON.stringify(cible))
+  if (verifier) assert.equal(reproduire(cible.id, { racine, git: () => ({ commit: 'abc123', cleanTree: true }), journal: () => {} }), 0)
   const resultats = path.join(racine, 'data', 'results', 'P5')
-  const csv = path.join(resultats, 'T5.1.runs.csv'), sortie = path.join(resultats, 'T5.1.summary.json')
-  const lancer = () => { const lignes: string[] = []; return { code: resumerCible('T5.1', { racine, journal: l => lignes.push(l) }), lignes } }
+  const csv = path.join(resultats, `${cible.id}.runs.csv`), sortie = path.join(resultats, `${cible.id}.summary.json`)
+  const lancer = () => { const lignes: string[] = []; return { code: resumerCible(cible.id, { racine, journal: l => lignes.push(l) }), lignes } }
   const resume = () => JSON.parse(fs.readFileSync(sortie, 'utf8')) as PageSummary
   const runs = () => fs.readFileSync(csv, 'utf8').trim().split('\n').slice(1).map(l => l.split(','))
-  /** Remplace la colonne D des lignes d'un scénario (undefined : ligne retirée). */
+  /** Remplace la colonne de la mesure des lignes d'un scénario (undefined : ligne retirée). */
   const ecrireValeurs = (scenario: string, valeurs: (string | undefined)[]) => {
     let i = 0
     const lignes = fs.readFileSync(csv, 'utf8').trim().split('\n').flatMap(l => {
@@ -64,7 +68,7 @@ test('UC-006 nominal : le résumé d’une cible vérifiée donne par scénario 
     const lignes = runs.filter(l => l[0] === c.scenario), valeurs = lignes.map(l => Number(l[5]))
     assert.deepEqual(c.values, valeurs)
     assert.deepEqual([c.n, c.missing, c.mean, c.se, c.interval95], [8, 0, moyenne(valeurs), erreurType(valeurs), intervalle95(valeurs)])
-    assert.deepEqual(c.replay, { rep: c.replay.rep, seed: lignes[c.replay.rep]![2], fnv1a64: lignes[c.replay.rep]![4] })
+    assert.deepEqual(c.replay, { rep: c.replay.rep, seed: lignes[c.replay.rep]![2], fnv1a64: lignes[c.replay.rep]![4], statistic: 'value' })
     assert.deepEqual(c.source, JSON.parse(fs.readFileSync(path.join(d.racine, c.scenario), 'utf8')))
     assert.equal(c.params.sigma, c.scenario.endsWith('s1.json') ? 1 : 10)
   }
@@ -103,6 +107,15 @@ test('UC-006 BR-027 : la répétition typique est la plus proche de la médiane,
   const c = d.resume().cells[1]!
   assert.equal(c.replay.rep, 2)
   assert.equal(c.replay.seed, d.runs().filter(l => l[0] === 'scenarios/ssa.json')[2]![2])
+})
+
+test('UC-006 BR-027 : pour une part entre deux options déclarée par le modèle, la répétition typique se choisit sur la part majoritaire max(s, 1 − s)', () => {
+  const d = depot({ cible: GOSS })
+  // Parts majoritaires 0,5; 0,875; 0,875; 0,75; 0,75; 0,5625; 0,9375; 0,9375 : médiane 0,8125, rangs 1 à 4 à égalité.
+  // Sur la valeur brute, la typique serait le rang 0 (0,5, au creux de la distribution).
+  d.ecrireValeurs('scenarios/goss.json', ['0.5', '0.125', '0.875', '0.75', '0.25', '0.5625', '0.9375', '0.0625'])
+  assert.equal(d.lancer().code, 0)
+  assert.deepEqual([d.resume().cells[0]!.replay.rep, d.resume().cells[0]!.replay.statistic], [1, 'majority-share'])
 })
 
 test('UC-006 BR-028 : le résumé n’exécute aucune simulation : il reprend les valeurs de la liste des répétitions', () => {

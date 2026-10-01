@@ -369,6 +369,8 @@ export interface Simulation<O> {
 export interface StreamFactory { stream(name: string): Prng }
 export interface ReferenceModel<O> {
   readonly id: string
+  readonly measureUnits: Readonly<Record<string, string>>
+  readonly shareMeasures?: readonly string[]   // parts s d'une option parmi deux : répétition typique sur max(s, 1 − s) (UC-006, BR-027)
   create(s: CompiledScenario, f: StreamFactory): Simulation<O>
 }
 
@@ -615,7 +617,7 @@ Un modèle de référence suit **l'ordre de sa source** : par exemple, [Couzin e
 
 ### 8.3 Résumés précalculés pour les pages
 
-JSON rangé dans `data/results/<projet>/<cible>.summary.json` (UC-006) : `{schema, target, targetHash, verdict, regime, provenance, preregisteredN, measure, cells: [{scenario, scenarioHash, source, params, n, mean, se, interval95, values, missing, replay: {rep, seed, fnv1a64}}]}`; une cellule par scénario de la cible, dans l'ordre des critères. `values` garde une valeur par répétition, à son rang, et `null` pour une répétition sans valeur (BR-029); N couvre toutes les répétitions exécutées, extension de UC-003 (A4) comprise. `source` est le scénario de base, pour que la page puisse rejouer la répétition typique. `preregisteredN` est le N que la page affiche dans son compteur « n sur N »; La graine rejouée (`replay.seed`) est choisie **une fois, avant publication**, comme celle dont l'observable principale est la plus proche de la médiane de la distribution, la plus petite par rang en cas d'égalité (choix de conception [I]; UC-006, BR-027), et consignée. Une page doit tenir dans la limite de 16 Mo d'un artifact (audit simulation-technique, m8; description de l'outil Artifact); au-delà, agrégats ou capacité `assets`. La condition témoin statique de V0 se fabrique à partir de ces mêmes JSON ([07-vulgarisation-evaluation.md](07-vulgarisation-evaluation.md)).
+JSON rangé dans `data/results/<projet>/<cible>.summary.json` (UC-006) : `{schema, target, targetHash, verdict, regime, provenance, preregisteredN, measure, cells: [{scenario, scenarioHash, source, params, n, mean, se, interval95, values, missing, replay: {rep, seed, fnv1a64, statistic}}]}`; une cellule par scénario de la cible, dans l'ordre des critères. `values` garde une valeur par répétition, à son rang, et `null` pour une répétition sans valeur (BR-029); N couvre toutes les répétitions exécutées, extension de UC-003 (A4) comprise. `source` est le scénario de base, pour que la page puisse rejouer la répétition typique. `preregisteredN` est le N que la page affiche dans son compteur « n sur N »; La graine rejouée (`replay.seed`) est choisie **une fois, avant publication**, comme celle dont l'observable principale est la plus proche de la médiane de la distribution, la plus petite par rang en cas d'égalité (choix de conception [I]; UC-006, BR-027), et consignée. Pour une mesure que le modèle déclare dans `ReferenceModel.shareMeasures` (part s d'une option parmi deux, p. ex. `shortShare` du pont de Goss), la règle porte sur la part majoritaire max(s, 1 − s) et `statistic` vaut `majority-share` : sinon, une distribution bimodale ferait choisir l'issue rare du creux. Une page doit tenir dans la limite de 16 Mo d'un artifact (audit simulation-technique, m8; description de l'outil Artifact); au-delà, agrégats ou capacité `assets`. La condition témoin statique de V0 se fabrique à partir de ces mêmes JSON ([07-vulgarisation-evaluation.md](07-vulgarisation-evaluation.md)).
 
 ### 8.4 Figures publiées numérisées
 

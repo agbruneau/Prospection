@@ -18,7 +18,7 @@
         "cellule": 0,
         "prediction": { "min": 0, "max": 1, "pas": 0.05 },
         "conclusion": { "texte": "À longueurs égales, une des deux branches finit le plus souvent par porter presque tout le trafic : un petit écart du début est amplifié par la piste, puis verrouillé. Laquelle l’emporte varie d’une simulation à l’autre.", "statut": "simplifie" },
-        "nePasConfondre": "Ça ne veut pas dire que le trafic se partage à parts égales. L’exécution montrée est celle du milieu de la distribution, donc proche d’un partage égal : c’est justement l’issue rare. La plupart des simulations finissent aux deux extrémités."
+        "nePasConfondre": "Ça ne veut pas dire que la branche gagnante était meilleure : à longueurs égales, chacune l’emporte à peu près aussi souvent que l’autre, et un partage égal est rare."
       },
       {
         "question": "La branche du bas mesure maintenant 1,4 fois celle du haut. Quelle part du trafic passera par la branche du haut, la plus courte ?",

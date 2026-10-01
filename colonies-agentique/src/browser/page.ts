@@ -63,7 +63,9 @@ const MESURES = [...new Set([D.mesure.nom, D.graphe.nom, ...mesuresRegles, ...ME
 const echantillonnage = (c: Cellule) => { const t = c.source.time as { horizon: number; dt: number }; return Math.max(t.dt, Math.round(t.horizon / 100 / t.dt) * t.dt) }
 
 // ---------- Z3 Distribution (07 §4.8; BR-017) ----------
-function distribution(parRang: readonly (number | null)[], courante: number | null, o: { N: number; regime: Regime; statut: Statut; complete: boolean; titre: string; graines?: string; marque?: string }) {
+// Règle de choix de l'exécution typique, affichée avec la distribution (07 §4, Z3; UC-006, BR-027).
+const regleTypique = (c: Cellule) => `exécution typique : la plus proche de la médiane${c.replay.statistic === 'majority-share' ? ' de la part de l’option majoritaire, max(s, 1 − s)' : ''}`
+function distribution(parRang: readonly (number | null)[], courante: number | null, o: { N: number; regime: Regime; statut: Statut; complete: boolean; titre: string; graines?: string; marque?: string; regle?: string }) {
   const valeurs = parRang.filter((v): v is number => v != null)   // null : répétition sans valeur, comptée dans N (UC-006, BR-029)
   const [a, b] = intervalle95(valeurs), med = mediane(valeurs)
   const lo = Math.min(0, ...valeurs), hi = Math.max(1, ...valeurs), etendue = hi - lo || 1
@@ -76,7 +78,7 @@ function distribution(parRang: readonly (number | null)[], courante: number | nu
   const points = valeurs.map(v => `<circle cx="${x(v).toFixed(1)}" cy="${(base - 2 - empiles[col(v)]!++ * pas).toFixed(1)}" r="2" class="point"/>`).join('')
   const marque = courante == null ? '' : `<line x1="${x(courante)}" x2="${x(courante)}" y1="2" y2="${base + 2}" class="courante"/>`
   const graduations = `<text x="8" y="${h - 4}" class="graduation">${fmt(lo)}</text><text x="${w - 8}" y="${h - 4}" text-anchor="end" class="graduation">${fmt(hi)}</text>`
-  const resume = `${courante == null ? '' : `${o.marque ?? 'Exécution typique'} : ${fmt(courante)} · `}médiane : ${fmt(med)} · intervalle à 95 % des exécutions : [${fmt(a)} ; ${fmt(b)}] · n = ${valeurs.length} sur N = ${o.N}`
+  const resume = `${courante == null ? '' : `${o.marque ?? 'Exécution typique'} : ${fmt(courante)} · `}médiane : ${fmt(med)} · intervalle à 95 % des exécutions : [${fmt(a)} ; ${fmt(b)}] · n = ${valeurs.length} sur N = ${o.N}${o.regle ? ` · ${o.regle}` : ''}`
   return el('figure', { class: 'distribution', 'data-statut': o.statut, 'data-regime': o.regime },
     svg(`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${o.titre} : ${resume}"><line x1="8" x2="${w - 8}" y1="${base}" y2="${base}" class="axe"/>${points}${marque}${graduations}</svg>`),
     el('figcaption', {}, badge(o.statut), ` ${o.titre}. ${resume}${o.graines ? ` · ${o.graines}` : ''}`),
@@ -185,7 +187,7 @@ function niveauVoir() {
       const x = ex!.finales[D.mesure.nom] ?? null
       resultat.replaceChildren(
         el('p', { class: 'comparaison' }, prediction == null ? 'Prédiction passée. ' : `Votre prédiction : ${fmt(prediction)}. `, `Résultat de l’exécution typique (annoncée comme telle) : ${fmt(x)} ${D.mesure.unite}.`),
-        distribution(c.values, x, { N: R.preregisteredN, regime: 'exploratoire', statut: 'simplifie', complete: false, titre: `Distribution sur ${R.preregisteredN} graines` }),
+        distribution(c.values, x, { N: R.preregisteredN, regime: 'exploratoire', statut: 'simplifie', complete: false, titre: `Distribution sur ${R.preregisteredN} graines`, regle: regleTypique(c) }),
         enonce(s.conclusion.texte, s.conclusion.statut, 'exploratoire'),
         el('aside', { class: 'nepas' }, el('h4', {}, 'Ce que ça ne veut pas dire'), el('p', {}, s.nePasConfondre)),
         i + 1 < etapes.length ? el('button', { type: 'button', class: 'suivante' }, 'Étape suivante') : el('div', { class: 'carte' }, el('h4', {}, 'Carte agentique'), carte()))
@@ -310,7 +312,7 @@ function niveauVerifier() {
       bouton.disabled = false
     })
     multiples.append(el('div', { class: 'cellule' }, el('h4', {}, params),
-      distribution(c.values, c.values[c.replay.rep] ?? null, { N: R.preregisteredN, regime, statut: statutResultats, complete: true, titre: `Distribution sur ${R.preregisteredN} graines`, graines }), bouton, rejeu))
+      distribution(c.values, c.values[c.replay.rep] ?? null, { N: R.preregisteredN, regime, statut: statutResultats, complete: true, titre: `Distribution sur ${R.preregisteredN} graines`, graines, regle: regleTypique(c) }), bouton, rejeu))
   })
   zone.append(multiples, el('h3', {}, 'Carte agentique'), carte())
   return zone

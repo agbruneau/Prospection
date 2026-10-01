@@ -22,8 +22,12 @@ export function erreurType(v: readonly number[]): number {
 /** Intervalle à 95 % des valeurs (percentiles 2,5 et 97,5) : dispersion des exécutions, pas IC de la moyenne. */
 export const intervalle95 = (v: readonly number[]): [number, number] => [quantile(v, 0.025), quantile(v, 0.975)]
 
-/** Rang de la valeur la plus proche de la médiane; le plus petit rang en cas d'égalité (UC-006, BR-027). */
-export function rangTypique(v: readonly number[]): number {
+/** Statistique de choix de la répétition typique : la valeur, ou la part majoritaire max(s, 1 − s) d'une part s entre deux options. */
+export type StatistiqueTypique = 'value' | 'majority-share'
+
+/** Rang dont la statistique de choix est la plus proche de sa médiane; le plus petit rang en cas d'égalité (UC-006, BR-027). */
+export function rangTypique(valeurs: readonly number[], statistique: StatistiqueTypique = 'value'): number {
+  const v = statistique === 'majority-share' ? valeurs.map(s => Math.max(s, 1 - s)) : valeurs
   const m = mediane(v)
   let meilleur = 0
   for (let i = 1; i < v.length; i++) if (Math.abs(v[i]! - m) < Math.abs(v[meilleur]! - m)) meilleur = i
@@ -42,7 +46,7 @@ export interface Cellule {
   interval95: [number, number]
   values: (number | null)[]        // une valeur par répétition, à son rang; null : répétition sans valeur (BR-029)
   missing: number                   // répétitions sans valeur, comptées dans N
-  replay: { rep: number; seed: string; fnv1a64: string }
+  replay: { rep: number; seed: string; fnv1a64: string; statistic: StatistiqueTypique }
 }
 export interface PageSummary {
   schema: 1

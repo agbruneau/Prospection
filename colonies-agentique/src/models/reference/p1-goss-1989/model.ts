@@ -29,6 +29,7 @@ export const goss1989: ReferenceModel = {
     S0: 'unité de phéromone', S1: 'unité de phéromone', L0: 'unité de phéromone', L1: 'unité de phéromone',
     p0: 'probabilité', p1: 'probabilité',   // probabilité de choisir la courte au nid (0) et à la nourriture (1), éq. 3
   },
+  shareMeasures: ['shortShare'],
   create(s, f) {
     const v: Record<string, number> = {}
     for (const nom of PARAMETRES) {

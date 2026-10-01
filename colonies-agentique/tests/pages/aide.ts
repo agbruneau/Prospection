@@ -29,11 +29,11 @@ export function resumeFixture(etat: PageSummary['state'] = 'frozen', issue: Page
       const e = enregistrer(preparer(s).sim, s)
       return { valeur: e.colonnes.shortShare!.at(-1)!, empreinte: e.fingerprints.at(-1)!.fnv1a64, graine: s.seed, hash: s.hash }
     })
-    const values = runs.map(r => r.valeur), rep = rangTypique(values)
+    const values = runs.map(r => r.valeur), rep = rangTypique(values, 'majority-share')
     return {
       scenario: chemin, scenarioHash: runs[0]!.hash, source, n: N, mean: moyenne(values), se: erreurType(values), interval95: intervalle95(values), values, missing: 0,
       params: Object.fromEntries(Object.entries(source.parameters as Record<string, { value: number }>).map(([k, p]) => [k, p.value])),
-      replay: { rep, seed: runs[rep]!.graine, fnv1a64: runs[rep]!.empreinte },
+      replay: { rep, seed: runs[rep]!.graine, fnv1a64: runs[rep]!.empreinte, statistic: 'majority-share' as const },
     }
   })
   return {

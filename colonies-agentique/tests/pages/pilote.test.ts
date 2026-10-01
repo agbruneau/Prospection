@@ -30,7 +30,7 @@ test('UC-010 nominal : la page-pilote p1-v1-pont joue ses trois niveaux sur le r
 
   await page.getByRole('button', { name: 'Passer' }).click()
   await visible('.resultat .comparaison').waitFor({ timeout: 30_000 })
-  assert.match(await visible('.distribution figcaption').innerText(), /n = 1000 sur N = 1000/)
+  assert.match(await visible('.distribution figcaption').innerText(), /n = 1000 sur N = 1000 · exécution typique : la plus proche de la médiane de la part de l’option majoritaire/)   // BR-027
   assert.deepEqual(await violations(), [])
 
   await niveau('Explorer')

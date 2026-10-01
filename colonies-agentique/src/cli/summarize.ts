@@ -8,6 +8,7 @@ import { erreurType, intervalle95, moyenne, rangTypique, type Cellule, type Page
 import { fnv1a64Texte } from '../core/fingerprint.ts'
 import type { Verdict } from '../core/manifest.ts'
 import { jsonCanonique } from '../core/scenario.ts'
+import { MODELES } from '../models/index.ts'
 import { projetDe, type ReproductionTarget } from './reproduce.ts'
 import { RACINE, type EtatGit } from './run.ts'
 
@@ -68,11 +69,12 @@ export function resumer(id: string, racine = RACINE): { chemin: string; resume: 
     const values = Array.from({ length: N }, (_, i) => { const x = parRang.get(i)?.valeurs[mesure]; return x ? Number(x) : null })
     const rangs = values.flatMap((x, i) => (x == null ? [] : [i])), presentes = rangs.map(i => values[i]!)
     if (presentes.length === 0) throw new ResumeImpossible(`Résumé impossible : aucune valeur de ${mesure} pour ${scenario}`)
-    const typique = parRang.get(rangs[rangTypique(presentes)]!)!   // BR-027
+    const statistic = MODELES.get((source.model as { id: string }).id)?.shareMeasures?.includes(mesure) ? 'majority-share' : 'value'
+    const typique = parRang.get(rangs[rangTypique(presentes, statistic)]!)!   // BR-027
     return {
       scenario, scenarioHash: v.scenarios![scenario]!, source, params: Object.fromEntries(Object.entries(parametres).map(([k, p]) => [k, p.value])),
       n: presentes.length, mean: moyenne(presentes), se: erreurType(presentes), interval95: intervalle95(presentes), values, missing: N - presentes.length,
-      replay: { rep: typique.rep, seed: typique.seed, fnv1a64: typique.fnv1a64 },
+      replay: { rep: typique.rep, seed: typique.seed, fnv1a64: typique.fnv1a64, statistic },
     }
   })
   const resume: PageSummary = {

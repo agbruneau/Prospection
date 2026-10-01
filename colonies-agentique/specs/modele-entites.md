@@ -142,6 +142,7 @@ Résultats précalculés d'un scénario sur N graines, lus par une page (05 §8.
 | preregisteredN | entier | > 0; N affiché par la page; égal au nombre de répétitions de la cible |
 | cells | par scénario : hachage, source, n, moyenne, erreur-type, intervalle à 95 % des valeurs, valeurs, manquantes, répétition typique (rang, graine, empreinte) | une cellule par scénario de la cible |
 | replay.seed | chaîne décimale, par cellule | choisie une fois avant publication, par la règle de la médiane (BR-027) |
+| replay.statistic | `value` ou `majority-share`, par cellule | statistique de choix de la répétition typique : `majority-share` (max(s, 1 − s)) pour une mesure que le modèle déclare comme part d'une option parmi deux (BR-027) |
 
 ### Page (`Page`)
 Page statique d'un projet, à trois niveaux.

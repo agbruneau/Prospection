@@ -196,7 +196,7 @@ Un petit nombre d'étapes (3 à 5 [à confirmer], audit §3.2); un récit peut e
 
 1. une question, une seule variable manipulée;
 2. **prédiction obligatoire avant « Lancer »** (choix, curseur ou tracé); le bouton « Passer » existe, la page le consigne pour l'étude seulement (avec consentement);
-3. exécution **typique** : la graine est annoncée comme telle et choisie une fois, avant publication, par une règle consignée (exécution dont le résultat principal est le plus proche de la médiane; `replaySeed` du résumé précalculé de [05-spec-simulation.md](05-spec-simulation.md)), jamais à la main;
+3. exécution **typique** : la graine est annoncée comme telle et choisie une fois, avant publication, par une règle consignée (exécution dont le résultat principal est le plus proche de la médiane; pour une part entre deux options, la part de l'option majoritaire, afin qu'une distribution bimodale ne fasse pas montrer l'issue rare; `replaySeed` du résumé précalculé de [05-spec-simulation.md](05-spec-simulation.md)), jamais à la main;
 4. comparaison prédiction/résultat avec la distribution (écart visible, prédire puis voir l'écart améliore le rappel [R] [Kim et al. 2017]; réflexion et rétroaction [R] [Moreno et Mayer 2007]) puis auto-explication en une phrase;
 5. conclusion mécaniste en une phrase, portant son étiquette de statut;
 6. encadré « Ce que ça ne veut pas dire » (portée de l'analogie) et, pour le grand public, l'arbre sans échelle (voir « Carte agentique »).

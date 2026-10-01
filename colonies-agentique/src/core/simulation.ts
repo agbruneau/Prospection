@@ -18,6 +18,8 @@ export interface ReferenceModel<O = Observation> {
   readonly id: string
   /** Unités des mesures que le modèle sait observer; une mesure absente d'ici est refusée. */
   readonly measureUnits: Readonly<Record<string, string>>
+  /** Mesures qui sont la part s d'une option parmi deux : leur répétition typique se choisit sur max(s, 1 − s) (UC-006, BR-027). */
+  readonly shareMeasures?: readonly string[]
   /** Lève ScenarioError (« Scénario invalide : … ») si le scénario ne convient pas au modèle. */
   create(s: CompiledScenario, f: StreamFactory): Simulation<O>
 }
