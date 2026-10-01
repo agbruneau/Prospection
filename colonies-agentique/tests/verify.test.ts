@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict'
 import { execFileSync, spawnSync } from 'node:child_process'
 import fs from 'node:fs'
+import os from 'node:os'
 import path from 'node:path'
-import { test } from 'node:test'
+import { after, test } from 'node:test'
 import { ETAPES, executerEtapes } from '../outils/verify.ts'
+import { analyserCibles } from '../outils/verifier-cibles.ts'
 import { analyser } from '../outils/verifier-specs.ts'
 import { RACINE } from '../src/cli/run.ts'
 
@@ -23,6 +25,21 @@ test('UC-008 A1 : une étape en échec est affichée, les suivantes ne s\'exécu
   assert.equal(lancees.at(-1), 'node outils/verifier-docs.ts')
   assert.equal(lancees.length, 4)
   assert.ok(lignes.includes('✘ étape 4 : documentation'))
+})
+
+test('UC-008 A1 : verifier-cibles signale une cible sans fichier et un niveau, un n ou une marge qui ne concordent pas avec la fiche', () => {
+  const racine = fs.mkdtempSync(path.join(os.tmpdir(), 'cibles-'))
+  after(() => fs.rmSync(racine, { recursive: true, force: true }))
+  fs.mkdirSync(path.join(racine, 'projets'))
+  fs.copyFileSync(path.join(RACINE, 'projets', 'P1-recrutement-verrouillage.md'), path.join(racine, 'projets', 'P1-recrutement-verrouillage.md'))
+  fs.mkdirSync(path.join(racine, 'targets', 'P1'), { recursive: true })
+  const ecrire = (id: string, c: object) => fs.writeFileSync(path.join(racine, 'targets', 'P1', `${id}.json`), JSON.stringify({ id, project: 'P1', state: 'provisional', ...c }))
+  ecrire('T1.1', { level: 'distributional', repetitions: 1000, margin: { delta: 5 } })   // concorde avec la fiche
+  ecrire('T1.4', { level: 'distributional', repetitions: 10, margin: { delta: 7 } })     // la fiche : identité, 1, ±3
+  const erreurs = analyserCibles(racine).erreurs
+  assert.ok(!erreurs.some(e => e.includes('T1.1.json')), erreurs.join('\n'))
+  for (const motif of [/T1\.4\.json : niveau « distributional »/, /T1\.4\.json : repetitions 10, la fiche dit 1$/, /T1\.4\.json : marge ±7 absente/, /T1\.2 sans fichier targets\/P1\/T1\.2\.json/])
+    assert.ok(erreurs.some(e => motif.test(e)), `${motif} absent de :\n${erreurs.join('\n')}`)
 })
 
 test('UC-008 BR-014 : les contrôles de la chaîne ne créent ni ne modifient aucun fichier versionné', () => {

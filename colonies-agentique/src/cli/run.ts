@@ -67,13 +67,9 @@ function versionTypescript(): string {
   }
 }
 
-/** Exécute un scénario; lève ScenarioError (A1 à A3) ou EtatInvalide (E1) sans rien écrire. */
-export function executer(fichier: string, options: OptionsExecution = {}) {
-  const { sortie = 'data/runs', modeles = MODELES, git = gitCourant, journal = console.log } = options
-  const compile = compileScenario(lireJson(fichier, '(fichier)'))
+/** Exécute un scénario compilé en mémoire (UC-001 étapes 3 à 5, A3, E1); n'écrit rien. */
+export function executerCompile(compile: CompiledScenario, etatGit: EtatGit, modeles = MODELES) {
   const { modele, sim, etatsInitiaux } = preparer(compile, modeles)
-  journal(`Scénario ${compile.hash} (${compile.regime})`)
-  const etatGit = git()
   if (compile.regime === 'confirmatory' && !etatGit.cleanTree) throw new ScenarioError('Exécution confirmatoire refusée : arbre de travail modifié')
 
   const debut = new Date()
@@ -104,12 +100,21 @@ export function executer(fichier: string, options: OptionsExecution = {}) {
     deviations: [],
     license: 'CC-BY-4.0', // proposée par 08 (DC2), en attente de la décision du chercheur
   }
+  return { manifeste, csv, base }
+}
+
+/** Exécute un fichier de scénario; lève ScenarioError (A1 à A3) ou EtatInvalide (E1) sans rien écrire. */
+export function executer(fichier: string, options: OptionsExecution = {}) {
+  const { sortie = 'data/runs', modeles = MODELES, git = gitCourant, journal = console.log } = options
+  const compile = compileScenario(lireJson(fichier, '(fichier)'))
+  journal(`Scénario ${compile.hash} (${compile.regime})`)
+  const { manifeste, csv, base } = executerCompile(compile, git(), modeles)
 
   fs.mkdirSync(sortie, { recursive: true })
   fs.writeFileSync(path.join(sortie, `${base}.series.csv`), csv)
   const chemin = path.join(sortie, `${base}.manifest.json`)
   fs.writeFileSync(chemin, JSON.stringify(manifeste, null, 2) + '\n')
-  const empreinteFinale = e.fingerprints[e.fingerprints.length - 1]!.fnv1a64
+  const empreinteFinale = manifeste.fingerprints.at(-1)!.fnv1a64
   journal(`runId : ${manifeste.runId}`)
   journal(`Manifeste : ${chemin}`)
   journal(`Empreinte finale : ${empreinteFinale}`)

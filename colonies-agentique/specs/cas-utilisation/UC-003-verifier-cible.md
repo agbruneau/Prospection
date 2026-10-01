@@ -1,7 +1,7 @@
 ---
 id: UC-003
 name: Vérifier une cible de reproduction
-status: Approved
+status: Implemented
 context: SIM
 actors: [Chercheur]
 linkedRequirements: [FR-003, NFR-001, C-006]
@@ -14,7 +14,7 @@ entities: [ReproductionTarget, Verdict, Deviation, Scenario, ReferenceModel, Run
 
 - **Acteur principal :** Chercheur
 - **But :** obtenir le verdict d'une cible de reproduction (`satisfied`, `unsatisfied` ou `inconclusive`), fondé sur des exécutions rejouables, pour décider de la porte de réplication.
-- **Statut :** Approved
+- **Statut :** Implemented
 
 ## Préconditions
 

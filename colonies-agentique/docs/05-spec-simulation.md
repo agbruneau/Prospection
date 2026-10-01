@@ -392,42 +392,51 @@ export interface Channel<M> {
 }
 
 // harnais de tests : extrait exécutable d'une fiche de reproduction (gabarit de 04-protocole-reproduction.md)
+// src/analysis/equivalence.ts et src/cli/reproduce.ts (UC-003)
 export type Reading = 'T' | 'T*' | 'R' | 'M' | 'S' | 'I'
+export interface Margin { delta: number; scale: 'points' | 'relative' | 'log10' | 'standardized'; justification: string }   // points : points de pourcentage pour une proportion
+export interface Criterion {
+  quantity: string
+  statistic: { measure: string; threshold?: { op: '>' | '>=' | '<' | '<='; value: number } }   // valeur finale par exécution; seuil → proportion
+  test: 'equal' | 'TOST' | 'order' | 'range' | 'fit'   // implantés : equal (identité à tolérance), TOST, range (IC à 95 % dans la plage)
+  value: number | readonly [number, number]
+  margin?: Margin                   // héritée de la cible si absente
+  dispersion?: { kind: 'sd' | 'se' | 'ci' | 'unknown'; value: number }
+  publishedN?: number               // avec la dispersion : TOST de Welch; sinon valeur publiée traitée comme constante (04 §5.5)
+}
 export interface ReproductionTarget {
   id: string                        // T<projet>.<n>
-  project: string
+  project: string                   // P<k> ou S0
   state: 'blocked' | 'provisional' | 'frozen'   // avant exécution; blocked = todo, provisional = exploratoire seulement
   frozenAt?: string                 // commit de gel de la fiche
   blockedReason?: string
   source: string                    // étiquette de bibliographie
   location: string                  // figure, tableau, équation
   level: 'identity' | 'relational' | 'distributional'
-  quantity: string
-  unit: string
-  value: number | readonly number[]
-  dispersion?: { kind: 'sd' | 'se' | 'ci' | 'unknown'; value: number }
-  publishedN?: number
-  margin?: { delta: number; scale: 'points' | 'relative' | 'log10' | 'standardized'; justification: string }
+  margin?: Margin
   repetitions: number
   maxRepetitions?: number           // n_max préenregistré pour l'issue indéterminée
   seeds: { master: string; pairing: 'by-repetition' | 'by-cell' }
-  test: 'equal' | 'TOST' | 'order' | 'range' | 'fit'
   rule: string                      // règle de décision écrite avant le code
   gates: readonly string[]
   reading: Readonly<Record<'equations' | 'parameters' | 'protocol' | 'figure' | 'dispersion', Reading>>
+  scenario?: string                 // scénario de base (chemin relatif à la racine); requis sauf cible bloquée
+  criteria?: readonly Criterion[]   // conjonctifs; requis sauf cible bloquée
+  deviations?: readonly string[]    // D-<projet>-<nnn>
 }
 export interface Verdict {
   id: string
   outcome: 'satisfied' | 'unsatisfied' | 'inconclusive'
   provisional: boolean              // « sous réserve » : la fiche était provisoire
-  measured: number
+  measured: number                  // measured, ci90, mcStandardError : ceux du premier critère
   ci90?: readonly [number, number]
   mcStandardError: number
   n: number
   deviations: readonly string[]     // identifiants du registre : D-<projet>-<nnn>
+  criteria: readonly { quantity: string; outcome: Verdict['outcome']; measured: number; mcStandardError: number; ci90?: readonly [number, number]; n: number }[]
 }
-export declare function requiredNTost(p: number, delta: number, alpha?: number, power?: number): number
-export declare function checkTarget<O>(t: ReproductionTarget, m: ReferenceModel<O>, s: CompiledScenario): Verdict
+export declare function requiredNTost(p: number, delta: number): number          // α = 0,05, puissance 80 %
+export declare function verifierCible(id: string): { cible: string; etat: string; issue: string; n: number; code: number }
 
 // core/manifest.ts
 export interface RunManifest {
@@ -507,14 +516,14 @@ colonies-agentique/
     core/                   random.ts clock.ts rk4.ts euler-maruyama.ts ssa.ts events.ts grid.ts
                             recorder.ts scenario.ts manifest.ts fingerprint.ts index.ts
     models/
-      reference/            un dossier par article : p1-goss-1989/, p1-seeley-1991/, p5-seeley-2012/, …
+      reference/            un dossier par article : p1-goss-1989/, p1-seeley-1991/, p5-seeley-2012/ (model.ts : EDO; ssa.ts : N fini), …
                             (model.ts, scenario.json, README = ODD du modèle)
       choreography/         model.ts, channels/ (field.ts dance-floor.ts blackboard.ts messages.ts)
     policies/               policy.ts rule.ts llm.ts cassette.ts llm-log.ts     (llm et cassette : voir fiche P7)
-    analysis/               equivalence.ts (TOST) bootstrap.ts sensitivity.ts (OFAT, Morris, Sobol) power.ts holm.ts
+    analysis/               equivalence.ts (TOST, n requis, quantiles de t, règles de décision) bootstrap.ts sensitivity.ts (OFAT, Morris, Sobol) power.ts holm.ts
                             mc-error.ts miller.ts (formules d'évaluation des LLM)
     sweep/                  plan.ts executor.ts (worker_threads) worker.ts aggregate.ts
-    cli/                    run.ts replay.ts sweep.ts export.ts
+    cli/                    run.ts replay.ts reproduce.ts sweep.ts export.ts
     browser/                sim-worker.ts driver.ts render-canvas.ts export.ts ui/    (aucun calcul de simulation)
   scenarios/                <modèle>/<nom>.json (sources) et compiled/ (littéraux calculés sous Node)
   targets/                  <projet>/T<projet>.<n>.json : extrait exécutable de la fiche de reproduction, une cible par fichier
@@ -649,8 +658,8 @@ Le gabarit de la **fiche de reproduction** (un fichier Markdown par cible, quinz
 - **Correspondance fiche ↔ cible :** un projet est contrôlé dès que son dossier `targets/<projet>/` existe (ouverture de sa phase). `outils/verifier-cibles.ts` vérifie que chaque identifiant `T<projet>.<n>` défini dans une fiche de projet a exactement un fichier dans `targets/`, avec le même niveau, le même n et la même marge, et réciproquement. Toute différence est une erreur.
 - **Cible bloquée ou provisoire :** une cible `blocked` (source non lue; paramètres issus d'un résumé, d'une notice ou d'une source secondaire) est exécutée en `todo` : aucun code de modèle n'est requis, elle est listée dans le rapport. Une cible `provisional` (valeur marquée **[à confirmer]**) ne produit que des runs `exploratory` et, au mieux, un verdict « sous réserve ». Ni l'une ni l'autre n'est jamais comptée comme réussie. Un run `confirmatory` exige une cible `frozen`, exécutée **une fois** sur la liste de graines gelée (aucun ajustement de paramètre pour franchir la cible : calage sur une cible distincte, protocole de reproduction).
 - **Garde de puissance :** à la création du test, si le niveau est distributionnel (`TOST`), le harnais calcule `requiredNTost` et **échoue** si le n prévu est inférieur. Sans cette garde, une marge trop étroite passerait en silence. C'est la règle que le protocole de reproduction (section sur le choix de n) confie à ce harnais.
-- **Issues :** `satisfied`, `unsatisfied` ou `inconclusive` (issue indéterminée : le harnais augmente n jusqu'à `maxRepetitions`, sinon la cible le reste), selon les quatre cas du protocole. Les critères d'une même cible sont conjonctifs.
-- **Rapport :** chaque cible produit un `Verdict` et un manifeste, rangés dans `data/results/<projet>/`. Toute déviation reçoit un identifiant `D-<projet>-<nnn>` du registre du protocole, jamais une correction silencieuse.
+- **Issues :** `satisfied`, `unsatisfied` ou `inconclusive` (issue indéterminée : le harnais passe en un seul palier à `maxRepetitions`, sinon la cible le reste; des paliers intermédiaires viendront avec le préenregistrement, 04 §5.4), selon les quatre cas du protocole. Les critères d'une même cible sont conjonctifs. Chaque critère calcule une statistique par exécution (valeur finale d'une mesure, ou indicatrice d'un seuil pour une proportion), puis applique son test : `equal` (identité à tolérance), `TOST` (IC à 90 % dans ±δ; Welch si la source donne n et dispersion) ou `range` (IC à 95 % dans la plage, disjoint = non satisfaite). `order` et `fit` ne sont pas encore implantés; une cible qui les emploie est refusée.
+- **Rapport :** chaque cible produit `data/results/<projet>/<id>.verdict.json` (cible, hachage de la cible, régime, `Verdict`, graine et `runId` de chaque répétition) et un manifeste par répétition, `data/results/<projet>/<id>/rep-<i>.manifest.json`, sans fichier de séries. La graine de la répétition i est `graineDeRepetition(graine maîtresse, i)` (section 7.4). Toute déviation reçoit un identifiant `D-<projet>-<nnn>` du registre du protocole, jamais une correction silencieuse.
 - **Réplication, pas validation :** un test qui compare le modèle à ses propres figures est une réplication. La validation exige des données non utilisées pour l'ajustement; la fiche le dit cible par cible.
 
 ### 9.3 Tolérances
@@ -836,7 +845,7 @@ Les numéros R20 à R28 sont réservés à ce document; les autres documents év
 | R21 | worker `blob:` refusé par la politique de sécurité de contenu de l'hébergement | fichier de support, tranches sur le fil principal, page statique | SPK2 |
 | R22 | budget headless dépassé (noyau de Khuong et al., balayages de Couzin et al., Aswale et al.) | optimisation algorithmique, `worker_threads`, puis WASM selon la règle | SPK10 |
 | R23 | paramètre **[à confirmer]** pris pour un fait dans un run confirmatoire | régime et statut dans le scénario; refus à la compilation | T0.21 et test de compilation |
-| R24 | cible non testable au n prévu (marge trop étroite) | garde de puissance dans `checkTarget` | 9.2 |
+| R24 | cible non testable au n prévu (marge trop étroite) | garde de puissance dans `verifierCible` (`nRequis`, UC-003 A3) | 9.2 |
 | R25 | dérive entre la fiche (Markdown) et `targets/` | `verifier-cibles.ts` | `npm run verify` |
 | R26 | artefact d'ordre de mise à jour | facteur `order`, test de sensibilité par modèle à agents | 7.3 |
 | R27 | modèle LLM retiré : run non ré-exécutable | cassette; dire « rejouable, non ré-exécutable » | fiche P7 |

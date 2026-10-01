@@ -99,3 +99,8 @@ export function createStream(masterSeed: bigint, name: string): Prng {
   const etat = new Uint32Array([Number(a & 0xffffffffn), Number(a >> 32n), Number(b & 0xffffffffn), Number(b >> 32n)])
   return xoshiro128(etat, sous => createStream(masterSeed, `${name}/${sous}`))
 }
+
+/** Graine de la répétition i d'une graine maîtresse (05 §7.4, pairage by-repetition) : chaîne décimale de 64 bits. */
+export function graineDeRepetition(masterSeed: bigint, i: number): string {
+  return splitMix64(masterSeed ^ BigInt('0x' + fnv1a64Texte(`run/${i}`)))().toString()
+}

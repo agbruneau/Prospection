@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.browser.json",
     "test": "node --test \"tests/core/**/*.test.ts\" \"tests/cli/**/*.test.ts\" tests/determinism.test.ts tests/conformance.test.ts tests/verify.test.ts \"outils/*.test.ts\"",
     "verify": "node outils/verify.ts",
-    "replay": "node src/cli/replay.ts"
+    "replay": "node src/cli/replay.ts",
+    "reproduce": "node src/cli/reproduce.ts"
   },
   "devDependencies": {
     "@types/node": "^24",

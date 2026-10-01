@@ -14,6 +14,8 @@ export interface Verdict {
   mcStandardError: number
   n: number
   deviations: readonly string[]
+  /** Détail par critère (conjonctifs, BR-012); measured, ci90 et mcStandardError du Verdict sont ceux du premier. */
+  criteria: readonly { quantity: string; outcome: Verdict['outcome']; measured: number; mcStandardError: number; ci90?: readonly [number, number]; n: number }[]
 }
 
 export interface RunManifest {

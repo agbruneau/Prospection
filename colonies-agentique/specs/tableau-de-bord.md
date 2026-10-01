@@ -8,7 +8,7 @@ Généré par `node outils/verifier-specs.ts --ecrire` : ne pas modifier à la m
 |---|---:|---:|---:|---:|---:|
 | Exigences fonctionnelles | 20 | 0 | 9 | 11 | 0 % |
 | Cas d'utilisation | 16 | 0 | 7 | 9 | 0 % |
-| Cas à couverture de spécification complète | 16 | 3 | 4 | 9 | 19 % |
+| Cas à couverture de spécification complète | 16 | 4 | 3 | 9 | 25 % |
 
 ## Suivi par cas
 
@@ -16,7 +16,7 @@ Généré par `node outils/verifier-specs.ts --ecrire` : ne pas modifier à la m
 |---|---|---|---|:-:|:-:|:-:|---|---|
 | [UC-001](cas-utilisation/UC-001-executer-scenario.md) | Exécuter un scénario | FR-001 | Implemented | ✔ | ✔ | — | 10 sur 10 | Partielle |
 | [UC-002](cas-utilisation/UC-002-rejouer-execution.md) | Rejouer une exécution | FR-002 | Implemented | ✔ | ✔ | — | 8 sur 8 | Partielle |
-| [UC-003](cas-utilisation/UC-003-verifier-cible.md) | Vérifier une cible de reproduction | FR-003 | Approved | ✕ | ✕ | — | 0 sur 13 | Faible |
+| [UC-003](cas-utilisation/UC-003-verifier-cible.md) | Vérifier une cible de reproduction | FR-003 | Implemented | ✔ | ✔ | — | 13 sur 13 | Partielle |
 | UC-004 | Balayer des paramètres | — | non rédigé | ✕ | ✕ | — | — | Faible |
 | UC-005 | Aligner par docking | — | non rédigé | ✕ | ✕ | — | — | Faible |
 | UC-006 | Préparer les résumés d'une page | — | non rédigé | ✕ | ✕ | — | — | Faible |

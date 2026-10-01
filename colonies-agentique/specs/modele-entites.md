@@ -30,7 +30,7 @@ Réimplantation fidèle d'un modèle publié, dans sa forme publiée (EDO, Monte
 
 | Attribut | Type | Règles de validation |
 |---|---|---|
-| id | chaîne | requis, unique, forme `<projet>-<auteur>-<année>` (p. ex. `p1-goss-1989`) |
+| id | chaîne | requis, unique, forme `<projet>-<auteur>-<année>`, suivie de `-<variante>` quand un article donne plusieurs formes de modèle (p. ex. `p1-goss-1989`, `p5-seeley-2012-ssa`) |
 | article | chaîne | requis; étiquette présente dans la [bibliographie](../docs/11-bibliographie.md) |
 | type | énuméré | EDO, EDS, MC, SSA, PTD, DES, AGT, META, FERMÉ (05 §3.1) |
 | taxon | chaîne | requis pour un modèle biologique; taxon nommé du cadre §2.3 |
@@ -87,6 +87,8 @@ Extrait exécutable d'une fiche de reproduction ([04](../docs/04-protocole-repro
 | margin | δ et échelle | requise pour `distributional`; fixée avant toute exécution |
 | repetitions, maxRepetitions | entiers | `repetitions` ≥ n requis par la marge (garde de puissance) |
 | seeds | graine maîtresse, appariement | gelées avant la première exécution |
+| scenario | chemin d'un scénario | requis sauf pour une cible `blocked`; désigne le modèle visé |
+| criteria | liste de critères (grandeur, statistique, test, valeur, marge) | non vide sauf pour une cible `blocked`; conjonctifs; tests `equal`, `TOST`, `range` |
 
 ### Verdict (`Verdict`)
 Issue d'une cible : `satisfied`, `unsatisfied` ou `inconclusive`; « sous réserve » si la cible était provisoire.
@@ -96,6 +98,7 @@ Issue d'une cible : `satisfied`, `unsatisfied` ou `inconclusive`; « sous réser
 | outcome | énuméré | une des trois issues |
 | provisional | booléen | vrai si la cible était `provisional` |
 | measured, mcStandardError, n | nombres | n = nombre d'exécutions réellement faites |
+| criteria | issue, valeur mesurée, ES de Monte Carlo par critère | un par critère de la cible |
 | deviations | identifiants de `Deviation` | chacun existe au registre |
 
 ### Déviation (`Deviation`)
