@@ -26,7 +26,7 @@ const svg = (balisage: string) => { const t = document.createElement('template')
 const fmt = (x: number | null | undefined, chiffres = 3) => (x == null || !Number.isFinite(x) ? '—' : x.toLocaleString('fr-CA', { maximumFractionDigits: chiffres }))
 const etat = el('p', { role: 'status', class: 'annonce' })
 const annoncer = (t: string) => { etat.textContent = t }
-const unite = (nom: string) => ((R.cells[0]!.source.parameters as Record<string, { unit?: string }>)[nom]?.unit ?? '')
+const unite = (nom: string) => { const u = (R.cells[0]!.source.parameters as Record<string, { unit?: string }>)[nom]?.unit ?? ''; return u === '1' ? '' : u }   // « 1 » : sans dimension
 const aConfirmer = (nom: string) => (R.toConfirm.includes(nom) ? ' (valeur à confirmer)' : '')   // BR-026
 
 // ---------- Statut épistémique (07 §5) ----------
@@ -152,20 +152,20 @@ function niveauVoir() {
   const zone = el('section', { 'aria-labelledby': 'titre-voir' }, el('h2', { id: 'titre-voir' }, 'Voir'))
   const etapes = D.voir!.etapes
   const z = { scene: scene(), zoneGraphe: el('div') }
-  const corps = el('div')
-  zone.append(corps, z.scene.element, z.zoneGraphe)
+  const corps = el('div'), resultat = el('div', { class: 'resultat' })
+  zone.append(corps, z.scene.element, z.zoneGraphe, resultat)   // Z5 consignes, Z1 scène, Z2 graphe, puis le résultat
   const afficher = (i: number) => {
     const s = etapes[i]!, c = R.cells[s.cellule]!
     const champ = el('input', { type: 'range', id: 'prediction', min: s.prediction.min, max: s.prediction.max, step: s.prediction.pas, value: (s.prediction.min + s.prediction.max) / 2 })
     const valeur = el('output', { for: 'prediction' }, fmt(Number(champ.value)))
     champ.addEventListener('input', () => { valeur.textContent = fmt(Number(champ.value)) })
     const lancer = el('button', { type: 'button' }, 'Lancer'), passer = el('button', { type: 'button' }, 'Passer'), pause = el('button', { type: 'button', hidden: true, 'aria-pressed': 'false' }, 'Pause')
-    const resultat = el('div', { class: 'resultat' })
+    resultat.replaceChildren()
     corps.replaceChildren(
       el('h3', {}, `Étape ${i + 1} sur ${etapes.length}`), el('p', {}, s.question),
       el('p', {}, `Variable de l’étape : ${s.variable} = ${fmt(c.params[s.variable] as number)} ${unite(s.variable)}${aConfirmer(s.variable)}`),
       el('div', { class: 'controle' }, el('label', { for: 'prediction' }, `Votre prédiction (${D.mesure.etiquette}, ${D.mesure.unite})`), champ, valeur),
-      el('div', { class: 'boutons' }, lancer, passer, pause), resultat)
+      el('div', { class: 'boutons' }, lancer, passer, pause))
     const jouer = async (prediction: number | null) => {
       lancer.disabled = passer.disabled = champ.disabled = true
       annoncer('Exécution typique en cours.')
