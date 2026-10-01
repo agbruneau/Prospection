@@ -4,7 +4,7 @@ Programme de recherche en ingénierie des systèmes : étudier la fourmilière *
 
 ## État
 
-Phase 0 commencée (2026-10-01). Le **noyau minimal** existe : PRNG à flux nommés (T0.1, T0.3), empreinte d'état, scénario, enregistreur, manifeste, RK4 (T0.4, T0.5), SSA direct (T0.6), M1c de [Seeley et al. 2012] en EDO et à N fini (docking T0.7), les commandes `run.ts` et `replay.ts` (cas UC-001 et UC-002), le harnais de cibles `npm run reproduce` (UC-003, TOST et garde de puissance) et la chaîne `npm run verify` (UC-008). Aucune cible réelle dans `targets/` : chacune attend sa fiche de reproduction gelée. Rien encore du spike navigateur, d'Euler–Maruyama, des métriques R et G ni des pages. Les scripts de `recherche/verifications-numeriques/` restent des recoupements exploratoires (oracles), hors du moteur.
+Phase 0 commencée (2026-10-01). Le **noyau minimal** existe : PRNG à flux nommés (T0.1, T0.3), empreinte d'état, scénario, enregistreur, manifeste, RK4 (T0.4, T0.5), SSA direct (T0.6), M1c de [Seeley et al. 2012] en EDO et à N fini (docking T0.7), les commandes `run.ts` et `replay.ts` (cas UC-001 et UC-002), le harnais de cibles `npm run reproduce` (UC-003, TOST et garde de puissance) et la chaîne `npm run verify` (UC-008). Première cible réelle : T1.1 (pont de [Goss et al. 1989]), fiche de reproduction en brouillon, modèle implanté et pilote exploratoire satisfait sous réserve. Suivi des tâches : [`notes/suivi-feuille-de-route.md`](notes/suivi-feuille-de-route.md). Rien encore du spike navigateur, d'Euler–Maruyama, des métriques R et G ni des pages. Les scripts de `recherche/verifications-numeriques/` restent des recoupements exploratoires (oracles), hors du moteur.
 
 ## Carte des documents
 
@@ -25,6 +25,7 @@ Le cadre prime sur tout : en cas de conflit, on corrige l'autre document.
 | [`docs/10-glossaire.md`](docs/10-glossaire.md) | Termes FR/EN, homonymies biologie/informatique | Tous |
 | [`docs/11-bibliographie.md`](docs/11-bibliographie.md) | Une entrée par étiquette de citation, avec statut (*vérifiée*, *corrigée*, *non vérifiée*) et étiquettes ambiguës | Tous |
 | [`specs/`](specs/README.md) | Noyau de spécification du logiciel (AI Unified Process) : vision, exigences FR/NFR/C, modèle d’entités, cas d’utilisation `UC-###`, tableau de bord généré. Fait foi pour le comportement du logiciel | Implante, relecteur |
+| [`notes/suivi-feuille-de-route.md`](notes/suivi-feuille-de-route.md) | Suivi d'avancement : décisions du chercheur par échéance, tâches de la phase en cours, jalons (cumul réel, écart) | Chercheur |
 | [`CLAUDE.md`](CLAUDE.md) | Consignes pour les agents qui modifient le code : spécification d’abord, synchronisation, tests dérivés des cas | Agents |
 | [`projets/`](projets/) | Une fiche par projet (S0, P1 à P9), treize sections numérotées : hypothèses, cibles T, expériences E, risques, livrables, critères d'achèvement | Implante |
 | [`recherche/dossiers/`](recherche/dossiers/) | Dossiers vérifiés, source des équations, paramètres, cibles chiffrées et réserves | Implante, relecteur |
@@ -44,7 +45,10 @@ colonies-agentique/
 │   └── annexes/     proposition-v3.md, audit/ (rapports et constats-*.md)
 ├── CLAUDE.md        consignes d’agent
 ├── specs/           vision, catalogue-exigences, modele-entites, cas-utilisation.puml, cas-utilisation/, tableau-de-bord
-├── projets/         S0-socle.md, P1-… à P9-…
+├── projets/         S0-socle.md, P1-… à P9-…; reproduction/ (fiches de reproduction T<k>.<n>)
+├── notes/           suivi-feuille-de-route.md
+├── targets/         extraits exécutables des fiches de reproduction (P1/)
+├── data/            oracles/ (valeurs Python), results/ (verdicts)
 ├── recherche/
 │   ├── dossiers/    p1… p9, x-choregraphie, x-methodes, x-vulgarisation (+ p9_checks.py)
 │   ├── verifications/
@@ -77,7 +81,7 @@ Prérequis : Node 24.12 ou plus récent ([`docs/05-spec-simulation.md`](docs/05-
 
 1. S0 : écrire les gabarits (fiche de reproduction, ODD, préenregistrement) et le registre des déviations; préenregistrer les hypothèses du socle avant tout run confirmatoire.
 2. Spike navigateur : mesurer hébergement, worker et rendu à grand N, puis consigner les décisions D1 à D5 du spike (`docs/05-spec-simulation.md`; à ne pas confondre avec les décisions d’architecture D1 à D18 de `docs/02-architecture-programme.md`).
-3. Noyau (fait : PRNG, scénario, manifeste, RK4, SSA, run, replay, harnais de cibles), puis Euler–Maruyama (T0.27), reste de la bibliothèque statistique (T0.8 à T0.16), métriques R et G et tests; première cible réelle T1.1 (pont de Goss) après sa fiche de reproduction; recoupement par les scripts existants. Critère : `npm run verify` sort à 0.
+3. Noyau (fait : PRNG, scénario, manifeste, RK4, SSA, run, replay, harnais de cibles), puis Euler–Maruyama (T0.27), reste de la bibliothèque statistique (T0.8 à T0.16), métriques R et G et tests; gel de la fiche T1.1 par le chercheur, puis T1.2 (même modèle); recoupement par les scripts existants. Critère : `npm run verify` sort à 0.
 4. V0 : gabarit de page, charte et page de typologie; aucune collecte d'évaluation avant l'avis du comité d'éthique.
 5. Décision de la porte de sortie de la phase 0 (go, go conditionnel, no-go; critères dans la fiche S0), puis phase 1 : P1, P8, P5.
 

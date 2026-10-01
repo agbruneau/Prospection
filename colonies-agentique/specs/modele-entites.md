@@ -87,7 +87,7 @@ Extrait exécutable d'une fiche de reproduction ([04](../docs/04-protocole-repro
 | margin | δ et échelle | requise pour `distributional`; fixée avant toute exécution |
 | repetitions, maxRepetitions | entiers | `repetitions` ≥ n requis par la marge (garde de puissance) |
 | seeds | graine maîtresse, appariement | gelées avant la première exécution |
-| scenario | chemin d'un scénario | requis sauf pour une cible `blocked`; désigne le modèle visé |
+| scenario | chemin d'un scénario | requis sauf pour une cible `blocked`, sur la cible ou sur chaque critère (une condition par scénario); désigne le modèle visé |
 | criteria | liste de critères (grandeur, statistique, test, valeur, marge) | non vide sauf pour une cible `blocked`; conjonctifs; tests `equal`, `TOST`, `range` |
 
 ### Verdict (`Verdict`)

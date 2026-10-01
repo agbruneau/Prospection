@@ -1,2 +1,4 @@
 node_modules/
 data/runs/
+# manifestes par répétition : régénérables depuis scénario et graine (verdict et runs.csv versionnés)
+data/results/*/*/

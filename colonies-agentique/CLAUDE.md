@@ -8,7 +8,7 @@ Le comportement du logiciel est défini par le noyau de spécification `specs/` 
 2. Lis le cas, ses exigences liées (`specs/catalogue-exigences.md`) et ses entités (`specs/modele-entites.md`). Nomme les types et les fichiers avec les noms canoniques du modèle d'entités.
 3. **Synchronise** : applique seulement le comportement que décrit le diff du cas, et garde le reste du code tel quel. Régénère seulement pour un cas nouveau.
 4. Dérive les tests du cas : scénario nominal, chaque flot A et E, chaque règle BR, état final des postconditions. Nom de test : `UC-### <nominal|A1|E1|BR-###> : <comportement>`, plus l'identifiant T pour une cible de reproduction.
-5. Terminé quand `npm run verify` sort à 0, que `node outils/verifier-specs.ts --ecrire` a régénéré le tableau de bord, et que le statut du cas reflète l'état réel.
+5. Terminé quand `npm run verify` sort à 0, que `notes/suivi-feuille-de-route.md` reflète l'état des tâches touchées, que `node outils/verifier-specs.ts --ecrire` a régénéré le tableau de bord, et que le statut du cas reflète l'état réel.
 
 ## Règles
 

@@ -196,7 +196,7 @@ Les stratégies de recrutement s'associent à la taille de colonie ([Beckers et 
 
 ## 5. Cibles de reproduction
 
-Correspondance avec le dossier : T1.k = Ck pour k = 1 à 9. C10 (aucun résultat publié) devient l'expérience E1.1, car ce n'est pas une reproduction. Chaque cible exige une fiche de reproduction **avant** le code (équations, paramètres, unités, figure cible numérisée, critère chiffré), selon le [protocole de reproduction](../docs/04-protocole-reproduction.md). Les valeurs d'histogramme sont des lectures de figure (±3 points).
+Correspondance avec le dossier : T1.k = Ck pour k = 1 à 9. Fiches de reproduction rédigées : [T1.1](reproduction/T1.1.md) (brouillon); extraits exécutables dans `targets/P1/`. C10 (aucun résultat publié) devient l'expérience E1.1, car ce n'est pas une reproduction. Chaque cible exige une fiche de reproduction **avant** le code (équations, paramètres, unités, figure cible numérisée, critère chiffré), selon le [protocole de reproduction](../docs/04-protocole-reproduction.md). Les valeurs d'histogramme sont des lectures de figure (±3 points).
 
 | T | Espèce (préréglage) | Grandeur | Valeur publiée | Niveau d'acceptation | Tolérance ou marge | Rép. | Source | Lecture | Porte go/no-go |
 |---|---|---|---|---|---|---|---|---|---|

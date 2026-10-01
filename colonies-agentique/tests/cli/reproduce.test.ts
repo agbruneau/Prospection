@@ -42,9 +42,10 @@ function depot(cibles: Record<string, unknown>[], git = { commit: 'abc123', clea
     return { code, lignes }
   }
   const resultats = path.join(racine, 'data', 'results', 'P5')
-  const verdict = (id: string) => JSON.parse(fs.readFileSync(path.join(resultats, `${id}.verdict.json`), 'utf8')) as { verdict: Verdict; regime: string; runs: { seed: string }[] }
+  const verdict = (id: string) => JSON.parse(fs.readFileSync(path.join(resultats, `${id}.verdict.json`), 'utf8')) as { verdict: Verdict; regime: string }
+  const graines = (id: string) => fs.readFileSync(path.join(resultats, `${id}.runs.csv`), 'utf8').trim().split('\n').slice(1).map(l => l.split(',')[2])
   const manifestes = (id: string) => fs.readdirSync(path.join(resultats, id)).map(f => JSON.parse(fs.readFileSync(path.join(resultats, id, f), 'utf8')) as RunManifest)
-  return { racine, lancer, resultats, verdict, manifestes }
+  return { racine, lancer, resultats, verdict, graines, manifestes }
 }
 
 test('UC-003 nominal : une cible gelée affiche état, niveau et marge, écrit verdict et manifestes, affiche l\'issue avec ES et n, et sort à 0', () => {
@@ -135,7 +136,7 @@ test('UC-003 BR-011 : une cible gelée s\'exécute sur sa liste de graines gelé
   const d = depot([cible('T5.8', { scenario: 'scenarios/ssa.json', level: 'relational', repetitions: 5, criteria: [{ ...decisionSsa, test: 'range', value: [0, 1] }], deviations: ['D-5-001'] })])
   d.lancer('T5.8')
   const v = d.verdict('T5.8')
-  assert.deepEqual(v.runs.map(r => r.seed), [0, 1, 2, 3, 4].map(i => graineDeRepetition(20261001n, i)))
+  assert.deepEqual(d.graines('T5.8'), [0, 1, 2, 3, 4].map(i => graineDeRepetition(20261001n, i)))
   assert.deepEqual(v.verdict.deviations, ['D-5-001'])
   for (const m of d.manifestes('T5.8')) assert.deepEqual(m.scenario.compiled.parameters, ssa.parameters)
   const fautive = depot([cible('T5.9', { deviations: ['D5-1'] })]).lancer('T5.9')

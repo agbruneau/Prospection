@@ -144,7 +144,7 @@ Deux effets à budgéter. Si HV0.1 ou HV0.2 est **réfutée**, V0 impose de rév
 
 ### 4.1 Jalons
 
-Cumuls et dates [I, calcul] selon les conventions de calcul; deux valeurs quand P6 est une fourchette. Un jalon est atteint quand son critère est vrai, non quand la date passe. **Suivi** [P, à confirmer] : un fichier `notes/suivi-feuille-de-route.md` reprend ce tableau avec trois colonnes (cumul réel, écart, décision); un écart de plus de 15 % déclenche la revue de l'ordre de coupe (R204).
+Cumuls et dates [I, calcul] selon les conventions de calcul; deux valeurs quand P6 est une fourchette. Un jalon est atteint quand son critère est vrai, non quand la date passe. **Suivi** : [`notes/suivi-feuille-de-route.md`](../notes/suivi-feuille-de-route.md) reprend ce tableau avec trois colonnes (cumul réel, écart, décision), ainsi que les décisions du chercheur et les tâches en cours; un écart de plus de 15 % déclenche la revue de l'ordre de coupe (R204).
 
 | Jalon | Cumul | Date indicative | Critère d'achèvement (vérifiable) | Porte |
 |---|---|---|---|---|

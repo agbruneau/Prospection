@@ -1,10 +1,11 @@
 // Registre des modèles implantés : un identifiant de scénario désigne une entrée d'ici.
 import { invalide } from '../core/scenario.ts'
 import type { ReferenceModel } from '../core/simulation.ts'
+import { goss1989 } from './reference/p1-goss-1989/model.ts'
 import { seeley2012 } from './reference/p5-seeley-2012/model.ts'
 import { seeley2012Ssa } from './reference/p5-seeley-2012/ssa.ts'
 
-export const MODELES: ReadonlyMap<string, ReferenceModel> = new Map([seeley2012, seeley2012Ssa].map(m => [m.id, m]))
+export const MODELES: ReadonlyMap<string, ReferenceModel> = new Map([goss1989, seeley2012, seeley2012Ssa].map(m => [m.id, m]))
 
 export function trouverModele(id: string, modeles = MODELES): ReferenceModel {
   const m = modeles.get(id)

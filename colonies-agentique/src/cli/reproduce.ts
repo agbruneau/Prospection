@@ -1,5 +1,6 @@
 // UC-003 Vérifier une cible de reproduction : npm run reproduce -- <T<k>.<n> | P<k> | S0>
-// Cible : targets/<projet>/<id>.json (05 §9.2). Résultats : data/results/<projet>/<id>.verdict.json et <id>/rep-<i>.manifest.json.
+// Cible : targets/<projet>/<id>.json (05 §9.2). Résultats, dans data/results/<projet>/ : <id>.verdict.json et <id>.runs.csv
+// (versionnés), <id>/<scénario>-rep-<i>.manifest.json (régénérables depuis scénario et graine, hors git).
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -53,8 +54,8 @@ export function validerCible(raw: unknown, id: string, projet: string): Reproduc
   if (!Number.isInteger(c.repetitions) || c.repetitions < 1) throw invalide('repetitions', 'entier ≥ 1')
   if (c.maxRepetitions !== undefined && (!Number.isInteger(c.maxRepetitions) || c.maxRepetitions < c.repetitions)) throw invalide('maxRepetitions', 'entier ≥ repetitions')
   if (!/^(0|[1-9]\d*)$/.test(c.seeds?.master ?? '') || BigInt(c.seeds.master) >= 1n << 64n) throw invalide('seeds.master', 'entier décimal de 0 à 2^64 − 1')
-  if (typeof c.scenario !== 'string') throw invalide('scenario', 'chemin requis')
   if (!Array.isArray(c.criteria) || c.criteria.length === 0) throw invalide('criteria', 'liste non vide requise')
+  if (c.criteria.some(k => typeof (k.scenario ?? c.scenario) !== 'string')) throw invalide('scenario', 'chemin requis pour la cible ou pour chaque critère')
   if (c.level === 'distributional' && !c.margin && c.criteria.some(k => !k.margin)) throw invalide('margin', 'requise pour une cible distributionnelle')
   for (const [k, cr] of c.criteria.entries()) {
     if (typeof cr.statistic?.measure !== 'string') throw invalide(`criteria[${k}].statistic.measure`, 'mesure requise')
@@ -103,28 +104,32 @@ export function verifierCible(id: string, options: OptionsReproduction = {}): Li
     }
   }
 
-  // Étape 4 : liste de graines gelée, scénario tel quel (BR-011); régime confirmatoire seulement pour une cible gelée (BR-009).
-  const base = JSON.parse(fs.readFileSync(path.join(racine, cible.scenario!), 'utf8')) as Record<string, unknown>
+  // Étape 4 : liste de graines gelée, scénarios tels quels (BR-011); régime confirmatoire seulement pour une cible gelée (BR-009).
+  // Chaque scénario (condition) reçoit les mêmes graines : plan apparié par répétition (05 §7.4).
+  const scenarioDe = (k: Criterion) => (k.scenario ?? cible.scenario)!
+  const bases = new Map(criteres.map(k => [scenarioDe(k), JSON.parse(fs.readFileSync(path.join(racine, scenarioDe(k)), 'utf8')) as Record<string, unknown>]))
+  for (const k of criteres)
+    if (!(bases.get(scenarioDe(k))!.measures as string[] | undefined)?.includes(k.statistic.measure)) throw new CibleInvalide(`Cible invalide : criteria : mesure absente du scénario ${scenarioDe(k)} : ${k.statistic.measure}`)
   const regime = cible.state === 'frozen' ? 'confirmatory' : 'exploratory'
   const etatGit = git()
-  for (const k of criteres)
-    if (!(base.measures as string[] | undefined)?.includes(k.statistic.measure)) throw new CibleInvalide(`Cible invalide : criteria : mesure absente du scénario : ${k.statistic.measure}`)
-  const runs: RunManifest[] = []
+  const runs = new Map([...bases.keys()].map(c => [c, [] as RunManifest[]]))
   const executerJusqua = (n: number) => {
-    for (let i = runs.length; i < n; i++) {
-      const compile = compileScenario({ ...base, regime, seed: graineDeRepetition(BigInt(cible.seeds.master), i) })
-      const { manifeste } = executerCompile(compile, etatGit, modeles)
-      runs.push({ ...manifeste, model: { ...manifeste.model, target: id }, outputs: [] })
-    }
+    for (const [chemin, base] of bases)
+      for (let i = runs.get(chemin)!.length; i < n; i++) {
+        const compile = compileScenario({ ...base, regime, seed: graineDeRepetition(BigInt(cible.seeds.master), i) })
+        const { manifeste } = executerCompile(compile, etatGit, modeles)
+        runs.get(chemin)!.push({ ...manifeste, model: { ...manifeste.model, target: id }, outputs: [] })
+      }
   }
-  const valeurs = (k: Criterion) => runs.map(r => r.summary[`${k.statistic.measure}.final`]).filter((x): x is number => x !== undefined).map(x => valeurParExecution(k, x))
+  const valeurs = (k: Criterion) => runs.get(scenarioDe(k))!.map(r => r.summary[`${k.statistic.measure}.final`]).filter((x): x is number => x !== undefined).map(x => valeurParExecution(k, x))
   const decider_ = () => criteres.map(k => decider(k, valeurs(k)))
+  const total = () => [...runs.values()].reduce((a, r) => a + r.length, 0)
 
   executerJusqua(cible.repetitions)
   let decisions: Decision[] = decider_()
-  if (conjonction(decisions.map(d => d.outcome)) === 'inconclusive' && (cible.maxRepetitions ?? 0) > runs.length) {
+  if (conjonction(decisions.map(d => d.outcome)) === 'inconclusive' && (cible.maxRepetitions ?? 0) > cible.repetitions) {
     // A4. ponytail: un seul palier jusqu'à n_max; des paliers intermédiaires viendront avec le préenregistrement (04 §5.4).
-    journal(`Issue indéterminée à n = ${runs.length} : extension jusqu'à ${cible.maxRepetitions}`)
+    journal(`Issue indéterminée à n = ${cible.repetitions} : extension jusqu'à ${cible.maxRepetitions}`)
     executerJusqua(cible.maxRepetitions!)
     decisions = decider_()
   }
@@ -133,20 +138,26 @@ export function verifierCible(id: string, options: OptionsReproduction = {}): Li
   const verdict: Verdict = {
     id, outcome: conjonction(decisions.map(d => d.outcome)), provisional: cible.state === 'provisional',
     measured: premier.measured, ...(premier.ci90 ? { ci90: premier.ci90 } : {}), mcStandardError: premier.mcStandardError,
-    n: runs.length, deviations: cible.deviations ?? [], criteria: decisions,
+    n: total(), deviations: cible.deviations ?? [], criteria: decisions,
   }
-  const manquants = criteres.map(k => ({ quantity: k.quantity, runs: runs.length - valeurs(k).length })).filter(m => m.runs > 0)
+  const manquants = criteres.map(k => ({ quantity: k.quantity, runs: runs.get(scenarioDe(k))!.length - valeurs(k).length })).filter(m => m.runs > 0)
 
   // Étape 6 : verdict et manifestes
   const dossier = path.join(racine, 'data', 'results', projet)
   const dossierRuns = path.join(dossier, id)
   fs.rmSync(dossierRuns, { recursive: true, force: true })      // sorties précédentes de cette cible seulement
   fs.mkdirSync(dossierRuns, { recursive: true })
-  for (const [i, r] of runs.entries()) fs.writeFileSync(path.join(dossierRuns, `rep-${i}.manifest.json`), JSON.stringify({ ...r, verdict, deviations: verdict.deviations }) + '\n')
-  fs.writeFileSync(path.join(dossier, `${id}.verdict.json`), JSON.stringify({
-    schema: 1, target: cible, targetHash: fnv1a64Texte(jsonCanonique(cible)), regime, verdict, missing: manquants,
-    runs: runs.map((r, i) => ({ rep: i, seed: r.scenario.compiled.seed, runId: r.runId, fnv1a64: r.fingerprints.at(-1)!.fnv1a64 })),
-  }, null, 2) + '\n')
+  for (const [chemin, liste] of runs)
+    for (const [i, r] of liste.entries())
+      fs.writeFileSync(path.join(dossierRuns, `${path.basename(chemin, '.json')}-rep-${i}.manifest.json`), JSON.stringify({ ...r, verdict, deviations: verdict.deviations }) + '\n')
+  fs.writeFileSync(path.join(dossier, `${id}.verdict.json`), JSON.stringify({ schema: 1, target: cible, targetHash: fnv1a64Texte(jsonCanonique(cible)), regime, code: etatGit, verdict, missing: manquants }, null, 2) + '\n')
+  // Une ligne par répétition, valeur brute de chaque mesure visée (format long de 05 §8.2) : TOST et bootstrap après coup.
+  const mesures = [...new Set(criteres.map(k => k.statistic.measure))]
+  const lignes = [['scenario', 'rep', 'seed', 'runId', 'fnv1a64', ...mesures].join(',')]
+  for (const [chemin, liste] of runs)
+    for (const [i, r] of liste.entries())
+      lignes.push([chemin, i, r.scenario.compiled.seed, r.runId, r.fingerprints.at(-1)!.fnv1a64, ...mesures.map(m => r.summary[`${m}.final`] ?? '')].join(','))
+  fs.writeFileSync(path.join(dossier, `${id}.runs.csv`), lignes.join('\n') + '\n')
 
   // Étape 7, A2, A5
   for (const d of decisions) journal(`  ${d.quantity} : ${d.outcome}, mesuré ${fmt(d.measured)} ± ${fmt(d.mcStandardError)} (ES de Monte Carlo)`)

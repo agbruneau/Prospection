@@ -27,10 +27,12 @@ export type Test = 'equal' | 'TOST' | 'order' | 'range' | 'fit'
 export interface Marge { delta: number; scale: 'points' | 'relative' | 'log10' | 'standardized'; justification: string }
 
 /** Critère exécutable d'une cible : statistique par exécution, puis test contre la valeur publiée. */
+export interface Seuil { op: '>' | '>=' | '<' | '<='; value: number }
 export interface Criterion {
   quantity: string
-  /** Valeur finale de la mesure par exécution; avec `threshold`, indicatrice → proportion. */
-  statistic: { measure: string; threshold?: { op: '>' | '>=' | '<' | '<='; value: number } }
+  /** Valeur finale de la mesure par exécution; avec `threshold`, indicatrice (toutes les conditions) → proportion. */
+  statistic: { measure: string; threshold?: Seuil | readonly Seuil[] }
+  scenario?: string                 // scénario propre au critère (condition expérimentale); sinon celui de la cible
   test: Test
   value: number | readonly [number, number]
   margin?: Marge
@@ -63,7 +65,8 @@ export function nRequis(c: Criterion): number {
 export const valeurParExecution = (c: Criterion, x: number): number => {
   const t = c.statistic.threshold
   if (!t) return x
-  return (t.op === '>' ? x > t.value : t.op === '>=' ? x >= t.value : t.op === '<' ? x < t.value : x <= t.value) ? 1 : 0
+  const vrai = (s: Seuil) => (s.op === '>' ? x > s.value : s.op === '>=' ? x >= s.value : s.op === '<' ? x < s.value : x <= s.value)
+  return (Array.isArray(t) ? t : [t as Seuil]).every(vrai) ? 1 : 0
 }
 
 /** Applique le test du critère aux valeurs par exécution (04 §5.4 pour le TOST). */

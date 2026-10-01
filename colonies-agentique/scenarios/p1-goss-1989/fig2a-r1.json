@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "regime": "exploratory",
+  "model": {
+    "id": "p1-goss-1989",
+    "version": "1",
+    "article": "Goss et al. 1989"
+  },
+  "time": {
+    "unit": "s",
+    "dt": 1,
+    "horizon": 3000,
+    "sampling": 3000
+  },
+  "order": "sequential-fixed",
+  "seed": "1",
+  "streams": [
+    "environment",
+    "agents"
+  ],
+  "parameters": {
+    "phi": {
+      "value": 0.5,
+      "unit": "fourmi/s",
+      "source": "Goss et al. 1989, légende fig. 2 (par direction)",
+      "status": "published"
+    },
+    "k": {
+      "value": 20,
+      "unit": "unité de phéromone",
+      "source": "Goss et al. 1989, éq. 3; valeur de Deneubourg et al. 1990, non lu (fiche P1, 4.3)",
+      "status": "to-confirm"
+    },
+    "n": {
+      "value": 2,
+      "unit": "1",
+      "source": "Goss et al. 1989, éq. 3",
+      "status": "published"
+    },
+    "r": {
+      "value": 1,
+      "unit": "1",
+      "source": "Goss et al. 1989, fig. 2a",
+      "status": "published"
+    },
+    "shortDelay": {
+      "value": 20,
+      "unit": "s",
+      "source": "Goss et al. 1989, p. 580 (≈ 20 s; longue : 20r s)",
+      "status": "published"
+    },
+    "countFrom": {
+      "value": 500,
+      "unit": "passage",
+      "source": "Goss et al. 1989, légende fig. 2 (passages 501 à 1000)",
+      "status": "published"
+    },
+    "countTo": {
+      "value": 1000,
+      "unit": "passage",
+      "source": "Goss et al. 1989, légende fig. 2",
+      "status": "published"
+    },
+    "shortOpensAfter": {
+      "value": 0,
+      "unit": "passage",
+      "source": "Goss et al. 1989, fig. 2a (deux branches offertes dès le départ)",
+      "status": "published"
+    }
+  },
+  "initial": {},
+  "measures": [
+    "shortShare",
+    "crossings"
+  ],
+  "interventions": []
+}
