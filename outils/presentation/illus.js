@@ -185,10 +185,10 @@ jobs.push(save("livre", svg(1000, 1000, glow("g", 0.6) + metal("m"),
 const small = {
   soleil: gi.GiSun, etoiles: gi.GiStarsStack, livre: gi.GiOpenBook, tente: gi.GiCampingTent, or: gi.GiGoldBar, miel: gi.GiHoneycomb,
   coeur: fa.FaHeart, croix: fa.FaCross, oeilbarre: fa.FaEyeSlash, cible: fa.FaBullseye, porte: fa.FaPersonWalkingArrowRight,
-  flamme: gi.GiFire, rocher: fa.FaMountain, colombe: gi.GiDove, loupe: fa.FaMagnifyingGlass, chaine: fa.FaLink,
+  flamme: gi.GiFire, rocher: gi.GiStoneBlock, // GiRock est un poing fermé : contresens colombe: gi.GiDove, loupe: fa.FaMagnifyingGlass, chaine: fa.FaLink,
   parchemin: gi.GiScrollUnfurled, ampoule: fa.FaLightbulb, oeil: fa.FaEye, infini: fa.FaInfinity, balance: fa.FaScaleBalanced,
   joie: gi.GiSparkles, avert: fa.FaTriangleExclamation, drapeau: fa.FaFlagCheckered, poids: fa.FaWeightHanging, globe: fa.FaEarthAmericas,
-  mains: fa.FaHandsPraying, boussole: fa.FaCompass, plume: fa.FaFeather, source: gi.GiBoilingBubbles,
+  mains: fa.FaHandsPraying, boussole: fa.FaCompass, plume: fa.FaFeather, jour: fa.FaCircleHalfStroke,
 };
 const dim = { gestion: fa.FaChartLine, divertissement: fa.FaMasksTheater, mysticisme: gi.GiCrystalBall, psychologie: fa.FaBrain,
   visualisation: gi.GiThirdEye, confession: fa.FaBullhorn };
