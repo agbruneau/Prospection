@@ -18,7 +18,7 @@ Le Dieu qui parle sans paroles dans la création, assez pour rendre tout homme i
 
 **But :** que l'incroyant comprenne que la création le rend inexcusable sans pouvoir le sauver, et qu'il écoute la Parole qui convertit l'âme; que le croyant cesse de chercher ailleurs ce que la Parole lui donne, la désire plus que l'or, la laisse sonder son cœur et offre à Dieu ses paroles et ses pensées.
 
-**Lecture publique :** Psaume 19 (en entier).
+**Lecture publique :** Psaume 19 (en entier), avec à l'écran ses trois mouvements : le cosmos (19.2-7), l'Écriture (19.8-12), le cœur (19.13-15).
 
 **Durée visée :** 45 minutes.
 

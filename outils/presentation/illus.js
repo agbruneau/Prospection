@@ -181,17 +181,25 @@ jobs.push(save("livre", svg(1000, 1000, glow("g", 0.6) + metal("m"),
   `<circle cx="500" cy="500" r="500" fill="url(#g)"/>${rays(500, 500, 420, 495, 48, OR_LT, 7, 0.9)}
    ${coin(500, 500, 400, { stroke: OR_LT })}${icon(gi.GiOpenBook, 260, 260, 480, "url(#m)")}`), 800));
 
+// 9. Les trois mouvements du psaume : le cosmos (19.2-7), l'Écriture (19.8-12), le cœur (19.13-15).
+const mouvement = (name, seed, body) => jobs.push(save(name, svg(1000, 1000, glow("g", 0.5) + metal("m") + `<clipPath id="c"><circle cx="500" cy="500" r="318"/></clipPath>`,
+  `<circle cx="500" cy="500" r="500" fill="url(#g)"/>${rays(500, 500, 410, 480, 36, OR, 6, 0.5)}${coin(500, 500, 390)}
+   <g clip-path="url(#c)">${stars(26, seed, inDisc(500, 500, 310), 4, 10)}</g>${body}`), 800));
+mouvement("m-cosmos", 5, `<circle cx="500" cy="500" r="190" fill="url(#g)"/>${star(500, 500, 190, "url(#m)", 1)}${star(500, 500, 95, OR_LT, 1)}`);
+mouvement("m-ecriture", 9, `${rays(500, 500, 200, 270, 20, OR_LT, 6, 0.6)}${icon(gi.GiScrollUnfurled, 290, 290, 420, "url(#m)")}`);
+mouvement("m-coeur", 13, `<path d="${heart(500, 395, 0.6)}" fill="url(#m)"/>${icon(gi.GiFire, 425, 590, 150, OR_LT)}`);
+
 // Petites icônes : orange pour la Parole, cendre pour ce qui en tient lieu.
 const small = {
   soleil: gi.GiSun, etoiles: gi.GiStarsStack, livre: gi.GiOpenBook, tente: gi.GiCampingTent, or: gi.GiGoldBar, miel: gi.GiHoneycomb,
   coeur: fa.FaHeart, croix: fa.FaCross, oeilbarre: fa.FaEyeSlash, cible: fa.FaBullseye, porte: fa.FaPersonWalkingArrowRight,
-  flamme: gi.GiFire, rocher: gi.GiStoneBlock, // GiRock est un poing fermé : contresens colombe: gi.GiDove, loupe: fa.FaMagnifyingGlass, chaine: fa.FaLink,
+  flamme: gi.GiFire, rocher: gi.GiStoneBlock, colombe: gi.GiDove, loupe: fa.FaMagnifyingGlass, chaine: fa.FaLink, // rocher : GiRock est un poing fermé
   parchemin: gi.GiScrollUnfurled, ampoule: fa.FaLightbulb, oeil: fa.FaEye, infini: fa.FaInfinity, balance: fa.FaScaleBalanced,
   joie: gi.GiSparkles, avert: fa.FaTriangleExclamation, drapeau: fa.FaFlagCheckered, poids: fa.FaWeightHanging, globe: fa.FaEarthAmericas,
-  mains: fa.FaHandsPraying, boussole: fa.FaCompass, plume: fa.FaFeather, jour: fa.FaCircleHalfStroke,
+  mains: fa.FaHandsPraying, boussole: fa.FaCompass, plume: fa.FaFeather, jour: fa.FaCircleHalfStroke, retour: fa.FaArrowRotateLeft,
 };
 const dim = { gestion: fa.FaChartLine, divertissement: fa.FaMasksTheater, mysticisme: gi.GiCrystalBall, psychologie: fa.FaBrain,
-  visualisation: gi.GiThirdEye, confession: fa.FaBullhorn };
+  visualisation: gi.GiThirdEye, confession: fa.FaBullhorn, baume: fa.FaBandage };
 for (const [n, C] of Object.entries(small)) jobs.push(save("i-" + n, svg(256, 256, "", icon(C, 16, 16, 224, OR_LT)), 256));
 for (const [n, C] of Object.entries(dim)) jobs.push(save("d-" + n, svg(256, 256, "", icon(C, 16, 16, 224, "#A89A8C")), 256));
 
