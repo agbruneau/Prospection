@@ -94,8 +94,7 @@ Le Dieu qui parle sans paroles dans la création, assez pour rendre tout homme i
 | la crainte | pure (nette) | subsiste à toujours |
 | les jugements | vrais | tous justes |
 
-MacArthur lit : parfaite, sûre, droite, claire, nette, vraie (80-308). Les mots entre parenthèses sont les siens; ceux du tableau, ceux de la NEG79. À l'écran (diapositive 7), la lecture de MacArthur suit chaque qualité de la NEG79.
-
+MacArthur lit : parfaite, sûre, droite, claire, nette, vraie (80-308). Les mots entre parenthèses sont les siens; ceux du tableau, ceux de la NEG79.
 **A. Elle est complète et transforme** (19.8a)
 - La « loi » serait mieux rendue par « enseignement » (BEM, 19.8; cf. Psaume 1.2).
 - « Parfaite » (*tamim*) : « non pas au sens d'irréprochable, bien que ce soit absolument vrai, mais au sens de complétude » (80-308). « On ne peut rien lui retrancher; on ne peut rien lui ajouter » (80-420).
