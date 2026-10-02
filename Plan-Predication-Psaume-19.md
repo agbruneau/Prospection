@@ -34,13 +34,13 @@ Le Dieu qui parle sans paroles dans la création, assez pour rendre tout homme i
 
 ---
 
-## Rappel (2 min)
+## Rappel (2 min, sans diapositive)
 
 - **Lire 2 Timothée 3.16-17.**
 - Toute l'Écriture est « soufflée par Dieu » (<i>theopneustos</i>) : « Ce que l'Écriture dit, Dieu le dit » (55-17).
 - Elle enseigne, convainc, corrige et forme dans la justice, pour que l'homme de Dieu soit propre non à la plupart des bonnes œuvres, mais à toutes (55-19).
 - **Pont.** Un psaume de David dit la même chose, dix siècles plus tôt : c'est le texte que MacArthur tient pour le plus grand sur la suffisance de l'Écriture.
-- **Lecture recommandée** (couverture à l'écran) : *Introduction au counseling biblique* (Éditions Impact, 2021), chapitre de John Street sur le Psaume 19.
+- **Lecture recommandée** : *Introduction au counseling biblique* (Éditions Impact, 2021), chapitre de John Street sur le Psaume 19.
 
 ---
 

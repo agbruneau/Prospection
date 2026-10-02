@@ -90,13 +90,6 @@ jobs.push(save("medaillon", svg(1000, 1000, glow("g") + metal("m") + `<clipPath 
    ${rays(500, 640, 150, 200, 14, OR_LT, 6, 0.7, Math.PI * 1.08, Math.PI * 1.92)}
    ${icon(gi.GiOpenBook, 345, 515, 310, "url(#m)")}`), 1000));
 
-// 2. Livre ouvert et souffle (theopneustos), pour le Rappel.
-const breath = [[-70, 0], [0, -25], [70, 0]].map(([dx, dy], i) =>
-  `<path d="M ${500 + dx} ${560 + dy} C ${470 + dx} ${470 + dy}, ${560 + dx} ${420 + dy}, ${520 + dx} ${330 + dy} S ${540 + dx} ${230 + dy}, ${510 + dx} ${190 + dy}" fill="none" stroke="${i === 1 ? OR_LT : OR}" stroke-width="16" stroke-linecap="round" stroke-opacity="${i === 1 ? 1 : 0.7}"/>`).join("");
-jobs.push(save("souffle", svg(1000, 1000, glow("g") + metal("m"),
-  `<circle cx="500" cy="500" r="500" fill="url(#g)"/>${coin(500, 500, 400, { dots: false })}
-   ${breath}${icon(gi.GiOpenBook, 280, 480, 440, "url(#m)")}`), 900));
-
 // 3. Stèle de Hammurabi, stylisée : le roi devant le dieu-soleil, puis les lignes du code.
 let cunei = "";
 {

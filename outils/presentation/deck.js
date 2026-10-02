@@ -77,7 +77,7 @@ function ligne(slide, ic, titre, desc, x, y, w, h = 1.0, o = {}) {
 
 // Barre de progression : un segment par diapositive, de 43 à 917 pt, 6 pt d'écart; autant de segments allumés que le rang
 // de la diapositive (regroupés par retouche()). Appeler barre() une fois par diapositive, dans l'ordre.
-const NB_DIAPOS = 16;
+const NB_DIAPOS = 15;
 const pt = (v) => v / 72;
 let rang = 0;
 function barre(slide) {
@@ -134,7 +134,7 @@ pres.addSection({ title: "Ouverture" });
 - Relire à voix haute les citations bibliques dans votre Bible NEG79.
 - Les citations de MacArthur sont des traductions de passages relus dans les transcriptions de gty.org. Avant de les prononcer, réécouter ou relire au moins 80-420, 80-308 et TM19-6.
 - Le tableau du point II affiche les mots de la NEG79; MacArthur lit « claire » et « nette » : le dire à voix haute.
-- Préparer à l'écran le tableau des six lignes (diapositive 8) et, pour l'accroche, une image de la stèle de Hammurabi : la diapositive 4 en propose un dessin, à remplacer par une photo au besoin.
+- Préparer à l'écran le tableau des six lignes (diapositive 7) et, pour l'accroche, une image de la stèle de Hammurabi : la diapositive 3 en propose un dessin, à remplacer par une photo au besoin.
 - Chronométrer une répétition : le point II est le plus long; les sous-points I.A et III sont les plus faciles à raccourcir.
 - Imprimer la version PDF de ce plan.
 - **Sur les diapositives :** aucun code de sermon; les sources sont dans ces notes.`);
@@ -167,7 +167,13 @@ pres.addSection({ title: "Ouverture" });
     });
   });
   barre(s);
-  s.addNotes(`# Vue d'ensemble · lecture publique du Psaume 19
+  s.addNotes(`# 2 min · Rappel : 2 Timothée 3.16-17 (sans diapositive)
+- **Lire** 2 Timothée 3.16-17.
+- **Theopneustos :** « soufflée par Dieu ». « Ce que l'Écriture dit, Dieu le dit » (55-17).
+- **Quatre œuvres :** enseigner, convaincre, corriger, instruire dans la justice; pour que l'homme de Dieu soit propre non à la plupart des bonnes œuvres, mais à toutes (55-19).
+- **Pont :** un psaume de David dit la même chose dix siècles plus tôt; c'est le texte que MacArthur tient pour le plus grand sur la suffisance de l'Écriture.
+- **Lecture recommandée :** Introduction au counseling biblique (Éditions Impact, 2021), chapitre de John Street sur le Psaume 19.
+# Vue d'ensemble · lecture publique du Psaume 19
 - **À laisser à l'écran** pendant la lecture publique du Psaume 19 (en entier) : l'assemblée voit d'avance les trois mouvements du texte.
 - **Le cosmos (19.2-7) :** la révélation générale; le nom court El, la puissance du Créateur (BEM, 19.1-15).
 - **L'Écriture (19.8-12) :** la révélation spéciale; l'Éternel, le Dieu de l'alliance. « Six fois, nous avons le nom de l'alliance, l'Éternel, comme source de la Parole de Dieu » (TM19-6).
@@ -175,41 +181,7 @@ pres.addSection({ title: "Ouverture" });
 - **Les quatre points du message** s'y logent : I au premier mouvement, II et III au deuxième, IV au troisième. Plan de la BEM : I. Révélation générale (19.2-7); II. Révélation spéciale (19.8-15) : attributs, appréciation, application.`);
 }
 
-// 3. Rappel
-{
-  const s = add("CONTENU", "Ouverture");
-  header(s, "RAPPEL · 2 TIMOTHÉE 3.16-17", "Toute l'Écriture est soufflée par Dieu", "« Ce que l'Écriture dit, Dieu le dit. »  (55-17)");
-  s.addImage({ path: img("souffle"), x: 0.7, y: 2.15, w: 2.75, h: 2.75, altText: "Bible ouverte d'où s'élève un souffle : l'Écriture soufflée par Dieu" });
-  text(s, [{ text: "theopneustos", options: { italic: true, bold: true, color: OR_LT, breakLine: true } }, { text: "« soufflée par Dieu »" }], 0.5, 5.0, 3.15, 0.7, { fontSize: 17, align: "center" });
-  const rows = [["Enseigner", "donne la vérité qui fait vivre selon Dieu"], ["Convaincre", "met le péché et l'erreur en lumière"],
-    ["Corriger", "relève et redresse"], ["Instruire dans la justice", "fait grandir jusqu'à la maturité"]];
-  rows.forEach(([t, d], i) => {
-    const y = 2.15 + i * 0.8;
-    s.addShape(pres.shapes.OVAL, { x: 3.95, y, w: 0.56, h: 0.56, fill: { color: OR }, line: { color: OR } });
-    text(s, String(i + 1), 3.95, y, 0.56, 0.56, { fontSize: 19, bold: true, align: "center", valign: "middle", color: "FFFFFF" });
-    text(s, [{ text: t, options: { bold: true, fontSize: 19, breakLine: true } }, { text: d, options: { color: MUTED } }], 4.7, y - 0.04, 4.0, 0.8, { fontSize: 15 });
-  });
-  card(s, 8.95, 2.15, 3.78, 3.2);
-  disc(s, "livre", 9.2, 2.38, 0.62);
-  text(s, "LECTURE RECOMMANDÉE", 9.97, 2.45, 2.6, 0.5, { fontSize: 13, bold: true, color: OR_LT, charSpacing: 2 });
-  text(s, [{ text: "Introduction au counseling biblique", options: { bold: true, italic: true, fontSize: 18, breakLine: true } },
-    { text: "Éditions Impact, 2021", options: { color: MUTED, breakLine: true } },
-    { text: "Chapitre de John Street : « Pourquoi parler de counseling biblique et non de psychologie? », sur le Psaume 19.", options: { color: MUTED, paraSpaceBefore: 8 } }],
-    9.2, 3.2, 3.3, 2.0, { fontSize: 15 });
-  card(s, 0.6, 5.75, 12.13, 1.1, true);
-  text(s, [{ text: "But : ", options: { bold: true, color: OR_LT } }, { text: "que l'homme de Dieu soit propre, non à la plupart, mais à toutes les bonnes œuvres (55-19).", options: { breakLine: true } },
-    { text: "Un psaume de David le disait déjà, dix siècles plus tôt.", options: { italic: true, color: MUTED } }],
-    0.9, 5.75, 11.6, 1.1, { fontSize: 17, valign: "middle", paraSpaceAfter: 2 });
-  barre(s);
-  s.addNotes(`# 2 min · 2 Timothée 3.16-17
-- **Lire** 2 Timothée 3.16-17.
-- **Theopneustos :** « soufflée par Dieu ». « Ce que l'Écriture dit, Dieu le dit » (55-17).
-- **Quatre œuvres :** enseigner, convaincre, corriger, instruire dans la justice; pour que l'homme de Dieu soit propre non à la plupart des bonnes œuvres, mais à toutes (55-19).
-- **Pont :** un psaume de David dit la même chose dix siècles plus tôt; c'est le texte que MacArthur tient pour le plus grand sur la suffisance de l'Écriture.
-- **Lecture recommandée :** Introduction au counseling biblique (Éditions Impact, 2021), chapitre de John Street sur le Psaume 19.`);
-}
-
-// 4. Introduction : d'où vient la loi?
+// 3. Introduction : d'où vient la loi?
 {
   const s = add("CONTENU", "Ouverture");
   header(s, "INTRODUCTION · PSAUME 19.5, 8", "D'où vient la loi?", "Babylone la fait se réclamer du dieu-soleil; le Psaume 19 la remet entre les mains de l'Éternel");
@@ -231,7 +203,7 @@ pres.addSection({ title: "Ouverture" });
 - Où allez-vous chercher la vérité qui gouverne votre vie, quand l'angoisse monte ou qu'une décision presse?`);
 }
 
-// 5. Le texte : un seul hymne, deux révélations
+// 4. Le texte : un seul hymne, deux révélations
 {
   const s = add("CONTENU", "Ouverture");
   header(s, "LE TEXTE · PSAUME 19", "Un seul hymne, deux révélations", "Le même Dieu parle sans paroles, puis par des paroles qui suffisent");
@@ -269,7 +241,7 @@ pres.addSection({ title: "Ouverture" });
 // ───────────── I. Le ciel qui parle ─────────────
 pres.addSection({ title: "I. Le ciel qui parle" });
 
-// 6. I.A-B
+// 5. I.A-B
 {
   const s = add("CONTENU", "I. Le ciel qui parle");
   header(s, "I · PSAUME 19.2-7", "Le ciel qui parle", "La création vous a parlé de Dieu chaque jour de votre vie", 0);
@@ -298,7 +270,7 @@ pres.addSection({ title: "I. Le ciel qui parle" });
 - « Rien ne se dérobe à sa chaleur » (19.7) : nul ne peut fuir ce message (Street).`);
 }
 
-// 7. I.C Assez pour condamner
+// 6. I.C Assez pour condamner
 {
   const s = add("CONTENU", "I. Le ciel qui parle");
   header(s, "I · PSAUME 19.2-7 / ROMAINS 1.18-20", "Assez pour condamner, jamais pour sauver", "« Ce qu'on ne peut pas connaître, c'est la sagesse qui sauve »  (TM19-6)", 0);
@@ -337,7 +309,7 @@ pres.addSection({ title: "I. Le ciel qui parle" });
 // ───────────── II. La Parole qui suffit ─────────────
 pres.addSection({ title: "II. La Parole qui suffit" });
 
-// 8. Les six lignes
+// 7. Les six lignes
 {
   const s = add("CONTENU", "II. La Parole qui suffit");
   header(s, "II · PSAUME 19.8-10", "La Parole qui suffit", "Six titres, six qualités, six bienfaits : six fois « l'Éternel »  (TM19-6)", 1);
@@ -370,7 +342,7 @@ pres.addSection({ title: "II. La Parole qui suffit" });
 - **Montrer** que le bienfait découle chaque fois de la qualité : parce qu'elle est complète, elle restaure; parce qu'elle est sûre, elle rend sage; et ainsi de suite.`);
 }
 
-// 9. II.A : restaure l'âme (le plan demande de montrer le rendu de la S21)
+// 8. II.A : restaure l'âme (le plan demande de montrer le rendu de la S21)
 {
   const s = add("CONTENU", "II. La Parole qui suffit");
   header(s, "II · PSAUME 19.8a", "Réconfort ou conversion?", "« La loi de l'Éternel est parfaite, elle restaure l'âme »", 1);
@@ -404,7 +376,7 @@ pres.addSection({ title: "II. La Parole qui suffit" });
 - Affaiblir « restaure l'âme » en simple réconfort : c'est la conversion et la transformation de la personne entière (80-308).`);
 }
 
-// 10. II.A-C
+// 9. II.A-C
 {
   const s = add("CONTENU", "II. La Parole qui suffit");
   header(s, "II · PSAUME 19.8-10 / 2 PIERRE 1.16-19", "Complète, sûre, pure", "« On ne peut rien lui retrancher; on ne peut rien lui ajouter »  (80-420)", 1);
@@ -452,7 +424,7 @@ pres.addSection({ title: "II. La Parole qui suffit" });
 - Isoler la « crainte » de la liste : c'est l'Écriture comme guide de l'adoration.`);
 }
 
-// 11. II. Application : ce qui tient lieu de Parole
+// 10. II. Application : ce qui tient lieu de Parole
 {
   const s = add("CONTENU", "II. La Parole qui suffit");
   header(s, "II · APPLICATION", "Ce qui tient lieu de Parole", "Vers quoi vous tournez-vous en premier quand votre âme est troublée?", 1);
@@ -485,7 +457,7 @@ pres.addSection({ title: "II. La Parole qui suffit" });
 // ───────────── III. La Parole qu'on désire ─────────────
 pres.addSection({ title: "III. La Parole qu'on désire" });
 
-// 12. III
+// 11. III
 {
   const s = add("CONTENU", "III. La Parole qu'on désire");
   header(s, "III · PSAUME 19.11-12", "Plus précieuse que l'or", "Ce que vous désirez le plus révèle ce que vous estimez le plus", 2);
@@ -513,7 +485,7 @@ pres.addSection({ title: "III. La Parole qu'on désire" });
 // ───────────── IV. Le cœur qui s'offre ─────────────
 pres.addSection({ title: "IV. Le cœur qui s'offre" });
 
-// 13. IV.A-B : trois degrés
+// 12. IV.A-B : trois degrés
 {
   const s = add("CONTENU", "IV. Le cœur qui s'offre");
   header(s, "IV · PSAUME 19.13-14 / NOMBRES 15.22-31", "Le cœur sondé et gardé", "« Qui connaît ses égarements? » Réponse : personne, sans la Parole (Street)", 3);
@@ -555,7 +527,7 @@ pres.addSection({ title: "IV. Le cœur qui s'offre" });
 - Lire « des orgueilleux » (NEG79) comme des ennemis extérieurs, au détriment des péchés présomptueux.`);
 }
 
-// 14. IV.C : le cœur offert
+// 13. IV.C : le cœur offert
 {
   const s = add("CONTENU", "IV. Le cœur qui s'offre");
   header(s, "IV · PSAUME 19.15", "Le cœur qui s'offre", "« Reçois favorablement les paroles de ma bouche et les sentiments de mon cœur »", 3);
@@ -582,7 +554,7 @@ pres.addSection({ title: "IV. Le cœur qui s'offre" });
 // ───────────── Conclusion ─────────────
 pres.addSection({ title: "Conclusion" });
 
-// 15. Conclusion et appel
+// 14. Conclusion et appel
 {
   const s = add("CONCLUSION", "Conclusion");
   header(s, "CONCLUSION ET APPEL · ROMAINS 10.17", "La Parole qui conduit au Rédempteur", "Les cieux suffisent à condamner; la Parole suffit à sauver");
@@ -615,7 +587,7 @@ pres.addSection({ title: "Conclusion" });
 - **Au croyant :** ne cherchez pas ailleurs ce que la Parole vous donne. Désirez-la, laissez-la vous sonder, offrez-vous à Dieu. « Dans votre cœur, en ce moment, pouvez-vous prendre devant le Seigneur un engagement renouvelé à vous vouer à sa Parole? » (80-19).`);
 }
 
-// 16. Prière
+// 15. Prière
 {
   const s = add("CONCLUSION", "Conclusion");
   header(s, "PRIÈRE · PSAUME 19.15", "Prions ensemble");
