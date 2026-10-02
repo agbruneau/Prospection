@@ -90,27 +90,7 @@ jobs.push(save("medaillon", svg(1000, 1000, glow("g") + metal("m") + `<clipPath 
    ${rays(500, 640, 150, 200, 14, OR_LT, 6, 0.7, Math.PI * 1.08, Math.PI * 1.92)}
    ${icon(gi.GiOpenBook, 345, 515, 310, "url(#m)")}`), 1000));
 
-// 3. Stèle de Hammurabi, stylisée : le roi devant le dieu-soleil, puis les lignes du code.
-let cunei = "";
-{
-  const r = rng(11);
-  for (let row = 0; row < 11; row++) {
-    let x = 195;
-    const y = 445 + row * 42;
-    while (x < 505) {
-      const w = 10 + r() * 26;
-      cunei += `<path d="M ${x.toFixed(0)} ${y} L ${(x + w).toFixed(0)} ${y - 7} L ${(x + w).toFixed(0)} ${y + 7} Z" fill="${ASH}" fill-opacity="0.85"/>`;
-      x += w + 9 + r() * 10;
-    }
-  }
-}
-jobs.push(save("stele", svg(700, 1000, glow("g", 0.25, ASH),
-  `<ellipse cx="350" cy="520" rx="340" ry="480" fill="url(#g)"/>
-   <path d="M 160 950 L 160 270 Q 160 70 350 70 Q 540 70 540 270 L 540 950 Z" fill="${STONE}" stroke="${ASH}" stroke-width="8"/>
-   <circle cx="425" cy="215" r="44" fill="none" stroke="${ASH}" stroke-width="10"/>${rays(425, 215, 58, 92, 12, ASH, 7, 0.9)}
-   <rect x="380" y="300" width="95" height="70" rx="8" fill="${ASH}" fill-opacity="0.7"/>
-   ${icon(fa.FaPerson, 200, 190, 170, ASH)}
-   <line x1="185" y1="395" x2="515" y2="395" stroke="${ASH}" stroke-width="6"/>${cunei}`), 600));
+// 3. Stèle de Hammurabi : photo dans photos/ (Sailko, CC BY 2.5, Wikimedia Commons), plus de dessin ici.
 
 // 4. Psaume 19 : le soleil sous la tente que Dieu dresse, la loi au-dessus, entre les mains de l'Éternel.
 jobs.push(save("tente-loi", svg(1000, 1000, glow("g", 0.5) + metal("m"),

@@ -134,7 +134,7 @@ pres.addSection({ title: "Ouverture" });
 - Relire à voix haute les citations bibliques dans votre Bible NEG79.
 - Les citations de MacArthur sont des traductions de passages relus dans les transcriptions de gty.org. Avant de les prononcer, réécouter ou relire au moins 80-420, 80-308 et TM19-6.
 - Le tableau du point II affiche les mots de la NEG79; MacArthur lit « claire » et « nette » : le dire à voix haute.
-- Préparer à l'écran le tableau des six lignes (diapositive 7) et, pour l'accroche, une image de la stèle de Hammurabi : la diapositive 3 en propose un dessin, à remplacer par une photo au besoin.
+- Préparer à l'écran le tableau des six lignes (diapositive 7) et, pour l'accroche, la photo de la stèle de Hammurabi (diapositive 3).
 - Chronométrer une répétition : le point II est le plus long; les sous-points I.A et III sont les plus faciles à raccourcir.
 - Imprimer la version PDF de ce plan.
 - **Sur les diapositives :** aucun code de sermon; les sources sont dans ces notes.`);
@@ -185,9 +185,12 @@ pres.addSection({ title: "Ouverture" });
 {
   const s = add("CONTENU", "Ouverture");
   header(s, "INTRODUCTION · PSAUME 19.5, 8", "D'où vient la loi?", "Babylone la fait se réclamer du dieu-soleil; le Psaume 19 la remet entre les mains de l'Éternel");
-  s.addImage({ path: img("stele"), x: 1.25, y: 2.1, w: 2.45, h: 3.5, altText: "Stèle stylisée : en haut, un roi debout devant le dieu-soleil; en dessous, des lignes d'écriture cunéiforme" });
-  text(s, [{ text: "Stèle de Hammurabi (Louvre)", options: { bold: true, breakLine: true } }, { text: "le roi devant Shamash, dieu-soleil et dieu de la justice", options: { color: MUTED } }],
-    0.3, 5.68, 4.35, 0.8, { fontSize: 15, align: "center" });
+  // Photo : Codice_di_hammurabi_03.JPG (Sailko, CC BY 2.5, Wikimedia Commons), vignette 500 x 667; le crédit reste à l'écran.
+  s.addImage({ path: path.join(__dirname, "photos", "stele-hammurabi-relief.jpg"), x: 1.31, y: 2.1, w: 2.39, h: 3.19, objectName: "Photo de la stèle",
+    altText: "Photo : partie supérieure de la stèle de Hammurabi (Louvre), le roi debout devant Shamash assis sur son trône" });
+  text(s, [{ text: "Stèle de Hammurabi (Louvre)", options: { bold: true, breakLine: true } }, { text: "le roi devant Shamash, le dieu-soleil", options: { color: MUTED, breakLine: true } },
+    { text: "Photo : Sailko, CC BY 2.5, Wikimedia Commons", options: { fontSize: 13, color: DIM, paraSpaceBefore: 4 } }],
+    0.3, 5.5, 4.35, 0.95, { fontSize: 15, align: "center" });
   ligne(s, "soleil", "Autour d'Israël", "Shamash, dieu-soleil et dieu de la justice : la loi du roi se réclame de lui.", 4.75, 2.45, 4.0, 1.25);
   ligne(s, "livre", "Psaume 19", "Le soleil loge sous une tente que Dieu a dressée (19.5); la loi est celle de l'Éternel (19.8).", 4.75, 3.95, 4.0, 1.25, { c1: OR_LT });
   s.addImage({ path: img("tente-loi"), x: 9.2, y: 2.1, w: 3.4, h: 3.4, altText: "Médaillon : le soleil sous une tente, et au-dessus un livre ouvert rayonnant" });
