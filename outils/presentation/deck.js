@@ -23,10 +23,10 @@ pres.theme = { headFontFace: HEAD, bodyFontFace: BODY };
 
 const img = (n) => path.join(__dirname, "img", n + ".png");
 const NBSP = "\u00A0";
-// Espaces et traits d'union insécables : « 80-420 », « 19.2-7 » et « Hébreux 1.1-2 » ne se coupent pas en fin de ligne.
+// Espaces et traits d'union insécables : « 80-420 », « 19.2-7 », « 2 Pierre », « Jésus-Christ » et « laissez-la » ne se coupent pas en fin de ligne.
 const nb = (s) => s.replace(/« /g, "«" + NBSP).replace(/ »/g, NBSP + "»").replace(/ :/g, NBSP + ":")
-  .replace(/\b([1-3]) ([A-ZÉ][a-zé]{0,3})\b/g, "$1" + NBSP + "$2").replace(/([A-ZÉ][a-zéèêëû]*) (\d+\.\d+)/g, "$1" + NBSP + "$2")
-  .replace(/(\d)-(\d)/g, "$1‑$2");
+  .replace(/\b([1-3]) ([A-ZÉ][a-zéèêëû]+)/g, "$1" + NBSP + "$2").replace(/([A-ZÉ][a-zéèêëû]*) (\d+\.\d+)/g, "$1" + NBSP + "$2")
+  .replace(/(\d[a-c]?)-(\d)/g, "$1‑$2").replace(/(\p{L})-(\p{L})/gu, "$1‑$2");
 
 // Mises en page : le fond vit sur la mise en page, non sur chaque diapositive.
 pres.defineSlideMaster({ title: "TITRE", background: { path: img("bg-titre") } });
@@ -47,8 +47,18 @@ function vis(s) {
     return garde.length ? `${sp}(${garde.join("; ")})` : "";
   });
 }
+// Translittérations en italique, comme dans le plan et la recherche (*El*, *kavod*, *paz*, *leratson*, *goel*).
+const TRANSLIT = /\b(El|Kavod|paz|leratson|goel)\b/;
+function italiques(runs) {
+  return runs.flatMap(({ text: t, options = {} }) => {
+    const { breakLine, ...opt } = options;
+    const parts = t.split(TRANSLIT).filter(Boolean);
+    return parts.map((p, i) => ({ text: p, options: { ...opt, ...(TRANSLIT.test(p) ? { italic: true } : {}), ...(breakLine && i === parts.length - 1 ? { breakLine } : {}) } }));
+  });
+}
 function text(slide, t, x, y, w, h, o = {}) {
-  const runs = Array.isArray(t) ? t.map((r) => ({ ...r, text: nb(vis(r.text)) })) : nb(vis(t));
+  const runs = Array.isArray(t) ? italiques(t.map((r) => ({ ...r, text: nb(vis(r.text)) })))
+    : TRANSLIT.test(t) ? italiques([{ text: nb(vis(t)) }]) : nb(vis(t));
   slide.addText(runs, { x, y, w, h, fontFace: BODY, fontSize: 16, color: INK, margin: 0, valign: "top", isTextBox: true, lang: "fr-CA", ...o });
 }
 function card(slide, x, y, w, h, accent, o = {}) {
@@ -60,7 +70,7 @@ const ICONES = {
   croix: "croix", oeilbarre: "œil barré", cible: "cible", porte: "personne qui s'éloigne", flamme: "flamme",
   colombe: "colombe", loupe: "loupe", chaine: "chaîne", rocher: "rocher", parchemin: "parchemin", ampoule: "ampoule", oeil: "œil", infini: "infini",
   balance: "balance", joie: "étincelles", avert: "panneau d'avertissement", drapeau: "drapeau d'arrivée", poids: "poids", globe: "globe terrestre",
-  mains: "mains jointes", boussole: "boussole", plume: "plume", jour: "disque moitié clair, moitié sombre : le jour et la nuit",
+  mains: "mains jointes", boussole: "boussole", plume: "plume", jour: "disque moitié clair, moitié sombre (le jour et la nuit)",
   gestion: "graphique", divertissement: "masques de théâtre", mysticisme: "boule de cristal", psychologie: "cerveau", visualisation: "troisième œil", confession: "porte-voix",
   retour: "flèche de retour", baume: "pansement",
 };
@@ -116,27 +126,29 @@ pres.addSection({ title: "Ouverture" });
   text(s, "Du ciel qui parle\nà la Parole\nqui suffit", 0.8, 1.8, 6.6, 2.45, { fontFace: HEAD, fontSize: 48, bold: true, lineSpacingMultiple: 0.95, align: "left", objectName: "Titre" });
   text(s, [{ text: "Psaume 19" }, { text: "  ·  la suffisance de l'Écriture", options: { fontSize: 18, color: MUTED } }], 0.8, 4.35, 6.5, 0.5, { fontSize: 26, color: OR_LT, valign: "bottom", objectName: "Passage" });
   text(s, [
-    { text: "« La loi de l'Éternel est parfaite, elle restaure l'âme; le témoignage de l'Éternel est véritable, il rend sage l'ignorant. »", options: { italic: true, color: "C9BCAD", breakLine: true } },
+    { text: "« La loi de l'Éternel est parfaite, elle restaure l'âme; ", options: { italic: true, color: "C9BCAD", fontSize: 17 } },
+    { text: "le témoignage de l'Éternel est véritable, il rend sage l'ignorant. »", options: { italic: true, color: "C9BCAD", fontSize: 17, softBreakBefore: true, breakLine: true } },
     { text: "Psaume 19.8", options: { fontSize: 14, color: DIM, paraSpaceBefore: 6 } },
   ], 0.8, 4.95, 6.4, 1.6, { fontSize: 18, paraSpaceAfter: 4, objectName: "Verset" });
   text(s, "André-Guy Bruneau", 0.8, 6.694, 5, 0.35, { fontSize: 16, color: MUTED, objectName: "Prédicateur" });
   barre(s);
   s.addNotes(`# Avant de commencer
-- **Lecture publique :** Psaume 19 (en entier), avec à l'écran ses trois mouvements (diapositive 2) : le cosmos (19.2-7), l'Écriture (19.8-12), le cœur (19.13-15).
-- **Durée visée :** 45 minutes.
+- **Lecture publique :** Psaume 19 (en entier), après le Rappel et avant l'accroche, avec à l'écran ses trois mouvements (diapositive 2) : le cosmos (19.2-7), l'Écriture (19.8-12), le cœur (19.13-15).
+- **Durée visée :** 45 minutes, plus la lecture publique du Psaume 19 (environ 2 min, hors tableau).
+- **Idée centrale :** Le Dieu qui parle sans paroles dans la création, assez pour rendre tout homme inexcusable, parle avec des paroles dans l'Écriture, assez pour sauver et transformer; cette Parole, plus précieuse que l'or, sonde le cœur et le conduit à s'offrir à l'Éternel, son rocher et son rédempteur.
 - **Phrase à faire retenir :** Les cieux suffisent à condamner; la Parole suffit à sauver.
-- **But :** que l'incroyant comprenne que la création le rend inexcusable sans pouvoir le sauver, et qu'il écoute la Parole qui convertit l'âme; que le croyant cesse de chercher ailleurs ce que la Parole lui donne, la désire plus que l'or, la laisse sonder son cœur et offre à Dieu ses paroles et ses pensées.
-- **Citations :** NEG79. Les sermons de MacArthur comptent la suscription hors des versets : leurs « versets 7 à 9 » sont les versets 8 à 10 de la NEG79.
+- **But :** que l'incroyant comprenne que la création le rend inexcusable sans pouvoir le sauver, et qu'il écoute la Parole qui convertit l'âme, se repente et croie au Rédempteur; que le croyant cesse de chercher ailleurs ce que la Parole lui donne, la désire plus que l'or, la laisse sonder son cœur et offre à Dieu ses paroles et ses pensées.
+- **Citations :** NEG79. Les sermons de MacArthur comptent la suscription hors des versets; leurs « versets 7 à 9 » sont les versets 8 à 10 de la NEG79.
 # À éviter
-- Attribuer à MacArthur les propos de Street : les citer sous son nom.
+- Attribuer à MacArthur les propos de Street : les citer sous le nom de Street.
 - Numérotation : les « versets 7 à 9 » des sermons de MacArthur sont les versets 8 à 10 de la NEG79.
 # Avant de monter en chaire
 - Relire à voix haute les citations bibliques dans votre Bible NEG79.
-- Les citations de MacArthur sont des traductions de passages relus dans les transcriptions de gty.org. Avant de les prononcer, réécouter ou relire au moins 80-420, 80-308 et TM19-6.
-- Le tableau du point II affiche les mots de la NEG79; MacArthur lit « claire » et « nette » : le dire à voix haute.
-- Préparer à l'écran le tableau des six lignes (diapositive 7) et, pour l'accroche, la photo de la stèle de Hammurabi (diapositive 3).
-- Chronométrer une répétition : le point II est le plus long; les sous-points I.A et III sont les plus faciles à raccourcir.
-- Imprimer la version PDF de ce plan.
+- Les citations de MacArthur sont des traductions de passages relus dans les transcriptions de gty.org. Avant de les prononcer, réécouter ou relire au moins 80-420, 80-308 et TM19-6, puis 80-250 et 80-251 (points II et III), GTY143 (conclusion), 55-17 et 55-19 (Rappel).
+- Le tableau du point II affiche les mots de la NEG79, suivis de la lecture de MacArthur : dire à voix haute que « sûr », « clairs » et « nette » sont ses mots, non ceux de la NEG79.
+- Vérifier à l'écran le tableau des six lignes (diapositive 7) et, pour l'accroche, la photo de la stèle de Hammurabi (diapositive 3).
+- Chronométrer une répétition : le point II est le plus long; le sous-point I.A et le point III sont les plus faciles à raccourcir.
+- Imprimer la version PDF du plan de prédication.
 - **Sur les diapositives :** aucun code de sermon; les sources sont dans ces notes.`);
 }
 
@@ -150,8 +162,8 @@ pres.addSection({ title: "Ouverture" });
       "Médaillon : une étoile rayonnante dans le ciel étoilé"],
     ["m-ecriture", "L'Écriture", "Psaume 19.8-12", "Révélation spéciale", "l'Éternel : le Dieu de l'alliance", ["II. La Parole qui suffit", "III. La Parole qu'on désire"],
       "Médaillon : un rouleau de l'Écriture déployé et rayonnant"],
-    ["m-coeur", "Le cœur", "Psaume 19.13-15", "L'application", "sondé, gardé, offert au Rédempteur", ["IV. Le cœur qui s'offre"],
-      "Médaillon : un cœur au-dessus de la flamme de l'autel"],
+    ["m-coeur", "Le cœur", "Psaume 19.13-15", "Application de la Parole", "sondé, gardé, présenté au Rédempteur", ["IV. Le cœur qui s'offre"],
+      "Médaillon : un cœur au-dessus d'une flamme, dans le ciel étoilé"],
   ];
   M.forEach(([im, titre, ref, rev, desc, points, alt], i) => {
     const cx = 2.55 + i * 4.115;
@@ -170,14 +182,14 @@ pres.addSection({ title: "Ouverture" });
   s.addNotes(`# 2 min · Rappel : 2 Timothée 3.16-17 (sans diapositive)
 - **Lire** 2 Timothée 3.16-17.
 - **Theopneustos :** « soufflée par Dieu ». « Ce que l'Écriture dit, Dieu le dit » (55-17).
-- **Quatre œuvres :** enseigner, convaincre, corriger, instruire dans la justice; pour que l'homme de Dieu soit propre non à la plupart des bonnes œuvres, mais à toutes (55-19).
-- **Pont :** un psaume de David dit la même chose dix siècles plus tôt; c'est le texte que MacArthur tient pour le plus grand sur la suffisance de l'Écriture.
-- **Lecture recommandée :** Introduction au counseling biblique (Éditions Impact, 2021), chapitre de John Street sur le Psaume 19.
+- **Quatre œuvres :** enseigner, convaincre, corriger, instruire dans la justice, pour que l'homme de Dieu soit propre non à la plupart des bonnes œuvres, mais à toutes (55-19).
+- **Pont :** un psaume de David dit la même chose, dix siècles plus tôt : c'est le texte que MacArthur tient pour le plus grand sur la suffisance de l'Écriture.
+- **Lecture recommandée :** John Street, « Pourquoi parler de counseling biblique et non de psychologie? », dans Introduction au counseling biblique (Éditions Impact, 2021), p. 74-82, en particulier « Le paradigme du Psaume 19 ».
 # Vue d'ensemble · lecture publique du Psaume 19
 - **À laisser à l'écran** pendant la lecture publique du Psaume 19 (en entier) : l'assemblée voit d'avance les trois mouvements du texte.
 - **Le cosmos (19.2-7) :** la révélation générale; le nom court El, la puissance du Créateur (BEM, 19.1-15).
 - **L'Écriture (19.8-12) :** la révélation spéciale; l'Éternel, le Dieu de l'alliance. « Six fois, nous avons le nom de l'alliance, l'Éternel, comme source de la Parole de Dieu » (TM19-6).
-- **Le cœur (19.13-15) :** l'application; le cœur sondé, gardé, offert à l'Éternel, son rocher et son rédempteur.
+- **Le cœur (19.13-15) :** l'application de la Parole, dernier volet de la révélation spéciale; le cœur sondé, gardé, présenté à l'Éternel, son rocher et son rédempteur.
 - **Les quatre points du message** s'y logent : I au premier mouvement, II et III au deuxième, IV au troisième. Plan de la BEM : I. Révélation générale (19.2-7); II. Révélation spéciale (19.8-15) : attributs, appréciation, application.`);
 }
 
@@ -198,7 +210,7 @@ pres.addSection({ title: "Ouverture" });
     8.95, 5.72, 3.9, 0.8, { fontSize: 15, align: "center" });
   text(s, "Où allez-vous chercher la vérité qui gouverne votre vie?", 0.6, 6.55, 12.1, 0.45, { fontSize: 21, italic: true, align: "center" });
   barre(s);
-  s.addNotes(`# 4 min · Psaume 19.5, 8
+  s.addNotes(`# 4 min (avec la diapositive suivante) · Psaume 19.2, 5, 8
 # Accroche
 - Au Louvre, la stèle du code de Hammurabi montre le roi debout devant Shamash, le dieu-soleil et dieu de la justice, qui lui remet les insignes du pouvoir : la loi du roi se réclame du soleil.
 - Le Psaume 19 parle lui aussi du soleil et de la loi; mais il loge le soleil sous une tente que Dieu a dressée (19.5), et il ne place la loi qu'entre les mains de l'Éternel (19.8).
@@ -224,18 +236,19 @@ pres.addSection({ title: "Ouverture" });
     card(s, x, 4.1, w, 2.35);
     disc(s, ic, x + 0.25, 4.3, 0.62);
     text(s, num, x + 1.02, 4.38, w - 1.2, 0.45, { fontSize: 16, bold: true, color: OR_LT });
-    text(s, [{ text: titre, options: { bold: true, fontSize: 18, breakLine: true } }, { text: ref, options: { color: OR_LT, breakLine: true } }, { text: bem, options: { color: MUTED, fontSize: 14 } }],
-      x + 0.25, 5.05, w - 0.45, 1.35, { fontSize: 15 });
+    text(s, titre, x + 0.25, 4.98, w - 0.45, 0.66, { fontSize: 18, bold: true, valign: "bottom" });
+    text(s, [{ text: ref, options: { color: OR_LT, breakLine: true } }, { text: bem, options: { color: MUTED, fontSize: 14 } }],
+      x + 0.25, 5.66, w - 0.45, 0.75, { fontSize: 15 });
   };
   etape(0.6, 4.6, "soleil", "I", "Le ciel qui parle", "Psaume 19.2-7", "Proclamation des cieux (19.2-5b), importance du soleil (19.5c-7)");
-  etape(5.45, 2.27, "livre", "II", "La Parole qui suffit", "Psaume 19.8-10", "Attributs de la Parole");
+  etape(5.45, 2.27, "livre", "II", "La Parole qui suffit", "Psaume 19.8-10", "Attributs");
   etape(7.955, 2.27, "or", "III", "La Parole qu'on désire", "Psaume 19.11-12", "Appréciation");
   etape(10.46, 2.27, "coeur", "IV", "Le cœur qui s'offre", "Psaume 19.13-15", "Application");
-  text(s, "« Je pense que c'est le plus grand passage, à lui seul, sur la suffisance de l'Écriture dans toute la Bible »  (80-18)", 0.6, 6.6, 12.1, 0.38, { fontSize: 14, italic: true, color: MUTED, align: "center" });
+  text(s, "« Je pense que c'est le plus grand passage de toute la Bible sur la suffisance de l'Écriture » (80-18)", 0.6, 6.6, 12.1, 0.38, { fontSize: 16, italic: true, color: MUTED, align: "center" });
   barre(s);
   s.addNotes(`# Le texte et le parcours
-- « Je pense que c'est le plus grand passage, à lui seul, sur la suffisance de l'Écriture dans toute la Bible » (80-18).
-- **Un seul hymne, deux révélations :** le nom court El, la puissance du Créateur (19.2); puis l'Éternel, le Dieu de l'alliance (19.8-15) (BEM, 19.1-15).
+- « Je pense que c'est le plus grand passage de toute la Bible sur la suffisance de l'Écriture » (80-18).
+- **Un seul hymne, deux révélations :** le nom court El, la puissance du Créateur (19.2); puis l'Éternel, le Dieu de l'alliance (19.8-15; BEM, 19.1-15).
 - « Six fois, nous avons le nom de l'alliance, l'Éternel, comme source de la Parole de Dieu » (TM19-6); une septième fois en 19.15.
 - **Plan de la BEM :** I. Révélation générale (19.2-7) : proclamation des cieux, importance du soleil. II. Révélation spéciale (19.8-15) : attributs, appréciation, application.
 - **Parcours :** le ciel qui parle, la Parole qui suffit, la Parole qu'on désire, le cœur qui s'offre.`);
@@ -250,13 +263,13 @@ pres.addSection({ title: "I. Le ciel qui parle" });
   header(s, "I · PSAUME 19.2-7", "Le ciel qui parle", "La création vous a parlé de Dieu chaque jour de votre vie", 0);
   s.addImage({ path: img("ciel"), x: 0.45, y: 2.05, w: 7.0, h: 3.94, altText: "La course du soleil dans le ciel étoilé, d'une tente à l'horizon jusqu'à l'autre extrémité des cieux" });
   let cx = 0.6;
-  [["L'époux et le héros", "19.6", 2.0], ["Ni dieu ni législateur", "19.5c-7", 2.1], ["Rien ne se dérobe à sa chaleur", "19.7", 2.75]].forEach(([t, r, w]) => {
+  [["L'époux et le héros", "19.6", 1.9], ["Ni dieu ni législateur", "19.5c-7", 2.0], ["Rien ne se dérobe à sa chaleur", "19.7", 2.75]].forEach(([t, r, w]) => {
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: cx, y: 6.1, w, h: 0.8, rectRadius: 0.2, fill: { color: DISC }, line: { color: OR, width: 1 } });
     text(s, [{ text: t, options: { bold: true, breakLine: true } }, { text: r, options: { color: OR_LT, fontSize: 13 } }], cx + 0.1, 6.1, w - 0.2, 0.8, { fontSize: 14, align: "center", valign: "middle" });
     cx += w + 0.1;
   });
   ligne(s, "etoiles", "Une proclamation incessante", "« Racontent », « manifeste » : la révélation ne s'interrompt jamais (BEM, 19.2).", 7.8, 2.15, 4.93, 1.1);
-  ligne(s, "poids", "La gloire, c'est le poids", "Kavod : le ciel nocturne fait sentir le poids de Dieu (Street).", 7.8, 3.35, 4.93, 1.1);
+  ligne(s, "poids", "Le poids de la gloire", "Kavod : le ciel nocturne fait comprendre le poids de Dieu (Street).", 7.8, 3.35, 4.93, 1.1);
   ligne(s, "jour", "Le jour en instruit un autre", "Le verbe veut dire bouillonner : la révélation jaillit (Street).", 7.8, 4.55, 4.93, 1.1);
   ligne(s, "globe", "Sans paroles, et partout", "Pas de mots au sens littéral, mais un message qui atteint toute la terre (BEM; Romains 10.18).", 7.8, 5.75, 4.93, 1.2);
   barre(s);
@@ -264,19 +277,19 @@ pres.addSection({ title: "I. Le ciel qui parle" });
 - **Phrase clé :** la création vous a parlé de Dieu chaque jour de votre vie.
 # A. Une proclamation incessante (19.2-5b)
 - Les cieux et l'étendue, deux éléments décisifs de la création de Genèse 1 (BEM, 19.2). « Racontent », « manifeste » : la révélation ne s'interrompt jamais (BEM, 19.2); Street y voit une action en cours.
-- **Kavod :** la « gloire », c'est d'abord le poids; le ciel nocturne fait sentir le poids de Dieu (Street).
+- **Kavod :** la « gloire » désigne à l'origine le poids, d'où l'importance; le ciel nocturne fait comprendre le poids de Dieu (Street).
 - **Bouillonner :** le jour « en instruit » un autre; le verbe veut dire bouillonner, la révélation jaillit (Street).
-- **Sans paroles, et pourtant partout (19.4-5) :** la contradiction n'est qu'apparente, le message ne passe pas par des mots au sens littéral (BEM, 19.3-4). Paul cite le verset 5 en Romains 10.18.
+- **Sans paroles, et pourtant partout (19.4-5) :** la contradiction n'est qu'apparente, car le message ne passe pas par des mots au sens littéral (BEM, 19.3-4). Paul cite le verset 5 en Romains 10.18.
 # B. Un soleil qui n'est pas un dieu (19.5c-7)
 - L'époux qui sort de sa chambre, le héros qui court sa carrière : régularité, puissance, détermination (Street).
-- Ni le soleil ni les cieux ne sont divinisés, comme dans les religions païennes : Dieu est le créateur et le chef de toute la création (BEM, 19.5c-7). Retour à l'accroche.
+- Ni le soleil ni les cieux ne sont divinisés, comme dans les religions païennes : Dieu est le créateur et le chef de toute la création (BEM, 19.5c-7). Retour à l'accroche : le soleil n'est ni dieu ni législateur; il brûle, mais ne légifère pas, car la loi est à l'Éternel.
 - « Rien ne se dérobe à sa chaleur » (19.7) : nul ne peut fuir ce message (Street).`);
 }
 
 // 6. I.C Assez pour condamner
 {
   const s = add("CONTENU", "I. Le ciel qui parle");
-  header(s, "I · PSAUME 19.2-7 / ROMAINS 1.18-20", "Assez pour condamner, jamais pour sauver", "« Ce qu'on ne peut pas connaître, c'est la sagesse qui sauve »  (TM19-6)", 0);
+  header(s, "I · PSAUME 19.2-7 / ROMAINS 1.18-20", "Assez pour condamner, jamais pour sauver", "« Ce qu'on ne peut pas connaître, c'est la sagesse qui sauve » (TM19-6)", 0);
   const col = (x, accent, ic, titre, sous, rows) => {
     card(s, x, 2.1, 5.9, 3.12, true, { line: accent ? OR_LT : ASH, width: accent ? 2 : 1, fill: accent ? DISC : CARD });
     disc(s, ic, x + 0.35, 2.32, 0.7);
@@ -291,21 +304,21 @@ pres.addSection({ title: "I. Le ciel qui parle" });
   col(6.83, true, "livre", "La Parole", "révélation spéciale · des paroles", [["Nom divin", "l'Éternel, Dieu de l'alliance"], ["Fait connaître", "la sagesse qui sauve"], ["Effet", "sauve et transforme"], ["Moyen", "l'Esprit applique la Parole (BEM)"]]);
   card(s, 0.6, 5.4, 12.13, 1.55, true);
   text(s, [{ text: "Les cieux suffisent à condamner; la Parole suffit à sauver.", options: { fontFace: HEAD, fontSize: 28, bold: true, italic: true, color: OR_LT, breakLine: true } },
-    { text: "« La révélation de Dieu dans le monde : assez pour condamner, assez pour damner. La révélation dans la Parole : suffisante pour sauver, suffisante pour sauver » (80-420)", options: { fontSize: 14, color: MUTED } }],
+    { text: "« La révélation de Dieu dans le monde : assez pour condamner, assez pour damner. La révélation dans la Parole : suffisante pour sauver, suffisante pour sauver » (80-420)", options: { fontSize: 16, color: MUTED } }],
     0.9, 5.4, 11.53, 1.55, { align: "center", valign: "middle", paraSpaceAfter: 4 });
   barre(s);
   s.addNotes(`# I.C · Assez pour condamner, jamais pour sauver (Romains 1.18-20)
-- Le témoignage est clair et cohérent, mais l'humanité pécheresse lui résiste; il ne peut donc pas convertir, mais il rend entièrement responsable (BEM, 19.2-7).
+- Le témoignage est clair et cohérent, mais l'humanité pécheresse lui résiste; il ne peut donc pas la convertir, mais il la rend entièrement responsable. Seule la révélation spéciale apporte le salut, par l'application efficace que le Saint-Esprit fait de la Parole (BEM, 19.2-7).
 - « Quand ils étouffent la vérité de Dieu, ils sont sans excuse, et cette révélation suffit à condamner le monde à l'enfer » (80-420).
 - « Selon Romains 1, on peut connaître sa divinité et sa puissance en regardant la création. Ce qu'on ne peut pas connaître, c'est la sagesse qui sauve » (TM19-6).
 - « La révélation de Dieu dans le monde : assez pour condamner, assez pour damner. La révélation dans la Parole : suffisante pour sauver, suffisante pour sauver » (80-420).
 # Application
 - Personne n'est un incroyant innocent : les cieux ont parlé à chacun. « Je trouve Dieu dans la nature » ne suffit pas, car le cœur retient la vérité captive (Romains 1.18).
-- Le croyant adore devant le ciel étoilé, mais ne lui demande ni le salut ni la direction de son âme.
+- Le croyant, lui, adore devant le ciel étoilé, mais ne lui demande ni le salut ni la direction de son âme.
 # Transition
-- « Le psalmiste passe du monde à la Parole au verset 7 » (80-420; verset 8 de la NEG79), et El devient l'Éternel. Où entendre la sagesse qui sauve?
+- Au verset 8, le psalmiste passe « du monde à la Parole » (80-420), et El devient l'Éternel. Où entendre la sagesse qui sauve?
 # À éviter
-- Traiter les versets 2 à 7 comme une simple introduction poétique, ou, à l'inverse, comme une révélation qui sauve : elle rend inexcusable, sans convertir (BEM, 19.2-7).
+- Traiter les versets 2 à 7 comme une simple introduction poétique, ou, à l'inverse, comme une révélation qui sauve : la création rend l'homme inexcusable, sans le convertir (BEM, 19.2-7).
 - Oublier la résistance du cœur pécheur : le problème n'est pas que la création soit obscure, mais que l'homme retient la vérité captive.`);
 }
 
@@ -315,11 +328,11 @@ pres.addSection({ title: "II. La Parole qui suffit" });
 // 7. Les six lignes
 {
   const s = add("CONTENU", "II. La Parole qui suffit");
-  header(s, "II · PSAUME 19.8-10", "La Parole qui suffit", "Six titres, six qualités, six bienfaits : six fois « l'Éternel »  (TM19-6)", 1);
+  header(s, "II · PSAUME 19.8-10", "La Parole qui suffit", "Il ne manque rien à la Parole, et il ne manque rien à celui qu'elle instruit", 1);
   [["TITRE · CE QU'IL DÉSIGNE", 0.85], ["QUALITÉ · NEG79 / MACARTHUR", 4.55], ["BIENFAIT", 8.35]].forEach(([t, x]) =>
     text(s, t, x, 2.0, 3.6, 0.3, { fontSize: 13, bold: true, color: DIM, charSpacing: 1 }));
   const L = [
-    ["la loi", "l'enseignement", "parfaite", "complète", "coeur", "restaure l'âme"],
+    ["la loi", "l'enseignement", "parfaite", "complète", "retour", "restaure l'âme"],
     ["le témoignage", "témoin de son auteur divin", "véritable", "sûr", "ampoule", "rend sage l'ignorant"],
     ["les ordonnances", "Dieu gouverne par elles", "droites", "le droit chemin", "joie", "réjouissent le cœur"],
     ["les commandements", "des ordres qui lient", "purs", "clairs", "oeil", "éclairent les yeux"],
@@ -330,8 +343,8 @@ pres.addSection({ title: "II. La Parole qui suffit" });
     const y = 2.4 + i * 0.74;
     card(s, 0.6, y, 12.13, 0.64, i === 0, { name: "Ligne " + (i + 1) });
     text(s, [{ text: t, options: { bold: true, fontSize: 18 } }, { text: " de l'Éternel", options: { color: MUTED, fontSize: 14, breakLine: true } },
-      { text: sens, options: { italic: true, color: OR_LT, fontSize: 13 } }], 0.85, y, 3.6, 0.64, { valign: "middle", lineSpacingMultiple: 0.9 });
-    text(s, [{ text: q, options: { bold: true, italic: true, color: OR_LT, fontSize: 19 } }, { text: "  · " + m, options: { color: MUTED, fontSize: 15 } }], 4.55, y, 3.0, 0.64, { valign: "middle" });
+      { text: sens, options: { italic: true, color: OR_LT, fontSize: 15 } }], 0.85, y, 3.6, 0.64, { valign: "middle", lineSpacingMultiple: 0.9 });
+    text(s, [{ text: q, options: { bold: true, italic: true, color: OR_LT, fontSize: 19 } }, { text: " · " + m, options: { color: MUTED, fontSize: 15 } }], 4.55, y, 3.0, 0.64, { valign: "middle" });
     s.addShape(pres.shapes.LINE, { x: 7.6, y: y + 0.32, w: 0.55, h: 0, line: { color: OR, width: 2, endArrowType: "triangle" } });
     disc(s, ic, 8.35, y + 0.08, 0.48);
     text(s, b, 9.0, y, 3.6, 0.64, { fontSize: 18, valign: "middle" });
@@ -341,7 +354,7 @@ pres.addSection({ title: "II. La Parole qui suffit" });
 - **Phrase clé :** il ne manque rien à la Parole, et il ne manque rien à celui qu'elle instruit.
 - **Le cadre :** six titres, six qualités, six bienfaits (80-19; 80-308); « six fois, nous avons le nom de l'alliance, l'Éternel, comme source de la Parole de Dieu » (TM19-6).
 - **Ce que désigne chaque titre :** la loi, l'enseignement (BEM, 19.8); le témoignage, qui témoigne de son auteur divin (BEM, 19.8); les ordonnances, moyens par lesquels Dieu gouverne (BEM, 19.9); les commandements, qui lient; la crainte, l'Écriture comme guide pour l'adoration (BEM, 19.10); les jugements, verdicts de Dieu (BEM, 19.10).
-- **Lecture de MacArthur :** parfaite, sûre, droite, claire, nette, vraie (80-308). Le tableau affiche les mots de la NEG79; dire à voix haute « claire » et « nette ».
+- **Lecture de MacArthur :** parfaite, sûre, droite, claire, nette, vraie (80-308). Le tableau affiche les mots de la NEG79, puis la lecture ou le sens chez MacArthur : dire que « sûr », « clairs » et « nette » sont ses mots, non ceux de la NEG79.
 - **Montrer** que le bienfait découle chaque fois de la qualité : parce qu'elle est complète, elle restaure; parce qu'elle est sûre, elle rend sage; et ainsi de suite.`);
 }
 
@@ -365,24 +378,28 @@ pres.addSection({ title: "II. La Parole qui suffit" });
   s.addShape(pres.shapes.LINE, { x: 6.3, y: 3.37, w: 0.73, h: 0, line: { color: OR_LT, width: 2.5, endArrowType: "triangle" }, objectName: "Flèche : bien plus que consoler" });
   card(s, 0.6, 4.85, 12.13, 2.1, true);
   text(s, [
-    { text: "« Une instruction divine si complète qu'elle peut transformer totalement l'homme intérieur tout entier »  (80-420)", options: { fontFace: HEAD, italic: true, fontSize: 22, breakLine: true } },
-    { text: "Convertir, transformer, régénérer par l'œuvre de l'Esprit (80-308). Street rapproche Hébreux 4.12 : la Parole juge les pensées et les intentions du cœur.", options: { color: MUTED, fontSize: 15, paraSpaceBefore: 8 } }],
+    { text: "« Une instruction divine si complète qu'elle peut transformer totalement l'homme intérieur tout entier » (80-420)", options: { fontFace: HEAD, italic: true, fontSize: 22, breakLine: true } },
+    { text: "Convertir, transformer, régénérer par l'œuvre de l'Esprit (80-308).\nStreet rapproche Hébreux 4.12 : la Parole « juge les sentiments et les pensées du cœur ».", options: { color: MUTED, fontSize: 15, paraSpaceBefore: 8 } }],
     0.9, 4.85, 11.53, 2.1, { valign: "middle" });
   barre(s);
-  s.addNotes(`# II.A · Restaure l'âme (19.8a)
+  s.addNotes(`# A. Elle est complète et transforme (19.8a)
+- La « loi » serait mieux rendue par « enseignement » (BEM, 19.8; cf. Psaume 1.2).
+- « Parfaite » (tamim) : « non pas au sens d'irréprochable, bien que ce soit absolument vrai, mais au sens de complétude » (80-308). « On ne peut rien lui retrancher; on ne peut rien lui ajouter » (80-420).
+- « La Bible est complète, elle est parfaite en ce qu'elle fournit tout ce qu'il faut pour connaître la loi de Dieu, ce qui produit le bienfait de transformer totalement l'âme » (80-250).
+# Restaure l'âme
 - « Restaure l'âme » : « une instruction divine si complète qu'elle peut transformer totalement l'homme intérieur tout entier » (80-420).
 - C'est « une déclaration d'une portée immense sur le pouvoir de la Bible de convertir, de transformer, de régénérer par l'œuvre de l'Esprit de Dieu au moyen de son propre témoignage » (80-308).
 - **Meshivat nephesh :** le verbe shouv, à la forme causative, veut dire faire revenir, ramener; il couvre ranimer, restaurer, convertir. MacArthur comprend nephesh comme la personne entière, l'être intérieur (80-19; 80-420).
 - **Le montrer :** la S21 dit « donne du réconfort »; la Parole fait bien plus que consoler.
-- **Street** rapproche Hébreux 4.12 : la Parole juge les pensées et les intentions du cœur.
+- **Street** rapproche Hébreux 4.12 : la Parole « juge les sentiments et les pensées du cœur ».
 # À éviter
-- Affaiblir « restaure l'âme » en simple réconfort : c'est la conversion et la transformation de la personne entière (80-308).`);
+- Réduire « restaure l'âme » à un simple réconfort : c'est la conversion et la transformation de la personne entière (80-308).`);
 }
 
 // 9. II.A-C
 {
   const s = add("CONTENU", "II. La Parole qui suffit");
-  header(s, "II · PSAUME 19.8-10 / 2 PIERRE 1.16-19", "Complète, sûre, pure", "« On ne peut rien lui retrancher; on ne peut rien lui ajouter »  (80-420)", 1);
+  header(s, "II · PSAUME 19.8-10 / 2 PIERRE 1.16-19", "Complète, sûre, pure", "« On ne peut rien lui retrancher; on ne peut rien lui ajouter » (80-420)", 1);
   const col = (x, ic, titre, ref, items) => {
     card(s, x, 2.1, 3.88, 4.85, ic === "livre");
     disc(s, ic, x + 0.28, 2.32, 0.66);
@@ -391,7 +408,7 @@ pres.addSection({ title: "II. La Parole qui suffit" });
   };
   col(0.6, "livre", "Complète", "Psaume 19.8a", [
     "« Loi » : mieux rendue par « enseignement » (BEM).",
-    "« Parfaite » : au sens de complétude, non seulement d'irréprochable (80-308).",
+    "« Parfaite » : au sens de complétude, bien qu'elle soit aussi irréprochable (80-308).",
     "« Restaure l'âme » : convertir, transformer, régénérer par l'œuvre de l'Esprit (80-308).",
     "« Fournit tout ce qu'il faut » (80-250)."]);
   col(4.725, "boussole", "Sûre et claire", "Psaume 19.8b-9", [
@@ -403,56 +420,53 @@ pres.addSection({ title: "II. La Parole qui suffit" });
   col(8.85, "mains", "Pure et vraie", "Psaume 19.10", [
     "« Crainte » : l'Écriture, guide pour l'adoration (BEM); « un manuel du culte » (80-308).",
     "Nette, « sans tache, sans défaut » (80-308) : jamais de mise à jour (80-19).",
-    "« Absolument, sans équivoque, vrai » (80-308)."]);
+    "« Absolument, sans équivoque, vraie » (80-308)."]);
   barre(s);
-  s.addNotes(`# A. Elle est complète et transforme (19.8a)
-- La « loi » serait mieux rendue par « enseignement » (BEM, 19.8; cf. Psaume 1.2).
-- « Parfaite » (tamim) : « non pas au sens d'irréprochable, bien que ce soit absolument vrai, mais au sens de complétude » (80-308). « On ne peut rien lui retrancher; on ne peut rien lui ajouter » (80-420).
-- « La Bible est complète, elle est parfaite en ce qu'elle fournit tout ce qu'il faut pour connaître la loi de Dieu, ce qui produit le bienfait de transformer totalement l'âme » (80-250).
-- « Restaure l'âme » : voir la diapositive précédente (80-420; 80-308; S21; Hébreux 4.12).
+  s.addNotes(`# A. Complète (19.8a) : rappel
+- Colonne de gauche : traitée à la diapositive précédente; la montrer d'un mot et passer à B.
 # B. Elle est sûre et claire (19.8b-9)
 - Le « témoignage » témoigne de son auteur divin (BEM, 19.8). « Il est fiable, digne de confiance. Et il y a beaucoup de livres dans le monde auxquels on ne peut pas se fier » (80-308).
-- Pierre, témoin de la transfiguration, tient la Parole pour plus sûre que ce qu'il a vu (2 Pierre 1.16-19; 80-250).
-- « L'Écriture prend le naïf, l'inexpérimenté, l'homme sans discernement, le mal informé, et lui apporte la sagesse » (80-19). « Sage » (chakam) : « maîtriser l'art de vivre, vivre en parfait accord avec la connaissance de Dieu » (80-250).
-- Les « ordonnances », moyens par lesquels Dieu gouverne (BEM, 19.9) : « La Parole n'est pas seulement une lampe à nos pieds qui éclaire le sentier, la Parole est le sentier » (80-250).
-- Les « commandements » lient; MacArthur les lit « clairs » (S21 : « clairs »; NEG79 : « purs ») (80-308; TM19-6).
+- Pierre, témoin de la transfiguration, tient « pour d'autant plus certaine la parole prophétique » (2 Pierre 1.19) : MacArthur y lit une Parole plus sûre que l'expérience (80-250).
+- L'« ignorant » (peti) : « L'Écriture prend le naïf, l'inexpérimenté, l'homme sans discernement, le mal informé, et lui apporte la sagesse » (80-19). « Sage » (chakam) : « maîtriser l'art de vivre, vivre en parfait accord avec la connaissance de Dieu » (80-250).
+- Les « ordonnances », moyens par lesquels Dieu gouverne (BEM, 19.9) : « La Parole n'est pas seulement une lampe à nos pieds qui éclaire le sentier, la Parole est le sentier » (80-250). La joie vient en le suivant (80-19).
+- Les « commandements » lient; MacArthur les lit « clairs » (S21 : « clairs »; NEG79 : « purs ») : la Parole est limpide, elle « éclaire les yeux » (80-308; TM19-6).
 # C. Elle est pure et vraie (19.10)
-- La « crainte » : l'Écriture comme « guide pour l'adoration de Dieu » (BEM, 19.10); « La Bible est un manuel du culte; elle vous dit comment adorer le Seigneur en esprit et en vérité » (80-308).
-- Nette, « sans tache, sans défaut » (80-308), elle « subsiste à toujours » : jamais besoin de mise à jour (80-19).
-- Les « jugements », verdicts de Dieu (BEM, 19.10) : « Il est vrai. Je ne saurais trop insister. Dans un monde de mensonges, dans un monde de tromperie, il est vrai; il est absolument, sans équivoque, vrai » (80-308).
+- La « crainte » ne désigne pas techniquement la Parole, mais l'Écriture comme « guide pour l'adoration de Dieu » (BEM, 19.10); « La Bible est un manuel du culte; elle vous dit comment adorer le Seigneur en esprit et en vérité » (80-308).
+- Nette, « sans tache, sans défaut » (80-308), elle « subsiste à toujours » : elle n'a jamais besoin de mise à jour (80-19).
+- Les « jugements », verdicts de Dieu (BEM, 19.10) : « Elle est vraie. Je ne saurais trop insister. […] Dans un monde de mensonges, dans un monde de tromperie, elle est vraie; elle est absolument, sans équivoque, vraie » (80-308).
 # Synthèse
-- La Parole « fournit tout ce qu'il faut » (80-250) : toute l'Écriture rend l'homme de Dieu accompli (2 Timothée 3.16-17). Retour au Rappel.
+- La Parole « fournit tout ce qu'il faut » (80-250) : toute l'Écriture rend l'homme de Dieu accompli et propre à toute bonne œuvre (2 Timothée 3.16-17). Retour au Rappel.
 # À éviter
 - Réduire « parfaite » à « sans défaut » : MacArthur y entend d'abord la complétude (80-308).
 - Isoler la « crainte » de la liste : c'est l'Écriture comme guide de l'adoration.`);
 }
 
-// 10. II. Application : ce qui tient lieu de Parole
+// 10. II. Application : ce qu'on ajoute à la Parole
 {
   const s = add("CONTENU", "II. La Parole qui suffit");
-  header(s, "II · APPLICATION", "Ce qui tient lieu de Parole", "Vers quoi vous tournez-vous en premier quand votre âme est troublée?", 1);
+  header(s, "II · APPLICATION", "Ce qu'on ajoute à la Parole", "Vers quoi vous tournez-vous en premier quand votre âme est troublée?", 1);
   s.addImage({ path: img("livre"), x: 5.12, y: 2.05, w: 3.1, h: 3.1, altText: "Livre ouvert rayonnant au centre : la Parole qui suffit" });
   const subs = [["gestion", "Techniques de gestion"], ["divertissement", "Divertissement"], ["mysticisme", "Mysticisme"],
-    ["psychologie", "Psychologie"], ["visualisation", "Visualisation"], ["confession", "Confession positive"]];
+    ["confession", "Confession positive"], ["visualisation", "Visualisation"], ["psychologie", "Psychologie"]];
   subs.forEach(([ic, t], i) => {
     const x = i < 3 ? 0.6 : 8.63, y = 2.15 + (i % 3) * 1.0;
     card(s, x, y, 4.1, 0.82, false, { fill: "15110E" });
     disc(s, ic, x + 0.17, y + 0.11, 0.6, true);
     text(s, t, x + 0.95, y, 3.0, 0.82, { fontSize: 18, color: MUTED, valign: "middle" });
   });
-  text(s, "Ce qui, dans l'Église, prend la place de la Parole : MacArthur, 1985 (80-18)", 0.6, 5.22, 12.13, 0.35, { fontSize: 14, italic: true, color: DIM, align: "center" });
+  text(s, "Ce qui, dans l'Église, s'attaque à la suffisance de la Parole : MacArthur, 1985 (80-18)", 0.6, 5.22, 12.13, 0.35, { fontSize: 14, italic: true, color: DIM, align: "center" });
   card(s, 0.6, 5.65, 12.13, 1.3, true);
   text(s, [{ text: "Street : ", options: { bold: true, color: OR_LT } },
     { text: "la révélation générale n'autorise pas à chercher hors de l'Écriture l'autorité sur les problèmes de l'âme; ce serait ajouter à la Parole (Proverbes 30.5-6).", options: { breakLine: true } },
-    { text: "Sciences et médecine restent des bienfaits de Dieu; la suffisance vise le domaine de l'âme.", options: { color: MUTED, fontSize: 15, paraSpaceBefore: 4 } }],
+    { text: "Sciences naturelles et médecine restent des bienfaits de Dieu; la suffisance vise le domaine de l'âme.", options: { color: MUTED, fontSize: 15, paraSpaceBefore: 4 } }],
     0.9, 5.65, 11.53, 1.3, { fontSize: 17, valign: "middle" });
   barre(s);
   s.addNotes(`# Application
-- En 1985, MacArthur passait en revue ce qui tient lieu de Parole dans l'Église : techniques de gestion, divertissement, mysticisme, psychologie, visualisation, confession positive (80-18).
+- En 1985, MacArthur passait en revue ce qui, dans l'Église, s'attaque à la suffisance de la Parole : techniques de gestion empruntées au monde, divertissement, mysticisme et occultisme (confession positive, visualisation) et, peut-être plus que tout le reste, psychologie (80-18).
 - **Street :** la révélation générale n'autorise pas à chercher hors de l'Écriture l'autorité sur les problèmes de l'âme; ce serait ajouter à la Parole (Proverbes 30.5-6).
 - **Question :** vers quoi vous tournez-vous en premier quand votre âme est troublée?
 # À éviter
-- Faire de la suffisance un mépris des sciences : Street reconnaît les bienfaits de la révélation naturelle en sciences et en médecine; la suffisance vise le domaine de l'âme.
+- Faire de la suffisance un mépris des sciences : Street reconnaît les bienfaits de la révélation naturelle en sciences naturelles et en médecine; la suffisance vise le domaine de l'âme.
 # Transition
 - Si la Parole est tout cela, que vaut-elle à nos yeux?`);
 }
@@ -465,18 +479,18 @@ pres.addSection({ title: "III. La Parole qu'on désire" });
   const s = add("CONTENU", "III. La Parole qu'on désire");
   header(s, "III · PSAUME 19.11-12", "Plus précieuse que l'or", "Ce que vous désirez le plus révèle ce que vous estimez le plus", 2);
   s.addImage({ path: img("balance"), x: 0.45, y: 2.0, w: 5.7, h: 4.75, altText: "Balance : l'or et le miel d'un côté, plus légers que le livre ouvert de l'autre" });
-  ligne(s, "or", "Plus précieuse que l'or affiné (paz)", "Le bien suprême d'ici-bas : le plus grand bien qu'on puisse posséder (80-251; 80-19).", 6.6, 2.15, 6.13, 1.0);
-  ligne(s, "miel", "Plus douce que le miel des rayons", "Le délice des délices : le plus grand plaisir qu'on puisse goûter (80-251; 80-19).", 6.6, 3.2, 6.13, 1.0);
-  ligne(s, "avert", "Elle avertit (19.12)", "« La Parole de Dieu est pleine d'avertissements » (80-251).", 6.6, 4.25, 6.13, 1.0);
-  ligne(s, "drapeau", "Une grande récompense", "« En les gardant, il y a la fin » : non ici et maintenant, mais la gloire à venir (80-19; 80-251).", 6.6, 5.3, 6.13, 1.05);
+  ligne(s, "or", "Plus précieuse que l'or affiné (paz)", "Le bien suprême d'ici-bas :\nle plus grand bien qu'on puisse posséder (80-251; 80-19).", 6.6, 2.15, 6.13, 1.0);
+  ligne(s, "miel", "Plus douce que le miel des rayons", "Le délice des délices :\nle plus grand plaisir qu'on puisse goûter (80-251; 80-19).", 6.6, 3.2, 6.13, 1.0);
+  ligne(s, "avert", "Elle avertit", "« La Parole de Dieu est pleine d'avertissements » (80-251).", 6.6, 4.25, 6.13, 1.0);
+  ligne(s, "drapeau", "Une grande récompense", "« En les gardant, il y a la fin » :\nnon ici et maintenant, mais la bénédiction éternelle (80-19; 80-251).", 6.6, 5.3, 6.13, 1.05);
   text(s, "Votre agenda dit ce qui est votre or.", 6.6, 6.5, 6.13, 0.45, { fontSize: 20, italic: true, color: OR_LT });
   barre(s);
   s.addNotes(`# 5 min · Psaume 19.11-12
 - **Phrase clé :** ce que vous désirez le plus révèle ce que vous estimez le plus.
-- **Plus précieuse que l'or affiné (paz), plus douce que le miel des rayons (nopheth tsouphim, le miel qui s'égoutte du rayon) (19.11) :** « L'or, dans l'Antiquité, était le bien suprême d'ici-bas »; « le délice des délices, en ce temps-là, c'était le miel » (80-251). Le plus grand bien qu'on puisse posséder, le plus grand plaisir qu'on puisse goûter (80-19; TM19-6).
-- **Elle avertit (19.12) :** « La Parole de Dieu est pleine d'avertissements. Et celui qui la connaît est dûment averti » (80-251). La KJF dit « est averti ».
-- **Une récompense grande :** « La vraie récompense n'est pas ici et maintenant », ni la confession positive ni la visualisation de ce qu'on veut tout de suite (80-19). « L'hébreu se lit littéralement ainsi : en les gardant, il y a la fin. La fin » (80-251).
-- **La douceur se goûte dans le respect :** les noms mêmes de la Parole commandent de l'aborder avec le plus grand respect, non avec désinvolture (Street).
+- **Plus précieuse que l'or affiné (paz), plus douce que le miel des rayons (nopheth tsouphim, le miel qui s'égoutte du rayon) (19.11) :** « L'or, dans l'Antiquité, était le bien suprême d'ici-bas »; « le délice des délices, en ce temps-là, c'était le miel » (80-251). Le plus grand bien qu'on puisse posséder, le plus grand plaisir qu'on puisse goûter (80-19; 80-251; TM19-6).
+- **Elle avertit (19.12) :** « La Parole de Dieu est pleine d'avertissements. Et celui qui la connaît est dûment averti » (80-251). La NEG79 dit « en reçoit instruction »; la KJF, « est averti ».
+- **Une grande récompense :** « La vraie récompense n'est pas ici et maintenant », elle n'est ni la confession positive ni la visualisation de ce qu'on veut tout de suite (80-19). « L'hébreu se lit littéralement ainsi : en les gardant, il y a la fin. La fin » (80-251) : la bénédiction éternelle de celui qui obéit.
+- **La douceur se goûte dans le respect :** les noms mêmes de la Parole commandent de l'aborder avec le plus grand respect, non avec désinvolture; c'est ainsi qu'on la trouve douce (Street).
 # Application
 - Votre agenda dit ce qui est votre or. Si la Parole vous paraît fade, le diagnostic porte sur le cœur, non sur la Bible : demandez à Dieu de vous la rendre douce.
 # À éviter
@@ -491,23 +505,23 @@ pres.addSection({ title: "IV. Le cœur qui s'offre" });
 // 12. IV.A-B : trois degrés
 {
   const s = add("CONTENU", "IV. Le cœur qui s'offre");
-  header(s, "IV · PSAUME 19.13-14 / NOMBRES 15.22-31", "Le cœur sondé et gardé", "« Qui connaît ses égarements? » Réponse : personne, sans la Parole (Street)", 3);
+  header(s, "IV · PSAUME 19.13-14 / NOMBRES 15.22-31", "Le cœur sondé et gardé", "La Parole qui me montre mon péché me conduit à mon Rédempteur", 3);
   const D = [
     ["oeilbarre", "Égarements", "Péchés d'ignorance, non intentionnels (TM19-6; BEM).", "Lévitique 4 : un sacrifice prévu", "« Pardonne-moi » : acquitte-moi", ASH, 1, CARD],
     ["cible", "Péchés présomptueux", "Délibérés : ceux que je vois, prémédite et planifie (80-19).", "Nombres 15.30-31 : aucun sacrifice", "« Préserve aussi ton serviteur »", OR, 1.5, "22150F"],
-    ["porte", "Grande transgression", "La rébellion ouverte (TM19-6) : se détourner du Seigneur (80-251).", "Le terme de la pente", "« Innocent de grands péchés »", OR_LT, 2.5, DISC],
+    ["porte", "Grande transgression", "La rébellion ouverte (TM19-6) :\nse détourner du Seigneur (80-251).", "Le terme de la pente", "« Innocent de grands péchés »", OR_LT, 2.5, DISC],
   ];
   // Une pente : chaque degré descend d'une marche (d'après la diapositive 12 de Du_ciel_à_l_autel.pptx).
   D.forEach(([ic, t, d, tag, priere, line, width, fill], i) => {
-    const x = 0.6 + i * 4.125, y = 2.05 + i * 0.25;
-    card(s, x, y, 3.83, 3.1, true, { line, width, fill, name: "Degré " + (i + 1) });
+    const x = 0.6 + i * 4.14, y = 2.05 + i * 0.2;
+    card(s, x, y, 3.85, 3.1, true, { line, width, fill, name: "Degré " + (i + 1) });
     disc(s, ic, x + 0.28, y + 0.22, 0.66);
     text(s, String(i + 1), x + 3.1, y + 0.2, 0.5, 0.5, { fontSize: 26, bold: true, fontFace: HEAD, color: i === 0 ? DIM : line, align: "right" });
     text(s, [{ text: t, options: { bold: true, fontSize: 20, breakLine: true } }, { text: d, options: { color: MUTED } }], x + 0.28, y + 1.0, 3.3, 1.2, { fontSize: 15 });
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: x + 0.28, y: y + 2.2, w: 3.27, h: 0.42, rectRadius: 0.2, fill: { color: BG }, line: { color: line, width: 1 } });
-    text(s, tag, x + 0.28, y + 2.2, 3.27, 0.42, { fontSize: 13, color: INK, align: "center", valign: "middle", wrap: false });
+    text(s, tag, x + 0.28, y + 2.2, 3.27, 0.42, { fontSize: 15, color: INK, align: "center", valign: "middle", wrap: false });
     text(s, priere, x + 0.28, y + 2.68, 3.3, 0.38, { fontSize: 15, italic: true, color: OR_LT });
-    if (i < 2) s.addShape(pres.shapes.LINE, { x: x + 3.86, y: y + 1.5, w: 0.24, h: 0.25, line: { color: OR_LT, width: 2, endArrowType: "triangle" } });
+    if (i < 2) s.addShape(pres.shapes.LINE, { x: x + 3.88, y: y + 1.5, w: 0.24, h: 0.2, line: { color: OR_LT, width: 2, endArrowType: "triangle" } });
   });
   card(s, 0.6, 5.8, 5.95, 1.15);
   ligne(s, "chaine", "« Qu'ils ne dominent point sur moi! »", "Les péchés connus asservissent (Street).", 0.85, 5.97, 5.5, 0.9, { fs1: 17 });
@@ -522,8 +536,8 @@ pres.addSection({ title: "IV. Le cœur qui s'offre" });
 - MacArthur lit « acquitte-moi des fautes cachées » (80-251; 80-308); la NEG79 dit « pardonne-moi », la KJF « nettoie-moi ».
 # B. Les fautes que je vois (19.14)
 - « Les égarements sont des péchés d'ignorance. Les péchés présomptueux sont des péchés délibérés. La grande transgression est la rébellion ouverte » (TM19-6). David prie de ne jamais aller jusqu'à se détourner du Seigneur (80-251).
-- La NEG79 dit « des orgueilleux »; la KJF, « des péchés présomptueux » : ceux que je vois, prémédite et planifie (80-19).
-- La loi distinguait le péché par inadvertance, qui avait son sacrifice, et le péché commis par défi, qui n'en avait pas (Nombres 15.30-31); la BEM renvoie à Nombres 15.22ss (19.13-14).
+- La NEG79 dit « des orgueilleux »; la KJF, « des péchés présomptueux » : ceux que je vois, prémédite et planifie (80-19). En fin de verset, la NEG79 dit « innocent de grands péchés »; la KJF, « innocent de la grande transgression » : la rébellion ouverte (TM19-6).
+- La loi distinguait le péché commis involontairement, qui avait son sacrifice (Nombres 15.27-29), et le péché commis « la main levée », qui n'en avait pas (Nombres 15.30-31); la BEM renvoie à Nombres 15.22ss pour éclairer cette distinction (19.13-14).
 - « Qu'ils ne dominent point sur moi! » : les péchés connus asservissent celui qui les commet en sachant que ce sont des péchés (Street).
 - Ce n'est pas du scrupule : c'est l'attitude d'un disciple mûr que la grâce et les ressources de Dieu amènent à reconnaître et à combattre ses péchés (BEM, 19.13-14).
 # À éviter
@@ -538,17 +552,17 @@ pres.addSection({ title: "IV. Le cœur qui s'offre" });
   ligne(s, "flamme", "Reçois favorablement (leratson)", "Le vocabulaire des sacrifices agréés : David demande la grâce de déposer sur l'autel ses lèvres et sa vie (BEM).", 5.6, 2.15, 7.13, 1.0);
   ligne(s, "parchemin", "Bouche et méditation", "L'écho de Josué 1.8 : la loi méditée jour et nuit (BEM; TM19-6).", 5.6, 3.25, 7.13, 1.0);
   ligne(s, "rocher", "Mon rocher et mon rédempteur", "Le goel : le parent proche qui paie pour racheter (Lévitique 25.25).", 5.6, 4.35, 7.13, 1.0);
-  ligne(s, "croix", "Le Rédempteur a un nom", "Christ s'est donné pour nous racheter (Tite 2.14); par lui, le sacrifice de louange (Hébreux 13.15).", 5.6, 5.45, 7.13, 1.0, { c1: OR_LT });
+  ligne(s, "croix", "Il conduit à Christ", "Christ s'est donné pour nous racheter (Tite 2.14); par lui, le sacrifice de louange (Hébreux 13.15).", 5.6, 5.45, 7.13, 1.0, { c1: OR_LT });
   text(s, "Demandez à Dieu de vous sonder (Psaume 139.23-24).", 5.6, 6.55, 7.13, 0.42, { fontSize: 19, italic: true, color: OR_LT });
   barre(s);
   s.addNotes(`# C. Les paroles et le cœur offerts (19.15)
-- **Reçois favorablement (leratson) :** un terme souvent associé à l'acceptation des sacrifices; David dépose sur l'autel le sacrifice de ses lèvres et de sa vie (BEM, 19.15). Il ne promet pas de se corriger par ses propres forces : il demande à Dieu la grâce et les capacités nécessaires (BEM, 19.15).
-- **Bouche et méditation :** l'écho de Josué 1.8, la loi méditée jour et nuit (BEM, 19.15; TM19-6; 80-251).
+- **Reçois favorablement (leratson) :** un terme souvent associé à l'acceptation des sacrifices; David demande à Dieu la grâce et les capacités nécessaires pour déposer sur l'autel le sacrifice de ses lèvres et de sa vie (BEM, 19.15).
+- **Bouche et méditation :** les « sentiments » du cœur (hegyon, la méditation) : l'écho de Josué 1.8, la loi méditée jour et nuit (BEM, 19.15; TM19-6; 80-251).
 - **Mon rocher et mon rédempteur :** le goel, le parent proche qui paie pour racheter (Lévitique 25.25). Il conduit à Christ, qui s'est donné pour nous racheter de toute iniquité (Tite 2.14); par lui, nous offrons à Dieu le sacrifice de louange, le fruit de nos lèvres (Hébreux 13.15).
 # Application
 - Demandez à Dieu de vous sonder (Psaume 139.23-24), confessez les fautes qu'il vous montre et nommez le péché qui vous domine.
 - Le péché est le problème principal, non le seul : les faiblesses du corps et le péché des autres pèsent aussi (Street).
-- Quand la Parole fait son œuvre, on marche sans culpabilité, « intègre » (19.14).
+- Quand la Parole fait son œuvre, on marche sans culpabilité, « intègre » (19.14; Street) : non par l'effort propre, mais par la grâce du Rédempteur, qui pardonne toute faute confessée.
 # À éviter
 - Prêcher les versets 13 et 14 comme un appel à l'introspection anxieuse ou à l'effort moral : c'est la grâce qui rend le disciple lucide et combatif.
 - Finir sur le péché sans le Rédempteur : le psaume s'achève sur la grâce.`);
@@ -576,18 +590,18 @@ pres.addSection({ title: "Conclusion" });
     text(s, titre, x + 0.3, 4.0, 3.3, 0.45, { fontSize: 19, bold: true, color: OR_LT });
     text(s, runs, x + 0.3, 4.5, 3.3, 2.35, { fontSize: 15 });
   };
-  bloc(0.6, "Le Rédempteur a un nom", [{ text: "Dieu nous a parlé en son Fils (Hébreux 1.1-2).", options: { breakLine: true } },
+  bloc(0.6, "Le Rédempteur a un nom", [{ text: "Dieu nous a parlé par le Fils (Hébreux 1.1-2).", options: { breakLine: true } },
     { text: "« Personne ne peut être sauvé, régénéré, né de nouveau sans comprendre la Parole de Dieu, en particulier la Parole de Dieu concernant la personne de Jésus-Christ » (GTY143).", options: { color: MUTED, paraSpaceBefore: 6 } }], true);
-  bloc(4.725, "À l'incroyant", [{ text: "Les cieux vous ont parlé toute votre vie : vous êtes sans excuse. Aujourd'hui, la Parole vous parle du Rédempteur.", options: { breakLine: true } },
-    { text: "Repentez-vous, croyez en Christ et soumettez-vous à lui comme Seigneur.", options: { bold: true, paraSpaceBefore: 6 } }]);
+  bloc(4.725, "À l'incroyant", [{ text: "Les cieux vous ont parlé toute votre vie : vous êtes sans excuse. Christ est mort pour nos péchés et il est ressuscité (1 Corinthiens 15.3-4).", options: { breakLine: true } },
+    { text: "Repentez-vous, croyez en Christ et soumettez-vous à lui comme Seigneur.", options: { bold: true, fontSize: 17, paraSpaceBefore: 6 } }]);
   bloc(8.85, "Au croyant", [{ text: "Ne cherchez pas ailleurs ce que la Parole vous donne. Désirez-la, laissez-la vous sonder, offrez-vous à Dieu.", options: { breakLine: true } },
     { text: "« Dans votre cœur, en ce moment, pouvez-vous prendre devant le Seigneur un engagement renouvelé à vous vouer à sa Parole? » (80-19)", options: { color: MUTED, paraSpaceBefore: 6 } }]);
   barre(s);
-  s.addNotes(`# 4 min · Romains 10.17; Psaume 19.15
+  s.addNotes(`# 4 min (avec la diapositive suivante) · Romains 10.17; Psaume 19.15
 - **Récapitulation :** le ciel qui parle, assez pour condamner; la Parole qui suffit, assez pour sauver; la Parole qu'on désire plus que l'or; le cœur qui s'offre à son Rédempteur.
-- **Le Rédempteur a un nom :** Dieu qui a parlé autrefois par les prophètes nous a parlé en son Fils (Hébreux 1.1-2). « Personne ne peut être sauvé, régénéré, né de nouveau sans comprendre la Parole de Dieu, en particulier la Parole de Dieu concernant la personne de Jésus-Christ » (GTY143; Romains 10.17).
-- **À l'incroyant :** les cieux vous ont parlé toute votre vie, et vous êtes sans excuse. Aujourd'hui, la Parole vous parle du Rédempteur : repentez-vous, croyez en Christ et soumettez-vous à lui comme Seigneur.
-- **Au croyant :** ne cherchez pas ailleurs ce que la Parole vous donne. Désirez-la, laissez-la vous sonder, offrez-vous à Dieu. « Dans votre cœur, en ce moment, pouvez-vous prendre devant le Seigneur un engagement renouvelé à vous vouer à sa Parole? » (80-19).`);
+- **Le Rédempteur a un nom :** Dieu, qui a parlé autrefois par les prophètes, nous a parlé par le Fils (Hébreux 1.1-2). Paul rappelle, juste avant de citer notre psaume (Romains 10.18), que la foi vient de ce qu'on entend, et que ce qu'on entend vient de la parole de Christ (Romains 10.17). « Personne ne peut être sauvé, régénéré, né de nouveau sans comprendre la Parole de Dieu, en particulier la Parole de Dieu concernant la personne de Jésus-Christ » (GTY143).
+- **À l'incroyant :** les cieux vous ont parlé toute votre vie, et vous êtes sans excuse. Aujourd'hui, la Parole vous parle du Rédempteur : Christ est mort pour nos péchés et il est ressuscité (1 Corinthiens 15.3-4); il a payé le rachat, non avec de l'or, mais par son sang précieux (1 Pierre 1.18-19). Repentez-vous, croyez en Christ et soumettez-vous à lui comme Seigneur.
+- **Au croyant :** ne cherchez pas ailleurs ce que la Parole vous donne. Ce n'est pas un effort de plus : uni à Christ, vous avez reçu son Esprit, qui se sert de cette Parole pour vous transformer. Désirez-la, laissez-la vous sonder, offrez-vous à Dieu. « Dans votre cœur, en ce moment, pouvez-vous prendre devant le Seigneur un engagement renouvelé à vous vouer à sa Parole? » (80-19).`);
 }
 
 // 15. Prière
@@ -596,12 +610,12 @@ pres.addSection({ title: "Conclusion" });
   header(s, "PRIÈRE · PSAUME 19.15", "Prions ensemble");
   card(s, 0.6, 2.05, 7.9, 4.9, true);
   text(s, [
-    ...["Reçois favorablement", "les paroles de ma bouche", "Et les sentiments de mon cœur,", "Ô Éternel, mon rocher", "et mon rédempteur!"].map((l, i) =>
+    ...["Reçois favorablement", "les paroles de ma bouche", "et les sentiments de mon cœur,", "Ô Éternel, mon rocher", "et mon rédempteur!"].map((l, i) =>
       ({ text: l, options: { breakLine: true, color: i >= 3 ? OR_LT : INK } })),
     { text: "Psaume 19.15", options: { fontFace: BODY, italic: false, fontSize: 15, color: DIM, paraSpaceBefore: 14 } },
   ], 1.0, 2.05, 7.1, 4.9, { fontFace: HEAD, fontSize: 32, italic: true, valign: "middle", lineSpacingMultiple: 1.05, objectName: "Prière" });
-  s.addImage({ path: img("medaillon"), x: 8.9, y: 2.2, w: 3.85, h: 3.85, altText: "Médaillon rayonnant : le ciel étoilé et le soleil au-dessus d'un livre ouvert", objectName: "Illustration" });
-  text(s, "De la lumière des étoiles à l'autel du cœur, la Parole de l'Éternel suffit.", 8.55, 6.12, 4.5, 0.8, { fontSize: 15, italic: true, color: MUTED, align: "center" });
+  s.addImage({ path: img("medaillon"), x: 8.82, y: 2.2, w: 3.85, h: 3.85, altText: "Médaillon rayonnant : le ciel étoilé et le soleil au-dessus d'un livre ouvert", objectName: "Illustration" });
+  text(s, "De la lumière des étoiles à l'autel du cœur,\nla Parole de l'Éternel suffit.", 8.75, 6.12, 3.98, 0.8, { fontSize: 15, italic: true, color: MUTED, align: "center" });
   barre(s);
   s.addNotes(`# Prière · Psaume 19.15
 - Prier ensemble le verset 15, lentement, à voix haute.

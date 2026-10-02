@@ -166,7 +166,7 @@ mouvement("m-coeur", 13, `<path d="${heart(500, 395, 0.6)}" fill="url(#m)"/>${ic
 const small = {
   soleil: gi.GiSun, etoiles: gi.GiStarsStack, livre: gi.GiOpenBook, tente: gi.GiCampingTent, or: gi.GiGoldBar, miel: gi.GiHoneycomb,
   coeur: fa.FaHeart, croix: fa.FaCross, oeilbarre: fa.FaEyeSlash, cible: fa.FaBullseye, porte: fa.FaPersonWalkingArrowRight,
-  flamme: gi.GiFire, rocher: gi.GiStoneBlock, colombe: gi.GiDove, loupe: fa.FaMagnifyingGlass, chaine: fa.FaLink, // rocher : GiRock est un poing fermé
+  flamme: gi.GiFire, rocher: gi.GiStonePile, colombe: gi.GiDove, loupe: fa.FaMagnifyingGlass, chaine: fa.FaLink, // rocher : GiRock est un poing fermé, GiStoneBlock une caisse
   parchemin: gi.GiScrollUnfurled, ampoule: fa.FaLightbulb, oeil: fa.FaEye, infini: fa.FaInfinity, balance: fa.FaScaleBalanced,
   joie: gi.GiSparkles, avert: fa.FaTriangleExclamation, drapeau: fa.FaFlagCheckered, poids: fa.FaWeightHanging, globe: fa.FaEarthAmericas,
   mains: fa.FaHandsPraying, boussole: fa.FaCompass, plume: fa.FaFeather, jour: fa.FaCircleHalfStroke, retour: fa.FaArrowRotateLeft,
