@@ -1,0 +1,8 @@
+{
+  "name": "presentations-predication",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}

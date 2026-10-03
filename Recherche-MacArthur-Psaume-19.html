@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Psaume 19 · Les cieux parlent, la Parole transforme · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Psaume 19 dans la perspective de John MacArthur : Les cieux parlent, la Parole transforme.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Psaume 19</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Psaume 19</span></p>
+    <h1 class="hero__title">Les cieux parlent, la Parole transforme</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;La loi de l'Eternel est parfaite, elle restaure l'âme; Le témoignage de l'Eternel est véritable, il rend sage l'ignorant.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Psaume 19.8 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 3 octobre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Psaume 19</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Le Psaume 19 passe sans transition apparente du ciel étoilé à la loi de l'Éternel, puis à la prière d'un serviteur qui se sait pécheur. Le lecteur doit d'abord comprendre ce qui relie ces trois mouvements.</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Les cieux racontent la gloire de Dieu, Et l'étendue manifeste l'œuvre de ses mains.</p><cite class="verse__ref">Psaume 19.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Reçois favorablement les paroles de ma bouche Et les sentiments de mon cœur, O Eternel, mon rocher et mon rédempteur!</p><cite class="verse__ref">Psaume 19.15 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>La suscription, qui forme le verset 1 dans l'hébreu et dans la NEG79, attribue le psaume à David et le destine « au chef des chantres » : c'est un chant pour le culte d'Israël. David, roi d'Israël, est ainsi l'auteur d'un poème qui prend place dans le premier livre du Psautier (Psaumes 1 à 41), entre le Psaume 18, chant de délivrance qui dit déjà que « la parole de l'Eternel est éprouvée » (18.31), et les Psaumes 20 et 21, prières pour le roi.</p><p>Le genre est la poésie lyrique : un hymne au Créateur (versets 2 à 7), suivi d'un éloge de la loi (versets 8 à 11) qui débouche sur une prière personnelle (versets 12 à 15). La poésie hébraïque se lit par son parallélisme : chaque ligne reprend, précise ou prolonge la précédente (« Les cieux racontent… Et l'étendue manifeste… », 19.2). Les images (la tente, l'époux, le héros) signifient par ce qu'elles évoquent, sans être littéralisées ni allégorisées.</p><p>Les bornes sont celles du psaume entier. Le nom divin marque la charnière : la première partie ne nomme Dieu qu'une fois, <i>ʾēl</i> (19.2), la seconde dit sept fois <i>YHWH</i>, l'Éternel (19.8-10 et 19.15), comme le relève Kidner. Un mot-crochet relie pourtant les deux moitiés : « rien ne se dérobe » (<i>nistār</i>, 19.7) à la chaleur du soleil, et le psalmiste demande pardon des fautes « cachées » (<i>nistārôt</i>, 19.13), même verbe au même mode (Bible Hub, analyse morphologique).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Psaume 19</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">David chante un soleil que les peuples voisins adoraient, et que la loi interdisait à Israël d'adorer.</p><div class="body"><p>Le Deutéronome met en garde le peuple : « levant tes yeux vers le ciel, et voyant le soleil, la lune et les étoiles, toute l'armée des cieux, tu ne sois entraîné à te prosterner en leur présence et à leur rendre un culte » (Deutéronome 4.19). Job compte parmi les crimes le cœur qui s'est « laissé séduire en secret » en regardant le soleil briller (Job 31.26-28), et Josias devra plus tard faire disparaître du temple « les chevaux que les rois de Juda avaient consacrés au soleil » et brûler « les chars du soleil » (2 Rois 23.11). Dans le Psaume 19, le soleil a une tente que Dieu lui a dressée (19.5), une course qu'il parcourt (19.6-7) : il n'est qu'une œuvre des mains de Dieu (19.2). Kidner note que, si le psaume effleure la mythologie, il la répudie.</p><p>La « loi de l'Éternel » (19.8) est, pour David, la loi donnée par Moïse. Le Deutéronome demandait au roi d'en écrire une copie et d'y lire « tous les jours de sa vie, afin qu'il apprenne à craindre l'Eternel, son Dieu » (Deutéronome 17.18-19) : le roi-psalmiste chante le livre même qu'il devait lire chaque jour. La même loi distinguait le péché commis « involontairement », pour lequel un sacrifice était prévu (Nombres 15.27), du péché commis « la main levée », qui outrage l'Éternel (Nombres 15.30) : la prière des versets 13 et 14 se lit dans ce cadre.</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>L'époux sort de sa chambre.</b> Le mot rendu « chambre » (19.6), <i>ḥuppâ</i>, désigne selon BDB un dais ou une chambre, ce qui couvre et enclôt. Joël 2.16 l'emploie pour la chambre nuptiale : « Que l'époux sorte de sa demeure, Et l'épouse de sa chambre! » L'image évoque l'éclat et la joie d'un jour de noces, non un mythe solaire.</li><li><b>Le cordeau et la voix.</b> En 19.5, l'hébreu porte <i>qawwām</i>, « leur cordeau » (le cordeau à mesurer), là où la NEG79 traduit « leur retentissement ». BDB note que ce mot est pris au figuré pour leur domaine, mais qu'on lit probablement <i>qōlām</i>, « leur son ». La Septante a <i>ho phthongos autōn</i>, « leur son », que Paul cite en Romains 10.18 (voir l'état du texte et les renvois).</li><li><b>Le miel des rayons.</b> « Plus doux que le miel, que celui qui coule des rayons » (19.11) : <i>nōpet ṣûpîm</i>, le miel qui s'écoule du rayon (Bible Hub, analyse morphologique), le plus doux que connaissait l'auditoire d'origine, comme l'or fin (<i>paz</i>) était l'or le plus précieux.</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Psaume 19</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Sources consultées : hébreu : Codex de Leningrad (Westminster Leningrad Codex) et Codex d'Alep (Bible Hub), lus aux versets 5 et 14 de la NEG79 (angl. 19.4 et 19.13); analyse morphologique de tout le psaume (Bible Hub); Septante, texte du CCAT (Blue Letter Bible), lue aux versets 2 à 5, 14 et 15; versions françaises NEG79 (BibleGateway), LSG, S21 et Darby (bible.audio), KJF (gratis.bible), lues pour les versets étudiés. <b>Numérotation.</b> La NEG79 suit la numérotation hébraïque : la suscription forme le verset 1, et le psaume compte 15 versets. MacArthur prêche sur des versions anglaises, qui ne numérotent pas la suscription : ses versets 1 à 14 sont les versets 2 à 15 de la NEG79 (ses « versets 7 à 9 » sont 19.8-10). La traduction française officielle du sermon 80-19 (FRA-80-19) suit en général la numérotation de la NEG79, avec des écarts ponctuels (« verset 10 » pour l'or fin, qui est en 19.11). La LSG et la Darby de bible.audio, comme la KJF, numérotent à l'anglaise; la Septante en fait le Psaume 18.</p></div><div class="grille__texte"><ul class="points"><li><b>Psaume 19.5.</b> Texte massorétique : <i>qawwām</i>, « leur cordeau » (Codex de Leningrad; Codex d'Alep, consonnes <i>qwm</i>). Septante : <i>ho phthongos autōn</i>, « leur son ». BDB juge probable la lecture <i>qōlām</i>, « leur voix ». <b>NEG79.</b> « Leur retentissement » : la NEG79 rend le sens de la Septante plutôt que « cordeau »; la KJF et d'anciennes versions anglaises (AV) gardent « ligne ». <b>Portée.</b> Le parallèle « leurs accents » (<i>millêhem</i>, « leurs paroles ») appuie le sens « son »; « cordeau » dirait le domaine sans limites de ce témoignage. Les deux lectures disent l'étendue universelle du message. La variante touche Romains 10.18, qui cite le verset selon la Septante.</li><li><b>Psaume 19.14.</b> Texte massorétique : <i>mizzēdîm</i>, « des orgueilleux, des présomptueux » (Codex de Leningrad et Codex d'Alep, sans différence). Septante : <i>apo allotriōn</i>, « des étrangers ». <b>NEG79.</b> « des orgueilleux » : la NEG79 suit le texte massorétique. <b>Portée.</b> La leçon de la Septante ne touche pas le mot étudié en hébreu (<i>zēdîm</i>); la question est d'interprétation : des hommes présomptueux ou des péchés présomptueux (voir l'étude des mots).</li><li><b>Psaume 19.15.</b> Texte massorétique : <i>ṣûrî wᵉgōʾălî</i>, « mon rocher et mon rédempteur ». Septante : <i>boēthe mou kai lutrōta mou</i>, « mon secours et mon rédempteur ». <b>NEG79.</b> « mon rocher et mon rédempteur » : la NEG79 suit le texte massorétique. <b>Portée.</b> Rendu interprétatif de la Septante plutôt que variante du texte hébreu : le sens du verset n'en est pas changé.</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Psaume 19</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><p class="marge__titre">Plan de la péricope</p><ul class="points"><li><b>Psaume 19.1.</b> Suscription : un psaume de David pour le culte. Marqueur : « Au chef des chantres. Psaume de David. » : la suscription forme le verset 1 du texte hébreu.</li><li><b>Psaume 19.2-5b.</b> Le témoignage sans paroles des cieux, jusqu'aux extrémités du monde. Marqueur : deux participes ouvrent l'hymne (<i>mᵉsappᵉrîm</i>, <i>maggîd</i>, 19.2); le seul nom divin de la première partie est <i>ʾēl</i>; la négation <i>ʾên ʾōmer</i>, « pas de langage » (19.4).</li><li><b>Psaume 19.5c-7.</b> Le soleil, image de ce témoignage : sa tente, sa course, sa chaleur. Marqueur : le soleil entre en scène par « pour le soleil » (<i>laššemeš</i>, 19.5c), avec deux comparaisons en <i>kᵉ</i>, « comme un époux… comme un héros » (19.6); clôture : « rien ne se dérobe » (<i>nistār</i>, 19.7).</li><li><b>Psaume 19.8-10.</b> Six énoncés sur la loi de l'Éternel : ce qu'elle est et ce qu'elle fait. Marqueur : changement de nom divin : <i>YHWH</i> six fois; chaque ligne suit le même moule : un nom de la Parole, « de l'Éternel », un adjectif, puis un participe d'effet.</li><li><b>Psaume 19.11-12.</b> La valeur de la Parole pour celui qui la reçoit. Marqueur : comparatifs par <i>min</i>, « plus que l'or… plus que le miel » (19.11); « ton serviteur » (<i>ʿabdᵉkā</i>, 19.12) introduit le « je » qui prie.</li><li><b>Psaume 19.13-14.</b> Prière du serviteur : fautes cachées et péchés d'orgueil. Marqueur : question rhétorique « Qui connaît ses égarements? »; deux impératifs (<i>naqqēnî</i>, « pardonne-moi », 19.13; <i>ḥăśōk</i>, « préserve », 19.14); mot-crochet <i>nistārôt</i> qui répond à <i>nistār</i> (19.7).</li><li><b>Psaume 19.15.</b> Offrande des paroles et des pensées à l'Éternel, rocher et rédempteur. Marqueur : « Reçois favorablement » (<i>lᵉrāṣôn</i>), vocatif <i>YHWH</i>, septième et dernière mention du nom.</li></ul><p class="marge__titre">Observations grammaticales</p><ul class="points"><li><b>Psaume 19.2-3.</b> « Racontent » (<i>mᵉsappᵉrîm</i>, piel participe masculin pluriel) et « manifeste » (<i>maggîd</i>, hifil participe masculin singulier) présentent l'action comme en cours; au verset 3, deux inaccomplis (<i>yabbîaʿ</i>, hifil, et <i>yᵉḥawweh</i>, piel) disent une action qui se répète, « jour » après « jour », « nuit » après « nuit ». Street y voit une action incessante; la grammaire l'autorise, sans que le participe signifie à lui seul « continuellement ».</li><li><b>Psaume 19.4.</b> <i>ʾên ʾōmer wᵉʾên dᵉbārîm bᵉlî nišmāʿ qôlām</i> : trois négations, « pas de langage, pas de paroles, leur voix n'est pas entendue » (<i>nišmāʿ</i>, nifal participe). La NEG79 en fait une relative, « dont le son ne soit point entendu », comme la Septante (<i>hōn ouchi akouontai hai phōnai autōn</i>). L'hébreu se lit plus probablement comme un paradoxe : un discours sans mots, que le verset 5 dit pourtant parvenu à toute la terre. Kidner retient ce paradoxe.</li><li><b>Psaume 19.8-10.</b> Les cinq premiers énoncés s'achèvent par un participe à l'état construit ou absolu qui dit l'effet de la Parole : <i>mᵉšîbat nāpeš</i> (hifil), <i>maḥkîmat petî</i> (hifil), <i>mᵉśammᵉḥê lēb</i> (piel), <i>mᵉʾîrat ʿênāyim</i> (hifil), <i>ʿōmedet lāʿad</i> (qal). Le sixième change de forme : <i>ṣādᵉqû yaḥdāw</i>, un verbe au qal accompli suivi d'un adverbe que BDB range sous « tous ensemble ». Kidner en tire que les quatre premiers verbes disent ce que l'Écriture fait pour l'homme, les deux derniers ce qu'elle est en elle-même. « Véritable » (<i>neʾĕmānâ</i>) est un nifal participe : ce qui est ferme, confirmé, digne de foi.</li><li><b>Psaume 19.11-12.</b> « Plus précieux » traduit <i>hanneḥĕmādîm</i>, nifal participe, « désirables », suivi de deux comparatifs par <i>min</i> (« que l'or », « que le miel »). Au verset 12, « reçoit instruction » rend <i>nizhār</i>, nifal participe, « est averti », et « pour qui les observe » rend <i>bᵉšāmᵉrām</i>, infinitif construit : la récompense est attachée au fait de garder ces paroles.</li><li><b>Psaume 19.13-14.</b> La question « Qui connaît (<i>yābîn</i>, qal inaccompli) ses égarements? » attend la réponse « personne ». Suivent deux impératifs de prière, <i>naqqēnî</i> (piel, « déclare-moi innocent », 19.13) et <i>ḥăśōk</i> (qal, « retiens », 19.14), puis une négation de souhait, <i>ʾal yimšᵉlû bî</i>, « qu'ils ne dominent point sur moi ». La conséquence suit par <i>ʾāz</i>, « alors » : <i>ʾêtām</i>, « je serai intègre », que BDB range sous le verbe <i>tāmam</i>, « être complet, intègre », de la même famille que <i>tᵉmîmâ</i>, « parfaite » (19.8). La loi parfaite rend le serviteur intègre.</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">gloire</a><a href="#mot-2">parfaite</a><a href="#mot-3">restaure</a><a href="#mot-4">orgueilleux</a><a href="#mot-5">rédempteur</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">gloire</h3><p class="mot__translit">kᵉbôd (kābôd)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>honneur, splendeur, gloire</p><p class="mot__champ"><span class="mot__label">Lexique · BDB</span>BDB donne pour le nom « abondance, honneur, gloire » et range 19.2 au sens 2, « honneur, splendeur, gloire », parmi les textes où la gloire de Dieu se manifeste (« toute la terre en est pleine », Ésaïe 6.3). Étymologie : le verbe apparenté <i>kābēd</i> signifie « être lourd, pesant, accablant, honoré » (BDB). Street (MacArthur.txt) part de ce sens « d'origine », le « poids », pour dire « l'importance » de Dieu; l'usage de 19.2 ne demande pas ce détour : le mot dit la splendeur qui se manifeste.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur lit le verset comme la gloire manifestée de Dieu : « Qui ne conclurait pas que Dieu est tout glorieux en regardant les cieux? » (90-340, trad.). La création parle de sa puissance, de son dessein, de son ordre, de son intelligence (90-340). Le lexique et la lecture concordent; l'étymologie du « poids » n'est pas nécessaire au sens.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> gloire</li><li><b>NEG79</b> gloire</li><li><b>Darby</b> gloire</li><li><b>LSG</b> gloire</li><li><b>KJF</b> gloire</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">parfaite</h3><p class="mot__translit">tᵉmîmâ (tāmîm)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>complète, entière, intègre</p><p class="mot__champ"><span class="mot__label">Lexique · BDB</span>BDB : adjectif « complet, sain ». Les sens vont de « complet, entier » (Job 36.4) à « sans défaut », pour les animaux du sacrifice, puis « sain, intact, intègre », sens 4, sous lequel BDB range la voie de Dieu (Psaume 18.31), son œuvre (Deutéronome 32.4) et « la loi de l'Éternel est parfaite » (19.8).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur retient le sens de complétude : « parfait non par opposition à imparfait, mais par opposition à incomplet » (90-340, trad.). Il reprend d'un spécialiste de l'Ancien Testament le sens « sur tous les côtés, afin de couvrir complètement tous les aspects de quelque chose » (FRA-80-19; même formule en 80-249) : « Ce qui signifie donc que l'Écriture couvre toutes choses » (FRA-80-19). C'est une décision d'interprétation, plus proche du sens 1 de BDB (« complet, entier ») que du sens 4 sous lequel BDB range le verset; l'indice du texte est la suite des six énoncés, qui couvre l'âme, l'esprit, le cœur, les yeux, l'adoration et le jugement.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> parfaite</li><li><b>NEG79</b> parfaite</li><li><b>Darby</b> parfaite</li><li><b>LSG</b> parfaite</li><li><b>KJF</b> parfaite</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">restaure</h3><p class="mot__translit">mᵉšîbat (šûb, hifil)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>faire revenir, ramener</p><p class="mot__champ"><span class="mot__label">Lexique · BDB</span>Le verbe <i>šûb</i> signifie « retourner, revenir ». Au hifil, avec <i>nepeš</i> pour complément, BDB donne « rafraîchir, ranimer » et cite Lamentations 1.11, 16 et 19, Proverbes 25.13, Ruth 4.15 et Psaume 19.8. Le participe dit l'effet de la loi, sans préciser l'état de l'âme ramenée.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur donne au terme un champ qui va de « convertir » à « raviver, restaurer, rafraîchir » (FRA-80-19), et en dégage l'idée de transformation : « La Parole est donc si complète qu'elle peut totalement transformer votre être intérieur, votre personne dans son entier » (FRA-80-19). Il lit <i>nepeš</i> comme « l'être intérieur », « le moi véritable » (FRA-80-19). La lecture va au-delà du sens « rafraîchir » que BDB donne pour ce verset : décision d'interprétation, que la largeur du verbe <i>šûb</i> (revenir, se convertir) rend possible.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> donne du réconfort</li><li><b>NEG79</b> restaure</li><li class="ecart"><b>Darby</b> restaurant</li><li><b>LSG</b> restaure</li><li class="ecart"><b>KJF</b> convertissant</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">orgueilleux</h3><p class="mot__translit">zēdîm (zēd)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>insolents, présomptueux</p><p class="mot__champ"><span class="mot__label">Lexique · BDB</span>BDB : adjectif « insolent, présomptueux », toujours au masculin, toujours dit de l'opposition à l'Éternel; employé comme substantif, c'est un terme technique pour les hommes impies et rebelles (Psaume 119.21, 51, 69 et ailleurs). Pour 19.14, BDB retient « probablement aussi » des hommes présomptueux, et signale que des versions anglaises (AV, RV) traduisent « péchés présomptueux ».<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur lit des péchés : « Ce sont des péchés que je vois et prémédite, je les planifie et je les connais, les péchés d'arrogance », opposés aux fautes cachées, « que je n'ai pas prémédités » (FRA-80-19); de même en 90-341, des péchés d'action délibérée, planifiée et préméditée. C'est une décision d'interprétation, contre le sens que BDB juge probable. Indices du texte : le verset 13 parle de fautes et non de personnes, et la conséquence du verset 14, « innocent de grands péchés » (<i>pešaʿ rāb</i>), nomme une transgression. La traduction française officielle du sermon ajoute d'ailleurs « (péchés) » au texte de la NEG79.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> du sentiment d'orgueil</li><li><b>NEG79</b> des orgueilleux</li><li class="ecart"><b>Darby</b> des péchés commis avec fierté</li><li><b>LSG</b> des orgueilleux</li><li class="ecart"><b>KJF</b> des péchés présomptueux</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">rédempteur</h3><p class="mot__translit">gōʾălî (gōʾēl)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>celui qui rachète, le proche parent qui agit</p><p class="mot__champ"><span class="mot__label">Lexique · BDB</span>BDB : verbe « racheter, agir en proche parent ». Le participe <i>gōʾēl</i> désigne d'abord le proche parent qui rachète une terre vendue (Lévitique 25.25), un parent réduit en servitude, ou qui venge le sang. Avec Dieu pour sujet, surtout en poésie, le verbe suppose une relation personnelle; BDB y range « mon rocher et mon rédempteur » (19.15), avec Job 19.25.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Aucune exposition vérifiée de ce mot n'a été lue dans les transcriptions : le jugement suit la lexicographie seule. Le psalmiste qui vient de se reconnaître incapable de connaître ses fautes appelle l'Éternel du nom du proche parent qui rachète : celui qui a le droit et la volonté de le libérer. Kidner y voit Dieu nommé non comme accusateur ou juge, mais comme refuge et défenseur.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> toi qui me rachètes</li><li><b>NEG79</b> rédempteur</li><li><b>Darby</b> rédempteur</li><li class="ecart"><b>LSG</b> libérateur</li><li><b>KJF</b> rédempteur</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Psaume 19</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">La question interprétative du psaume est celle du lien entre ses deux parties : pourquoi un hymne au ciel étoilé devient-il l'éloge de la loi, puis la prière d'un pécheur? MacArthur répond que le psaume passe d'une révélation à l'autre : la création révèle Dieu de façon à rendre l'homme inexcusable, mais seule l'Écriture le transforme (80-249, 80-420).</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-psaume-19-2-7-la-revelation-dans-la-creation"><span class="sommaire__ref">Psaume 19.2-7</span><span class="sommaire__lib">La révélation dans la création</span></a></li><li><a href="#t2-psaume-19-8-10-six-enonces-sur-l-ecriture"><span class="sommaire__ref">Psaume 19.8-10</span><span class="sommaire__lib">Six énoncés sur l'Écriture</span></a></li><li><a href="#t3-psaume-19-11-12-la-valeur-de-la-parole"><span class="sommaire__ref">Psaume 19.11-12</span><span class="sommaire__lib">La valeur de la Parole</span></a></li><li><a href="#t4-psaume-19-13-15-la-parole-qui-sonde-et-la-priere-qui-s-offre"><span class="sommaire__ref">Psaume 19.13-15</span><span class="sommaire__lib">La Parole qui sonde et la prière qui s'offre</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : six sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : six sermons Grace to You sur le Psaume 19 (80-249, 80-420, 90-340, FRA-80-19, 80-308, 90-341), transcriptions lues et recoupées sur gty.org le 3 octobre 2026. En appui, nommés comme tels : John Street, « Pourquoi parler de counseling biblique et non de psychologie? », <i>Introduction au counseling biblique</i> (Éditions Impact, 2021), p. 74-82 (cercle du Master's Seminary, niveau 5; fichier MacArthur.txt), et Derek Kidner, <i>Psalms 1-72</i> (Tyndale Old Testament Commentaries, 1973), pour des observations textuelles vérifiées au texte hébreu (fichier Tyndale.txt).</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">80-249</span></th><td><a href="https://www.gty.org/sermons/80-249" target="_blank" rel="noopener">The Power of Scripture in Preaching</a></td><td>2 déc. 2001 · choix de textes, dont Ps 19.2-8 (angl. 19.1-7)</td></tr><tr><th scope="row"><span class="mot-fr">80-420</span></th><td><a href="https://www.gty.org/sermons/80-420" target="_blank" rel="noopener">Scripture Is Sufficient</a></td><td>1er mars 2015 · Ps 19, lu en entier, exposé jusqu'en 19.10</td></tr><tr><th scope="row"><span class="mot-fr">90-340</span></th><td><a href="https://www.gty.org/sermons/90-340" target="_blank" rel="noopener">God's Own Defense of Scripture, Part 1</a></td><td>26 août 2007 · Ps 19, surtout 19.8-10</td></tr><tr><th scope="row"><span class="mot-fr">FRA-80-19</span></th><td><a href="https://www.gty.org/sermons/FRA-80-19" target="_blank" rel="noopener">La toute suffisance de la Bible, partie 2</a></td><td>5 janv. 1986 · Ps 19.8-15 (traduction française officielle de 80-19)</td></tr><tr><th scope="row"><span class="mot-fr">80-308</span></th><td><a href="https://www.gty.org/sermons/80-308" target="_blank" rel="noopener">Six Attributes of the Nature of Scripture</a></td><td>28 mai 2006 · Ps 19.8-15 (angl. 19.7-14), avec un rappel de 19.2-7</td></tr><tr><th scope="row"><span class="mot-fr">90-341</span></th><td><a href="https://www.gty.org/sermons/90-341" target="_blank" rel="noopener">God's Own Defense of Scripture, Part 2</a></td><td>5 sept. 2007 · choix de textes, Ps 19.10b-15 (angl. 19.9b-14)</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><h3 class="intertitre" id="t1-psaume-19-2-7-la-revelation-dans-la-creation"><span class="intertitre__ref">Psaume 19.2-7</span>La révélation dans la création</h3><p>Pour MacArthur, les six premiers versets anglais (19.2-7) parlent de ce que les théologiens appellent la révélation naturelle; au verset 8, le psaume passe à la révélation spéciale, ou verbale (80-249). Dieu se déclare dans sa création « chaque jour et chaque nuit, sans relâche » (80-308, trad.), et cette création parle de sa puissance, de son dessein, de son ordre, de son intelligence (90-340). Cette révélation est si claire que les hommes sont sans excuse s'ils ne croient pas en Dieu, mais elle a une limite : « La révélation de Dieu dans le monde suffit à condamner, suffit à damner. La révélation dans la Parole suffit à sauver » (80-420, trad.). Les sermons lus n'exposent pas une à une les images de la tente, de l'époux et du héros : ces versets relèvent ici du texte (voir la couverture). Street, du cercle du Master's Seminary, insiste de même sur l'universalité de ce message sans paroles, et sur l'homme qui retient la vérité captive (Romains 1.18-19).</p><h3 class="intertitre" id="t2-psaume-19-8-10-six-enonces-sur-l-ecriture"><span class="intertitre__ref">Psaume 19.8-10</span>Six énoncés sur l'Écriture</h3><p>MacArthur lit les six énoncés comme le témoignage de Dieu sur la suffisance de sa Parole (90-340). La loi est parfaite, c'est-à-dire complète : « Ce qui signifie donc que l'Écriture couvre toutes choses » (FRA-80-19). Elle restaure, ou transforme, l'être intérieur : « Elle est donc toute suffisante pour une conversion, pour une transformation, pour une restauration, pour une naissance spirituelle et pour la croissance en vue de la perfection de la personne dans son entier » (FRA-80-19). Le témoignage est sûr, et rend sage le simple, celui qui « manque de discernement », qui « ne sait pas quand fermer la porte » (FRA-80-19). Les ordonnances sont droites : « Elles indiquent le bon chemin » (FRA-80-19). Pour le commandement « pur », « la meilleure traduction est « clairs » » (FRA-80-19). La « crainte de l'Éternel » désigne l'Écriture par ce qu'elle veut produire : « puisque l'âme humaine est faite pour adorer, l'Écriture nous instruit pour que nous sachions qui adorer et comment l'adorer » (FRA-80-19). Enfin les jugements sont vrais et, selon lui, l'expression « tous justes » qualifie la Parole dans sa totalité : « Elle est totalement juste » (FRA-80-19).</p><h3 class="intertitre" id="t3-psaume-19-11-12-la-valeur-de-la-parole"><span class="intertitre__ref">Psaume 19.11-12</span>La valeur de la Parole</h3><p>MacArthur en tire quatre qualités : l'Écriture est « notre possession la plus précieuse », la source du « plus grand plaisir », de « la plus grande protection » et « du plus grand profit », car « pour qui les observe la récompense est grande » (FRA-80-19). L'avertissement du verset 12 protège face à la tentation, au péché et à l'ignorance (FRA-80-19).</p><h3 class="intertitre" id="t4-psaume-19-13-15-la-parole-qui-sonde-et-la-priere-qui-s-offre"><span class="intertitre__ref">Psaume 19.13-15</span>La Parole qui sonde et la prière qui s'offre</h3><p>Sans la Parole, le psalmiste ne connaît ni ses fautes cachées ni ses péchés délibérés : « Je ne connais pas mes propres fautes secrètes […] C'est ta Parole qui me purifie, qui me convainc » (90-341, trad.). Les fautes cachées sont celles qu'on n'a pas préméditées; les péchés d'orgueil, ceux qu'on « voit et prémédite » (FRA-80-19). Street lit de même les fautes cachées comme les péchés inconnus de l'âme et les péchés d'orgueil comme les péchés connus qui asservissent. Pour le verset 15, MacArthur renvoie à Josué 1.8, que tout Israël connaissait : le livre de la loi doit donner les paroles de la bouche et nourrir la méditation du cœur jour et nuit; les paroles et la méditation agréables à Dieu sont donc celles qui se centrent sur sa Parole (90-341). La lecture rejoint Kidner, qui voit dans les versets 12 à 14 le pendant spirituel du verset 7 : rien ne se dérobe à la chaleur du soleil, et rien ne se dérobe à la Parole.</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>Psaume 19.2 et 19.8-15.</b> Le nom divin change avec le sujet : <i>ʾēl</i> une seule fois dans la première partie, <i>YHWH</i> sept fois dans la seconde. Le Dieu que la création fait connaître comme Créateur se nomme, dans sa loi, du nom de l'alliance.</li><li><b>Psaume 19.4-5.</b> Le message des cieux n'a « pas de langage », « pas de paroles » (19.4), et parvient pourtant « aux extrémités du monde » (19.5) : universel, mais sans mots. La loi, elle, parle : elle « rend sage », « éclaire les yeux » (19.8-9).</li><li><b>Psaume 19.8-10.</b> Chaque énoncé dit un effet sur une partie de l'homme : l'âme (<i>nepeš</i>), le simple (<i>petî</i>), le cœur (<i>lēb</i>), les yeux (<i>ʿênāyim</i>). Le texte lui-même étend l'action de la loi à toute la personne, ce que MacArthur appelle sa suffisance.</li><li><b>Psaume 19.7 et 19.13.</b> « Rien ne se dérobe (<i>nistār</i>) à sa chaleur » répond à « ceux que j'ignore » (<i>nistārôt</i>, les fautes cachées) : même verbe, même mode nifal. Ce que le soleil fait au monde, la Parole le fait au cœur.</li><li><b>Psaume 19.8 et 19.14.</b> La loi est « parfaite » (<i>tᵉmîmâ</i>), et le serviteur pardonné « sera intègre » (<i>ʾêtām</i>), de la même famille de mots selon BDB : l'intégrité promise est celle que produit la loi parfaite.</li><li><b>Psaume 19.15.</b> « Reçois favorablement » rend <i>lᵉrāṣôn</i>, mot que BDB range sous l'agrément, celui des sacrifices offerts devant l'Éternel (Exode 28.38), et qu'il applique ici à des paroles : la prière finale s'offre comme une offrande.</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Huit passages</p></header>
+<p class="lead">Huit passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 1.19-20</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">« Les perfections invisibles de Dieu, sa puissance éternelle et sa divinité, se voient comme à l'œil nu, depuis la création du monde […] Ils sont donc inexcusables » (NEG79). Paul développe ce que le psaume chante : la création fait connaître Dieu à tous, et laisse l'homme sans excuse (80-420).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 10.18</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Paul cite le Psaume 19.5 selon la Septante, <i>ho phthongos autōn</i> (« Leur voix est allée par toute la terre », NEG79), là où l'hébreu massorétique porte <i>qawwām</i>, « leur cordeau ». Le psaume parle du témoignage des cieux; Paul en emprunte les mots pour dire que la proclamation a atteint Israël : « N'ont-ils pas entendu? » C'est un emprunt de vocabulaire qui applique le principe de l'étendue universelle du message, non l'affirmation que le psaume parlait de l'Évangile.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 18.31</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">« Les voies de Dieu sont parfaites, La parole de l'Eternel est éprouvée » (NEG79) : dans le psaume qui précède, le même adjectif <i>tāmîm</i> qualifie la voie de Dieu (BDB, sens 4), et la parole de l'Éternel est déjà dite sûre.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 119.1-3, 105</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Le Psaume 119 multiplie les mêmes noms de la Parole (loi, préceptes, ordonnances) et la dit « une lampe à mes pieds, Et une lumière sur mon sentier » (119.105, NEG79), écho de la loi qui « éclaire les yeux » (19.9).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Josué 1.8</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">« Que ce livre de la loi ne s'éloigne point de ta bouche; médite-le jour et nuit » (NEG79). MacArthur lit le Psaume 19.15 à la lumière de ce texte : les paroles de la bouche et la méditation du cœur agréées sont celles que nourrit la loi (90-341).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Nombres 15.27-31</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">La loi distingue le péché commis « involontairement », couvert par un sacrifice (15.27), et le péché commis « la main levée », qui outrage l'Éternel (15.30). Les « égarements » ignorés (19.13) et les péchés d'orgueil (19.14) reprennent cette distinction, comme le relève Kidner.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Deutéronome 4.19</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Israël ne doit pas se prosterner devant « le soleil, la lune et les étoiles » (NEG79). Le psaume célèbre le soleil comme une créature à qui Dieu a dressé une tente (19.5) : il chante le Créateur, non l'astre.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Hébreux 4.12</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">« La parole de Dieu est vivante et efficace […] elle juge les sentiments et les pensées du cœur » (NEG79). Street la rapproche du Psaume 19.8; le psaume s'achève lui-même sur les « sentiments de mon cœur » (19.15) que la Parole a sondés.</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Cinq axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">La création proclame la gloire de Dieu</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Les cieux racontent la gloire de Dieu, Et l'étendue manifeste l'œuvre de ses mains » (19.2), jour après jour, sans langage ni paroles (19.3-4), jusqu'aux extrémités du monde (19.5); le soleil, que Dieu a placé, parcourt le ciel et « rien ne se dérobe à sa chaleur » (19.7).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Bibliologie : la révélation générale (<i>Biblical Doctrine</i>). MacArthur : elle suffit à condamner, non à sauver (80-420).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Israël savait que les astres sont des créatures (Genèse 1.16) et qu'il ne faut pas les adorer (Deutéronome 4.19). Paul en tirera l'inexcusabilité de tous (Romains 1.19-20) et reprendra les mots du verset 5 pour la proclamation de l'Évangile (Romains 10.18).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le ciel étoilé est une prédication que chacun entend, et que chacun peut étouffer (Romains 1.18). L'assemblée peut s'émerveiller devant la création sans s'y arrêter : la création conduit à l'adoration, elle ne suffit pas à sauver.</p></div></div></section><section class="theme"><h3 class="theme__title">La loi de l'Éternel, parfaite et suffisante</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« La loi de l'Eternel est parfaite, elle restaure l'âme » (19.8); le témoignage rend sage l'ignorant, les ordonnances réjouissent le cœur, les commandements éclairent les yeux, la crainte de l'Éternel subsiste à toujours, et ses jugements « sont tous justes » (19.8-10).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Bibliologie : inerrance et suffisance de l'Écriture (<i>Biblical Doctrine</i>). MacArthur lit ces versets comme le témoignage de Dieu lui-même sur la suffisance de sa Parole (90-340).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>David avait la loi de Moïse, que le roi devait lire chaque jour (Deutéronome 17.18-19). La révélation ultérieure étend ces qualités à « toute Écriture », utile pour que l'homme de Dieu soit « accompli » (2 Timothée 3.16-17).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Street en tire que l'Écriture suffit au soin des âmes : ce qu'elle promet (restaurer, rendre sage, réjouir, éclairer), aucune autre source ne le promet au même niveau. La transformation est l'œuvre de Dieu par sa Parole, reçue avec révérence, non un effort de volonté.</p></div></div></section><section class="theme"><h3 class="theme__title">La Parole, bien suprême du serviteur</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Ils sont plus précieux que l'or, que beaucoup d'or fin; Ils sont plus doux que le miel » (19.11); « Ton serviteur aussi en reçoit instruction; Pour qui les observe la récompense est grande » (19.12).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Sanctification progressive par la Parole (<i>Biblical Doctrine</i>, sotériologie), par rattachement; MacArthur : la possession la plus précieuse, le plus grand plaisir, la plus grande protection, le plus grand profit (FRA-80-19).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le Psaume 119 développera ce désir de la Parole; Josué 1.8 liait déjà la méditation de la loi à la réussite.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'or et le miel mesurent ce que le cœur désire. La question n'est pas d'abord combien de temps l'assemblée consacre à la Bible, mais si elle la désire plus que ce qu'elle désire le plus.</p></div></div></section><section class="theme"><h3 class="theme__title">Les fautes cachées et le péché délibéré</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Qui connaît ses égarements? Pardonne-moi ceux que j'ignore. Préserve aussi ton serviteur des orgueilleux; Qu'ils ne dominent point sur moi! Alors je serai intègre, innocent de grands péchés » (19.13-14).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Hamartiologie, dans l'anthropologie de <i>Biblical Doctrine</i> : le péché qui aveugle et qui asservit, par rattachement; MacArthur : sans la Parole, l'homme ne connaît ni ses fautes secrètes ni ses péchés délibérés (90-341).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>La loi distinguait déjà le péché involontaire du péché « la main levée » (Nombres 15.27-31). Le Nouveau Testament dira que la Parole juge « les sentiments et les pensées du cœur » (Hébreux 4.12).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La prière du psalmiste reconnaît des fautes qu'on ne voit pas et des péchés qui dominent. L'appel à la sainteté passe par le pardon demandé et la protection reçue de Dieu, non par l'autosurveillance.</p></div></div></section><section class="theme"><h3 class="theme__title">L'Éternel, rocher et rédempteur</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Reçois favorablement les paroles de ma bouche Et les sentiments de mon cœur, O Eternel, mon rocher et mon rédempteur! » (19.15).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Théologie propre et sotériologie : Dieu rédempteur (<i>Biblical Doctrine</i>), par rattachement; aucune exposition vérifiée du mot n'a été lue.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le <i>gōʾēl</i> est le proche parent qui rachète (Lévitique 25.25); Job attend son rédempteur vivant (Job 19.25). La révélation ultérieure montrera en Christ celui qui rachète son peuple : développement ultérieur, que David ne pouvait viser en ces termes.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le psaume ne finit pas sur l'effort d'éviter le péché, mais sur une offrande adressée à un Dieu qui rachète. Le serviteur qui se sait incapable de connaître ses fautes peut parler à Dieu, parce que Dieu est son rédempteur.</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Sept questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Votre assemblée lit-elle le Psaume 19 comme « deux psaumes collés » (la nature, puis la Bible)? Qu'est-ce qui, dans le texte (le nom divin, le mot-crochet <i>nistār</i> et <i>nistārôt</i>, la loi parfaite et le serviteur intègre), montre l'unité du poème?</li><li>Street fonde « gloire » sur le sens étymologique de « poids ». Le lexique range 19.2 sous « splendeur, gloire ». Que perdez-vous, et que gagnez-vous, à prêcher le sens que l'usage donne plutôt que l'étymologie?</li><li>Les versets 2 à 7 ne reçoivent dans les sermons lus qu'un traitement d'ensemble. Que permet d'affirmer le texte seul sur la tente, l'époux, le héros et la chaleur, sans allégoriser ces images?</li><li>MacArthur lit « restaure l'âme » comme une transformation totale de l'être intérieur, au-delà du sens « rafraîchir » que donne BDB. Quels indices du texte appuient cette lecture, et comment la prêcher sans promettre un changement instantané?</li><li>Les « orgueilleux » du verset 14 sont-ils des hommes ou des péchés? BDB penche pour les hommes, MacArthur et la KJF pour les péchés. Qu'est-ce qui, dans les versets 13 et 14 eux-mêmes, appuie votre décision, et que change-t-elle à l'application?</li><li>L'assemblée présuppose peut-être que la Bible est un livre d'aide parmi d'autres. Le texte affirme qu'elle restaure, rend sage, réjouit et éclaire : où l'application est-elle trop facile, et où dérange-t-elle (la psychologie, le conseil, la culture du développement personnel)?</li><li>Quel principe passe de David, roi qui devait lire la loi chaque jour, à votre assemblée, et comment le verset 15 transforme-t-il ce principe en prière plutôt qu'en résolution?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Psaume 19 · 3 octobre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Psaume-19.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
