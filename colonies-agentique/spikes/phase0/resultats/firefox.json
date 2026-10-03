@@ -1,3 +1,0 @@
-{
-  "echec": "browserType.launch: spawn UNKNOWN\nCall log:\n\u001b[2m  - <launching> C:\\Users\\agbru\\AppData\\Local\\ms-playwright\\firefox-1543\\firefox\\firefox.exe -no-remote -headless -profile C:\\Users\\agbru\\AppData\\Local\\Temp\\playwright_firefoxdev_profile-gfNOt5 -juggler-pipe -silent\u001b[22m\n\n    at Object.firefox (C:\\Users\\agbru\\OneDrive\\Documents\\GitHub\\Prospection\\colonies-agentique\\spikes\\phase0\\mesurer.ts:40:26)\n    at mesurer (C:\\Users\\agbru\\OneDrive\\Documents\\GitHub\\Prospection\\colonies-agentique\\spikes\\phase0\\mesurer.ts:45:41)\n    at C:\\Users\\agbru\\OneDrive\\Documents\\GitHub\\Prospection\\colonies-agentique\\spikes\\phase0\\mesurer.ts:135:37"
-}
