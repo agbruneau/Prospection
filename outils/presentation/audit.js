@@ -36,9 +36,15 @@ const ok = (cond, msg) => { controles++; if (!cond) erreurs.push(msg); };
   const n = Object.keys(zip.files).filter((f) => /^ppt\/slides\/slide\d+\.xml$/.test(f)).length;
   const notesTous = [];
   let minutes = 0;
+  // Une diapositive sans barre de progression n'est admise que si elle est une image pleine page (l'infographie).
+  const xmls = [];
+  for (let i = 1; i <= n; i++) xmls.push(await zip.file(`ppt/slides/slide${i}.xml`).async("string"));
+  const avecBarre = xmls.map((x) => /name="Progression \d+"/.test(x));
+  const nBarre = avecBarre.filter(Boolean).length;
+  let rangBarre = 0;
 
   for (let i = 1; i <= n; i++) {
-    const xml = await zip.file(`ppt/slides/slide${i}.xml`).async("string");
+    const xml = xmls[i - 1];
     const nx = await zip.file(`ppt/notesSlides/notesSlide${i}.xml`).async("string");
     const lignesNotes = paras(nx);
     notesTous.push(...lignesNotes);
@@ -54,9 +60,15 @@ const ok = (cond, msg) => { controles++; if (!cond) erreurs.push(msg); };
       const [x, y, cx, cy] = m.slice(1).map(Number);
       ok(x >= 0 && y >= 0 && x + cx <= LARG + 1 && y + cy <= HAUT + 1, at(`objet hors de la diapositive (x=${x}, y=${y}, w=${cx}, h=${cy})`));
     }
-    const seg = [...xml.matchAll(/<p:sp>(?:(?!<\/p:sp>)[\s\S])*?name="Progression (\d+)"[\s\S]*?<\/p:sp>/g)];
-    ok(seg.length === n, at(`barre de progression : ${seg.length} segments pour ${n} diapositives`));
-    ok(seg.filter((m) => /<a:srgbClr val="E8742A"/.test(m[0])).length === i, at(`barre de progression : devrait allumer ${i} segment(s)`));
+    if (avecBarre[i - 1]) {
+      const seg = [...xml.matchAll(/<p:sp>(?:(?!<\/p:sp>)[\s\S])*?name="Progression (\d+)"[\s\S]*?<\/p:sp>/g)];
+      rangBarre++;
+      ok(seg.length === nBarre, at(`barre de progression : ${seg.length} segments pour ${nBarre} diapositives`));
+      ok(seg.filter((m) => /<a:srgbClr val="E8742A"/.test(m[0])).length === rangBarre, at(`barre de progression : devrait allumer ${rangBarre} segment(s)`));
+    } else {
+      const pleine = new RegExp(`<p:pic>[\\s\\S]*?<a:off x="0" y="0"/>\\s*<a:ext cx="${LARG}" cy="${HAUT}"/>`);
+      ok(pleine.test(xml), at("pas de barre de progression, et pas une image pleine page"));
+    }
 
     const m = lignesNotes[0] && lignesNotes[0].match(/^(\d+) min/);
     if (m) minutes += Number(m[1]);
