@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Psaume 94 · Le Dieu des vengeances et l&#x27;homme qu&#x27;il instruit · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Psaume 94 dans la perspective de John MacArthur : Le Dieu des vengeances et l&#x27;homme qu&#x27;il instruit.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Psaume 94</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Psaume 94</span></p>
+    <h1 class="hero__title">Le Dieu des vengeances et l'homme qu'il instruit</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Heureux l'homme que tu châties, ô Eternel! Et que tu instruis par ta loi, Pour le calmer aux jours du malheur, Jusqu'à ce que la fosse soit creusée pour le méchant!&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Psaume 94.12-⁠13 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 4 octobre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Psaume 94</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Le Psaume 94 s'ouvre sur un cri que peu d'assemblées osent prier, « Dieu des vengeances, Eternel! Dieu des vengeances, parais! » (94.1), et se ferme sur la certitude que l'Éternel fera retomber sur les méchants leur iniquité (94.23). Entre les deux, il déclare heureux l'homme que Dieu discipline et instruit par sa loi (94.12).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Dieu des vengeances, Eternel! Dieu des vengeances, parais!</p><cite class="verse__ref">Psaume 94.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car l'Eternel ne délaisse pas son peuple, Il n'abandonne pas son héritage;</p><cite class="verse__ref">Psaume 94.14 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le texte massorétique ne donne au psaume ni titre ni auteur, et la NEG79 commence au cri du verset 1. La Septante, où il porte le numéro 93, lui donne pour titre « psaume de David, pour le quatrième jour de la semaine » (<i>psalmos tō Dauid tetradi sabbatōn</i>) : l'attribution à David n'est attestée que par la tradition grecque, et la date reste inconnue. Le psaume prend place dans le quatrième livre du Psautier (Psaumes 90 à 106), entre le Psaume 93, qui proclame « L'Eternel règne » (93.1), et les psaumes qui célèbrent sa venue « pour juger la terre » (96.13); le titre de « juge de la terre » (94.2) le relie à ce voisinage. Le texte ne nomme ni les oppresseurs ni l'époque. Qu'ils exercent un pouvoir en Israël même est la lecture la plus probable : les insensés sont interpellés « parmi le peuple » (<i>bāʿām</i>, 94.8, « les stupides d'entre le peuple » dans la Darby), et le verset 20 parle d'un trône qui fait du malheur un décret. C'est une décision d'interprétation, que le texte appuie sans la trancher.</p><p>Le genre est celui de la complainte, collective d'abord (« ton peuple », 94.5), personnelle ensuite (« Qui se lèvera pour moi », 94.16), traversée d'éléments de sagesse : l'apostrophe aux insensés (94.8-⁠11), la béatitude (<i>ʾašrê</i>, 94.12), l'instruction par la loi. L'appel à la vengeance divine en fait aussi une prière imprécatoire. La poésie se lit par son parallélisme : « Celui qui a planté l'oreille n'entendrait-il pas? Celui qui a formé l'œil ne verrait-il pas? » (94.9) dit deux fois la même vérité par deux images. Les images, le pied qui chancelle, le rocher, la fosse creusée, signifient par ce qu'elles évoquent, sans être littéralisées ni allégorisées.</p><p>Les bornes sont celles du psaume entier, et une inclusion le ferme : le verset 2 demande au juge de « rendre » aux orgueilleux selon leurs œuvres (<i>hāšēb</i>, impératif hiphil de <i>šûb</i>), et le verset 23 déclare qu'il « fait retomber » sur eux leur iniquité (<i>wayyāšeb</i>, hiphil du même verbe).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Psaume 94</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Le psaume suppose un ordre juridique perverti : ceux qui devaient garder le droit des faibles s'en servent pour les écraser.</p><div class="body"><p>La loi plaçait la veuve, l'étranger et l'orphelin sous la protection directe de l'Éternel : « Tu n'affligeras point la veuve, ni l'orphelin » (Exode 22.22), et elle maudissait « celui qui porte atteinte au droit de l'étranger, de l'orphelin et de la veuve » (Deutéronome 27.19). Ce sont précisément les trois victimes du verset 6. Le psaume décrit en outre un tribunal : BDB comprend le trône du verset 20 comme « le siège (tribunal) de la destruction, c'est-à-dire qui ruine l'innocent par l'injustice » (trad.), et le verbe du verset 21, <i>yaršîʿû</i>, est un hiphil que BDB rend par « condamner comme coupable ». La loi maudissait déjà « celui qui reçoit un présent pour répandre le sang de l'innocent » (Deutéronome 27.25) : le verset 21 décrit probablement des juges qui condamnent « le sang innocent ».</p><p>La vengeance, dans les Écritures d'Israël, appartient à Dieu. Le cantique de Moïse la lui réserve : « A moi la vengeance et la rétribution, Quand leur pied chancellera! » (Deutéronome 32.35). Le psalmiste ne réclame pas un droit qu'il exercerait lui-même : il demande à l'Éternel d'exercer celui qu'il s'est réservé. Le psaume a aussi servi au culte : selon la Mishna, on le chantait au Temple le quatrième jour de la semaine.</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>La veuve, l'étranger et l'orphelin.</b> Les trois victimes du verset 6 sont celles que la loi confie à la garde de Dieu : « Tu ne maltraiteras point l'étranger » (Exode 22.21), « Tu n'affligeras point la veuve, ni l'orphelin » (22.22), et la promesse suit : « j'entendrai leurs cris » (22.23). Dire « L'Eternel ne regarde pas » (94.7), c'est nier la promesse même de la loi. Pour un auditeur d'Israël, le verset 6 décrivait donc une révolte contre la loi de l'alliance, non un simple fait divers.</li><li><b>La demeure du silence.</b> Le mot <i>dûmāh</i> (94.17) signifie « silence »; BDB l'identifie ici au séjour des morts (<i>šĕʾôl</i>) et le rapproche du Psaume 115.17, où ce ne sont pas les morts qui célèbrent l'Éternel, « ceux qui descendent dans le lieu du silence ». La Septante rend le mot par <i>tō hadē</i>, le séjour des morts. Le psalmiste dit qu'il serait mort sans le secours de l'Éternel.</li><li><b>Le chant du quatrième jour.</b> La Septante donne au psaume un titre absent de l'hébreu, « pour le quatrième jour de la semaine ». La Mishna (traité Tamid 7.4) rapporte qu'au Temple, le quatrième jour, on récitait le psaume qui commence par « Dieu des vengeances » (trad.). Le psaume appartenait donc à la louange régulière du Temple, du moins à l'époque que décrit la Mishna.</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Psaume 94</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">Psaume 94, titre</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Texte massorétique : aucun titre. Septante : <i>psalmos tō Dauid tetradi sabbatōn</i>, « psaume de David, pour le quatrième jour de la semaine ».</dd></div><div><dt class="mot__label">NEG79</dt><dd>Aucun titre : la NEG79 suit le texte massorétique.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Le titre grec touche l'auteur et l'usage liturgique, non le sens des versets; il rejoint la Mishna, qui assigne le psaume au quatrième jour. L'attribution à David n'a pas d'appui dans l'hébreu.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Psaume 94.1</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Texte massorétique : <i>hôpîaʿ</i>, analysé par Bible Hub et BDB comme un impératif hiphil, « resplendis » (Codex de Leningrad; Codex d'Alep, mêmes consonnes). Septante : <i>eparrēsiasato</i>, aoriste de l'indicatif, qui présente l'action comme accomplie.</dd></div><div><dt class="mot__label">NEG79</dt><dd>« parais! » : la NEG79 suit la lecture massorétique, comme la LSG (« parais! »), la S21 (« révèle-toi! »), la Darby (« fais luire ta splendeur ») et la KJF (« montre-toi »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Les consonnes sont les mêmes : BDB range la même graphie parmi les parfaits en Deutéronome 33.2 et Psaume 50.2. La différence tient à la lecture du verbe : un appel dans l'hébreu vocalisé, un constat dans la Septante. Les impératifs du verset 2 appuient l'appel.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Psaume 94.15</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Texte massorétique : <i>kî-ʿad-ṣedeq yāšûb mišpāṭ</i>, « car le jugement reviendra jusqu'à la justice » (Codex de Leningrad et Codex d'Alep, sans différence). Septante : <i>heōs hou dikaiosunē epistrepsē eis krisin</i>, « jusqu'à ce que la justice revienne au jugement », suivi de <i>diapsalma</i>, absent de l'hébreu à cet endroit.</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Car le jugement sera conforme à la justice » : la NEG79 suit le texte massorétique, que la Darby rend plus littéralement, « le jugement retournera à la justice ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">La Septante intervertit les deux noms et rattache le verset au précédent par « jusqu'à ce que »; le sens général, le rétablissement du droit, demeure, et aucun mot étudié n'est touché.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Psaume 94.23</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Texte massorétique : <i>yaṣmîtēm</i> deux fois, et le premier verbe à la forme narrative <i>wayyāšeb</i> (Codex de Leningrad et Codex d'Alep). Septante : <i>aphaniei autous</i> une seule fois, et le premier verbe au futur, <i>apodōsei</i>.</dd></div><div><dt class="mot__label">NEG79</dt><dd>La NEG79 suit le texte massorétique et garde le redoublement : « Il les réduira au silence par leur méchanceté; L'Eternel, notre Dieu, les réduira au silence ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">La Septante abrège la répétition sans changer le sens. Le redoublement de l'hébreu porte l'insistance finale du psaume.</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>hébreu : Codex de Leningrad (Westminster Leningrad Codex) et Codex d'Alep (Bible Hub), lus aux versets 1, 15, 20 et 23, sans différence de consonnes</li><li>analyse morphologique de tout le psaume (Bible Hub)</li><li>Septante, texte du CCAT (Blue Letter Bible), lue aux versets 1, 11 à 15, 17, 19 à 21 et 23</li><li>versions françaises : NEG79 (BibleGateway, tout le psaume), LSG, S21 et Darby (bible.audio, versets 1, 5, 8, 10, 12, 14, 15, 18 à 20 et 23), KJF (gratis.bible, versets 1, 5, 10, 12, 14, 15, 18 à 20 et 23)</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucun écart : le Psaume 94 n'a pas de suscription dans le texte massorétique, et la NEG79, l'hébreu de Bible Hub, les versions anglaises et les versions françaises comparées numérotent ses 23 versets de la même façon; le sermon 81-⁠94 cite « verses 20 and 21 » selon cette numérotation. La Septante en fait le Psaume 93 et place son titre au début du verset 1.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Psaume 94</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>Psaume</span> <span>94.1-⁠2</span></p><div class="plan__corps"><p class="plan__titre">Appel au Dieu des vengeances, juge de la terre</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> trois impératifs adressés à Dieu (<i>hôpîaʿ</i>, « parais »; <i>hinnāśēʾ</i>, « lève-toi »; <i>hāšēb</i>, « rends ») et le vocatif redoublé « Dieu des vengeances ».</p></div></li><li><p class="plan__ref"><span>Psaume</span> <span>94.3-⁠7</span></p><div class="plan__corps"><p class="plan__titre">Plainte : l'arrogance et les crimes des méchants, et leur credo</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> « Jusqu'à quand » (<i>ʿad-mātay</i>) dit deux fois (94.3); le mouvement se clôt sur la parole des méchants (<i>wayyōʾmĕrû</i>, « et ils disent », 94.7).</p></div></li><li><p class="plan__ref"><span>Psaume</span> <span>94.8-⁠11</span></p><div class="plan__corps"><p class="plan__titre">Réplique aux insensés : le Créateur voit et connaît</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> changement d'interlocuteur et impératif pluriel <i>bînû</i>, « discernez » (94.8), mot-crochet avec <i>lōʾ yābîn</i>, « il ne discerne pas » (94.7); questions rhétoriques ouvertes par <i>hă-</i> (94.9-⁠10).</p></div></li><li><p class="plan__ref"><span>Psaume</span> <span>94.12-⁠15</span></p><div class="plan__corps"><p class="plan__titre">Béatitude de l'homme que Dieu discipline et instruit</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>ʾašrê</i>, « heureux » (94.12); mots-crochets avec 94.10 (<i>yāsar</i>, discipliner; <i>lāmad</i>, enseigner); retour à la deuxième personne adressée à Dieu; deux « car » (<i>kî</i>, 94.14-⁠15).</p></div></li><li><p class="plan__ref"><span>Psaume</span> <span>94.16-⁠19</span></p><div class="plan__corps"><p class="plan__titre">Témoignage : le secours, la bonté et les consolations de l'Éternel</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> passage à la première personne; double question <i>mî</i>, « qui » (94.16); <i>lûlê</i>, « si… ne… pas » (94.17); <i>ʾim ʾāmartî</i>, « quand j'ai dit » (94.18).</p></div></li><li><p class="plan__ref"><span>Psaume</span> <span>94.20-⁠23</span></p><div class="plan__corps"><p class="plan__titre">Le trône des ruines et le rocher du refuge</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> nouvelle question rhétorique (<i>hă-</i>, 94.20); formes narratives <i>wayyĕhî</i> (94.22) et <i>wayyāšeb</i> (94.23); inclusion avec <i>hāšēb</i> (94.2).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>Psaume 94.1-⁠2</dt><dd><i>ʾēl nĕqāmôt</i>, « Dieu des vengeances », est un état construit, dit deux fois, et le nom est au pluriel; BDB compte cinq emplois de ce pluriel sans en commenter la valeur. Bible Hub et BDB analysent <i>hôpîaʿ</i> comme un impératif hiphil, « resplendis », mais BDB range la même graphie parmi les parfaits en Deutéronome 33.2 et Psaume 50.2 : la forme seule ne distingue pas l'appel du constat. Les impératifs du verset 2, <i>hinnāśēʾ</i> (niphal) et <i>hāšēb</i> (hiphil), appuient l'appel.</dd></div><div><dt>Psaume 94.9-⁠10</dt><dd>Les questions s'ouvrent par l'interrogatif <i>hă-</i> et attendent une réponse positive (<i>hălōʾ</i>, « ne… pas? »). Dieu y est désigné par des participes : <i>nōṭaʿ</i>, « celui qui plante »; <i>yōṣēr</i>, « celui qui forme »; <i>yōsēr</i>, « celui qui discipline »; <i>mĕlammēd</i> (piel), « celui qui enseigne ». L'argument va de ce que Dieu fait à ce qu'il sait. Le second membre du verset 10 n'a pas de verbe principal en hébreu, « celui qui enseigne à l'homme la connaissance » : la KJF complète « ne sait-il pas? », la NEG79 le rattache au premier membre, « Lui qui donne à l'homme l'intelligence? ».</dd></div><div><dt>Psaume 94.12-⁠13</dt><dd><i>tĕyassĕrennû</i> et <i>tĕlammĕdennû</i> sont des inaccomplis piel de la deuxième personne, avec suffixe : la béatitude s'adresse à Dieu, « que tu châties… que tu instruis ». L'infinitif construit hiphil <i>lĕhašqîṭ</i>, précédé de <i>lĕ</i>, dit probablement le but, « pour lui donner du repos » (Bible Hub : « that You may give rest »), et <i>mîmê rāʿ</i> porte la préposition <i>min</i>, « de » : le repos est donné à l'égard des jours du malheur, que la NEG79 rend « aux jours du malheur ». <i>ʿad</i> avec l'inaccompli niphal <i>yikkāreh</i> borne ce repos dans le temps : « jusqu'à ce que la fosse soit creusée ».</dd></div><div><dt>Psaume 94.17-⁠18</dt><dd><i>lûlê</i> avec le parfait <i>šākĕnāh</i> forme une condition irréelle : « si l'Éternel n'avait pas été mon secours, mon âme aurait bientôt habité le silence ». Au verset 18, <i>ʾim ʾāmartî</i>, « quand j'ai dit » (parfait), introduit l'inaccompli <i>yisʿādēnî</i>, « elle me soutient » : l'expérience passée fonde une assurance présente.</dd></div><div><dt>Psaume 94.20-⁠21</dt><dd><i>hayĕḥobrĕkā</i> joint l'interrogatif <i>hă-</i> au verbe <i>ḥābar</i> avec suffixe de la deuxième personne : Bible Hub l'analyse comme un inaccompli qal, BDB le range au pual, « être allié à toi ». Le sujet est <i>kissēʾ hawwôt</i>, le trône ou tribunal des ruines (BDB), qualifié par le participe <i>yōṣēr</i> : « qui façonne le malheur » (<i>ʿāmāl</i>) « au moyen d'un décret » (<i>ʿălê-ḥōq</i>, Bible Hub : « by statute »). Le participe est celui du verset 9 : Dieu « a formé l'œil », le trône « façonne le malheur ». La NEG79 rend librement, « Les méchants te feraient-ils siéger sur leur trône, Eux qui forment des desseins iniques en dépit de la loi? »; la Darby, la KJF et la Septante (<i>mē sumprosestai soi thronos anomias</i>) suivent l'hébreu. Le sens de <i>ʿal</i>, « au moyen de » ou « en dépit de », est la décision de traduction.</dd></div><div><dt>Psaume 94.22-⁠23</dt><dd><i>wayyĕhî</i> (94.22) et <i>wayyāšeb</i> (94.23) sont des inaccomplis consécutifs, la forme du récit : « l'Éternel a été pour moi une retraite », « il a fait retomber sur eux ». La fin du verset passe à l'inaccompli <i>yaṣmîtēm</i>, redit. La NEG79 rend au présent (« est ma retraite ») puis au futur (« fera retomber »), et la Septante met aussi le futur. Les formes narratives présentent probablement la réponse comme acquise. Pour <i>yaṣmîtēm</i>, BDB donne au hiphil « exterminer, anéantir » (la LSG : « les anéantira »); il signale, par l'étymologie comparée, le sens « faire taire » en arabe et en syriaque, d'où peut-être le rendu de la NEG79, « les réduira au silence ».</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">vengeances</a><a href="#mot-2">châties</a><a href="#mot-3">héritage</a><a href="#mot-4">bonté</a><a href="#mot-5">pensées</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">vengeances</h3><p class="mot__translit">nĕqāmôt (nĕqāmāh)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>vengeance, au pluriel</p><p class="mot__champ"><span class="mot__label">Lexique · BDB</span>BDB : nom féminin, « vengeance ». Au premier sens, la vengeance de Dieu, où il range <i>ʾēl nĕqāmôt</i> du Psaume 94.1 (« deux fois dans le verset ») avec « le jour de la vengeance » (Jérémie 46.10) et la vengeance de l'Éternel (Jérémie 50.15, 28). Aux autres sens, la vengeance exercée par Israël et ses chefs (Nombres 31.2-⁠3), ou par les ennemis d'Israël (Lamentations 3.60). BDB relève cinq emplois du pluriel. Dans le psaume, le verset 2 donne le parallèle : le juge de la terre, la rétribution rendue aux orgueilleux selon leurs œuvres.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Aucune source lue ne couvre ce mot : le jugement suit la lexicographie seule. La vengeance du verset 1 est celle du premier sens de BDB, la vengeance de Dieu, et le parallèle du verset 2 la qualifie : c'est l'acte du juge qui rend selon les œuvres, non une revanche personnelle. Le psalmiste la demande à Dieu; il ne l'exerce pas.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> vengeances</li><li><b>NEG79</b> vengeances</li><li><b>Darby</b> vengeances</li><li><b>LSG</b> vengeances</li><li class="ecart"><b>KJF</b> à qui appartient la vengeance</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">châties</h3><p class="mot__translit">tĕyassĕrennû (yāsar)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>discipliner, corriger</p><p class="mot__champ"><span class="mot__label">Lexique · BDB</span>BDB : « discipliner, châtier, avertir ». Le participe qal du verset 10 (<i>yōsēr</i>) est rangé sous « discipliner », de Dieu (avec Osée 10.10). Le piel du verset 12 est rangé au premier sens du piel, « discipliner, corriger (la nature morale, avec plus ou moins de sévérité selon les circonstances) » (trad.), de Dieu, avec Deutéronome 8.5, où Israël est discipliné comme un fils. BDB en distingue un second sens, « plus sévèrement, châtier » (Psaume 6.2; Jérémie 10.24), où il ne range pas le Psaume 94.12. Le parallèle « et que tu instruis par ta loi » (<i>lāmad</i>, piel) tire le mot vers la formation. La Septante emploie <i>paideuō</i> (<i>paideusēs</i>).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Aucune source lue ne couvre ce mot : le jugement suit la lexicographie seule. Au verset 12, la discipline est d'abord formation par la loi; la sévérité que porte « châtier » en français n'est pas exclue, mais BDB ne range pas ce verset sous le sens sévère. Le rendu de la S21, « corriges », est plus proche de ce classement que « châties ».</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> corriges</li><li><b>NEG79</b> châties</li><li><b>Darby</b> châties</li><li><b>LSG</b> châties</li><li><b>KJF</b> châties</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">héritage</h3><p class="mot__translit">naḥălāh</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>possession, propriété, héritage</p><p class="mot__champ"><span class="mot__label">Lexique · BDB</span>BDB : « possession, propriété, héritage ». Au premier sens, la propriété : la terre de Canaan donnée par l'Éternel à Israël, les parts des tribus, puis Israël lui-même comme propriété de l'Éternel, sous lequel BDB range les versets 5 et 14 du psaume, avec la paire « ton peuple et ton héritage » de Deutéronome 9.26, 29 et de 1 Rois 8.51. Les autres sens sont la part assignée et l'héritage transmis. Dans le psaume, le mot est chaque fois joint à « peuple » (94.5, 94.14).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Aucune source lue ne couvre ce mot : le jugement suit la lexicographie seule. L'héritage est Israël en tant que propriété de l'Éternel. Le verset 14 répond à la plainte du verset 5 avec les deux mêmes mots, rapportés cette fois à l'Éternel : les méchants écrasent « ton peuple » et « ton héritage », l'Éternel n'abandonne pas « son peuple » ni « son héritage ».</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> héritage</li><li><b>NEG79</b> héritage</li><li><b>Darby</b> héritage</li><li><b>LSG</b> héritage</li><li><b>KJF</b> héritage</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">bonté</h3><p class="mot__translit">ḥesed (ḥasdĕkā)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>bonté, bienveillance</p><p class="mot__champ"><span class="mot__label">Lexique · BDB</span>BDB : « bonté, bienveillance »; employé de Dieu, la bienveillance « qui condescend aux besoins de ses créatures » (trad.). BDB range le Psaume 94.18 sous la bienveillance de Dieu « dans la délivrance des ennemis et des détresses » (trad.), avec Exode 15.13 et Psaume 107.8. Dans le psaume, le mot est encadré par le « secours » (94.17) et la « retraite » (94.22).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Aucune source lue ne couvre ce mot : le jugement suit la lexicographie seule. La bonté du verset 18 est la bienveillance active de Dieu qui délivre : elle soutient (<i>yisʿādēnî</i>) le pied qui chancelle.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> bonté</li><li><b>NEG79</b> bonté</li><li><b>Darby</b> bonté</li><li><b>LSG</b> bonté</li><li class="ecart"><b>KJF</b> miséricorde</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">pensées</h3><p class="mot__translit">śarʿappay (śarʿappîm)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>pensées qui troublent</p><p class="mot__champ"><span class="mot__label">Lexique · BDB</span>BDB : nom pluriel, « pensées qui troublent » (<i>disquieting thoughts</i>), au Psaume 94.19 « apparemment des doutes anxieux » (trad.), et au Psaume 139.23 des pensées secrètes, ouvertes à l'Éternel. Le mot n'est pas celui du verset 11 (<i>maḥšĕbôt</i>, « les pensées de l'homme »). La Septante le rend par <i>tōn odunōn mou</i>. En face, <i>tanḥûmêkā</i>, « tes consolations » : BDB note que le mot n'existe qu'au pluriel, « généralement abstrait et intensif » (trad.).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Aucune source lue ne couvre ce mot : le jugement suit la lexicographie seule. Ce sont les inquiétudes du psalmiste, multipliées (<i>bĕrōb</i>, « dans l'abondance ») au-dedans de lui; la NEG79, « les pensées s'agitent en foule », dit à la fois leur nombre et leur agitation.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> pensées</li><li><b>NEG79</b> pensées</li><li><b>Darby</b> pensées</li><li><b>LSG</b> pensées</li><li><b>KJF</b> pensées</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Lacune déclarée</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Psaume 94</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Aucune exposition de MacArthur n'a été trouvée sur le Psaume 94 : aucun sermon ne l'expose, et aucun extrait des niveaux 2 à 4 n'a été fourni (voir la couverture des sources). Ce qui suit relève du texte seul; les décisions d'interprétation sont déclarées comme telles, et aucune lecture n'est prêtée à MacArthur.</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-psaume-94-1-7-l-appel-au-juge-et-la-plainte"><span class="sommaire__ref">Psaume 94.1-⁠7</span><span class="sommaire__lib">L'appel au juge et la plainte</span></a></li><li><a href="#t2-psaume-94-8-11-le-dieu-qui-voit"><span class="sommaire__ref">Psaume 94.8-⁠11</span><span class="sommaire__lib">Le Dieu qui voit</span></a></li><li><a href="#t3-psaume-94-12-15-l-homme-que-dieu-instruit"><span class="sommaire__ref">Psaume 94.12-⁠15</span><span class="sommaire__lib">L'homme que Dieu instruit</span></a></li><li><a href="#t4-psaume-94-16-23-le-temoignage-et-la-certitude"><span class="sommaire__ref">Psaume 94.16-⁠23</span><span class="sommaire__lib">Le témoignage et la certitude</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau ∅</span>Sources de l'exposition</summary><div class="sources__corps"><p>Niveau ∅ : aucune exposition de MacArthur ni du cercle Master's Seminary trouvée sur le Psaume 94 (gty.org et tms.edu consultés le 4 octobre 2026); aucun extrait des niveaux 2 à 4 fourni</p></div></details></aside><div class="grille__texte"><div class="body"><p>La question centrale est celle que le psaume pose lui-même : « Jusqu'à quand les méchants, ô Eternel! Jusqu'à quand les méchants triompheront-ils? » (94.3). Le psalmiste ne se fait pas justice : il appelle le juge (94.1-⁠2). Le texte répond en trois temps : Dieu voit ce que les méchants croient caché (94.8-⁠11); dans l'intervalle, il instruit l'homme qu'il déclare heureux (94.12-⁠15); il soutient celui qui chancelle et fera retomber l'iniquité sur ses auteurs (94.16-⁠23).</p><h3 class="intertitre" id="t1-psaume-94-1-7-l-appel-au-juge-et-la-plainte"><span class="intertitre__ref">Psaume 94.1-⁠7</span>L'appel au juge et la plainte</h3><p>Le parallélisme des versets 1 et 2 définit la vengeance demandée : le « Dieu des vengeances » est le « juge de la terre », et l'acte attendu est de rendre aux orgueilleux « selon leurs œuvres » (<i>hāšēb gĕmûl</i>, rendre la rétribution). C'est la vengeance d'un juge, réclamée à son tribunal. La plainte décrit ensuite les méchants par leur parole (94.4), par leurs actes contre « ton peuple » et « ton héritage » (94.5), contre la veuve, l'étranger et les orphelins (94.6), et enfin par leur credo : « L'Eternel ne regarde pas, Le Dieu de Jacob ne fait pas attention! » (94.7). Le texte ne dit pas qui ils sont; qu'ils exercent un pouvoir en Israël même est la lecture la plus probable (« parmi le peuple », 94.8; le trône et le décret, 94.20), mais c'est une décision d'interprétation.</p><h3 class="intertitre" id="t2-psaume-94-8-11-le-dieu-qui-voit"><span class="intertitre__ref">Psaume 94.8-⁠11</span>Le Dieu qui voit</h3><p>Le psalmiste retourne contre les insensés le verbe de leur credo : ils disaient que Dieu « ne discerne pas » (<i>lōʾ yābîn</i>, 94.7); il leur ordonne de discerner (<i>bînû</i>, 94.8, que la NEG79 rend « Prenez-y garde »). L'argument part de la création : celui qui a planté l'oreille et formé l'œil entend et voit (94.9); celui qui discipline les nations ne laissera pas l'injustice sans réplique (94.10). La conclusion renverse le verset 7 : « L'Eternel connaît les pensées de l'homme, Il sait qu'elles sont vaines » (94.11), littéralement qu'elles sont une vapeur (<i>hebel</i>, Bible Hub : « vapor »). Paul cite ce verset dans la forme de la Septante pour juger la sagesse du monde (1 Corinthiens 3.20).</p><h3 class="intertitre" id="t3-psaume-94-12-15-l-homme-que-dieu-instruit"><span class="intertitre__ref">Psaume 94.12-⁠15</span>L'homme que Dieu instruit</h3><p>Deux mots-crochets relient la béatitude à ce qui précède : Dieu discipline les nations (<i>yōsēr</i>, 94.10) et il discipline l'homme qu'il déclare heureux (<i>tĕyassĕrennû</i>, 94.12); il enseigne à l'homme la connaissance (<i>mĕlammēd</i>, 94.10) et il l'instruit par sa loi (<i>tĕlammĕdennû</i>, 94.12). Le Dieu qui jugera les nations forme les siens par sa loi. Cette discipline a un but, le repos « aux jours du malheur » (94.13), et une borne, « jusqu'à ce que la fosse soit creusée pour le méchant » : le texte ne promet pas la fin immédiate du malheur, mais le repos dans l'intervalle qui précède le jugement. Les deux « car » des versets 14 et 15 fondent la béatitude : l'Éternel n'abandonne pas son peuple ni son héritage, la paire même que les méchants écrasaient au verset 5, et le jugement reviendra à la justice.</p><h3 class="intertitre" id="t4-psaume-94-16-23-le-temoignage-et-la-certitude"><span class="intertitre__ref">Psaume 94.16-⁠23</span>Le témoignage et la certitude</h3><p>Le psalmiste passe à la première personne. À la question « Qui se lèvera pour moi contre les méchants? » (94.16), il répond par son expérience : sans le secours de l'Éternel, il aurait habité « la demeure du silence » (94.17, condition irréelle); quand son pied chancelle, la bonté de l'Éternel le soutient (94.18); quand les pensées inquiètes se multiplient, les consolations de Dieu réjouissent son âme (94.19). Le verset 20 pose une dernière question : le tribunal qui fait du malheur un décret peut-il être allié à Dieu? La réponse, implicite, est négative : ceux qui y siègent « se rassemblent contre la vie du juste, Et ils condamnent le sang innocent » (94.21), mais « l'Eternel est ma retraite, Mon Dieu est le rocher de mon refuge » (94.22). Les formes narratives des versets 22 et 23 présentent la réponse comme acquise, et le verset 23 reprend le verbe de la demande du verset 2 : ce que le psalmiste demandait au juge de rendre, le juge le fait retomber.</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>Psaume 94.1-⁠2.</b> « Dieu des vengeances » est mis en parallèle avec « juge de la terre » et avec l'ordre de rendre aux orgueilleux selon leurs œuvres : la vengeance demandée est judiciaire, et elle est demandée à Dieu.</li><li><b>Psaume 94.7-⁠8.</b> Le même verbe <i>bîn</i> passe du credo des méchants (« il ne discerne pas », 94.7) à l'ordre qui leur est adressé (« discernez », 94.8) : la réplique répond au mot près.</li><li><b>Psaume 94.10-⁠12.</b> <i>yāsar</i> et <i>lāmad</i> reviennent du verset 10 au verset 12 : le Dieu qui discipline et enseigne les nations discipline et instruit l'homme qu'il déclare heureux.</li><li><b>Psaume 94.5 et 94.14.</b> « ton peuple » et « ton héritage » (94.5) reviennent en « son peuple » et « son héritage » (94.14) : la promesse répond à la plainte, terme pour terme.</li><li><b>Psaume 94.17-⁠19.</b> <i>lûlê</i> et le parfait (94.17) font du secours divin la seule raison pour laquelle le psalmiste vit encore; la bonté (<i>ḥasdĕkā</i>) et les consolations (<i>tanḥûmêkā</i>) portent le suffixe de la deuxième personne : elles sont celles de Dieu.</li><li><b>Psaume 94.2 et 94.23.</b> Le hiphil de <i>šûb</i> ouvre et ferme le psaume : l'impératif <i>hāšēb</i>, « rends » (94.2), devient la forme narrative <i>wayyāšeb</i>, « il a fait retomber » (94.23).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Huit passages</p></header>
+<p class="lead">Huit passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Deutéronome 32.35-⁠36</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">« A moi la vengeance et la rétribution, Quand leur pied chancellera! » puis « L'Eternel jugera son peuple » (NEG79). Le cantique de Moïse emploie le nom apparenté <i>nāqām</i>, « vengeance », et le même verbe que le Psaume 94.18 avec le même nom (<i>tāmûṭ raglām</i>, « leur pied chancellera »; <i>māṭāh raglî</i>, « mon pied chancelle »).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 3.19-⁠20</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">« Le Seigneur connaît les pensées des sages, Il sait qu'elles sont vaines » (NEG79) cite le Psaume 94.11. Le grec de Paul (<i>Kurios ginōskei tous dialogismous tōn sophōn hoti eisin mataioi</i>) reprend la Septante (Psaume 93.11) mot pour mot, sauf <i>tōn sophōn</i>, « des sages », à la place de <i>tōn anthrōpōn</i>, « des hommes » : forme de la Septante adaptée par l'auteur. Le psaume visait les insensés qui disent que Dieu ne voit pas; Paul applique le principe à la sagesse de ce monde (3.19).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 11.1-⁠2</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">« Dieu n'a point rejeté son peuple, qu'il a connu d'avance » (NEG79). Le grec, <i>ouk apōsato ho theos ton laon autou</i>, reprend les mots de la Septante du Psaume 93.14, <i>ouk apōsetai kurios ton laon autou</i>, que la Septante porte aussi en 1 Samuel 12.22 : Paul ne nomme pas sa source, et met le verbe à l'aoriste. Il applique l'affirmation à Israël, « Car moi aussi je suis Israélite » (11.1).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Hébreux 12.5-⁠6</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">« Car le Seigneur châtie celui qu'il aime » (NEG79) : l'épître cite Proverbes 3 et non le psaume, mais emploie le même verbe grec que la Septante du Psaume 94.12, <i>paideuō</i> (<i>paideuei</i>; <i>paideusēs</i> dans le psaume). La discipline de Dieu y est celle d'un père envers ses fils.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Job 5.17</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">« Heureux l'homme que Dieu châtie! Ne méprise pas la correction du Tout-Puissant » (NEG79) : la même béatitude paradoxale que le Psaume 94.12, dans la bouche d'Éliphaz.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 73.2-⁠3</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">« Toutefois, mon pied allait fléchir, Mes pas étaient sur le point de glisser; Car je portais envie aux insensés, En voyant le bonheur des méchants » (NEG79) : la même épreuve devant le succès des méchants, et la même image du pied qui vacille (Psaume 94.18).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Apocalypse 6.10</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">« Jusqu'à quand, Maître saint et véritable, tarderas-tu à juger, et à tirer vengeance de notre sang sur les habitants de la terre? » (NEG79) : les âmes des martyrs reprennent le « Jusqu'à quand » du Psaume 94.3 et la vengeance demandée au juge du Psaume 94.1-⁠2.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Exode 22.21-⁠23</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">La loi protège l'étranger, la veuve et l'orphelin, et l'Éternel promet : « j'entendrai leurs cris » (22.23, NEG79). Le Psaume 94.6-⁠7 décrit le crime contre ces trois mêmes victimes, et la négation de cette promesse : « L'Eternel ne regarde pas ».</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Cinq axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">Le Dieu des vengeances, juge de la terre</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Dieu des vengeances, Eternel! Dieu des vengeances, parais! » (94.1); « Lève-toi, juge de la terre! Rends aux orgueilleux selon leurs œuvres! » (94.2); « Il fera retomber sur eux leur iniquité » (94.23).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Théologie propre : la justice de Dieu, qui rend à chacun selon ses œuvres; eschatologie : le jugement, par rattachement à <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le cantique de Moïse réservait la vengeance à l'Éternel (Deutéronome 32.35); le psalmiste demande au juge de l'exercer. Dans l'Apocalypse, les âmes des martyrs reprennent le même « Jusqu'à quand » et la même demande (Apocalypse 6.10).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le psaume ne prend pas la vengeance en main : il la remet au juge. L'assemblée blessée par l'injustice peut porter sa plainte devant Dieu, en des termes aussi francs que ceux du psaume, sans se faire justice elle-même et sans taire le mal.</p></div></div></section><section class="theme"><h3 class="theme__title">Le Dieu qui voit, entend et connaît</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Celui qui a planté l'oreille n'entendrait-il pas? Celui qui a formé l'œil ne verrait-il pas? » (94.9); « L'Eternel connaît les pensées de l'homme, Il sait qu'elles sont vaines » (94.11), contre ceux qui disent : « L'Eternel ne regarde pas » (94.7).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Théologie propre : l'omniscience de Dieu, fondée sur son œuvre de Créateur, par rattachement à <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Paul reprend le verset 11 dans la forme de la Septante et l'applique aux sages de ce monde (1 Corinthiens 3.19-⁠20) : le principe dépasse les oppresseurs du psaume.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'injustice commise en secret suppose un Dieu qui ne voit pas. Le texte réfute cette illusion par la création avant la menace : celui qui a fait l'œil voit. Pour le croyant opprimé, la même vérité fonde la confiance.</p></div></div></section><section class="theme"><h3 class="theme__title">La discipline qui instruit par la loi</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Heureux l'homme que tu châties, ô Eternel! Et que tu instruis par ta loi, Pour le calmer aux jours du malheur, Jusqu'à ce que la fosse soit creusée pour le méchant! » (94.12-⁠13).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Sotériologie : la sanctification progressive par la Parole et la discipline paternelle de Dieu, par rattachement à <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Deutéronome 8.5 compare déjà la discipline de Dieu envers Israël à celle d'un père pour son fils (BDB); l'épître aux Hébreux l'applique aux croyants avec le verbe grec que la Septante emploie dans le psaume, <i>paideuō</i> (Hébreux 12.5-⁠6).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La discipline ne se réduit pas à la souffrance : le texte la joint à l'instruction « par ta loi ». Le croyant éprouvé reçoit dans l'Écriture, par l'Esprit et dans son union avec Christ, le repos que le verset 13 promet; il ne le fabrique pas par l'effort.</p></div></div></section><section class="theme"><h3 class="theme__title">L'Éternel n'abandonne pas son héritage</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Car l'Eternel ne délaisse pas son peuple, Il n'abandonne pas son héritage; » (94.14), en réponse à la plainte : « ils écrasent ton peuple, Ils oppriment ton héritage » (94.5).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Ecclésiologie et eschatologie : Israël, peuple et héritage de l'Éternel, distinct de l'Église, et la fidélité de Dieu à ses promesses envers lui, par rattachement à <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>BDB range les deux emplois du mot sous Israël, propriété de l'Éternel. Paul reprend la même affirmation, dans la forme de la Septante, pour l'Israël de son temps : « Dieu n'a point rejeté son peuple, qu'il a connu d'avance » (Romains 11.2), après avoir précisé : « Car moi aussi je suis Israélite » (11.1).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le verset parle d'Israël, et Paul le lit ainsi. L'assemblée n'en reçoit pas la promesse en prenant la place d'Israël; elle y apprend la fidélité du Dieu qui n'abandonne pas ce qui lui appartient, fidélité sur laquelle elle s'appuie en Christ.</p></div></div></section><section class="theme"><h3 class="theme__title">La bonté qui soutient et les consolations</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Si l'Eternel n'était pas mon secours, Mon âme serait bien vite dans la demeure du silence » (94.17); « Quand je dis: Mon pied chancelle! Ta bonté, ô Eternel! me sert d'appui » (94.18); « Tes consolations réjouissent mon âme » (94.19).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Théologie propre : la bonté de Dieu; sotériologie : la préservation des siens par Dieu, que <i>Biblical Doctrine</i> traite sous la persévérance des saints, par rattachement.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le cantique de Moïse annonçait que le pied des ennemis chancellerait (Deutéronome 32.35, même verbe <i>mûṭ</i> et même nom « pied »); ici c'est le pied du juste qui chancelle, et la bonté de l'Éternel le soutient. Le Psaume 73 décrit la même vacillation devant le bonheur des méchants (73.2-⁠3).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le texte situe le réconfort hors du psalmiste : ce sont la bonté et les consolations de l'Éternel. Le croyant inquiet n'est pas renvoyé à sa propre stabilité, mais au Dieu qui le soutient.</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Sept questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Votre assemblée peut-elle prier « Dieu des vengeances, parais! » sans gêne? Qu'est-ce qui, dans le parallèle du verset 2 (le juge, la rétribution, les orgueilleux), distingue cette prière d'un désir de revanche?</li><li>Les insensés sont interpellés « parmi le peuple » (94.8), et le verset 20 parle d'un tribunal qui fait du malheur un décret. Comment prêcher un psaume qui place l'injustice au sein même du peuple de l'alliance, sans en faire un commentaire politique?</li><li>Le verset 12 déclare heureux l'homme que Dieu discipline, au milieu d'un psaume sur l'oppression. Confondez-vous l'oppression infligée par les méchants et la discipline que Dieu donne « par ta loi »? Qu'est-ce que le texte relie, et qu'est-ce qu'il distingue?</li><li>Le repos du verset 13 dure « jusqu'à ce que la fosse soit creusée pour le méchant ». Votre application promet-elle la fin de l'épreuve, ou le repos dans l'épreuve?</li><li>Le verset 14 parle de « son peuple » et de « son héritage », et Paul le reprend pour Israël (Romains 11.1-⁠2). Quel principe passe à votre assemblée sans qu'elle prenne la place d'Israël dans la promesse?</li><li>Aucune exposition de MacArthur n'a été lue sur ce psaume. Que permet d'affirmer le texte seul sur la vengeance et sur la discipline, et qu'êtes-vous prêt à ne pas affirmer?</li><li>« Quand les pensées s'agitent en foule au-dedans de moi » (94.19) : prêchez-vous les consolations de Dieu, ou une technique contre l'anxiété? Où le texte situe-t-il la source du réconfort?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Psaume 94 · 4 octobre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Psaume-94.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
