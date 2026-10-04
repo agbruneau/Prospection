@@ -211,7 +211,7 @@ oeil(s, 10.3, 3.75, 3.5, "Œil", true);
 s.addText("Jusqu'à quand?", { placeholder: "title" });
 s.addText("Le Dieu qui voit, qui instruit et qui rendra", { placeholder: "body" });
 s.addText("Psaume 94 · André-Guy Bruneau · Prédication expositive · NEG79", { placeholder: "meta" });
-s.addNotes("Lecture publique du Psaume 94 en entier avant l'introduction (environ 2 min), avec une courte pause avant les versets 8, 12 et 16. Durée visée : 42 minutes. Phrase à faire retenir : Dieu voit, Dieu instruit, Dieu rendra.");
+s.addNotes("Lecture publique du Psaume 94 en entier avant l'introduction (environ 2 min), avec une courte pause avant les versets 8, 12 et 16. Durée visée : 42 minutes. Phrase à faire retenir : Dieu voit, Dieu instruit, Dieu rendra. Les gloses de BDB citées sont traduites de l'anglais.");
 
 // --- 2. Quatre mouvements ---
 
@@ -354,8 +354,8 @@ s.addText("I · Le Dieu à qui l'on crie · 94.1-2", { placeholder: "kicker" });
 s.addText("Trois impératifs adressés à Dieu", { placeholder: "title" });
 const imper = [
   ["Parais", "hôpîaʿ", "« Pt-ê. s'agit-il ici d'une demande de théophanie (cf. 50.2; 80.2) » Au Psaume 80.2 : « Parais dans ta splendeur ».", 2.3],
-  ["Lève-toi", "hinnāśēʾ", "Le Dieu des vengeances est le « juge de la terre » (94.2).", 2.65],
-  ["Rends", "hāšēb", "« aux orgueilleux selon leurs œuvres! » La réponse viendra au verset 23.", 3.0],
+  ["Lève-toi", "hinnāśēʾ", "Le Dieu des vengeances est le « juge de la terre » (94.2). Texte seul.", 2.65],
+  ["Rends", "hāšēb", "« aux orgueilleux selon leurs œuvres! » La réponse viendra au verset 23. Texte seul.", 3.0],
 ];
 imper.forEach(([verbe, heb, det, h], i) => {
   const x = 0.6 + i * 4.1, top = 4.9 - h;
@@ -434,7 +434,7 @@ s.addNotes("Deuxième point : le psalmiste se tourne vers les insensés et leur 
 // --- 12. Le mot retourné ---
 
 s = nouvelle(SEC_II, "CONTENU");
-s.addText("II · Le Dieu qui voit · 94.7-8 · texte seul", { placeholder: "kicker" });
+s.addText("II · Le Dieu qui voit · 94.8 · texte seul", { placeholder: "kicker" });
 s.addText("Le psalmiste renvoie aux insensés leur mot", { placeholder: "title" });
 [
   ["94.7 · le credo", "« ne fait pas attention »", "lōʾ yābîn : « il ne discerne pas »", "94.8 · la réplique", "« Prenez-y garde »", "bînû : « discernez »"],
@@ -455,7 +455,7 @@ s.addText("Le psalmiste renvoie aux insensés leur mot", { placeholder: "title" 
 etiquette(s, "bōʿărîm, « hommes stupides » : un participe, en parallèle avec « insensés » (BDB)", 0.6, 5.85, 5.95, 0.75, { fond: CARTE, ligne: { color: TRAIT, width: 1 }, taille: 14, nom: "Participe" });
 etiquette(s, "bāʿām, « parmi le peuple » : l'insensé n'est pas forcément au loin", 6.78, 5.85, 5.95, 0.75, { fond: CARTE, ligne: { color: TRAIT, width: 1 }, taille: 14, nom: "Parmi le peuple" });
 texte(s, "Reprise de mātay et nature de bōʿărîm : observations de Kidner, vérifiées au texte hébreu.", { x: 0.6, y: 6.68, w: 12.13, h: 0.28, fontSize: 12, italic: true, color: GRIS });
-s.addNotes("Le français cache un mot-crochet : « ne fait pas attention » (94.7) est lōʾ yābîn, « il ne discerne pas »; « Prenez-y garde » (94.8) est bînû, « discernez ». Ils disaient que Dieu ne discerne pas; c'est à eux de discerner. Le « quand » (mātay) reprend l'interrogatif du verset 3 : le « jusqu'à quand » adressé à Dieu devient un « quand » adressé aux insensés (observation de Kidner, vérifiée au texte hébreu). « Hommes stupides » (bōʿărîm) est un participe, que BDB rattache au verbe « être stupide, borné, fermé », en parallèle avec « insensés » (kĕsîlîm). L'hébreu les interpelle « parmi le peuple » (bāʿām; Darby : « les stupides d'entre le peuple ») : le texte l'appuie sans le trancher. Préparer une phrase simple, sans cours d'hébreu.");
+s.addNotes("Le français cache un mot-crochet : « ne fait pas attention » (94.7) est lōʾ yābîn, « il ne discerne pas »; « Prenez-y garde » (94.8) est bînû, « discernez ». Ils disaient que Dieu ne discerne pas; c'est à eux de discerner. Le « quand » (mātay) reprend l'interrogatif du verset 3 : le « jusqu'à quand » adressé à Dieu devient un « quand » adressé aux insensés (observation de Kidner, vérifiée au texte hébreu). « Hommes stupides » (bōʿărîm) est un participe, que BDB rattache au verbe « être stupide, obtus, réfractaire » (trad.), en parallèle avec « insensés » (kĕsîlîm). L'hébreu les interpelle « parmi le peuple » (bāʿām; Darby : « les stupides d'entre le peuple ») : le texte l'appuie sans le trancher. Préparer une phrase simple, sans cours d'hébreu.");
 
 // --- 13. L'argument du Créateur ---
 
@@ -604,7 +604,7 @@ texte(s, "« Car l'Eternel ne délaisse pas son peuple, Il n'abandonne pas son h
 etiquette(s, "naḥălāh, « héritage » : BDB le range sous Israël, propriété de l'Éternel", 2.4, 3.6, 8.5, 0.5, { fond: NOIR, ligne: { color: AMBRE, width: 1.25, dashType: "dash" }, couleur: AMBRE, taille: 14, rayon: 0.25, nom: "Héritage" });
 [
   ["L'alliance · Genèse 15.18", "« En ce jour-là, l'Eternel fit alliance avec Abram »", CARTE],
-  ["L'amour · Michée 7.18", "« Car il prend plaisir à la miséricorde »", CARTE],
+  ["La miséricorde · Michée 7.18", "« Car il prend plaisir à la miséricorde »", CARTE],
   ["Le verset · Psaume 94.14", "Le fondement doctrinal des Psaumes 93 à 100 (note de MacArthur)", ORANGE],
   ["Paul · Romains 11.2, 26", "« Dieu n'a point rejeté son peuple, qu'il a connu d'avance » · « Et ainsi tout Israël sera sauvé »", ROUILLE],
 ].forEach(([t, d, f], i) => {
@@ -615,7 +615,7 @@ etiquette(s, "naḥălāh, « héritage » : BDB le range sous Israël, proprié
   if (i < 3) s.addShape(S.CHEVRON, { x: x + 2.83, y: 5.0, w: 0.24, h: 0.4, fill: { color: AMBRE }, line: { type: "none" }, objectName: "Chevron " + (i + 1) });
 });
 texte(s, "« L'engagement de Dieu envers son peuple, Israël, est indéfectible; il repose sur l'alliance conclue avec lui et sur son amour éternel » (note de MacArthur sur 94.14)", { x: 0.6, y: 6.3, w: 12.13, h: 0.55, fontSize: 14, italic: true, color: PECHE, align: "center" });
-s.addNotes("Les deux mots de la plainte, « ton peuple » et « ton héritage » (94.5), reviennent au verset 14, rapportés cette fois à l'Éternel. MacArthur (note sur 94.14, avec renvoi à Genèse 15, Jérémie 12.15 et Michée 7.18) : « L'engagement de Dieu envers son peuple, Israël, est indéfectible; il repose sur l'alliance conclue avec lui et sur son amour éternel ». La note en fait le fondement doctrinal des Psaumes 93 à 100, une vérité « destinée à encourager la nation dans une période difficile », et ajoute que « Paul y fait allusion en Rm 11.1 en parlant du salut à venir d'Israël ». Paul reprend, sans nommer sa source, les mots de la Septante du verset 14 (Romains 11.2), lui qui précise « Car moi aussi je suis Israélite » (11.1); son argument aboutit à « Et ainsi tout Israël sera sauvé » (11.26). Verset 15 (texte seul) : le jugement « reviendra » à la justice (ṣedeq); la seconde ligne n'a pas de verbe en hébreu, « l'approuveront » (NEG79) est suppléé (observation de Kidner, vérifiée).");
+s.addNotes("Les deux mots de la plainte, « ton peuple » et « ton héritage » (94.5), reviennent au verset 14, rapportés cette fois à l'Éternel. MacArthur (note sur 94.14, avec renvoi à Genèse 15, Jérémie 12.15 et Michée 7.18) : « L'engagement de Dieu envers son peuple, Israël, est indéfectible; il repose sur l'alliance conclue avec lui et sur son amour éternel ». La note en fait le fondement doctrinal des Psaumes 93 à 100, une vérité « destinée à encourager la nation dans une période difficile », et ajoute que « Paul y fait allusion en Rm 11.1 en parlant du salut à venir d'Israël ». Paul reprend, sans nommer sa source, la formule de la Septante du verset 14 en changeant le sujet (« Dieu » au lieu du « Seigneur ») et le verbe (l'aoriste apōsato) (Romains 11.2), lui qui précise « Car moi aussi je suis Israélite » (11.1); son argument aboutit à « Et ainsi tout Israël sera sauvé » (11.26). Verset 15 (texte seul) : le jugement « reviendra » à la justice (ṣedeq); la seconde ligne n'a pas de verbe en hébreu, « l'approuveront » (NEG79) est suppléé (observation de Kidner, vérifiée).");
 
 // --- 20. Sens, principe, application ---
 
@@ -657,12 +657,12 @@ s.addNotes("Quatrième point : le psalmiste passe au « je ». Le secours prése
 // --- 22. Sans l'Éternel, le silence ---
 
 s = nouvelle(SEC_IV, "CONTENU");
-s.addText("IV · Le Dieu qui soutient et qui rendra · 94.16-17", { placeholder: "kicker" });
+s.addText("IV · Le Dieu qui soutient et qui rendra · 94.16-17 (94.16 : texte seul)", { placeholder: "kicker" });
 s.addText("Sans l'Éternel, la demeure du silence", { placeholder: "title" });
 carte(s, 0.6, 1.75, 12.13, 0.85, "Questions");
 texte(s, "« Qui se lèvera pour moi contre les méchants? Qui me soutiendra contre ceux qui font le mal? » (94.16)", { x: 0.85, y: 1.75, w: 11.65, h: 0.85, fontFace: "Cambria", fontSize: 20, italic: true, align: "center", valign: "middle" });
 etiquette(s, "« Si l'Eternel n'était pas mon secours » (94.17)", 3.9, 2.95, 5.5, 0.85, { fond: ORANGE, couleur: NOIR, taille: 18, gras: true, nom: "Condition" });
-texte(s, "condition irréelle (lûlê et le parfait)", { x: 9.6, y: 3.0, w: 3.1, h: 0.75, fontSize: 14, italic: true, color: AMBRE, valign: "middle" });
+texte(s, "condition irréelle : lûlê, « si… ne… pas »", { x: 9.6, y: 3.0, w: 3.1, h: 0.75, fontSize: 14, italic: true, color: AMBRE, valign: "middle" });
 trait(s, 5.4, 3.8, 3.45, 4.5, { couleur: TRAIT, nom: "Sans le secours" });
 trait(s, 7.9, 3.8, 9.9, 4.5, { nom: "Avec le secours" });
 carte(s, 0.6, 4.5, 5.7, 2.25, "Le silence", NOIR, { color: TRAIT, width: 1.5 });
@@ -696,7 +696,7 @@ texte(s, "les pensées s'agitent en foule", { x: 7.35, y: 4.2, w: 2.2, h: 0.55, 
 s.addShape(S.OVAL, { x: 9.85, y: 1.95, w: 2.75, h: 2.75, line: { color: TRAIT, width: 1 }, objectName: "Halo externe" });
 s.addText("Tes consolations", { shape: S.OVAL, x: 10.1, y: 2.2, w: 2.25, h: 2.25, fill: { color: ORANGE }, line: { type: "none" }, color: NOIR, fontFace: "Cambria", fontSize: 15, bold: true, align: "center", valign: "middle", margin: 0, objectName: "Consolations" });
 trait(s, 9.85, 3.32, 9.45, 3.32, { couleur: AMBRE, nom: "Réjouissent" });
-texte(s, "« Quand les pensées s'agitent en foule au-dedans de moi, Tes consolations réjouissent mon âme » (94.19)", { x: 7.4, y: 4.95, w: 5.1, h: 1.0, fontSize: 15, italic: true });
+texte(s, "« Quand les pensées s'agitent en foule au-dedans de moi, Tes consolations réjouissent mon âme » (94.19, texte seul)", { x: 7.4, y: 4.95, w: 5.1, h: 1.0, fontSize: 15, italic: true });
 texte(s, "Le réconfort vient de Dieu, non de la stabilité du psalmiste.", { x: 7.4, y: 6.05, w: 5.1, h: 0.6, fontSize: 14, bold: true, color: AMBRE });
 s.addNotes("« Quand je dis: Mon pied chancelle! Ta bonté, ô Eternel! me sert d'appui » (94.18). En hébreu, « quand j'ai dit » est au parfait, « elle me soutient » (yisʿādēnî) à l'inaccompli : l'expérience passée fonde une assurance présente. « Ta bonté » (ḥesed) : la note de MacArthur renvoie à une note sur 85.8, non fournie; au lexique seul, BDB range le verset sous la bienveillance de Dieu « dans la délivrance des ennemis et des détresses ». Le cantique de Moïse annonçait que le pied des ennemis chancellerait (Deutéronome 32.35, même verbe, même nom); ici, c'est le pied du juste. Le Psaume 73, que la note d'introduction rapproche, connaît la même vacillation : « Toutefois, mon pied allait fléchir » (73.2). Verset 19 (texte seul) : BDB lit les « pensées » (śarʿappîm) comme des pensées qui troublent; « Tes consolations » : ne pas en faire une technique contre l'anxiété.");
 
@@ -749,7 +749,7 @@ texte(s, "Le même verbe ouvre et ferme le psaume", { x: 3.6, y: 4.35, w: 7.4, h
 [
   ["Proportion", "« Il fera retomber sur eux leur iniquité » : leur iniquité, pas davantage.", CARTE],
   ["Lecture de MacArthur (94.23)", "« Décrit la destruction qui frappera les méchants alors même qu'ils sont en train de pécher ». « Par » ou « dans » : décision d'interprétation.", CARTE],
-  ["De « mon Dieu » à « notre Dieu »", "« Mon Dieu est le rocher de mon refuge » (94.22) devient « L'Eternel, notre Dieu » (94.23).", ROUILLE],
+  ["De « mon Dieu » à « notre Dieu »", "« Mon Dieu est le rocher de mon refuge » (94.22, texte seul) devient « L'Eternel, notre Dieu » (94.23).", ROUILLE],
 ].forEach(([t, d, f], i) => {
   const x = 0.6 + i * 4.1;
   carte(s, x, 5.05, 3.93, 1.75, "Appui " + (i + 1), f, f === CARTE ? { color: TRAIT, width: 1 } : undefined);
