@@ -68,7 +68,7 @@ Galates défend la justification par la foi seule contre un Évangile qui ajouta
 - « je ne l’ai ni reçu ni appris d’un homme, mais par une révélation de Jésus-Christ » (1.12). Paul défend son apostolat parce que son Évangile en dépend : il l'a reçu comme les douze, de la bouche de Jésus, et non à Jérusalem (48-5).
 - Le persécuteur « animé d’un zèle excessif » (1.14) est appelé par grâce. MacArthur parle de grâce souveraine et d'un appel efficace, sur le chemin de Damas, de celui que Dieu avait mis à part « dès le sein de ma mère » (48-5, sur 1.15). La variante de 1.15 ne change pas le sujet : c'est Dieu qui appelle (Recherche, État du texte).
 - L'Arabie (1.17) : pour MacArthur, un temps passé aux pieds de Jésus (48-6); le texte dit seulement « je partis pour l’Arabie ».
-- « Celui qui autrefois nous persécutait annonce maintenant la foi qu’il s’efforçait alors de détruire. Et elles glorifiaient Dieu à mon sujet » (1.23-24) · *texte seul* : la gloire revient à Dieu, non à l'apôtre.
+- « Celui qui autrefois nous persécutait annonce maintenant la foi qu’il s’efforçait alors de détruire. Et elles glorifiaient Dieu à mon sujet » (1.23-24) : les Églises glorifiaient Dieu parce que l'ancien persécuteur prêchait la foi qu'il avait voulu détruire (48-6); la gloire revient à Dieu, non à l'apôtre.
 
 **Application.** *Principe :* l'Évangile ne se complète pas. Une assemblée peut croire à la justification par la foi tout en lui ajoutant une pratique, une appartenance, une performance spirituelle; le texte demande d'appeler cela un autre évangile (Recherche, thèmes). Ne pas adoucir « anathème » là où le texte ne l'adoucit pas (piste 1). « Si je plaisais encore aux hommes, je ne serais pas serviteur de Christ » (1.10). Pour l'incroyant : si la grâce a saisi Saul le persécuteur, elle appelle aussi ceux qui la combattent.
 
@@ -101,12 +101,12 @@ Galates défend la justification par la foi seule contre un Évangile qui ajouta
 - MacArthur identifie cette visite au concile d'Actes 15 (48-8), qui tranche la question même de Galates. Pierre y conclut : « c’est par la grâce du Seigneur Jésus que nous croyons être sauvés, de la même manière qu’eux » (Actes 15.11).
 - « Mais Tite, qui était avec moi, et qui était Grec, ne fut même pas contraint de se faire circoncire » (2.3) : l'illustration vivante de l'Évangile (48-7, 48-8).
 - « Nous ne leur cédâmes pas un instant et nous résistâmes à leurs exigences, afin que la vérité de l’Evangile soit maintenue parmi vous » (2.5).
-- La main d'association (2.9) et le souvenir des pauvres (2.10) · *texte seul* : un seul Évangile, deux champs de mission.
+- La main d'association (2.9) et le souvenir des pauvres (2.10) : un seul Évangile, deux champs de mission; « Nous avons le même Évangile. Nous avons le même Saint-Esprit » (48-8).
 
 ### II. La vérité défendue à Antioche (2.11-14)
 
 - « je lui résistai en face, parce qu’il était répréhensible » (2.11). Pierre s'est retiré par crainte du parti de la circoncision, et Paul l'a repris en face (48-9); le titre de 48-9 nomme l'enjeu : le danger d'ajouter à l'Évangile.
-- « Barnabas même fut entraîné par leur hypocrisie » (2.13) · *texte seul* : la crainte d'un seul entraîne les autres.
+- « Barnabas même fut entraîné par leur hypocrisie » (2.13) : la crainte d'un seul fracture toute l'Église (48-9).
 - « pourquoi forces-tu les païens à judaïser? » (2.14) : la pratique de Pierre enseignait ce que sa bouche niait.
 
 ### III. La vérité exposée : justifié par la foi (2.15-21)
@@ -125,7 +125,7 @@ Galates défend la justification par la foi seule contre un Évangile qui ajouta
 
 ## Sermon 3 · La promesse avant la loi (Galates 3)
 
-**Sermons GTY :** 48-11 à 48-18 · **Textes d'appui :** Genèse 12.3; Genèse 15.6; Deutéronome 27.26; Habacuc 2.4; Lévitique 18.5; Deutéronome 21.23; Romains 4.1-5.
+**Sermons GTY :** 48-11 à 48-18 · **Textes d'appui :** Genèse 12.3 et 18.18; Genèse 15.6; Deutéronome 27.26; Habacuc 2.4; Lévitique 18.5; Deutéronome 21.23; Romains 4.1-5.
 
 **Idée centrale.** L'Esprit reçu par la foi, Abraham déclaré juste avant la loi et Christ devenu malédiction à notre place montrent que la justice vient de la promesse reçue par la foi; la loi, ajoutée pour un temps, conduit à Christ, en qui tous les croyants sont un.
 
@@ -149,13 +149,13 @@ Galates défend la justification par la foi seule contre un Évangile qui ajouta
 - Pour MacArthur, de vrais croyants avaient été ensorcelés (48-11).
 - Une seule question : « Est-ce par les œuvres de la loi que vous avez reçu l’Esprit, ou par la prédication de la foi? » (3.2).
 - « Après avoir commencé par l’Esprit, voulez-vous maintenant finir par la chair? » (3.3).
-- « et qui opère des miracles parmi vous » (3.5) : peut-être les miracles apostoliques, plus encore peut-être le miracle de la régénération; MacArthur ne tranche pas davantage (48-11).
+- « et qui opère des miracles parmi vous » (3.5) : MacArthur hésite d'abord entre les miracles apostoliques et le miracle de la régénération (48-11), puis retient les deux : « Vous avez rencontré Dieu dans les miracles faits par les apôtres comme dans le miracle de votre propre régénération » (48-12).
 
 ### II. Abraham et la malédiction portée (3.6-14)
 
 - « Comme Abraham crut à Dieu, et que cela lui fut imputé à justice » (3.6) : Abraham a été justifié quand il n'y avait encore ni loi ni circoncision (48-12), et Dieu porte sa justice au compte du croyant (48-12). Parallèle : Romains 4.5, que MacArthur cite sur ce verset (48-12).
 - L'Écriture « a d’avance annoncé cette bonne nouvelle à Abraham: Toutes les nations seront bénies en toi! » (3.8).
-- « Maudit est quiconque n’observe pas tout ce qui est écrit dans le livre de la loi » (3.10) : Paul suit la Septante, dont le « tout » est absent de l'hébreu (Recherche, renvois). La malédiction tombe d'abord sur tous.
+- « Maudit est quiconque n’observe pas tout ce qui est écrit dans le livre de la loi » (3.10) : Paul suit la Septante, dont le « tout » est absent de l'hébreu (Recherche, renvois). Pour MacArthur, la malédiction pèse sur tous les hommes (48-13); le texte vise « tous ceux qui s’attachent aux œuvres de la loi ».
 - « Le juste vivra par la foi » (3.11) : forme propre à Paul, sans pronom (Recherche, renvois).
 - « Christ nous a rachetés de la malédiction de la loi, étant devenu malédiction pour nous » (3.13). MacArthur : « Les coupables sont punis, mais un substitut prend la punition » (48-14); en Deutéronome 21.23, « c'est parce qu'on était maudit de Dieu qu'on y était attaché » (48-14).
 - Le but : la bénédiction d'Abraham pour les païens, et « l’Esprit qui avait été promis », reçu par la foi (3.14).
@@ -246,7 +246,7 @@ Galates défend la justification par la foi seule contre un Évangile qui ajouta
 | III. Marcher selon l'Esprit | Galates 5.16-26 |
 | Conclusion et appel | Galates 5.24-25 |
 
-**Introduction.** « C’est pour la liberté que Christ nous a affranchis. Demeurez donc fermes, et ne vous laissez pas mettre de nouveau sous le joug de la servitude » (5.1) : une déclaration suivie d'un ordre, qui conclut Agar et Sara et ouvre l'exhortation (Recherche, État du texte; 48-26, 48-28). MacArthur rapproche ce « joug » de celui d'Actes 15.10 (48-8).
+**Introduction.** « C’est pour la liberté que Christ nous a affranchis. Demeurez donc fermes, et ne vous laissez pas mettre de nouveau sous le joug de la servitude » (5.1) : une déclaration suivie d'un ordre, qui conclut Agar et Sara et ouvre l'exhortation (Recherche, État du texte; 48-26, 48-28). MacArthur rapproche ce « joug » de celui d'Actes 15.10 (48-8, 48-28).
 
 ### I. Ne pas reprendre le joug (5.1-12)
 
@@ -259,7 +259,7 @@ Galates défend la justification par la foi seule contre un Évangile qui ajouta
 
 - « vous avez été appelés à la liberté; seulement ne faites pas de cette liberté un prétexte de vivre selon la chair; mais rendez-vous, par amour, serviteurs les uns des autres » (5.13). Le verset ferme la porte à toute pensée antinomienne : on n'est pas libre de pécher, on est libre de faire ce qui est juste (48-30).
 - « Tu aimeras ton prochain comme toi-même » (5.14; Lévitique 19.18).
-- « si vous vous mordez et vous dévorez les uns les autres » (5.15) · *texte seul* : l'Église troublée par la loi finit par se déchirer.
+- « si vous vous mordez et vous dévorez les uns les autres » (5.15) : pour MacArthur, les morsures viennent de ceux qui réclament leur liberté pour eux-mêmes (48-31).
 
 ### III. Marcher selon l'Esprit (5.16-26)
 
@@ -268,8 +268,8 @@ Galates défend la justification par la foi seule contre un Évangile qui ajouta
 - Marcher selon l'Esprit, c'est être rempli de l'Esprit, saturé de la Parole qu'il a révélée (48-33).
 - 5.19-21 : une liste représentative (« et les choses semblables »). « ceux qui commettent de telles choses » rend un participe présent : une conduite ininterrompue; ceux dont la vie est ainsi marquée ne sont pas dans le royaume (48-34). Prêcher l'avertissement sans en faire une condition de salut par les œuvres (piste 6).
 - « Mais le fruit de l’Esprit, c’est l’amour, la joie, la paix, la patience, la bonté, la bienveillance, la foi, la douceur, la maîtrise de soi » (5.22). Le fruit est au singulier : la vertu n'est pas une liste où l'on choisit (48-36), les vertus viennent ensemble (48-38), et « Le fruit de l'Esprit est la preuve que vous êtes un vrai chrétien » (48-37). La NEG79 place « la douceur, la maîtrise de soi » au verset 22; MacArthur, comme le grec, ouvre le verset 23 par la douceur (48-39).
-- « Ceux qui sont à Jésus-Christ ont crucifié la chair avec ses passions et ses désirs » (5.24) : un aoriste, l'acte présenté comme accompli. Le « une fois pour toutes » de MacArthur (48-39) vient de sa lecture de 2.20, non de l'aoriste seul (Recherche).
-- « Si nous vivons par l’Esprit, marchons aussi selon l’Esprit » (5.25) : l'exhortation tirée de l'indicatif. Le verbe, *stoicheō*, est de la même famille que les *stoicheia* de 4.3 et 4.9 (Recherche, mots-clés) : marcher au pas de l'Esprit plutôt que des principes élémentaires.
+- « Ceux qui sont à Jésus-Christ ont crucifié la chair avec ses passions et ses désirs » (5.24) : un aoriste, l'acte présenté comme accompli. MacArthur en tire un « une fois pour toutes » (48-39); l'aoriste seul présente l'acte comme accompli, sans le dire définitif (Recherche, grammaire).
+- « Si nous vivons par l’Esprit, marchons aussi selon l’Esprit » (5.25) : l'exhortation tirée de l'indicatif. MacArthur voit dans *stoicheō* un mot militaire, « marcher au pas » (48-39). Le verbe est de la même famille que les *stoicheia* de 4.3 et 4.9 (Recherche, mots-clés) · *texte seul* : marcher au pas de l'Esprit plutôt que des principes élémentaires.
 
 **Application.** *Principe :* le texte ferme deux portes à la fois, la loi comme moyen de sanctification (5.18) et la liberté comme prétexte (5.13). L'appel à marcher repose sur ce que Dieu a fait (« Si nous vivons par l’Esprit », 5.25); une prédication qui commande l'effort sans cet indicatif retombe dans le légalisme que la lettre combat (Recherche, thèmes). Concrètement : la Parole lue et méditée comme moyen de la marche (48-33).
 
@@ -301,7 +301,7 @@ Galates défend la justification par la foi seule contre un Évangile qui ajouta
 
 - « Frères, si un homme vient à être surpris en faute, vous qui êtes spirituels, redressez-le avec un esprit de douceur. Prends garde à toi-même, de peur que tu ne sois aussi tenté » (6.1). *Katartizō*, remettre en état, comme on remet un os ou répare un filet; le but de toute discipline est la restauration (48-40).
 - « Portez les fardeaux les uns des autres, et vous accomplirez ainsi la loi de Christ » (6.2) : le fardeau (*baros*) est un poids lourd que l'on porte ensemble; la « charge » de 6.5 (*phortion*), un bagage personnel (48-40). « La loi de Christ est la loi de l'amour » (48-40). Que « accomplirez » soit un futur ou, selon d'autres manuscrits, un impératif, porter et accomplir vont ensemble (Recherche, État du texte).
-- « Que celui à qui l’on enseigne la parole fasse part de tous ses biens à celui qui l’enseigne » (6.6) · *texte seul*.
+- « Que celui à qui l’on enseigne la parole fasse part de tous ses biens à celui qui l’enseigne » (6.6) : MacArthur reconnaît que le sens est discuté et lit le verset dans le fil de la restauration : celui qui a relevé le frère devient son enseignant, et l'enseigné partage avec lui des biens spirituels (48-40). C'est une décision d'interprétation; la Darby traduit « tous les biens temporels ».
 
 ### II. Semer pour l'Esprit (6.7-10)
 
