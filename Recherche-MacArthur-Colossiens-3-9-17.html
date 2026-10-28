@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colossiens 3.9-⁠17 · Revêtir l&#x27;homme nouveau · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Colossiens 3.9-⁠17 dans la perspective de John MacArthur : Revêtir l&#x27;homme nouveau.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Colossiens 3.9-⁠17</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Colossiens 3.9-⁠17</span></p>
+    <h1 class="hero__title">Revêtir l'homme nouveau</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Ainsi donc, comme des élus de Dieu, saints et bien-aimés, revêtez-vous de sentiments de compassion, de bonté, d'humilité, de douceur, de patience.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Colossiens 3.12 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 28 octobre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Colossiens 3.9-⁠17</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Colossiens 3.9-⁠17 est la charnière de la section exhortative de la lettre : après ce que le croyant doit faire mourir et rejeter (3.5-⁠9a), Paul dit ce qu'il doit revêtir (3.12-⁠17), et il fonde le passage de l'un à l'autre sur ce qui est déjà arrivé : le vieil homme a été dépouillé, l'homme nouveau a été revêtu (3.9b-10).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Ne mentez pas les uns aux autres, vous étant dépouillés du vieil homme et de ses œuvres, et ayant revêtu l'homme nouveau, qui se renouvelle, dans la connaissance, selon l'image de celui qui l'a créé.</p><cite class="verse__ref">Colossiens 3.9-⁠10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mais par-dessus toutes ces choses, revêtez-vous de l'amour, qui est le lien de la perfection.</p><cite class="verse__ref">Colossiens 3.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">Et quoi que vous fassiez, en parole ou en œuvre, faites tout au nom du Seigneur Jésus, en rendant par lui des actions de grâces à Dieu le Père.</p><cite class="verse__ref">Colossiens 3.17 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>La lettre se présente comme écrite par Paul, avec Timothée (1.1), aux saints et fidèles frères de Colosses (1.2). Paul n'a pas fondé lui-même cette église : Épaphras la leur a fait connaître (1.7) et combat pour eux dans ses prières (4.12), et la lettre compte les Colossiens parmi ceux qui n'ont pas vu le visage de l'apôtre (2.1). Paul écrit captif (4.3, 18); Tychique et Onésime porteront la lettre (4.7-⁠9), et MacArthur place à Rome la rencontre de Paul et d'Onésime, l'esclave fugitif de Philémon (2147). L'occasion est un enseignement qui menace la suffisance de Christ : une philosophie selon la tradition des hommes (2.8), des règles d'aliments et de fêtes (2.16), une humilité affectée et un culte des anges (2.18), des prescriptions ascétiques (2.20-⁠23).</p><p>Le genre est celui de l'épître, et le passage appartient à sa parénèse : les impératifs (3.5-⁠4.6) suivent l'exposé de la suprématie et de la suffisance de Christ (1.15-⁠2.23), et 3.1 en pose le fondement dans la résurrection avec Christ. Le commentaire résume ce fondement : « Ils sont morts avec Christ et ressuscités à une nouvelle vie » (commentaire, ch. 13). L'impératif se lit donc à partir de l'indicatif qui le fonde, et le passage lui-même en donne le modèle : un fait au participe (3.9b-10), une conséquence à l'impératif introduite par « donc » (3.12).</p><p>Les bornes ne coïncident pas avec les versets. Le verset 9a clôt la liste des vices ouverte en 3.5; le commentaire commence son chapitre à 9b et le sermon 2147 coupe la phrase au même endroit. La fin est nette : 3.17 résume tout (« quoi que vous fassiez »), et 3.18 passe aux membres de la maison, que la série de MacArthur traite à part (2149, « The New Man Makes a New Home », Col 3.18-⁠4.1).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Colossiens 3.9-⁠17</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">L'église de Colosses, voisine de celles de Laodicée et d'Hiérapolis (4.13), réunit des croyants que tout séparait : la lettre parle de circoncision et d'incirconcision (2.11, 13; 3.11), d'esclaves et de maîtres dans une même maison (3.22-⁠4.1), et renvoie à Colosses Onésime, un des leurs (4.9), l'esclave fugitif de la lettre à Philémon.</p><div class="body"><p>Les barrières que nomme le verset 11 étaient réelles. Le commentaire en rappelle la profondeur : les Juifs refusaient d'entrer dans la maison d'un non-Juif ou de manger un repas qu'il avait préparé; le Grec et le Juif instruits méprisaient le barbare et le Scythe; l'esclave était tenu, selon le mot d'Aristote qu'il cite, pour « un instrument vivant ». MacArthur conclut : « Une association entre Grecs, Juifs et Scythes est impensable à l'époque du Nouveau Testament » (commentaire, ch. 13). L'humilité commandée en 3.12 répond aussi à une contrefaçon locale : le commentaire l'oppose à « la fausse humilité des faux docteurs (voir 2.18, 23) ».</p><p>Deux pratiques éclairent les versets 14 et 16. Le vêtement courant était une tunique serrée d'une ceinture, et MacArthur lit l'amour du verset 14 comme cette ceinture qui tient l'ensemble (2148; commentaire, ch. 13). Le chant de l'assemblée reprenait les psaumes du psautier d'Israël; le commentaire ajoute qu'on pense que certaines portions du Nouveau Testament, comme Colossiens 1.15-⁠20 et Philippiens 2.6-⁠11, étaient chantées dans l'Église.</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Le barbare et le Scythe.</b> Thayer explique <i>barbaros</i> par étymologie, « comme si l'on répétait les syllabes βαρβαρ » (trad.), et note que les nations plus civilisées de l'Antiquité tenaient les Scythes pour « les plus sauvages de tous les barbares » (trad.). Le commentaire cite Hérodote et Josèphe sur leur cruauté (commentaire, ch. 13). Le verset place donc à côté du Grec celui que l'auditoire tenait pour le plus éloigné de lui.</li><li><b>Les entrailles.</b> <i>Splanchna oiktirmou</i> (3.12) nomme littéralement les entrailles. Selon Thayer, les poètes grecs y logeaient les passions violentes, la colère et l'amour, mais les Hébreux, les affections tendres : bonté, bienveillance, compassion; il cite Colossiens 3.12. Le commentaire y voit « un hébraïsme ». La LSG et la Darby gardent « entrailles de miséricorde », la NEG79 et la S21 rendent « sentiments de compassion ».</li><li><b>L'arbitre.</b> <i>Brabeuō</i> (3.15) a pour premier sens, selon Thayer, « être un <i>brabeus</i>, un arbitre » (trad.); Thayer range pourtant Colossiens 3.15 sous le sens « diriger, maîtriser, gouverner ». Le commentaire retient l'image de l'arbitre « décidant de l'issue d'une compétition athlétique » (commentaire, ch. 13).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Colossiens 3.9-⁠17</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">Colossiens 3.13</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>kathōs kai ho kurios echarisato humin</i>, « le Seigneur » (SBLGNT, Nestle 1904, Westcott et Hort, Église orthodoxe grecque 1904), ou <i>ho Christos echarisato</i>, « Christ » (texte byzantin 2005, Textus Receptus de Scrivener et de Stephanus). L'apparat du SBLGNT marque le mot.</dd></div><div><dt class="mot__label">NEG79</dt><dd>« De même que Christ vous a pardonné » : la NEG79 suit la leçon byzantine et le Textus Receptus, comme la LSG, la S21 et la Darby (« le Christ »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Dans les deux leçons, celui qui a pardonné est le Seigneur, et le contexte immédiat donne à Jésus ce titre (3.17, <i>kuriou Iēsou</i>). La mesure du pardon ne change pas; le commentaire, qui lit « Christ » avec la NEG79, en fait « le modèle du pardon ».</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Colossiens 3.15</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>hē eirēnē tou Christou</i>, « la paix de Christ » (SBLGNT, Nestle 1904, Westcott et Hort), ou <i>hē eirēnē tou theou</i>, « la paix de Dieu » (texte byzantin 2005, Église orthodoxe grecque 1904, Textus Receptus de Scrivener et de Stephanus). L'apparat du SBLGNT marque le mot.</dd></div><div><dt class="mot__label">NEG79</dt><dd>« la paix de Christ » : la NEG79 suit le SBLGNT, comme la LSG, la S21 et la Darby (« la paix du Christ »). Aucune version française consultée ne suit <i>theou</i>.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur le relève dans le sermon : la paix de Christ, non de Dieu, car c'est la leçon des manuscrits (2148). La leçon retenue forme avec « la parole de Christ » (3.16) et « le nom du Seigneur Jésus » (3.17) une suite de trois génitifs, que le commentaire résume ainsi : la paix de Christ, la parole de Christ et le nom du Christ.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Colossiens 3.16</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Fin du verset : <i>en tais kardiais humōn tō theō</i>, « dans vos cœurs, à Dieu » (SBLGNT, Nestle 1904, Westcott et Hort), ou <i>en tē kardia humōn tō kuriō</i>, « dans votre cœur, au Seigneur » (texte byzantin 2005, Église orthodoxe grecque 1904, Textus Receptus de Scrivener et de Stephanus). Les mêmes témoins byzantins ajoutent <i>kai</i> entre les trois sortes de chants, et Nestle 1904 lit <i>en tē chariti</i>, avec l'article.</dd></div><div><dt class="mot__label">NEG79</dt><dd>« chantant à Dieu dans vos cœurs en vertu de la grâce » : la NEG79 suit le SBLGNT, comme la LSG et la Darby (« à Dieu »); la S21, « chantez pour le Seigneur », suit la leçon byzantine.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Le chant est adressé à Dieu dans une leçon, au Seigneur dans l'autre; la leçon byzantine coïncide avec la fin d'Éphésiens 5.19 (SBLGNT : <i>tō kuriō</i>). Les autres différences (conjonction, article, singulier ou pluriel du cœur) ne changent pas le sens.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Colossiens 3.11, 3.14 et 3.17</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>3.11 : <i>alla ta panta</i> (SBLGNT, texte byzantin, Textus Receptus) ou <i>alla panta</i> (Nestle 1904, Westcott et Hort). 3.14 : <i>ho estin</i>, relatif neutre (SBLGNT, Nestle 1904, Westcott et Hort), ou <i>hētis estin</i>, relatif féminin (texte byzantin, Église orthodoxe grecque, Textus Receptus). 3.17 : <i>ho ti ean</i> ou <i>ho ti an</i>, et <i>tō theō patri</i> (SBLGNT, Nestle 1904, Westcott et Hort) ou <i>tō theō kai patri</i> (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« tout » (3.11) et « qui » (3.14) ne distinguent pas les leçons; « à Dieu le Père » (3.17) correspond à la leçon sans <i>kai</i>.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Article, genre du relatif, particule et conjonction : aucun effet sur le sens. En 3.14, le relatif neutre se rapporte probablement à l'amour par accord selon le sens, le féminin par accord grammatical.</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT et son apparat (bible.audio), lu à chacun des versets 9 à 17</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Église orthodoxe grecque 1904, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux versets 11, 13, 14, 15, 16 et 17, où l'apparat du SBLGNT signale un mot</li><li>versions françaises : NEG, LSG, S21 et Darby lues verset par verset (bible.audio), NBS pour les mots étudiés (bible.com), et texte NEG cité dans le commentaire fourni, conforme</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucun écart : la NEG79 et les sermons de MacArthur (Col 3.9-⁠11 et 3.12-⁠17) numérotent le passage de la même façon. Le commentaire coupe le verset 9 en deux : 9a (le mensonge) clôt 3.5-⁠9a, et le chapitre 13 s'ouvre à 9b.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Colossiens 3.9-⁠17</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>Colossiens</span> <span>3.9a</span></p><div class="plan__corps"><p class="plan__titre">Le dernier rejet : le mensonge entre frères</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>mē pseudesthe eis allēlous</i>, impératif présent nié, ferme la liste ouverte en 3.5; le SBLGNT ponctue d'un point en haut après <i>allēlous</i>.</p></div></li><li><p class="plan__ref"><span>Colossiens</span> <span>3.9b-10</span></p><div class="plan__corps"><p class="plan__titre">Le fondement : le vieil homme dépouillé, l'homme nouveau revêtu et renouvelé</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> deux participes aoristes en couple, <i>apekdusamenoi</i> et <i>endusamenoi</i>; le participe présent <i>anakainoumenon</i> ouvre la croissance.</p></div></li><li><p class="plan__ref"><span>Colossiens</span> <span>3.11</span></p><div class="plan__corps"><p class="plan__titre">Le peuple nouveau : les barrières abolies, Christ tout et en tous</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>hopou ouk eni</i>, « il n'y a ici ni », puis quatre paires de catégories, et l'opposition <i>alla</i>, « mais », qui ramène tout à Christ.</p></div></li><li><p class="plan__ref"><span>Colossiens</span> <span>3.12-⁠14</span></p><div class="plan__corps"><p class="plan__titre">Les vêtements de l'homme nouveau, et l'amour par-dessus tout</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Endusasthe oun</i> (3.12) : l'impératif du verbe employé en 3.10, avec « donc »; <i>epi pasin de toutois</i> (3.14) couronne la liste.</p></div></li><li><p class="plan__ref"><span>Colossiens</span> <span>3.15-⁠17</span></p><div class="plan__corps"><p class="plan__titre">Ce qui gouverne : la paix, la parole et le nom de Christ, dans l'action de grâces</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> deux impératifs de troisième personne, <i>brabeuetō</i> et <i>enoikeitō</i>; trois génitifs, « de Christ » (3.15, 16) et « du Seigneur Jésus » (3.17); reconnaissance au début et à la fin (<i>eucharistoi</i>, 3.15; <i>eucharistountes</i>, 3.17); 3.18 passe aux membres de la maison.</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>Colossiens 3.9-⁠10</dt><dd><i>pseudesthe</i> est un présent impératif moyen ou passif, deuxième personne du pluriel, nié par <i>mē</i> : une défense. Suivent deux participes aoristes moyens, nominatif masculin pluriel, <i>apekdusamenoi</i> et <i>endusamenoi</i>. Leur valeur la plus probable est causale, « puisque vous vous êtes dépouillés » : la S21 l'explicite par « car », la NBS rend le second par un indicatif, « vous avez revêtu », la NEG79 et la LSG gardent les participes. L'aoriste présente l'acte comme un tout; c'est le contexte, non le temps seul, qui en fait un acte déjà accompli.</dd></div><div><dt>Colossiens 3.10</dt><dd><i>anakainoumenon</i> est un participe présent passif ou moyen, accusatif masculin singulier, qui qualifie <i>ton neon</i>, « le nouveau » (le nom « homme » est sous-entendu, repris du verset 9). Le présent montre le renouvellement en cours, le passif ne nomme aucun agent humain; <i>eis epignōsin</i> en dit le but, <i>kat' eikona tou ktisantos auton</i> la norme. <i>Ktisantos</i>, participe aoriste actif : la création de l'homme nouveau est passée, son renouvellement se poursuit.</dd></div><div><dt>Colossiens 3.12</dt><dd><i>Endusasthe</i> est un aoriste impératif moyen, deuxième personne du pluriel, rattaché à ce qui précède par <i>oun</i>, « donc ». Les trois titres qui fondent l'ordre sont au nominatif, introduits par <i>hōs</i>, « comme » : <i>eklektoi tou theou</i>, <i>hagioi</i>, et <i>ēgapēmenoi</i>, participe parfait passif, un état présent issu d'un amour reçu, dont l'agent probable est Dieu, nommé juste avant.</dd></div><div><dt>Colossiens 3.13</dt><dd><i>anechomenoi</i> et <i>charizomenoi</i> sont des participes présents moyens, nominatif masculin pluriel, qui dépendent de <i>Endusasthe</i> : valeur probable de manière, la façon de porter les vêtements du verset 12. Le réfléchi <i>heautois</i> fait du pardon une affaire interne au corps. <i>Echē</i>, présent subjonctif après <i>ean tis</i>, pose une éventualité générale; <i>echarisato</i>, aoriste indicatif moyen, présente le pardon du Seigneur comme un acte accompli, et <i>kathōs ... houtōs kai humeis</i> en fait la mesure.</dd></div><div><dt>Colossiens 3.14-⁠15</dt><dd>Le verset 14 n'a pas de verbe : <i>tēn agapēn</i> est à l'accusatif, complément de l'impératif <i>Endusasthe</i> du verset 12, sous-entendu. L'amour est donc un vêtement de plus, posé « par-dessus tout ». Au verset 15, <i>brabeuetō</i> est un présent impératif actif de troisième personne du singulier : le sujet grammatical est la paix de Christ, et l'ordre porte sur la place que les croyants lui laissent; <i>eklēthēte</i>, aoriste indicatif passif, dit un appel déjà reçu.</dd></div><div><dt>Colossiens 3.16-⁠17</dt><dd><i>enoikeitō</i>, présent impératif actif de troisième personne, a pour sujet « la parole de Christ »; en dépendent trois participes présents actifs, nominatif masculin pluriel, <i>didaskontes</i>, <i>nouthetountes</i> et <i>adontes</i>, dont la valeur probable est celle de la manière ou du résultat : ce que fait une assemblée où la parole demeure. Au verset 17, <i>pan ho ti ean poiēte</i> (présent subjonctif) généralise, et la principale n'a pas de verbe, <i>panta en onomati kuriou Iēsou</i> : « faites » est sous-entendu (NEG79); le participe <i>eucharistountes</i> accompagne toute l'action.</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">revêtu, revêtez-vous</a><a href="#mot-2">élus</a><a href="#mot-3">lien</a><a href="#mot-4">règne</a><a href="#mot-5">demeure</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">revêtu, revêtez-vous</h3><p class="mot__translit">endusamenoi, endusasthe (enduō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>mettre sur soi, se vêtir de</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer (article <i>enduō</i>, sous <i>endunō</i>)</span>Au figuré, Thayer donne « être pourvu de quelque chose, orné d'une vertu, comme revêtu d'un vêtement » (trad.), et cite <i>splanchna oiktirmou</i> en Colossiens 3.12. Il range « l'homme nouveau » d'Éphésiens 4.24 et de Colossiens 3.10 sous le sens « un nouveau dessein et une nouvelle vie » (trad.), et « revêtir Jésus-Christ » (Romains 13.14; Galates 3.27) sous celui d'être si possédé de la pensée de Christ qu'on lui ressemble « en pensée, en sentiment et en action » (trad.).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur distingue les deux emplois du verbe dans le passage. Au verset 10, le participe dit un fait : « Vous étant indique que la transition est un fait accompli » (commentaire, ch. 13); « C'est un fait énoncé; c'est chose faite » (2147, trad.). Au verset 12, l'impératif commande de porter ce qui convient à cette identité : « L'identité nouvelle doit engendrer une conduite nouvelle » (commentaire, ch. 13). Il conclut : « Revêtir le nouveau style de vie, c'est revêtir Christ » (commentaire, ch. 13, avec Romains 13.14). Le lexique et la lecture concordent; Thayer rapproche lui-même Colossiens 3.10 et Romains 13.14.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> vous avez revêtu (3.10); revêtez-vous (3.12)</li><li><b>NEG79</b> ayant revêtu (3.10); revêtez-vous (3.12)</li><li><b>Darby</b> ayant revêtu (3.10); Revêtez-vous (3.12)</li><li><b>LSG</b> ayant revêtu (3.10); revêtez-vous (3.12)</li><li class="ecart"><b>NBS</b> vous avez revêtu (3.10); revêtez-vous (3.12)</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">élus</h3><p class="mot__translit">eklektoi (eklektos)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>choisi, tiré d'un ensemble par un choix</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : « choisi par Dieu », d'abord « pour obtenir le salut par Christ » (trad.); d'où le nom de <i>hoi eklektoi tou theou</i>, « les élus de Dieu », donné aux chrétiens, avec Colossiens 3.12 parmi les références. Il rapproche l'expression hébraïque « les élus de l'Éternel », dite des Israélites pieux (Ésaïe 65.9, 15, 23; Psaume 105.43, 104.43 dans la Septante). Le mot désigne aussi le Messie (Luc 23.35) et les anges (1 Timothée 5.21).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur : « Nul ne devient chrétien par son seul choix. Les croyants sont plutôt ceux qui sont élus de Dieu », avec Éphésiens 1.4 et 2 Thessaloniciens 2.13 (commentaire, ch. 13). Les trois titres « désignent tous Israël dans l'Ancien Testament », et « Ce qui était vrai autrefois du peuple élu l'est maintenant de tous ceux qui ont la foi en Christ » (commentaire, ch. 13). Le lexique et la lecture concordent sur le sens, « choisi par Dieu », et sur l'arrière-plan israélite, que Thayer relève aussi; le rattachement à Romains 9-⁠11, Israël « temporairement mis de côté », va au-delà du lexique : c'est la lecture que MacArthur expose sur ce verset.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> êtres choisis par Dieu</li><li><b>NEG79</b> élus de Dieu</li><li><b>Darby</b> élus de Dieu</li><li><b>LSG</b> élus de Dieu</li><li class="ecart"><b>NBS</b> choisis par Dieu</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">lien</h3><p class="mot__translit">sundesmos</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>ce qui lie ensemble; ligament, lien</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : « ce qui lie ensemble, une bande, un lien » (trad.); au propre, les ligaments qui unissent les membres du corps (Colossiens 2.19); au figuré, le lien de la paix (Éphésiens 4.3) et Colossiens 3.14, qu'il explique ainsi : « ce en quoi toutes les vertus sont si bien liées ensemble que la perfection en résulte, et qu'aucune ne manque à cette perfection » (trad.). <i>Teleiotētos</i> est un génitif.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur : « l'amour est la ceinture qui tient ensemble toutes ces choses qui viennent d'être mentionnées », et « Essayer de pratiquer les vertus mentionnées dans 3.12, 13 sans l'amour, c'est du légalisme » (commentaire, ch. 13). L'image de la ceinture va au-delà du lexique, qui dit « lien » : c'est une décision d'interprétation, que la grammaire appuie, puisque l'amour est le complément de « revêtez-vous » sous-entendu, donc un vêtement dans la métaphore. La fonction, tenir toutes les vertus ensemble, concorde avec Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> lien de la perfection</li><li><b>NEG79</b> lien de la perfection</li><li><b>Darby</b> lien de la perfection</li><li><b>LSG</b> lien de la perfection</li><li class="ecart"><b>NBS</b> lien parfait</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">règne</h3><p class="mot__translit">brabeuetō (brabeuō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>arbitrer; décider; diriger</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer distingue trois sens : « être un <i>brabeus</i>, un arbitre »; « décider, déterminer »; « diriger, maîtriser, gouverner » (trad.). Il range Colossiens 3.15 sous le troisième, en renvoyant à Meyer et, en sens contraire, à Lightfoot, et rapproche le composé <i>katabrabeuō</i>.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur retient le premier sens : le verbe « sert à décrire l'activité d'un arbitre décidant de l'issue d'une compétition athlétique. La paix de Christ guide les croyants lorsqu'ils prennent des décisions » (commentaire, ch. 13). Il en tire deux questions : le choix est-il conforme au fait que Jésus et le croyant sont du même côté, et laissera-t-il au cœur un repos profond et durable (2148; commentaire, ch. 13)? C'est une décision d'interprétation, puisque Thayer classe le verset ailleurs; l'indice textuel est le composé de 2.18, que le commentaire signale, et le lieu de l'action, « dans vos cœurs ».</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> règne</li><li><b>NEG79</b> règne</li><li class="ecart"><b>Darby</b> préside</li><li><b>LSG</b> règne</li><li><b>NBS</b> règne</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">demeure</h3><p class="mot__translit">enoikeitō (enoikeō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>habiter dans</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : « habiter dans »; dans le Nouveau Testament, toujours au figuré, « habiter en quelqu'un et l'influencer (pour le bien) » (trad.). Pour Colossiens 3.16, il comprend <i>en humin</i> « dans votre assemblée », de la vérité chrétienne, et note que d'autres comprennent « intérieurement, dans vos cœurs ». L'adverbe <i>plousiōs</i> dit l'abondance. Les versions se partagent : « parmi vous » (LSG), « en vous » (les autres).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur : le verbe signifie « vivre dans » ou « être chez soi », et Paul appelle les croyants à laisser la Parole « élire domicile et s'installer dans leur vie » (commentaire, ch. 13); la parole de Christ « désigne la révélation qu'il a apportée dans le monde, qui est l'Écriture ». Sa lecture porte d'abord sur la vie du croyant, et les participes qui suivent (s'instruire et s'exhorter « les uns les autres ») en donnent l'effet dans l'assemblée. L'accent individuel va au-delà de ce que Thayer retient : décision d'interprétation, que le pluriel <i>en humin</i> permet, et que le réfléchi <i>heautous</i> du même verset prolonge vers la communauté.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> habite en vous</li><li><b>NEG79</b> demeure en vous</li><li class="ecart"><b>Darby</b> habite en vous</li><li class="ecart"><b>LSG</b> habite parmi vous</li><li class="ecart"><b>NBS</b> habite en vous</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Colossiens 3.9-⁠17</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">La question centrale du passage est le rapport entre ce que les Colossiens ont fait, se dépouiller du vieil homme et revêtir l'homme nouveau (3.9b-10), et ce qu'on leur commande de revêtir (3.12-⁠17). MacArthur répond que les participes décrivent un fait accompli à la conversion, et que les impératifs en tirent la conséquence : l'identité nouvelle fonde la conduite nouvelle (2147; commentaire, ch. 13).</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-colossiens-3-9a-le-mensonge"><span class="sommaire__ref">Colossiens 3.9a</span><span class="sommaire__lib">Le mensonge</span></a></li><li><a href="#t2-colossiens-3-9b-10-la-position-et-la-croissance-de-l-homme-nouveau"><span class="sommaire__ref">Colossiens 3.9b-10</span><span class="sommaire__lib">La position et la croissance de l'homme nouveau</span></a></li><li><a href="#t3-colossiens-3-11-le-partenariat-de-l-homme-nouveau"><span class="sommaire__ref">Colossiens 3.11</span><span class="sommaire__lib">Le partenariat de l'homme nouveau</span></a></li><li><a href="#t4-colossiens-3-12-13-la-conduite-de-l-homme-nouveau"><span class="sommaire__ref">Colossiens 3.12-⁠13</span><span class="sommaire__lib">La conduite de l'homme nouveau</span></a></li><li><a href="#t5-colossiens-3-14-la-perfection-de-l-homme-nouveau"><span class="sommaire__ref">Colossiens 3.14</span><span class="sommaire__lib">La perfection de l'homme nouveau</span></a></li><li><a href="#t6-colossiens-3-15-la-paix-de-christ"><span class="sommaire__ref">Colossiens 3.15</span><span class="sommaire__lib">La paix de Christ</span></a></li><li><a href="#t7-colossiens-3-16-la-parole-de-christ"><span class="sommaire__ref">Colossiens 3.16</span><span class="sommaire__lib">La parole de Christ</span></a></li><li><a href="#t8-colossiens-3-17-le-nom-de-christ"><span class="sommaire__ref">Colossiens 3.17</span><span class="sommaire__lib">Le nom de Christ</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : trois sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You 2146, 2147 et 2148 (série « Living the Risen Life », 1976), complétés par le niveau 2 : Commentaire MacArthur sur le Nouveau Testament, chapitre 13, « Revêtir l'homme nouveau » (Col 3.9b-17), extrait fourni</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">2146</span></th><td><a href="https://www.gty.org/sermons/2146" target="_blank" rel="noopener">Spiritual Suicide</a></td><td>Col 3.5-⁠9</td></tr><tr><th scope="row"><span class="mot-fr">2147</span></th><td><a href="https://www.gty.org/sermons/2147" target="_blank" rel="noopener">Putting on the New Man, Part 1</a></td><td>Col 3.9-⁠11</td></tr><tr><th scope="row"><span class="mot-fr">2148</span></th><td><a href="https://www.gty.org/sermons/2148" target="_blank" rel="noopener">Putting on the New Man, Part 2</a></td><td>Col 3.12-⁠17</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><h3 class="intertitre" id="t1-colossiens-3-9a-le-mensonge"><span class="intertitre__ref">Colossiens 3.9a</span>Le mensonge</h3><p>Le sermon 2146 range le mensonge parmi les péchés à faire mourir : « Cessez de vous mentir les uns aux autres » (2146, trad.). MacArthur le rattache aux dix commandements et à Jean 8.44, où Satan est appelé père du mensonge, et conclut : « Si les croyants ne peuvent pas dire la vérité, qui au monde le pourra? » (2146, trad.). Dans le sermon suivant, il note qu'on pourrait mettre un point après « les uns aux autres » et commencer une phrase à 9b : les participes fondent ce que le verset 12 commandera (2147).</p><h3 class="intertitre" id="t2-colossiens-3-9b-10-la-position-et-la-croissance-de-l-homme-nouveau"><span class="intertitre__ref">Colossiens 3.9b-10</span>La position et la croissance de l'homme nouveau</h3><p>Pour MacArthur, le participe dit que la transition est faite : les croyants « se sont déjà dépouillés du vieil homme et de ses œuvres » (commentaire, ch. 13). Le vieil homme est « l'homme non régénéré, l'ancienne manière de vivre en Adam »; à la conversion il est mort (Romains 6.6; 2 Corinthiens 5.17), car « Le salut est une transformation » (commentaire, ch. 13). Il s'appuie sur le puritain Thomas Goodwin : devant Dieu, il n'y a que deux hommes, Adam et Jésus-Christ. Si le croyant pèche encore, c'est « parce que l'homme nouveau vit dans le vieux corps et doit lutter contre la chair » (commentaire, ch. 13, avec Romains 7.14-⁠25).</p><p>La croissance suit la position : « L'homme nouveau est complet, mais a la capacité de grandir, tout comme un bébé qui naît complet a la capacité de grandir » (commentaire, ch. 13; même image dans le sermon 2147). Par l'étymologie du composé (<i>ana</i>), MacArthur lit le renouvellement comme une qualité de vie nouvelle, en contraste avec ce qui était; Thayer donne pour Colossiens 3.10 le même sens, « être changé en un nouveau genre de vie, opposé à l'état corrompu antérieur » (trad.). <i>Epignōsis</i> désigne « une connaissance exhaustive et profonde », dont la source est la Bible (2 Timothée 3.16-⁠17; 1 Pierre 2.2), et le but, rendre le croyant de plus en plus semblable « au Seigneur Jésus-Christ qui l'a créé », jusqu'au jour de 1 Jean 3.2 (commentaire, ch. 13).</p><h3 class="intertitre" id="t3-colossiens-3-11-le-partenariat-de-l-homme-nouveau"><span class="intertitre__ref">Colossiens 3.11</span>Le partenariat de l'homme nouveau</h3><p>« Tout comme chaque croyant se dépouille du vieil homme, l'Église se dépouille des vieilles barrières qui séparaient les gens » (commentaire, ch. 13). MacArthur passe en revue les barrières raciales et religieuses (Grec et Juif, circoncis et incirconcis), culturelles (barbare et Scythe) et sociales (esclave et libre), avec Éphésiens 2.13-⁠16, Galates 3.28 et Philémon 16. Le sermon le résume : « Nous sommes tous des hommes nouveaux; mais, réunis, nous formons un seul homme nouveau » (2147, trad.). Puisque Christ demeure dans chaque croyant, « ils sont tous égaux » (commentaire, ch. 13).</p><h3 class="intertitre" id="t4-colossiens-3-12-13-la-conduite-de-l-homme-nouveau"><span class="intertitre__ref">Colossiens 3.12-⁠13</span>La conduite de l'homme nouveau</h3><p>« Dans 3.9b-11, Paul décrit ce que Dieu a fait pour le croyant. Dans 3.12-⁠17, il décrit ce que Dieu attend du croyant en réponse à ce qu'il a fait » (commentaire, ch. 13). Cette conduite est « la manifestation extérieure de la transformation intérieure, et l'unique preuve indéniable qu'une telle transformation s'est produite ». Le fondement est l'élection : les croyants sont élus avant la fondation du monde (Éphésiens 1.4), saints, c'est-à-dire mis à part, et bien-aimés, objets de l'amour de Dieu. Ces trois titres étaient ceux d'Israël; le sermon précise : « Israël est mis de côté, quant à son caractère national unique, temporairement, pour cette période, dit Romains 11. Car en fin de compte, les dons et l'appel de Dieu sont sans repentance » (2148, trad.).</p><p>Les vertus suivent : la compassion « qui vient du fond du cœur »; la bonté, qui se préoccupe du sort du prochain autant que du sien; l'humilité, « l'antidote contre l'amour de soi qui empoisonne les relations », opposée à la fausse humilité des faux docteurs; la douceur, « la volonté de subir des injures au lieu d'en infliger »; la patience, contraire du ressentiment (commentaire, ch. 13). Supporter, c'est endurer sans se venger; pardonner, c'est faire de Christ « le modèle du pardon », lui qui nous a pardonné tous nos péchés (commentaire, ch. 13; Éphésiens 4.32).</p><h3 class="intertitre" id="t5-colossiens-3-14-la-perfection-de-l-homme-nouveau"><span class="intertitre__ref">Colossiens 3.14</span>La perfection de l'homme nouveau</h3><p>L'amour est la ceinture qui tient ensemble les vertus de la liste et le ciment de l'unité de l'Église (commentaire, ch. 13; 2148). Sans lui, ces vertus tournent au légalisme : « Elles doivent découler de l'amour, qui à son tour est un fruit de la vie remplie de l'Esprit (Ga 5.22) » (commentaire, ch. 13).</p><h3 class="intertitre" id="t6-colossiens-3-15-la-paix-de-christ"><span class="intertitre__ref">Colossiens 3.15</span>La paix de Christ</h3><p>La paix est objective, paix avec Dieu par la justification (Romains 5.1), subjective, repos du cœur (Philippiens 4.7), et relationnelle, puisque les croyants y sont appelés « pour former un seul corps »; elle est « de Christ » parce que c'est lui qui la donne (commentaire, ch. 13). Comme un arbitre, elle tranche les décisions du croyant, et la reconnaissance la garde : « Pour que notre cœur reste en paix, nous devons être reconnaissants » (commentaire, ch. 13).</p><h3 class="intertitre" id="t7-colossiens-3-16-la-parole-de-christ"><span class="intertitre__ref">Colossiens 3.16</span>La parole de Christ</h3><p>La parole de Christ est l'Écriture, qui doit gouverner « chacune de ses pensées, de ses paroles et de ses actions » (commentaire, ch. 13). MacArthur tient Colossiens 3.16 pour un parallèle direct d'Éphésiens 5.18 (2148) : les mêmes effets suivent la plénitude de l'Esprit et la Parole qui demeure, d'où sa conclusion : « Être rempli de l'Esprit, c'est être contrôlé par sa Parole. Avoir la Parole qui demeure en soi dans toute sa richesse, c'est être contrôlé par son Esprit » (commentaire, ch. 13). S'instruire transmet la vérité positive, s'exhorter avertit des conséquences de la conduite. Les psaumes viennent du psautier, les hymnes sont des louanges, les cantiques spirituels des témoignages; chanter « dans vos cœurs » ne veut pas dire chanter sans voix, mais que « le cœur s'accorde avec la bouche » (commentaire, ch. 13, avec Amos 5.23).</p><h3 class="intertitre" id="t8-colossiens-3-17-le-nom-de-christ"><span class="intertitre__ref">Colossiens 3.17</span>Le nom de Christ</h3><p>« Tout faire au nom de Jésus, c'est agir en conformité avec ce qu'il est et ce qu'il veut » (commentaire, ch. 13), comme en 1 Corinthiens 10.31, et jamais par devoir légaliste, mais en rendant grâces. MacArthur conclut le passage par Romains 13.14 : revêtir le nouveau style de vie, c'est revêtir Christ, et « Le but de la vie chrétienne, c'est de ressembler à Christ » (commentaire, ch. 13).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>Colossiens 3.9-⁠10.</b> Les deux participes sont à l'aoriste et suivent une défense au présent; le SBLGNT ponctue d'un point en haut avant eux. La S21 rend la valeur causale par « car », et la NBS rend le second par un indicatif, « vous avez revêtu » : un fait posé, non un ordre.</li><li><b>Colossiens 3.10 et 3.12.</b> Le même verbe revient deux fois : participe aoriste en 3.10 (<i>endusamenoi</i>), impératif aoriste en 3.12 (<i>Endusasthe</i>), relié par <i>oun</i>, « donc ». Ce qui a été revêtu fonde ce qu'il faut revêtir.</li><li><b>Colossiens 3.12.</b> Les trois titres précèdent les vertus et les fondent (<i>hōs</i>, « comme »). Thayer rapproche <i>eklektoi tou theou</i> de l'expression hébraïque « les élus de l'Éternel », dite d'Israël (Ésaïe 65.9, 15, 23), ce qui appuie l'arrière-plan israélite que relève MacArthur.</li><li><b>Colossiens 3.14.</b> Le verset n'a pas de verbe : <i>tēn agapēn</i> est le complément de « revêtez-vous » (3.12), sous-entendu. L'amour reste un vêtement, posé « par-dessus toutes ces choses », ce qui rend plausible l'image de la ceinture.</li><li><b>Colossiens 3.16 et Éphésiens 5.19.</b> Les deux textes nomment les mêmes trois sortes de chants (<i>psalmois</i>, <i>humnois</i>, <i>ōdais pneumatikais</i>) et le même participe <i>adontes</i>; en Éphésiens ils suivent « soyez remplis de l'Esprit » (5.18), en Colossiens « que la parole de Christ demeure en vous ». C'est l'appui textuel du parallèle que tire MacArthur.</li><li><b>Colossiens 3.15-⁠17.</b> Trois génitifs se suivent, la paix « de Christ », la parole « de Christ », le nom « du Seigneur Jésus », encadrés par la reconnaissance (<i>eucharistoi</i>, 3.15; <i>eucharistountes</i>, 3.17) : la structure même porte la triade que le commentaire nomme les priorités de l'homme nouveau.</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Huit passages</p></header>
+<p class="lead">Huit passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Éphésiens 4.22-⁠24</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Le même couple, se dépouiller du vieil homme et revêtir l'homme nouveau, avec le renouvellement de l'intelligence. Thayer range Éphésiens 4.24 et Colossiens 3.10 sous le même sens de <i>enduō</i>; le commentaire cite Éphésiens 4.22 et 4.23 pour définir le vieil homme et la croissance.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Éphésiens 5.18-⁠6.9</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Colossiens 3.16 correspond à Éphésiens 5.18-⁠19 (mêmes chants, même participe <i>adontes</i>), et la suite des deux textes passe aux relations de la maison. MacArthur y lit une même réalité à deux côtés : la plénitude de l'Esprit et la Parole qui demeure (2148; commentaire, ch. 13).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 1.26-⁠27</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">« selon l'image de celui qui l'a créé » (<i>kat' eikona tou ktisantos auton</i>) reprend le vocabulaire de Genèse 1.27 dans la Septante (<i>kat' eikona theou epoiēsen auton</i>), sous une forme propre à l'auteur, avec <i>ktizō</i> au lieu de <i>poieō</i>. Usage : analogie entre la première création et la nouvelle; le sermon 2147 voit dans la nouvelle naissance une recréation à l'image de Dieu, perdue lors de la chute.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Deutéronome 7.6</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Israël, peuple saint et choisi par l'Éternel parmi tous les peuples : premier texte de la liste par laquelle le commentaire montre que « élus », « saints » et « bien-aimés » désignaient Israël (avec Dt 14.2; Ps 105.43; Es 41.8; Os 11.1).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 11.17-⁠29</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Les branches naturelles retranchées, les païens greffés, et l'appel de Dieu sans repentance : c'est le texte par lequel MacArthur explique que les titres d'Israël passent à l'Église pendant que la nation est « temporairement » mise de côté (2148; commentaire, ch. 13).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Galates 3.28</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Les mêmes oppositions abolies, Juif et Grec, esclave et libre, et l'unité de tous en Jésus-Christ; le commentaire le cite pour le verset 11.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 13.14</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">L'ordre de revêtir le Seigneur Jésus-Christ, que Thayer range avec Galates 3.27 sous le sens figuré de <i>enduō</i>, et par lequel le commentaire conclut le passage : revêtir le nouveau style de vie, c'est revêtir Christ.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 10.31</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Faire tout pour la gloire de Dieu : le commentaire y voit la même pensée que « faites tout au nom du Seigneur Jésus » (3.17), la règle la plus simple et la plus fondamentale de la vie chrétienne.</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Cinq axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">L'homme nouveau : une identité accomplie, un renouvellement en cours</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Les Colossiens se sont dépouillés « du vieil homme et de ses œuvres » et ont revêtu « l'homme nouveau, qui se renouvelle, dans la connaissance, selon l'image de celui qui l'a créé » (3.9-⁠10) : l'acte est passé, le renouvellement se poursuit.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Sotériologie : régénération et sanctification progressive (<i>Biblical Doctrine</i>), par rattachement; MacArthur y lit la mort du vieil homme à la conversion et la croissance de l'homme nouveau par la connaissance de l'Écriture (2147; commentaire, ch. 13).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Genèse 1.27 créait l'homme à l'image de Dieu; Colossiens 3.10 parle d'une création nouvelle selon cette image, que Romains 8.29 oriente vers la conformité au Fils et que 1 Jean 3.2 achève quand il paraîtra.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La sainteté des versets 12 à 17 ne fabrique pas l'homme nouveau : elle porte ce que Dieu a créé en Christ. Une assemblée découragée par ses chutes entend ici que la lutte contre la chair n'annule pas la position, et que la croissance passe par la Parole reçue et mise en pratique, sous l'action de l'Esprit, non par la volonté propre.</p></div></div></section><section class="theme"><h3 class="theme__title">Un seul corps où Christ est tout</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Il n'y a ici ni Grec ni Juif, ni circoncis ni incirconcis, ni barbare ni Scythe, ni esclave ni libre; mais Christ est tout et en tous » (3.11); la paix de Christ est celle « à laquelle vous avez été appelés pour former un seul corps » (3.15).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Ecclésiologie : l'Église, corps de Christ (<i>Biblical Doctrine</i>), par rattachement; MacArthur relie le verset à Éphésiens 2.15, Christ faisant de tous les croyants un seul homme nouveau (commentaire, ch. 13).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Éphésiens 2.13-⁠16 montre le mur de séparation renversé par la croix; Colossiens 3.11 en tire la conséquence pour une église où se côtoient circoncis et incirconcis (2.11, 13), esclaves et maîtres (3.22-⁠4.1).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Les divisions d'une assemblée (origine, culture, rang social) ne se règlent pas par la simple tolérance, mais par Christ, qui est tout et habite en tous. Une église qui recrée des groupes séparés contredit ce que le texte affirme de son identité.</p></div></div></section><section class="theme"><h3 class="theme__title">Élus, saints et bien-aimés : l'identité qui fonde la conduite</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul fonde l'ordre de revêtir les vertus sur ce que sont les croyants : « comme des élus de Dieu, saints et bien-aimés » (3.12), et le participe parfait « bien-aimés » dit un état reçu.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Sotériologie : l'élection souveraine et gratuite (<i>Biblical Doctrine</i>), que MacArthur expose sur ce verset (Éphésiens 1.4; 2 Thessaloniciens 2.13; 2 Timothée 1.9); ecclésiologie et eschatologie : Israël et l'Église, Israël « temporairement mis de côté » selon Romains 9-⁠11 (commentaire, ch. 13), les dons et l'appel de Dieu demeurant sans repentance (2148).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Les trois titres désignaient Israël dans l'Ancien Testament (Deutéronome 7.6; Psaume 105.43; Osée 11.1); Paul les applique à une église qui compte des incirconcis (2.13), et Romains 11 situe ce changement dans l'économie de Dieu sans abroger l'appel d'Israël.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'éthique vient après l'identité : on ne devient pas élu en revêtant la compassion, on la revêt parce qu'on est choisi et aimé. Pour MacArthur, cette doctrine anéantit l'orgueil et produit la reconnaissance (commentaire, ch. 13) : prêchée ainsi, elle rend humble, non indifférent.</p></div></div></section><section class="theme"><h3 class="theme__title">Le pardon reçu, mesure du pardon donné, et l'amour qui lie tout</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« De même que Christ vous a pardonné, pardonnez-vous aussi » (3.13); « par-dessus toutes ces choses, revêtez-vous de l'amour, qui est le lien de la perfection » (3.14).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Christologie et sotériologie : le pardon accompli par Christ (<i>Biblical Doctrine</i>), par rattachement; MacArthur fait de Christ le modèle du pardon et de toutes les vertus de la liste (commentaire, ch. 13).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Jésus liait déjà le pardon reçu au pardon accordé (Matthieu 18.21-⁠35, que cite le commentaire); Éphésiens 4.32 reprend la même mesure.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le pardon mutuel n'est pas une technique de réconciliation : il découle du pardon reçu. Sans l'amour, les vertus de 3.12-⁠13 tournent au légalisme (commentaire, ch. 13); l'appel s'adresse à des croyants déjà pardonnés, en qui l'Esprit produit l'amour (Galates 5.22).</p></div></div></section><section class="theme"><h3 class="theme__title">La parole de Christ qui gouverne l'assemblée et sa louange</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Que la parole de Christ demeure en vous dans toute sa richesse » produit l'instruction, l'exhortation mutuelle et le chant « à Dieu dans vos cœurs » (3.16); tout se fait « au nom du Seigneur Jésus, en rendant par lui des actions de grâces à Dieu le Père » (3.17).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Bibliologie : suffisance de l'Écriture; pneumatologie : la plénitude de l'Esprit (<i>Biblical Doctrine</i>), par rattachement; MacArthur identifie l'action de la Parole qui demeure à la plénitude de l'Esprit d'Éphésiens 5.18 (2148; commentaire, ch. 13).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Les psaumes du psautier d'Israël passent dans le chant de l'Église (commentaire, ch. 13); la parole de Christ, révélation qu'il a apportée, devient avec l'Écriture la norme de l'assemblée (2 Timothée 3.16-⁠17).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le culte se mesure à la place qu'y tient la parole de Christ, non à l'émotion produite : le chant enseigne et avertit, et il vient d'un cœur accordé à la bouche (Amos 5.23). La source est l'Esprit agissant par la Parole, non la performance de l'assemblée.</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Sept questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Les participes de 3.9b-10 posent un fait, l'impératif de 3.12 en tire la conséquence. Votre assemblée entend-elle « revêtez-vous » comme un effort pour devenir nouvelle, ou comme l'acte de porter ce qu'elle est déjà en Christ? Qu'est-ce qui, dans la grammaire, garde cette frontière?</li><li>MacArthur affirme que le vieil homme est mort à la conversion, et que le croyant pèche parce que l'homme nouveau vit dans le vieux corps et lutte contre la chair. Comment exposer 3.9-⁠10 à des croyants qui se sentent « deux hommes », sans affaiblir la lutte réelle de Romains 7?</li><li>Les titres « élus de Dieu, saints et bien-aimés » étaient ceux d'Israël. En exposant ce changement dans l'économie de Dieu, comment garderez-vous ce que Romains 11 affirme encore de l'appel d'Israël?</li><li>Le verset 11 nomme des barrières que l'auditoire d'origine sentait dans sa chair (Grec et Juif, Scythe, esclave). Quelles sont leurs équivalentes dans votre assemblée, et lesquelles l'application risque-t-elle d'éviter parce qu'elles coûtent?</li><li>Le pardon de 3.13 a pour mesure celui du Seigneur et pour cadre « si l'un a sujet de se plaindre de l'autre ». Où l'application devient-elle trop facile (pardonner sans grief réel) ou trop dure (exiger l'oubli plutôt que le pardon)?</li><li>MacArthur lit le verbe de 3.15 comme le geste de l'arbitre, alors que Thayer range le verset sous le sens « gouverner ». Que permet le texte seul d'affirmer sur la paix comme guide des décisions, et qu'ajoute la lecture retenue?</li><li>Quel principe passe du chant des églises de Colosses (psaumes, hymnes, cantiques, la parole qui demeure) au culte de votre assemblée, et que lui demande-t-il concrètement?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Colossiens 3.9-⁠17 · 28 octobre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Colossiens-3-9-17.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
