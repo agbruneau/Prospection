@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 395" width="100%" height="auto" style="font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: transparent;">
+  <defs>
+    <style>
+      .axis-line { stroke: #6b6459; stroke-width: 1; }
+      .grid-line { stroke: #ddd8d2; stroke-width: 0.8; stroke-dasharray: 3,3; }
+      .label { fill: #1c1a17; font-size: 11px; font-weight: 400; }
+      .title-panel { fill: #1c1a17; font-size: 13px; font-weight: 700; }
+      .sub-label { fill: #6b6459; font-size: 10px; font-weight: 300; }
+      .val-label { font-size: 10.5px; font-weight: 600; }
+      @media (prefers-color-scheme: dark) {
+        .label, .title-panel { fill: #f9f7f7; }
+        .sub-label { fill: #b0aba6; }
+        .grid-line { stroke: #453f39; }
+        .axis-line { stroke: #b0aba6; }
+      }
+    </style>
+  </defs>
+
+  <!-- LEFT PANEL: NASDAQ-100 (NDX) -->
+  <g transform="translate(0, 0)">
+    <text x="46" y="22" class="title-panel">A. Nasdaq-100 (NDX — indice de prix)</text>
+    <text x="46" y="36" class="sub-label">Départ (6 nov. 2026) : 26 990 pts | Sommet (6 oct. 2026) : 31 224 pts</text>
+
+    <!-- Y-axis grid & labels (20k to 70k) -->
+    <!-- y mapping: 20,000 -> 330, 70,000 -> 55 (height = 275px, 5.5px per 1,000 pts) -->
+    <line x1="46" y1="330" x2="375" y2="330" class="axis-line"/>
+    <text x="40" y="334" text-anchor="end" class="sub-label">20 k</text>
+
+    <line x1="46" y1="275" x2="375" y2="275" class="grid-line"/>
+    <text x="40" y="279" text-anchor="end" class="sub-label">30 k</text>
+
+    <line x1="46" y1="220" x2="375" y2="220" class="grid-line"/>
+    <text x="40" y="224" text-anchor="end" class="sub-label">40 k</text>
+
+    <line x1="46" y1="165" x2="375" y2="165" class="grid-line"/>
+    <text x="40" y="169" text-anchor="end" class="sub-label">50 k</text>
+
+    <line x1="46" y1="110" x2="375" y2="110" class="grid-line"/>
+    <text x="40" y="114" text-anchor="end" class="sub-label">60 k</text>
+
+    <line x1="46" y1="55" x2="375" y2="55" class="grid-line"/>
+    <text x="40" y="59" text-anchor="end" class="sub-label">70 k</text>
+
+    <!-- Vertical milestone lines: Oct 6 2026 (x=58), Nov 6 2026 (x=82), Dec 31 2029 (x=168), Dec 31 2035 (x=295) -->
+    <line x1="82" y1="55" x2="82" y2="330" stroke="#6b6459" stroke-width="0.9" stroke-dasharray="2,2"/>
+    <line x1="168" y1="55" x2="168" y2="330" stroke="#6b6459" stroke-width="0.9" stroke-dasharray="4,3"/>
+    <line x1="295" y1="55" x2="295" y2="330" stroke="#6b6459" stroke-width="0.9" stroke-dasharray="4,3"/>
+
+    <text x="58" y="346" text-anchor="middle" class="sub-label">Oct. 26</text>
+    <text x="82" y="358" text-anchor="middle" class="label">Nov. 26</text>
+    <text x="168" y="348" text-anchor="middle" class="label">31 déc. 2029</text>
+    <text x="295" y="348" text-anchor="middle" class="label">31 déc. 2035</text>
+
+    <!-- Shaded fan between Bull and Bear -->
+    <polygon points="82,291.6 168,220.6 295,79.0 295,250.6 168,284.4" fill="#1565c0" fill-opacity="0.10"/>
+
+    <!-- Historical segment Oct 6 2026 (31,224 -> y=268.3) to Nov 6 2026 (26,990 -> y=291.6) -->
+    <polyline points="58,268.3 82,291.6" fill="none" stroke="#1c1a17" stroke-width="2.2"/>
+
+    <!-- Bull Trajectory (green #2e7d32) -->
+    <polyline points="82,291.6 168,220.6 295,79.0" fill="none" stroke="#2e7d32" stroke-width="2" stroke-dasharray="5,3"/>
+    <!-- Central Trajectory (blue #1565c0) -->
+    <polyline points="82,291.6 168,251.9 295,164.3" fill="none" stroke="#1565c0" stroke-width="2.6"/>
+    <!-- Bear Trajectory (red #c62828) -->
+    <polyline points="82,291.6 168,284.4 295,250.6" fill="none" stroke="#c62828" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <!-- Points & Labels -->
+    <circle cx="58" cy="268.3" r="3" fill="#1c1a17"/>
+    <circle cx="82" cy="291.6" r="3.5" fill="#1c1a17"/>
+
+    <!-- 2029 Points -->
+    <circle cx="168" cy="220.6" r="3.5" fill="#2e7d32"/>
+    <text x="168" y="213" text-anchor="middle" fill="#2e7d32" class="val-label">39 889</text>
+
+    <circle cx="168" cy="251.9" r="4" fill="#1565c0"/>
+    <text x="168" y="245" text-anchor="middle" fill="#1565c0" class="val-label">34 196</text>
+
+    <circle cx="168" cy="284.4" r="3.5" fill="#c62828"/>
+    <text x="168" y="298" text-anchor="middle" fill="#c62828" class="val-label">28 286</text>
+
+    <!-- 2035 Points -->
+    <circle cx="295" cy="79.0" r="3.5" fill="#2e7d32"/>
+    <text x="301" y="82" text-anchor="start" fill="#2e7d32" class="val-label">65 644 (+10,2 %/an)</text>
+
+    <circle cx="295" cy="164.3" r="4" fill="#1565c0"/>
+    <text x="301" y="168" text-anchor="start" fill="#1565c0" class="val-label">50 128 (+7,0 %/an)</text>
+
+    <circle cx="295" cy="250.6" r="3.5" fill="#c62828"/>
+    <text x="301" y="254" text-anchor="start" fill="#c62828" class="val-label">34 441 (+2,7 %/an)</text>
+  </g>
+
+  <!-- RIGHT PANEL: NASDAQ COMPOSITE (COMP) -->
+  <g transform="translate(405, 0)">
+    <text x="46" y="22" class="title-panel">B. Nasdaq Composite (COMP — indice de prix)</text>
+    <text x="46" y="36" class="sub-label">Départ (6 nov. 2026) : 24 579 pts | Sommet (6 oct. 2026) : 27 600 pts</text>
+
+    <!-- Y-axis grid & labels (20k to 70k) -->
+    <line x1="46" y1="330" x2="375" y2="330" class="axis-line"/>
+    <text x="40" y="334" text-anchor="end" class="sub-label">20 k</text>
+
+    <line x1="46" y1="275" x2="375" y2="275" class="grid-line"/>
+    <text x="40" y="279" text-anchor="end" class="sub-label">30 k</text>
+
+    <line x1="46" y1="220" x2="375" y2="220" class="grid-line"/>
+    <text x="40" y="224" text-anchor="end" class="sub-label">40 k</text>
+
+    <line x1="46" y1="165" x2="375" y2="165" class="grid-line"/>
+    <text x="40" y="169" text-anchor="end" class="sub-label">50 k</text>
+
+    <line x1="46" y1="110" x2="375" y2="110" class="grid-line"/>
+    <text x="40" y="114" text-anchor="end" class="sub-label">60 k</text>
+
+    <line x1="46" y1="55" x2="375" y2="55" class="grid-line"/>
+    <text x="40" y="59" text-anchor="end" class="sub-label">70 k</text>
+
+    <!-- Vertical milestone lines -->
+    <line x1="82" y1="55" x2="82" y2="330" stroke="#6b6459" stroke-width="0.9" stroke-dasharray="2,2"/>
+    <line x1="168" y1="55" x2="168" y2="330" stroke="#6b6459" stroke-width="0.9" stroke-dasharray="4,3"/>
+    <line x1="295" y1="55" x2="295" y2="330" stroke="#6b6459" stroke-width="0.9" stroke-dasharray="4,3"/>
+
+    <text x="58" y="346" text-anchor="middle" class="sub-label">Oct. 26</text>
+    <text x="82" y="358" text-anchor="middle" class="label">Nov. 26</text>
+    <text x="168" y="348" text-anchor="middle" class="label">31 déc. 2029</text>
+    <text x="295" y="348" text-anchor="middle" class="label">31 déc. 2035</text>
+
+    <polygon points="82,304.8 168,245.7 295,129.8 295,273.5 168,300.5" fill="#1565c0" fill-opacity="0.10"/>
+
+    <polyline points="58,288.2 82,304.8" fill="none" stroke="#1c1a17" stroke-width="2.2"/>
+
+    <polyline points="82,304.8 168,245.7 295,129.8" fill="none" stroke="#2e7d32" stroke-width="2" stroke-dasharray="5,3"/>
+    <polyline points="82,304.8 168,271.7 295,199.5" fill="none" stroke="#1565c0" stroke-width="2.6"/>
+    <polyline points="82,304.8 168,300.5 295,273.5" fill="none" stroke="#c62828" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <circle cx="58" cy="288.2" r="3" fill="#1c1a17"/>
+    <circle cx="82" cy="304.8" r="3.5" fill="#1c1a17"/>
+
+    <!-- 2029 Points -->
+    <circle cx="168" cy="245.7" r="3.5" fill="#2e7d32"/>
+    <text x="168" y="238" text-anchor="middle" fill="#2e7d32" class="val-label">35 325</text>
+
+    <circle cx="168" cy="271.7" r="4" fill="#1565c0"/>
+    <text x="168" y="265" text-anchor="middle" fill="#1565c0" class="val-label">30 599</text>
+
+    <circle cx="168" cy="300.5" r="3.5" fill="#c62828"/>
+    <text x="168" y="314" text-anchor="middle" fill="#c62828" class="val-label">25 362</text>
+
+    <!-- 2035 Points -->
+    <circle cx="295" cy="129.8" r="3.5" fill="#2e7d32"/>
+    <text x="301" y="133" text-anchor="start" fill="#2e7d32" class="val-label">56 395 (+9,5 %/an)</text>
+
+    <circle cx="295" cy="199.5" r="4" fill="#1565c0"/>
+    <text x="301" y="203" text-anchor="start" fill="#1565c0" class="val-label">43 736 (+6,5 %/an)</text>
+
+    <circle cx="295" cy="273.5" r="3.5" fill="#c62828"/>
+    <text x="301" y="277" text-anchor="start" fill="#c62828" class="val-label">30 265 (+2,3 %/an)</text>
+  </g>
+
+  <!-- Legend at bottom -->
+  <g transform="translate(125, 380)">
+    <line x1="0" y1="0" x2="22" y2="0" stroke="#2e7d32" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="27" y="4" class="sub-label">Scénario haussier (super-cycle IA)</text>
+
+    <line x1="210" y1="0" x2="232" y2="0" stroke="#1565c0" stroke-width="2.6"/>
+    <text x="237" y="4" class="sub-label">Scénario central / réaliste</text>
+
+    <line x1="385" y1="0" x2="407" y2="0" stroke="#c62828" stroke-width="2" stroke-dasharray="3,3"/>
+    <text x="412" y="4" class="sub-label">Scénario baissier (réversion des multiples)</text>
+  </g>
+</svg>
