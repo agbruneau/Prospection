@@ -74,7 +74,7 @@ spec:
         allowedPathPrefix: "/mcp/bca-snowflake-analytics/"
         credentialInjection:
           mode: "HOST_SIDE_PROXY_INJECT" # Le secret n'entre jamais dans la RAM de la microVM
-          tokenExchangeAudience: "mcp://agentgateway.internal.boreal.ca/mcp/bca-snowflake-analytics"
+          tokenExchangeAudience: "mcp://gateway.boreal.ca/mcp/bca-snowflake-analytics"
           maxRequestsPerSession: 12
 ```
 
@@ -90,7 +90,7 @@ Placer un « LLM juge » (*LLM Guardrail*) devant un agent principal réduit cer
 
 ### Architecture neuro-symbolique `PEP` / `PDP` en coupure obligatoire
 
-Comme l'illustre la Figure 20.1, l'architecture sépare le raisonnement neuronal (qui propose une intention d'action) et le contrôle symbolique (qui statue sur son admissibilité) :
+Comme l'illustre la figure ci-dessus, l'architecture sépare le raisonnement neuronal (qui propose une intention d'action) et le contrôle symbolique (qui statue sur son admissibilité) :
 
 1. **Le *Policy Enforcement Point* (`PEP` — `agentgateway`)** intercepte 100 % des requêtes JSON-RPC `MCP` (`tools/call`) et des messages `A2A` (`tasks/send`). Aucun serveur `MCP` d'entreprise n'accepte de trafic réseau direct contournant la passerelle (verrouillage `mTLS` mutuel). Le `PEP` valide le jeton `RFC 8693`, extrait le sujet humain (`sub`), l'agent immédiat (`act.sub`), l'étiquette de teinte de la session (`sessionTaint`) et désérialise les arguments typés de l'outil demandé.
 2. **Le *Policy Decision Point* (`PDP` — `Cedar` ou `OPA`)** évalue en mémoire locale (bibliothèque embarquée en Rust/Go dans le `PEP` ou démon *sidecar* Unix) cette requête d'autorisation contre le référentiel de politiques signées de l'entreprise, en moins de **0,4 à 1,5 milliseconde**. Il retourne l'un des trois verdicts normatifs : `ALLOW` (transmission immédiate au serveur `MCP`), `DENY` (rejet sec avec trace d'audit SIEM) ou `STEP_UP_CIBA` (déclenchement automatique du flux d'approbation humaine hors bande décrit au Chapitre 18).
@@ -252,7 +252,10 @@ async def execute_tier3_agent_killswitch(
     # Exécution parallèle stricte sur les 5 plans de contrôle (objectif global < 2 000 ms)
     async def broadcast_caep_revocation() -> bool:
         return await ssf_transmitter.publish_security_event(
-            event_type="https://schemas.openid.net/secevent/caep/event-type/credential-change",
+            event_type=(
+                "https://schemas.openid.net/secevent/caep/"
+                "event-type/credential-change"
+            ),
             subject={"format": "uri", "uri": order.spiffe_id_uri},
             reason_admin=f"[{order.incident_id}] {order.reason}",
         )
@@ -264,7 +267,9 @@ async def execute_tier3_agent_killswitch(
         )
 
     async def revoke_spire_workload_identity() -> bool:
-        return await spire_server_client.suspend_registration_by_spiffe_id(order.spiffe_id_uri)
+        return await spire_server_client.suspend_registration_by_spiffe_id(
+            order.spiffe_id_uri
+        )
 
     async def freeze_durable_workflows_forensically() -> bool:
         # Gèle la file d'activités sans détruire l'historique d'événements pour audit et compensation

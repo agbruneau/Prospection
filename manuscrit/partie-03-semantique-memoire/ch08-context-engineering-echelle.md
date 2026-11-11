@@ -148,7 +148,9 @@ export class ContextWindowCompiler {
     const t3 = this.countTokens(layer3);
     if (t3 > this.budgets.layer3) throw new Error(`Dépassement Strate 3 (${t3} > ${this.budgets.layer3}).`);
 
-    const prefixHash = createHash("sha256").update(`${input.tenantId}::${layer0}::${layer1}`).digest("hex").slice(0, 20);
+    const prefixHash = createHash("sha256")
+      .update(`${input.tenantId}::${layer0}::${layer1}`)
+      .digest("hex").slice(0, 20);
     return {
       tenantCacheRoutingKey: `kv-${input.tenantId}-${prefixHash}`,
       totalTokens: t0 + t1 + t2 + t3,
@@ -290,7 +292,7 @@ spec:
     retentionDays: 2555 # Conservation 7 ans (BSIF E-23)
     passMode: CLAIM_CHECK_URI_ONLY
   requiredStructuredSections:
-    establishedFactsSchema: "https://schemas.boreal.ca/ossie/v2/qualified-failure-facts.schema.json"
+    establishedFactsSchema: "https://schemas.boreal.ca/ossie/v2/failure-facts.json"
     ruledOutHypotheses:
       maxItems: 5
       description: "Pistes invalidées avec motif factuel court pour prévenir toute ré-exploration."

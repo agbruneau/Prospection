@@ -191,6 +191,8 @@ figcaption {
 .box-filrouge  { border-left-color: #0f5132; }
 .box-sectoriel { border-left-color: #9a3412; }
 .box-adr       { border-left-color: #4c1d95; }
+.box-note      { border-left-color: #0369a1; }
 .box-important { border-left-color: #1d4ed8; }
+.box-tip       { border-left-color: #15803d; }
 .box-warning   { border-left-color: #b45309; }
 .box-caution   { border-left-color: #b91c1c; }

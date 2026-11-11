@@ -15,7 +15,7 @@
 
 Créé fin 2024 par Anthropic puis confié fin 2025 à la **Linux Foundation AAIF**, le **Model Context Protocol (`MCP`)** constitue le « port USB-C » universel de la connectivité verticale en entreprise. Il découple durablement l'environnement qui exécute le raisonnement de l'infrastructure qui expose `SAP`, `Snowflake`, `ServiceNow` ou `HL7 FHIR`.
 
-En production, l'architecture dépasse le face-à-face élémentaire client-serveur et repose sur **quatre rôles strictement cloisonnés** (Figure 5.1) :
+En production, l'architecture dépasse le face-à-face élémentaire client-serveur et repose sur **quatre rôles strictement cloisonnés** (illustrés à la figure ci-dessous) :
 
 1. **L'Hôte Agentique (`MCP Host`)** : L'application englobante (worker `Temporal`, hôte `Goose`, IDE ou poste opérateur) qui gouverne la boucle cognitive, agrège les catalogues autorisés et arbitre toute sollicitation sensible venue d'un serveur.
 2. **Le Connecteur Client (`MCP Client`)** : Instancié dans l'hôte selon une **cardinalité stricte 1:1** par serveur cible. Deux serveurs `MCP` distincts disposent de deux clients isolés en mémoire : aucune donnée ou notification ne traverse d'un canal à l'autre sans médiation explicite de l'hôte.
@@ -136,7 +136,7 @@ L'architecture de référence déployée en 2027 encapsule le serveur **`HL7 FHI
 
 ## 5.3 Conception d'outils orientés intention métier vs antipattern REST 1:1 et pagination
 
-L'erreur d'ingénierie la plus coûteuse observée lors des premiers déploiements `MCP` en 2025–2026 porte un nom précis : **la génération automatique d'outils `MCP` à partir de spécifications `OpenAPI` / `Swagger` existantes**. En pointant un utilitaire de conversion sur un progiciel comptant 90 routes REST conçues pour une interface web classique, une équipe croit livrer un serveur `MCP` « en une après-midi ». En réalité, elle fabrique un système inutilisable en production (Figure 5.2).
+L'erreur d'ingénierie la plus coûteuse observée lors des premiers déploiements `MCP` en 2025–2026 porte un nom précis : **la génération automatique d'outils `MCP` à partir de spécifications `OpenAPI` / `Swagger` existantes**. En pointant un utilitaire de conversion sur un progiciel comptant 90 routes REST conçues pour une interface web classique, une équipe croit livrer un serveur `MCP` « en une après-midi ». En réalité, elle fabrique un système inutilisable en production, comme l'illustre la figure ci-dessous.
 
 ![Comparaison architecturale : mappage naïf 1:1 CRUD REST vers MCP face à la conception orientée intention métier agrégée.](manuscrit/figures/fig-05-antipattern-rest-mcp.svg)
 

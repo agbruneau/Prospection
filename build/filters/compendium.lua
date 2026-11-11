@@ -170,10 +170,13 @@ function Div(el)
       end
 
       if FORMAT:match("typst") then
+        local typst_title = title
+          :gsub("^Synthèse exécutive%s*—%s*", "")
+          :gsub("^Fil rouge%s*—%s*", "")
         local result = {}
         result[#result + 1] = pandoc.RawBlock(
           "typst",
-          string.format('#compendium-box(kind: "%s", title: "%s")[\n', cfg.kind, escape_typst_string(title))
+          string.format('#compendium-box(kind: "%s", title: "%s")[\n', cfg.kind, escape_typst_string(typst_title))
         )
         for _, b in ipairs(content) do
           result[#result + 1] = b

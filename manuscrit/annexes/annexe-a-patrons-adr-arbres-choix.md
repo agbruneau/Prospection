@@ -8,31 +8,31 @@ Chaque chapitre de cet ouvrage formalise un invariant architectural non négocia
 
 | Code | Chap. | Intitulé normatif de la décision | Invariant technique imposé |
 |---|---|---|---|
-| **ADR-001** | 1 | Superposition d'un *System of Action* découplé et séparation `MCP` / `A2A` | Zéro écriture SQL directe contournant les *Systems of Record* ; `ActionEnvelope` obligatoire |
-| **ADR-002** | 2 | Interdiction du routage global de processus critiques par LLM non borné | Le séquencement maître réside dans du code ou une machine à états déterministe |
-| **ADR-003** | 3 | Portail d'homologation gradué selon la maturité (N1–N5) et l'autonomie (`L0`–`L4`) | Recensement obligatoire et blocage réseau des *Shadow Agents* non enregistrés |
-| **ADR-004** | 4 | Alignement normatif sur la pile ouverte Linux Foundation `AAIF` | Priorité aux standards neutres (`MCP`, `A2A v1.0`, `Agent Skills`, `Open Responses`) |
-| **ADR-005** | 5 | Exposition d'outils métiers sur `MCP Streamable HTTP` orienté intention | Maximum 12 outils cohérents par agent spécialiste ; refus du mappage CRUD 1:1 |
-| **ADR-006** | 6 | Délégation inter-domaines exclusivement par `A2A v1.0` et `Agent Cards` signées | Découverte dynamique `OASF` et transport chiffré `SLIM`/MLS entre domaines distincts |
-| **ADR-007** | 7 | Découplage déclaratif des interfaces via `AG-UI` et `A2UI` | Aucun code HTML/JS arbitraire généré par LLM exécuté sans catalogue déclaratif borné |
-| **ADR-008** | 8 | Transmission d'enveloppes de contexte minimales typées lors des *handoffs* | Filtrage `ACL-aware` obligatoire et interdiction de relayer l'historique brut intégral |
-| **ADR-009** | 9 | Résolution sémantique préalable via `Apache Ossie` et ontologie métier | Toute métrique ou règle d'éligibilité passe par la couche sémantique normalisée |
-| **ADR-010** | 10 | Mémoire hybride alliant graphe bi-temporel (`Graphiti`) et état de session | Double horodatage `valid_from`/`valid_to` et capacité de purge vérifiable (`Loi 25`) |
-| **ADR-011** | 11 | Matrice formelle de choix entre orchestration centrale et chorégraphie | Interdiction des essaims conversationnels libres sur des flux soumis à audit |
-| **ADR-012** | 12 | Exécution de tout flux mutatif multi-étapes sur moteur durable (`Temporal`/`Restate`) | Journalisation déterministe, clés d'idempotence et revalidation au réveil (`awakeable`) |
-| **ADR-013** | 13 | Contrat de compensation `Saga` obligatoire pour chaque outil mutatif | Toute mutation possède son inverse compensatoire ou un tampon à fenêtre de grâce |
-| **ADR-014** | 14 | Point de passage unique via `agentgateway` et routage cognitif à 3 paliers | Orientation par défaut sur `SLM` spécialisé ; affinité de préfixe `KV-cache` active |
-| **ADR-015** | 15 | Ancrage selon la gravité des données et fédération par plan de contrôle neutre | Les agents SaaS opèrent sur leurs objets natifs et coopèrent via en-tête anti-boucle |
-| **ADR-016** | 16 | Usage restreint des *Computer-Use Agents* (`CUA`) en dernier recours supervisé | Vérification visuelle pré/post-action et migration programmée vers connecteur `MCP` |
-| **ADR-017** | 17 | Sas obligatoire par Jumeau numérique avant toute consigne `IT` → `OT` | Aucune écriture directe d'un modèle probabiliste vers un automate `PLC`/`SCADA` |
-| **ADR-018** | 18 | Identité `NHI` dédiée (`SPIFFE`/`DID`) et échange `RFC 8693 OBO` à chaque saut | Atténuation stricte de portée (`sub`/`act`) et approbation `CIBA` sur seuil critique |
-| **ADR-019** | 19 | Couverture `OWASP ASI01–ASI10` et épinglage cryptographique des serveurs `MCP` | Signature SHA-256/Sigstore des schémas d'outils contre les attaques *Rug-Pull* |
-| **ADR-020** | 20 | Garde-fous déterministes hors LLM (`Cedar`/`OPA`) et isolation microVM/`OpenSandbox` | Exécution de code sans egress réseau implicite et coupe-circuit SOC testé |
-| **ADR-021** | 21 | Doctrine « Pas de télémétrie `OpenTelemetry gen_ai.*`, pas de déploiement » | Traces distribuées obligatoires avec caviardage PII en amont de l'export |
-| **ADR-022** | 22 | Portes CI/CD fondées sur la constance \(\text{pass}^k\) simulée et déploiement Canary | Homologation sur bancs de type \(\tau\)-bench et injection de pannes avant trafic réel |
-| **ADR-023** | 23 | Plafond budgétaire par saga et pilotage économique au *Cost-per-Outcome* | Disjoncteur financier temps réel et décommissionnement des agents à ROI négatif |
-| **ADR-024** | 24 | Classification légale dynamique fondée sur l'empreinte de déploiement | Alignement croisé `ISO/IEC 42001`, `BSIF E-23` (mai 2027), `Loi 25` et `EU AI Act` |
-| **ADR-025** | 25 | Propriétaire métier nominatif (*Named Business Owner*) par boucle agentique | Responsabilité humaine explicite et contrôle anti-complaisance cognitive `HOTL` |
+| **ADR-001** | 1 | Superposition d'un *System of Action* découplé et séparation stricte `MCP` / `A2A` | Zéro écriture SQL directe contournant les *Systems of Record* ; `ActionEnvelope` obligatoire |
+| **ADR-002** | 2 | Interdiction du routage global de processus critiques par inférence LLM non bornée | Le séquencement maître réside dans du code ou une machine à états déterministe |
+| **ADR-003** | 3 | Adoption d'un portail d'homologation gradué par niveau de maturité et d'exposition | Recensement obligatoire et blocage réseau des *Shadow Agents* non enregistrés |
+| **ADR-004** | 4 | Alignement normatif sur la pile Linux Foundation `AAIF` et gouvernance anti-verrouillage | Priorité aux standards neutres (`MCP`, `A2A v1.0`, `Agent Skills`, `Open Responses`) |
+| **ADR-005** | 5 | Standardisation de l'exposition d'outils métiers sur `MCP Streamable HTTP` orienté domaine, `Agent Skills` et `WebMCP` | Maximum 12 outils cohérents par agent spécialiste ; refus du mappage CRUD 1:1 |
+| **ADR-006** | 6 | Utilisation d'`A2A v1.0` et d'`Agent Cards` signées pour toute délégation inter-domaines | Découverte dynamique `OASF` et transport chiffré `SLIM`/MLS entre domaines distincts |
+| **ADR-007** | 7 | Découplage déclaratif des interfaces génératives via `AG-UI` et `A2UI` | Aucun code HTML/JS arbitraire généré par LLM exécuté sans catalogue déclaratif borné |
+| **ADR-008** | 8 | Compilation déterministe du contexte, filtrage ACL pré-récupération et transfert par référence | Filtrage `ACL-aware` obligatoire et interdiction de relayer l'historique brut intégral |
+| **ADR-009** | 9 | Adoption d'`Apache Ossie` pour la sémantique analytique et d'une ontologie causale versionnée pour les actions | Toute métrique ou règle d'éligibilité passe par la couche sémantique normalisée |
+| **ADR-010** | 10 | Architecture de mémoire hybride (`Letta` + `Graphiti` bi-temporel), garde anti-`ASI06` et effacement crypto-sélectif | Double horodatage `valid_from`/`valid_to` et capacité de purge vérifiable (`Loi 25`) |
+| **ADR-011** | 11 | Standardisation des topologies multi-agents et interdiction des graphes cycliques non bornés | Interdiction des essaims conversationnels libres sur des flux soumis à audit |
+| **ADR-012** | 12 | Architecture bi-vitesse d'exécution durable (`Temporal` + `Restate`) et revalidation obligatoire post-hibernation | Journalisation déterministe, clés d'idempotence et revalidation au réveil (`awakeable`) |
+| **ADR-013** | 13 | Maillage événementiel hybride `Kafka`/`Solace` et patron `Saga` à compensation sans `2PC` | Toute mutation possède son inverse compensatoire ou un tampon à fenêtre de grâce |
+| **ADR-014** | 14 | Imposition d'`agentgateway` comme plan de données unique, routage hybride à 3 paliers et affinité de `KV-cache` | Orientation par défaut sur `SLM` spécialisé ; affinité de préfixe `KV-cache` active |
+| **ADR-015** | 15 | Ancrage des agents spécialistes selon la gravité des données et fédération par plan de contrôle neutre | Les agents SaaS opèrent sur leurs objets natifs et coopèrent via en-tête anti-boucle |
+| **ADR-016** | 16 | Doctrine d'usage restreint des *Computer-Use Agents* en dernier recours sous double validation | Vérification visuelle pré/post-action et migration programmée vers connecteur `MCP` |
+| **ADR-017** | 17 | Architecture en sas par Jumeau numérique et validation déterministe pour toute consigne `IT`→`OT` | Aucune écriture directe d'un modèle probabiliste vers un automate `PLC`/`SCADA` |
+| **ADR-018** | 18 | Identité `NHI` unique par classe d'agent et échange de jetons `RFC 8693` à portée atténuée à chaque saut | Atténuation stricte de portée (`sub`/`act`) et approbation `CIBA` sur seuil critique |
+| **ADR-019** | 19 | Modélisation de menaces `ASI01`–`ASI10` obligatoire et épinglage cryptographique des schémas `MCP` | Signature SHA-256/Sigstore des schémas d'outils contre les attaques *Rug-Pull* |
+| **ADR-020** | 20 | Découplage systématique des garde-fous déterministes (`Cedar`/`OPA`) et exécution en microVM isolée | Exécution de code sans egress réseau implicite et coupe-circuit SOC testé |
+| **ADR-021** | 21 | Standardisation sur `OpenTelemetry GenAI` et collecte souveraine à double couloir PII | Traces distribuées obligatoires avec caviardage PII en amont de l'export |
+| **ADR-022** | 22 | Cycle `ADLC` gouverné par `SemVer+Intent`, portes de constance \(\text{pass}^5\) et déploiement Canary | Homologation sur bancs de type \(\tau\)-bench et injection de pannes avant trafic réel |
+| **ADR-023** | 23 | Pilotage FinOps par le *Cost-per-Outcome*, disjoncteurs par saga et refacturation interne | Disjoncteur financier temps réel et décommissionnement des agents à ROI négatif |
+| **ADR-024** | 24 | Qualification réglementaire dynamique par empreinte de déploiement et mandats B2B bornés | Alignement croisé `ISO/IEC 42001`, `BSIF E-23` (mai 2027), `Loi 25` et `EU AI Act` |
+| **ADR-025** | 25 | Modèle *Hub-and-Spoke*, propriétaire métier nominatif et vigilance `HOTL` instrumentée | Responsabilité humaine explicite et contrôle anti-complaisance cognitive `HOTL` |
 
 ---
 

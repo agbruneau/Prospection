@@ -25,11 +25,11 @@ Dans un graphe de *N* agents connectés, la probabilité et la sévérité d'une
 
 ![Anatomie d'une attaque trans-agent (OWASP ASI & MCP) et barrières de rupture déterministes.](manuscrit/figures/fig-19-owasp-asi-mcp-attacks.svg)
 
-La figure 19.1 illustre la progression canonique d'une attaque trans-agent en cinq stades et positionne les quatre barrières architecturales déterministes requises pour briser la chaîne avant tout impact sur un *System of Record*. Avant d'examiner ces barrières en détail, tout architecte et tout responsable de la sécurité (`CISO`) doit maîtriser avec précision les dix classes de risques normatives **`ASI01` à `ASI10`**.
+La figure ci-dessus illustre la progression canonique d'une attaque trans-agent en cinq stades et positionne les quatre barrières architecturales déterministes requises pour briser la chaîne avant tout impact sur un *System of Record*. Avant d'examiner ces barrières en détail, tout architecte et tout responsable de la sécurité (`CISO`) doit maîtriser avec précision les dix classes de risques normatives **`ASI01` à `ASI10`**.
 
 ### Cartographie d'ingénierie exhaustive de `ASI01` à `ASI10`
 
-Le tableau 19.1 établit la correspondance directe entre chaque catégorie officielle du référentiel `OWASP ASI`, ses mécanismes concrets d'exploitation dans une fabrique multi-agents, les signaux télémétriques observables en temps réel et les contre-mesures d'architecture exigées en 2027.
+Le tableau ci-dessous établit la correspondance directe entre chaque catégorie officielle du référentiel `OWASP ASI`, ses mécanismes concrets d'exploitation dans une fabrique multi-agents, les signaux télémétriques observables en temps réel et les contre-mesures d'architecture exigées en 2027.
 
 | Code & Catégorie officielle OWASP ASI | Mécanisme d'exploitation en architecture multi-agents | Signaux de détection (`OpenTelemetry` / SIEM) | Contrôles architecturaux déterministes |
 |---|---|---|---|
@@ -73,7 +73,7 @@ Le danger le plus insidieux survient lorsqu'un même agent est raccordé simulta
 
 Lorsqu'un serveur `MCP` intermédiaire s'authentifie auprès d'une API aval (telle qu'une base `Snowflake` ou un progiciel `SAP`) à l'aide de ses propres identifiants statiques tout en acceptant des requêtes de multiples agents ou en relayant sans vérification d'audience des jetons reçus, un attaquant qui manipule les paramètres d'entrée amène le serveur `MCP` à abuser de son autorité propre sur le système aval.
 
-Le tableau 19.2 récapitule la matrice de défense normative applicable à l'ensemble de l'infrastructure `MCP`.
+Le tableau ci-dessous récapitule la matrice de défense normative applicable à l'ensemble de l'infrastructure `MCP`.
 
 | Vecteur d'attaque `MCP` | Surface protocolaire exploitée | Impact métier maximal | Contre-mesures obligatoires (`agentgateway` + Client + Serveur) |
 |---|---|---|---|
@@ -123,8 +123,16 @@ POISONED_TOOL_EXAMPLE: dict[str, Any] = {
 
 FORBIDDEN_UNICODE_CATEGORIES = {"Cf", "Co", "Cs"}  # Format/Bidi/Zero-width, Private Use, Surrogates
 IMPERATIVE_POISON_PATTERNS = [
-    re.compile(r"\b(system\s+override|ignore\s+previous|avant\s+d['’]invoquer)\b", re.IGNORECASE),
-    re.compile(r"\b(sans\s+en\s+informer|do\s+not\s+mention|concat[ée]nez\s+imp[ée]rativement)\b", re.IGNORECASE),
+    re.compile(
+        r"\b(system\s+override|ignore\s+previous"
+        r"|avant\s+d['’]invoquer)\b",
+        re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b(sans\s+en\s+informer|do\s+not\s+mention"
+        r"|concat[ée]nez\s+imp[ée]rativement)\b",
+        re.IGNORECASE,
+    ),
     re.compile(r"(mcp://|sap://|file://|/etc/|~/.ssh)", re.IGNORECASE),
 ]
 
@@ -213,16 +221,16 @@ servers:
   - namespace: "bel_sap_mm"
     endpoint: "https://agentgateway.internal.boreal.ca/mcp/bel-sap-materials"
     transport: "streamable-http"
-    ociArtifactDigest: "sha256:4a91e07f3c82d16b90e4a521f873c61b09d42e18a7c56b3f2109e8d4c7a1b523"
-    sigstoreBundleRef: "oci://registry.internal.boreal.ca/mcp/bel-sap-mm@sha256:4a91e07f.sig"
+    ociArtifactDigest: "sha256:4a91e07f3c82d16b...2109e8d4c7a1b523"
+    sigstoreBundleRef: "oci://registry.boreal.ca/mcp/bel-sap-mm@sha256:4a91e07f.sig"
     requiredAudience: "mcp://agentgateway.internal.boreal.ca/mcp/bel-sap-materials"
     pinnedTools:
       - name: "sap_reserve_critical_spare_part"
-        jcsSchemaSha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        jcsSchemaSha256: "e3b0c44298fc1c149afbf4c8...495991b7852b855"
         mutating: true
         maxAutonomyTier: "L3"
       - name: "sap_release_spare_part_reservation"
-        jcsSchemaSha256: "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+        jcsSchemaSha256: "9f86d081884c7d659a2feaa0...d15d6c15b0f00a08"
         mutating: true
         maxAutonomyTier: "L3"
 ```
@@ -348,7 +356,7 @@ L'équipe offensive dépose dans la boîte de réception EDI/courriel de l'entre
 **Comment l'architecture initiale de pré-production a réagi vs l'architecture durcie** :
 
 * Lors du **premier tir sur un prototype non cloisonné** (un seul agent `LLM` lisant directement le texte brut du PDF et disposant de 14 outils `SAP`), le modèle a rejeté la modification directe d'IBAN dans 66 % des essais, mais **a succombé dans 34 % des exécutions (\(\text{ASR}_{\text{plan}} = 34\,\%\))** lorsque l'injection imitait le formalisme interne des mémos d'audit Boréal, enregistrant de surcroît la note falsifiée dans l'index vectoriel partagé.
-* L'équipe d'architecture déploie alors les **quatre barrières de rupture de la Figure 19.1** :
+* L'équipe d'architecture déploie alors les **quatre barrières de rupture architecturales (B1 à B4)** :
   1. **Isolation *Dual-Model* à l'ingestion (Barrière B1)** : Le PDF n'est plus jamais lu par un agent doté d'outils. Il est traité par un *Travailleur d'extraction `SLM`* totalement dépourvu de connecteurs `MCP`, contraint par décodage guidé (*Constrained Decoding*) à ne produire qu'un objet JSON strict `{poNumber: string, items: Array<{sku: string, qty: number}>}` validé par expressions régulières. Tout texte libre ou méta-instruction disparaît physiquement à cette frontière.
   2. **Épinglage `mcp-lockfile` et séparation des rôles (Barrière B2)** : Le serveur `MCP` de rapprochement de réception ne contient matériellement aucun outil de modification des données maîtresses bancaires fournisseurs (domaine réservé à un processus distinct soumis à double validation `CIBA`).
   3. **Quarantaine mémoire et vue différentielle `A2UI` (Barrières B3 & B4)** : Les anomalies de livraison sont présentées au gestionnaire non sous forme d'un résumé rédigé par LLM, mais sous forme d'un tableau déterministe comparant colonne par colonne les chiffres extraits du bon de commande `SAP` et ceux du bon de réception.

@@ -62,8 +62,12 @@ WITH span_costs AS (
         s.attributes['saga.id']::STRING                        AS saga_id,
         s.attributes['business.process.code']::STRING          AS process_code,
         COALESCE(s.attributes['gen_ai.usage.input_tokens']::INT, 0)
-          - COALESCE(s.attributes['gen_ai.usage.cache_read_input_tokens']::INT, 0) AS uncached_in_tokens,
-        COALESCE(s.attributes['gen_ai.usage.cache_read_input_tokens']::INT, 0)     AS cached_in_tokens,
+          - COALESCE(
+              s.attributes['gen_ai.usage.cache_read_input_tokens']::INT, 0
+            ) AS uncached_in_tokens,
+        COALESCE(
+          s.attributes['gen_ai.usage.cache_read_input_tokens']::INT, 0
+        ) AS cached_in_tokens,
         COALESCE(s.attributes['gen_ai.usage.output_tokens']::INT, 0)
           + COALESCE(s.attributes['gen_ai.usage.reasoning_tokens']::INT, 0)        AS billable_out_tokens,
         COALESCE(s.attributes['mcp.external_api_cost_cad']::DOUBLE, 0.0)           AS mcp_api_cost_cad,

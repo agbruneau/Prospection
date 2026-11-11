@@ -18,6 +18,11 @@ def count_pdf_pages(pdf_path: Path) -> int:
 
 def extract_text(body: object) -> str:
     if isinstance(body, dict):
+        func = body.get("func")
+        if func == "smartquote":
+            return "’" if not body.get("double") else "«"
+        if func == "space":
+            return " "
         if "text" in body and isinstance(body["text"], str):
             return body["text"]
         if "children" in body and isinstance(body["children"], list):

@@ -105,7 +105,7 @@ Deux mécanismes complémentaires d'`A2A v1.0` garantissent la résilience sur l
       "blocking": false,
       "pushNotificationConfig": {
         "id": "push-cfg-temporal-088412",
-        "url": "https://orchestrator-callbacks.internal.boreal.ca/a2a/v1/webhook",
+        "url": "https://callbacks.internal.boreal.ca/a2a/v1/webhook",
         "token": "awk-tok-9f8e7d6c5b4a3210",
         "authentication": { "schemes": ["Bearer", "X-A2A-Signature-JWS"] }
       }
@@ -163,7 +163,7 @@ Deux mécanismes complémentaires d'`A2A v1.0` garantissent la résilience sur l
         "file": {
           "name": "certificat-couverture-551902.pdf",
           "mimeType": "application/pdf",
-          "uri": "https://vault.internal.boreal.ca/artifacts/cert-551902.pdf?sig=8b7a&exp=1805037755"
+          "uri": "https://vault.boreal.ca/artifacts/cert-551902.pdf?sig=8b7a"
         }
       }
     ]
@@ -226,8 +226,8 @@ domains:
 
 locators:
   - type: "a2a-agent-card"
-    url: "https://agentgateway.internal.boreal.ca/a2a/bel/customs/.well-known/agent-card.json"
-    digest: "sha256:9f44c8e12a08b7d6513e88c2190ab4f33d1e7790c12a4b8856f01e23c9914d0a"
+    url: "https://gateway.boreal.ca/a2a/bel/customs/agent-card.json"
+    digest: "sha256:9f44c8e12a08b7d6513e88c2...856f01e23c9914d0a"
   - type: "slim-endpoint"
     uri: "slim://ca.boreal/supply-chain/customs-classifier"
 
@@ -360,27 +360,27 @@ En production, aucun agent interne n'est exposé directement au réseau externe 
 #### Extrait 6.4 — Document d'identité `ANP` (`did:wba`) et politique `Cedar` d'admission DMZ
 
 ```json
-// GET https://b2b-agents.acier-laurentides.ca/sales/rfq-responder/did.json
+// GET https://agents.acier-laurentides.ca/sales/rfq/did.json
 {
   "@context": ["https://www.w3.org/ns/did/v1", "https://w3id.org/security/suites/jws-2020/v1"],
-  "id": "did:wba:b2b-agents.acier-laurentides.ca:sales:rfq-responder",
+  "id": "did:wba:agents.acier-laurentides.ca:sales:rfq",
   "verificationMethod": [{
-    "id": "did:wba:b2b-agents.acier-laurentides.ca:sales:rfq-responder#key-auth-1",
+    "id": "did:wba:agents.acier-laurentides.ca:sales:rfq#key-auth-1",
     "type": "JsonWebKey2020",
-    "controller": "did:wba:b2b-agents.acier-laurentides.ca:sales:rfq-responder",
+    "controller": "did:wba:agents.acier-laurentides.ca:sales:rfq",
     "publicKeyJwk": { "kty": "OKP", "crv": "Ed25519", "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo" }
   }],
-  "authentication": ["did:wba:b2b-agents.acier-laurentides.ca:sales:rfq-responder#key-auth-1"],
+  "authentication": ["did:wba:agents.acier-laurentides.ca:sales:rfq#key-auth-1"],
   "service": [
     {
       "id": "#a2a",
       "type": "A2AAgentEndpoint",
-      "serviceEndpoint": "https://b2b-agents.acier-laurentides.ca/a2a/v1/rfq"
+      "serviceEndpoint": "https://agents.acier-laurentides.ca/a2a/v1/rfq"
     },
     {
       "id": "#vlei",
       "type": "LegalEntityVerifiableCredential",
-      "serviceEndpoint": "https://b2b-agents.acier-laurentides.ca/credentials/gleif-vlei.vc.json"
+      "serviceEndpoint": "https://agents.acier-laurentides.ca/vc/gleif-vlei.vc.json"
     }
   ]
 }

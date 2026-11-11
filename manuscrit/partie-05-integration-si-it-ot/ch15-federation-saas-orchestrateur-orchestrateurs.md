@@ -85,7 +85,7 @@ Ce message JSON-RPC `A2A v1.0` illustre comment une demande d'allocation de piè
       "acceptedOutputModes": ["application/json"],
       "blocking": false,
       "pushNotificationConfig": {
-        "url": "https://agentgateway.internal.boreal.ca/callbacks/temporal/saga-88412",
+        "url": "https://gateway.boreal.ca/callbacks/temporal/saga-88412",
         "authentication": { "schemes": ["Bearer-SPIFFE-SVID"] }
       }
     },

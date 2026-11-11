@@ -170,8 +170,8 @@ Exposé sur le point de terminaison standardisé `/.well-known/agent-card.json` 
       "name": "Instruction d'admissibilité de garantie sur alerte télématique",
       "description": "Croise le numéro de série, le code défaut télématique et les avenants actifs sur IBM i / Guidewire afin de statuer sur la couverture et la franchise applicable.",
       "tags": ["warranty", "bsif-e23-tier2", "equipment", "adjudication"],
-      "inputSchema": "https://schemas.boreal.ca/ossie/v2/warranty-claim-intent.schema.json",
-      "outputSchema": "https://schemas.boreal.ca/ossie/v2/warranty-decision.schema.json"
+      "inputSchema": "https://schemas.boreal.ca/ossie/v2/warranty-claim.json",
+      "outputSchema": "https://schemas.boreal.ca/ossie/v2/warranty-decision.json"
     }
   ]
 }

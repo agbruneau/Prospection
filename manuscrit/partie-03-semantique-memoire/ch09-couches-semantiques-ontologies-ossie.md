@@ -331,7 +331,9 @@ class NeuroSymbolicPlanningResolver:
             model=self.MODEL,
             dims=["enterprise_customer.is_active_commercial_customer",
                   "equipment_warranty_contract.is_warranty_coverage_valid"],
-            metrics=["equipment_warranty_contract.active_covered_units_count"],
+            metrics=[
+                "equipment_warranty_contract.active_covered_units_count"
+            ],
             filters={"enterprise_customer.boreal_party_id": asset.party_id,
                      "equipment_warranty_contract.equipment_serial_number": asset.serial},
         )

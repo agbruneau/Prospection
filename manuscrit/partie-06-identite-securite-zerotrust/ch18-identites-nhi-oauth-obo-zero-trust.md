@@ -112,7 +112,7 @@ spec:
       division: "bca"
   workloadSelectorTemplates:
     - "k8s:sa:warranty-adjudicator-v2"
-    - "k8s:container-image-sha256:8f4e2b9c71d03a6e54c19a2f80d7e3114b9c62a0f5e8d2173c4b901a6d2e5f18"
+    - "k8s:container-image-sha256:8f4e2b9c71d03a6e...3c4b901a6d2e5f18"
 ```
 
 ```json
@@ -139,7 +139,7 @@ spec:
   "credentialSubject": {
     "id": "did:web:agents.boreal.ca:bel:procurement-negotiator",
     "spiffeFederationBinding": "spiffe://boreal.ca/ns/bel-prod/sa/procurement-negotiator",
-    "agentCardUrl": "https://agents.boreal.ca/bel/procurement/.well-known/agent-card.json",
+    "agentCardUrl": "https://agents.boreal.ca/bel/proc/agent-card.json",
     "authorizedActions": ["rfq.issue", "delivery.reschedule", "po.propose_amendment"],
     "maxBindingCommitmentCad": 25000,
     "humanSponsorRole": "VP Approvisionnement Industriel BEL"
@@ -150,7 +150,7 @@ spec:
     "created": "2027-01-15T08:30:00Z",
     "verificationMethod": "did:web:boreal.ca:legal-entity#key-ed25519-2027-01",
     "proofPurpose": "assertionMethod",
-    "proofValue": "z4oJ8h7R9mKpL2xQvN5tWzY3cBfD6gHjM1nPqRsTuVwXyZ8aBcDeFgHiJkLmNoPqR"
+    "proofValue": "z4oJ8h7R9mKpL2xQvN5tWzY3cBfD6gHjM1nPqRsTuVwXyZ8aBcDe"
   }
 }
 ```
@@ -183,24 +183,27 @@ Voici la requête exacte émise au saut n° 2 par l'*Agent Spécialiste Garantie
 POST /oauth2/v2.1/token HTTP/1.1
 Host: sts.identity.boreal.ca
 Content-Type: application/x-www-form-urlencoded
-DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwiY3J2IjoiUC0yNTYiLCJ4Ijoi...
+DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0...
 
-grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
+grant_type=urn:ietf:params:oauth:grant-type:token-exchange
 &client_id=agent-bca-warranty-adjudicator-prod
-&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
-&client_assertion=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9ib3JlYWwuY2EvbnMvYmNh...
-&subject_token=eyJhbGciOiJFUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJzdWIiOiJlbXAtODg0MSIsImFjdCI6eyJzdWIi...
-&subject_token_type=urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
-&audience=mcp%3A%2F%2Fagentgateway.internal.boreal.ca%2Fmcp%2Fbca-guidewire-contracts
+&client_assertion_type=
+  urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+&client_assertion=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI...
+&subject_token=eyJhbGciOiJFUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJzdW...
+&subject_token_type=urn:ietf:params:oauth:token-type:access_token
+&audience=mcp://gateway.boreal.ca/mcp/bca-guidewire-contracts
 &scope=bca.warranty.preauthorize
-&authorization_details=%5B%7B%22type%22%3A%22boreal_warranty_adjudication%22%2C%22actions%22%3A%5B%22preauthorize_claim%22%5D%2C%22equipmentSerial%22%3A%22BOR-CMP-90441%22%2C%22maxAmountCad%22%3A4500.00%2C%22sagaId%22%3A%22saga-inc-2027-088412%22%7D%5D
+&authorization_details=[{"type": "boreal_warranty_adjudication",
+  "actions": ["preauthorize_claim"], "equipmentSerial": "BOR-CMP-90441",
+  "maxAmountCad": 4500.00, "sagaId": "saga-inc-2027-088412"}]
 ```
 
 ```json
 {
   "iss": "https://sts.identity.boreal.ca",
   "sub": "emp-8841-marc.lavoie@boreal.ca",
-  "aud": "mcp://agentgateway.internal.boreal.ca/mcp/bca-guidewire-contracts",
+  "aud": "mcp://gateway.boreal.ca/mcp/bca-guidewire-contracts",
   "iat": 1773588420,
   "exp": 1773588720,
   "jti": "tok-t2-9f81c3a4-7b2e-4d19-8a50-62e41c90b312",

@@ -64,12 +64,12 @@
   <text x="452" y="284" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#9a3412">input-required | auth-required</text>
   <text x="452" y="300" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#7c2d12">Suspension sans CPU : demande pièce manquante</text>
   <text x="452" y="313" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#7c2d12">ou consentement hors bande (CIBA / OBO)</text>
-  <path d="M 452 264 L 452 240 L 394 240" fill="none" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrBlue)"/>
-  <text x="478" y="253" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#1d4ed8">Reprise message/send (taskId)</text>
+  <path d="M 430 264 L 430 242 L 394 242" fill="none" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrBlue)"/>
+  <text x="436" y="252" font-family="Segoe UI, Calibri, sans-serif" font-size="8.3" fill="#1d4ed8">Reprise message/send (taskId)</text>
 
   <!-- Flèches vers états terminaux -->
-  <path d="M 394 202 L 606 196" fill="none" stroke="#15803d" stroke-width="1.6" marker-end="url(#arrGreen)"/>
-  <path d="M 394 224 L 580 224 L 580 284 L 606 284" fill="none" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrRed)"/>
+  <path d="M 394 198 L 606 198" fill="none" stroke="#15803d" stroke-width="1.6" marker-end="url(#arrGreen)"/>
+  <path d="M 394 218 L 590 218 L 590 284 L 606 284" fill="none" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrRed)"/>
 
   <!-- État completed -->
   <rect x="606" y="166" width="234" height="62" rx="4" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5"/>

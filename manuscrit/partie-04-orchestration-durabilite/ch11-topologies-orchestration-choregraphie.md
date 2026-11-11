@@ -40,7 +40,7 @@ Pour échapper aussi bien à l'anarchie du maillage libre qu'à la fragilité d'
 * **À l'intérieur d'un contexte borné (*Bounded Context*) — Primauté de l'orchestration déterministe** : Lorsqu'un processus appartient à un domaine métier unique soumis à une responsabilité claire (par exemple l'instruction d'une réclamation d'assurance chez BCA ou le diagnostic complet d'une alerte machine chez BSN), un coordinateur explicite pilote les étapes, détient l'état d'avancement, applique les délais de garde et agrège les preuves. La visibilité opérationnelle y est immédiate : un seul identifiant d'exécution résume exactement où en est le dossier.
 * **Entre domaines d'affaires distincts — Primauté de la chorégraphie événementielle** : Lorsque la clôture d'un diagnostic technique chez BSN doit déclencher à la fois une mise à jour du risque client dans le CRM, un réajustement des prévisions de pièces dans l'ERP industriel et une écriture analytique de provision financière, aucun orchestrateur central ne doit coupler ces trois divisions. Le domaine source publie un événement métier immuable et sémantiquement typé (`EquipmentFailureDiagnosed.v2`, conforme à `Apache Ossie`) sur le courtier d'entreprise (`Kafka` ou `Solace`), et chaque domaine abonné déclenche en toute autonomie son propre micro-orchestrateur interne.
 
-Le Tableau 11.1 formalise les compromis d'ingénierie entre ces trois régimes macroscopiques.
+Le tableau ci-dessous formalise les compromis d'ingénierie entre ces trois régimes macroscopiques.
 
 | Critère d'urbanisation | Orchestration monolithique globale | Chorégraphie pure intégrale | Architecture cellulaire fédérée (Standard 2027) |
 |---|---|---|---|
@@ -55,7 +55,7 @@ Le Tableau 11.1 formalise les compromis d'ingénierie entre ces trois régimes m
 
 ## 11.2 Anatomie comparative des six topologies canoniques multi-agents en 2027
 
-Une fois les frontières de domaines tracées, comment structurer concrètement la collaboration des agents *à l'intérieur* d'une cellule orchestrée ou d'un sous-réseau coopératif ? L'expérience industrielle accumulée fin 2026 montre que la quasi-totalité des cas d'usage de production se ramène à **six topologies canoniques**, illustrées à la Figure 11.1. Toute architecture candidate devrait justifier explicitement laquelle de ces six structures elle instancie — ou comment elle les compose hiérarchiquement.
+Une fois les frontières de domaines tracées, comment structurer concrètement la collaboration des agents *à l'intérieur* d'une cellule orchestrée ou d'un sous-réseau coopératif ? L'expérience industrielle accumulée fin 2026 montre que la quasi-totalité des cas d'usage de production se ramène à **six topologies canoniques**, illustrées à la figure ci-dessous. Toute architecture candidate devrait justifier explicitement laquelle de ces six structures elle instancie — ou comment elle les compose hiérarchiquement.
 
 ![Comparaison architecturale des six topologies multi-agents de production en 2027.](manuscrit/figures/fig-11-topologies-mas.svg)
 
@@ -106,7 +106,7 @@ L'architecture hybride conserve un moteur de processus métier normatif (**ISO/I
 
 ### Matrice multicritère de sélection topologique
 
-Le Tableau 11.2 fournit aux architectes d'entreprise la grille de décision comparative entre ces six topologies sur les sept critères d'homologation industrielle.
+Le tableau ci-dessous fournit aux architectes d'entreprise la grille de décision comparative entre ces six topologies sur les sept critères d'homologation industrielle.
 
 | Topologie multi-agents | Latence bout-en-bout | Multiplicateur coût jetons | Déterminisme du parcours | Tolérance aux pannes partielles | Auditabilité prudentielle | Risque dominant (`OWASP ASI`) | Cas d'usage de référence |
 |---|---|---|---|---|---|---|---|
@@ -359,7 +359,8 @@ Ce fragment BPMN 2.0 exécutable (compatible avec le moteur distribué `Camunda 
     <bpmn:extensionElements>
       <zeebe:taskDefinition type="io.boreal.a2a.bounded-pec-worker:v2" retries="2" />
       <zeebe:taskHeaders>
-        <zeebe:header key="targetAgentCard" value="https://agentgateway.internal.boreal.ca/a2a/bca/claims-pec" />
+        <zeebe:header key="targetAgentCard"
+          value="https://gateway.boreal.ca/a2a/bca/claims-pec" />
         <zeebe:header key="maxIterations" value="3" />
         <zeebe:header key="maxBudgetCad" value="1.85" />
         <zeebe:header key="requiredOboScope" value="bca.claims.analyze_technical_report" />
@@ -420,7 +421,7 @@ où \(\varepsilon\) réserve le budget nécessaire à l'étape finale d'agrégat
 
 ### Catalogue des anti-patrons topologiques observés en production
 
-Le Tableau 11.3 synthétise les cinq pathologies topologiques les plus coûteuses recensées lors des audits d'architecture fin 2026, leurs signatures exactes dans les traces `OpenTelemetry gen_ai.*` et leurs correctifs normatifs.
+Le tableau ci-dessous synthétise les cinq pathologies topologiques les plus coûteuses recensées lors des audits d'architecture fin 2026, leurs signatures exactes dans les traces `OpenTelemetry gen_ai.*` et leurs correctifs normatifs.
 
 | Anti-patron topologique | Description du dysfonctionnement | Signature télémétrique (`OpenTelemetry`) | Correctif architectural normatif |
 |---|---|---|---|

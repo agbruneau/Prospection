@@ -26,7 +26,7 @@ Dans une architecture applicative ordinaire, quatre défaillances banales transf
 
 ### Le modèle mathématique de l'exécution durable journalisée (*Journaled Deterministic Replay*)
 
-L'exécution durable résout simultanément ces quatre problèmes en inversant la relation entre le code et la base de données. Au lieu de demander au développeur de découper manuellement sa logique métier en une myriade de tables d'états et de files de messages disparates, le moteur scinde l'application en **deux plans régis par des lois opposées**, comme l'illustre la Figure 12.1.
+L'exécution durable résout simultanément ces quatre problèmes en inversant la relation entre le code et la base de données. Au lieu de demander au développeur de découper manuellement sa logique métier en une myriade de tables d'états et de files de messages disparates, le moteur scinde l'application en **deux plans régis par des lois opposées**, comme l'illustre la figure ci-dessous.
 
 ![Mécanisme d'exécution durable par journalisation immuable, barrière d'effets de bord et reprise sur crash sans double exécution.](manuscrit/figures/fig-12-execution-durable-replay.svg)
 
@@ -58,7 +58,7 @@ Parce que l'identifiant `WfId` (`WorkflowId`) et le numéro de séquence `SeqId`
 
 ## 12.2 Panorama architectural comparé des moteurs d'exécution durable en 2027
 
-À l'horizon 2027, l'écosystème de l'exécution durable pour systèmes agentiques s'est structuré autour de **quatre plateformes majeures** aux philosophies architecturales distinctes, cartographiées à la Figure 12.2 : deux moteurs ouverts portables sur toute infrastructure (`Temporal` et `Restate`) et deux piles étroitement intégrées aux grands écosystèmes infonuagiques (`Microsoft Agent Framework` sur `Durable Task` et `Amazon Bedrock AgentCore`).
+À l'horizon 2027, l'écosystème de l'exécution durable pour systèmes agentiques s'est structuré autour de **quatre plateformes majeures** aux philosophies architecturales distinctes, cartographiées à la figure ci-dessous : deux moteurs ouverts portables sur toute infrastructure (`Temporal` et `Restate`) et deux piles étroitement intégrées aux grands écosystèmes infonuagiques (`Microsoft Agent Framework` sur `Durable Task` et `Amazon Bedrock AgentCore`).
 
 ![Positionnement architectural comparé de Temporal, Restate, Microsoft Agent Framework (Durable Task) et Amazon Bedrock AgentCore.](manuscrit/figures/fig-12-comparatif-runtimes.svg)
 
@@ -167,7 +167,9 @@ export interface CibaDecisionPayload {
   readonly decidedAtIso: string;
 }
 
-export const cibaApprovalSignal = defineSignal<[CibaDecisionPayload]>("bca.ciba.underwriterDecision");
+export const cibaApprovalSignal = defineSignal<[CibaDecisionPayload]>(
+  "bca.ciba.underwriterDecision"
+);
 export const claimStatusQuery = defineQuery<{ stage: string; reservedCad: number }>("bca.claim.currentStatus");
 
 export interface ClaimWorkflowInput {
@@ -310,7 +312,9 @@ import { createHmac } from "node:crypto";
 export function deriveDeterministicIdempotencyKey(domainSalt: string): string {
   const info = Context.current().info;
   return createHmac("sha256", domainSalt)
-    .update(`${info.workflowNamespace}:${info.workflowExecution.workflowId}:${info.activityId}`)
+    .update(
+      [info.workflowNamespace, info.workflowExecution.workflowId, info.activityId].join(":")
+    )
     .digest("hex");
 }
 
@@ -423,7 +427,7 @@ export const equipmentTriageObject = restate.object({
         const { id: awakeableId, promise } = ctx.awakeable<FieldBenchCallback>();
 
         await ctx.run("delegate-a2a-deep-bench", async () => {
-          await fetch("https://agentgateway.internal.boreal.ca/a2a/bsn/acoustic-specialist", {
+          await fetch("https://gateway.boreal.ca/a2a/bsn/acoustic-specialist", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

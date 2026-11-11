@@ -216,7 +216,7 @@ Pour les institutions financières fédérales soumises à la ligne directrice *
 
 ## 2.3 Frontières d'autonomie : matrice d'arbitrage API, RPA, BPMN/DMN et agent LLM
 
-L'ingénierie mature proscrit le réflexe du « tout-agent ». Utiliser un modèle génératif pour additionner des lignes de facture ou router un code postal multiplie la latence par cent et le coût marginal par dix mille tout en introduisant un risque d'erreur arithmétique ; inversement, maintenir dix mille expressions régulières pour interpréter des litiges techniques multilingues crée une dette fragile. Le tableau 2.1 établit les frontières d'allocation normatives.
+L'ingénierie mature proscrit le réflexe du « tout-agent ». Utiliser un modèle génératif pour additionner des lignes de facture ou router un code postal multiplie la latence par cent et le coût marginal par dix mille tout en introduisant un risque d'erreur arithmétique ; inversement, maintenir dix mille expressions régulières pour interpréter des litiges techniques multilingues crée une dette fragile. Le tableau ci-dessous établit les frontières d'allocation normatives.
 
 | Critère d'arbitrage | API / Microservice | `RPA` vs `CUA` encadré | `BPMN 2.0` & Règles `DMN` | Travailleur `SLM` (Tâche) | Cellule `LLM` bornée |
 |---|---|---|---|---|---|
@@ -263,7 +263,7 @@ Passer du *Prompt Engineering* artisanal au *Contract Engineering* industriel ex
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://schemas.boreal.ca/fabric/v2/bounded-diagnostic-output.schema.json",
+  "$id": "https://schemas.boreal.ca/fabric/v2/diagnostic-output.json",
   "title": "BoundedDiagnosticCellOutput",
   "type": "object",
   "additionalProperties": false,

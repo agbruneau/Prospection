@@ -1,4 +1,4 @@
-# Chapitre 22 — Cycle de vie ADLC, CI/CD probabiliste, simulation (tau-bench) et ingénierie du chaos
+# Chapitre 22 — Cycle de vie ADLC, CI/CD probabiliste, simulation (τ-bench) et ingénierie du chaos
 
 ::: {.synthese-executive title="Synthèse exécutive — Chapitre 22"}
 
@@ -49,17 +49,17 @@ metadata:
     quebecLoi25AutomatedDecision: true
     ownerTeam: coe-garanties-bca@boreal.ca
 spec:
-  a2aCardDigest: "sha256:4d88e1092b7f61c0029a8c1124f9b03e887a129c01f44b9e11230a8f77c6d102"
+  a2aCardDigest: "sha256:4d88e1092b7f61c0...11230a8f77c6d102"
   cognitivePinning:
     primaryModel: "claude-sonnet-4-6-20261114"   # Point de contrôle daté fixe (alias flottant interdit)
     fallbackSlm: "boreal-qwen3-14b-warranty-v3@sha256:88c1a4..."
     temperature: 0.0
     maxReasoningTokens: 2048
-    systemPromptDigest: "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    systemPromptDigest: "sha256:e3b0c44298fc1c14...495991b7852b855"
   packagedSkills:
     - name: "as400-endorsement-clause-parser"
       version: "1.3.2"
-      digest: "sha256:71a992bc0019f84e2210b3a449d811776c550e1928374655aabbccddeeff0011"
+      digest: "sha256:71a992bc0019f84e...aabbccddeeff0011"
   pinnedMcpDependencies:
     - serverUri: "https://mcp.bca.internal.boreal.ca/as400-contracts"
       schemaVersion: "2027.02"
@@ -70,7 +70,7 @@ spec:
   policyBundle:
     engine: cedar
     bundleVersion: "bca-warranty-pdp-v4.8"
-    digest: "sha256:19fa00238471928374651029384756abcdef1234567890abcdef1234567890ab"
+    digest: "sha256:19fa002384719283...abcdef1234567890ab"
   homologationGates:
     benchmarkSuite: "boreal-taubench-bca-warranty-v5"
     requiredPassPower5Critical: 0.95

@@ -66,7 +66,7 @@ Deux subtilités d'ingénierie expliquent le choix de cette structure en product
   "name": "a2ui.surfaceUpdate",
   "value": {
     "surfaceId": "hotl-decision-panel",
-    "catalogId": "https://ui.internal.boreal.ca/catalogs/bca-underwriting-v2.json",
+    "catalogId": "https://ui.boreal.ca/catalogs/bca-underwriting-v2.json",
     "rootComponentId": "card-root",
     "components": [
       {
@@ -191,13 +191,13 @@ Longtemps inutilisé, le code standard **`HTTP 402`** est activé par le protoco
     },
     "cartMandateBindingTemplate": {
       "requiredDigestAlgorithm": "SHA-256",
-      "exampleLockedCartDigest": "sha256:4e91b8c02d77a6f3198c0012e4b77a91d2f33018a6c554b190e82d3f11a04c92"
+      "exampleLockedCartDigest": "sha256:4e91b8c02d77a6f3...90e82d3f11a04c92"
     }
   },
   "proof": {
     "type": "DataIntegrityProof",
     "cryptosuite": "ecdsa-rdfc-2019",
-    "verificationMethod": "did:wba:boreal.ca:treasury:procurement-authority#fido2-hsm-key-04",
+    "verificationMethod": "did:wba:boreal.ca:treasury:proc#fido2-hsm-key-04",
     "proofPurpose": "assertionMethod",
     "fido2AuthenticatorData": "SZYN5YgOjGh0NBcPZHZgW4_krrmihjLHmVzzuoMdl2MFAAAAAQ...",
     "proofValue": "z3FXQjecWufY46kLp2mN8qR9vT1xW"
@@ -218,7 +218,7 @@ Content-Type: application/json
 ### 2. Défi tarifaire retourné par le serveur marchand (0,04 USD à l'acte)
 HTTP/1.1 402 Payment Required
 Content-Type: application/problem+json
-PAYMENT-REQUIRED: eyJ4NDAyVmVyc2lvbiI6Miwic2NoZW1lIjoiZXhhY3QiLCJhbW91bnQiOiI0MDAwMCIsImFzc2V0IjoidXNkYyIsIm1lcmNoYW50RGlkIjoiZGlkOndiYTphcGkuY3VzdG9tcy10YXJpZmZzLW5hLmNhOng0MDI6Z2F0ZXdheSJ9
+PAYMENT-REQUIRED: eyJ4NDAyVmVyc2lvbiI6Miwic2NoZW1lIjoiZXhhY3QiLCJhbW91bnQi...
 
 {"title": "Paiement x402 requis", "amount": "0.04 USD", "expiresAt": "2027-03-14T14:25:00Z"}
 
@@ -227,14 +227,14 @@ POST /v2/hs-classification/ruling-lookup HTTP/1.1
 Host: api.customs-tariffs-na.ca
 Content-Type: application/json
 Idempotency-Key: x402-saga-088412-step-ruling
-PAYMENT-SIGNATURE: eyJ4NDAyVmVyc2lvbiI6MiwiYXAyTWFuZGF0ZVJlZiI6InVybjp1dWlkOmFwMi1pbnRlbnQtYm9yZWFsLWJlbC0yMDI3LTAzOTEiLCJub25jZSI6IjhmMmExMWM0Iiwic2lnbmF0dXJlIjoiMHhhOTc0Li4uIn0=
+PAYMENT-SIGNATURE: eyJ4NDAyVmVyc2lvbiI6MiwiYXAyTWFuZGF0ZVJlZiI6InVybjp1dWlk...
 
 {"componentSpec": "Rotor haute pression Inconel 718", "originCountry": "US", "destCountry": "CA"}
 
 ### 4. Règlement atomique via facilitateur agréé, réponse métier et reçu comptable immuable
 HTTP/1.1 200 OK
 Content-Type: application/json
-PAYMENT-RESPONSE: eyJzZXR0bGVkIjp0cnVlLCJ0eEhhc2giOiIweDRmOGIyYzE5Li4uIiwic2V0dGxlZEF0IjoiMjAyNy0wMy0xNFQxNDoyMzowNloifQ==
+PAYMENT-RESPONSE: eyJzZXR0bGVkIjp0cnVlLCJ0eEhhc2giOiIweDRmOGIyYzE5Li4uIn0=
 
 {"hsCode": "8414.90.41.00", "mfnDutyRate": 0.0, "usmcaEligible": true, "rulingRef": "CBSA-2026-8812"}
 ```

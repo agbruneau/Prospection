@@ -155,7 +155,7 @@
   <line x1="440" y1="374" x2="440" y2="408" stroke="#0f5132" stroke-width="1.8" marker-end="url(#arrGreen)"/>
   <line x1="470" y1="374" x2="528" y2="408" stroke="#334155" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#arrSlate)"/>
 
-  <text x="478" y="395" font-family="Segoe UI, Calibri, sans-serif" font-size="7.8" font-weight="bold" fill="#0f5132">Award!</text>
+  <text x="446" y="396" font-family="Segoe UI, Calibri, sans-serif" font-size="7.8" font-weight="bold" fill="#0f5132">Award!</text>
 
   <rect x="317" y="410" width="72" height="30" rx="4" fill="#ffffff" stroke="#94a3b8"/>
   <text x="353" y="424" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8" fill="#475569">Soumission A</text>

@@ -32,7 +32,7 @@
   <text x="803" y="168" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">gen_ai.* Traces</text>
   <text x="803" y="200" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#14532d">Qualité &amp; ADLC</text>
   <text x="803" y="218" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Agent Registry</text>
-  <text x="803" y="236" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">OpenEnv / tau-bench</text>
+  <text x="803" y="236" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">OpenEnv / τ-bench</text>
   <text x="803" y="254" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Shadow &amp; Canary</text>
   <text x="803" y="272" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Chaos Agentique</text>
   <text x="803" y="304" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#14532d">FinOps</text>

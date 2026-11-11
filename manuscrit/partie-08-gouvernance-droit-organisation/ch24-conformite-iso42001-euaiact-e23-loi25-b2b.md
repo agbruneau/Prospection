@@ -153,7 +153,7 @@ Pour éviter toute rationalisation post-hoc fallacieuse d'un `LLM`, l'architectu
     "assignedQueue": "bca-quebec-underwriters-hotl",
     "slaBusinessHours": 16
   },
-  "wormSignatureJws": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImJvcmVhbC13b3JtLTIwMjcifQ..MEYCIQ..."
+  "wormSignatureJws": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImJvcmVhbCJ9..MEYCIQ..."
 }
 ```
 

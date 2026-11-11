@@ -86,7 +86,7 @@ Tous les messages adoptent la norme **CNCF `CloudEvents 1.0`** enrichie des attr
   "subject": "equipment/BOR-CMP-90441/material/INJ-MOD-V12",
   "time": "2027-04-09T14:22:11.408Z",
   "datacontenttype": "application/json",
-  "dataschema": "https://schemas.boreal.ca/ossie/v2/inventory-reservation-event.schema.json",
+  "dataschema": "https://schemas.boreal.ca/ossie/v2/inventory-event.schema.json",
   "traceparent": "00-7d4e9a12b8c041559f0218a4c7103e21-89a1c402f1b30042-01",
   "aigovsagaid": "saga-inc-2027-119405",
   "aigovidempotencykey": "saga-inc-2027-119405:step-01:sap-reserve",
@@ -111,8 +111,8 @@ Tous les messages adoptent la norme **CNCF `CloudEvents 1.0`** enrichie des attr
       }
     },
     "diagnosticClaimCheck": {
-      "artifactUri": "s3://boreal-bsn-telemetry-vault/2027/04/09/fft-BOR-CMP-90441.parquet",
-      "sha256Digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifactUri": "s3://boreal-telemetry/2027/04/09/fft-BOR-CMP-90441.parquet",
+      "sha256Digest": "e3b0c44298fc1c149afbf4c8996fb924...495991b7852b855",
       "encryptionKeyRef": "kms://ca-central-1/boreal-ot-cmk"
     }
   }
@@ -148,7 +148,7 @@ Si une étape \(T_k\) (\(k \le p\)) échoue ou essuie un refus de politique, le 
 
 \[\text{Comp}(S, k) = \langle C_{k-1}, C_{k-2}, \dots, C_1 \rangle\]
 
-Le tableau 13.2 formalise l'ordre impératif des quatre classes d'effets de bord : d'abord les étapes **compensables**, puis l'unique **pivot** (point de non-retour décisionnel), suivi uniquement d'étapes **réessayables** garanties de converger, et enfin les **actions irréversibles externes** sous tampon.
+Le tableau ci-dessous formalise l'ordre impératif des quatre classes d'effets de bord : d'abord les étapes **compensables**, puis l'unique **pivot** (point de non-retour décisionnel), suivi uniquement d'étapes **réessayables** garanties de converger, et enfin les **actions irréversibles externes** sous tampon.
 
 | Classe d'effet de bord | Position obligatoire | Propriété formelle | Exemples concrets en entreprise | Exigence sur le serveur `MCP` / pair `A2A` |
 |---|---|---|---|---|

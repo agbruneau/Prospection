@@ -25,7 +25,7 @@ Dans un groupe exploitant \(N = 12\) environnements d'agents et \(M = 45\) syst�
 
 ### La consolidation autour de la Linux Foundation : AAIF et AGNTCY
 
-Le basculement s'est opéré à partir de décembre 2025 et tout au long de 2026 avec la création de l'**Agentic AI Foundation (`AAIF`)** au sein de la Linux Foundation. Réunissant Anthropic, OpenAI, Google, Block, Microsoft, AWS, Solo.io, Hugging Face, Alibaba et Cloudflare sous une gouvernance tripartite neutre, l'`AAIF` a notamment scellé la fusion entre **Agent2Agent (`A2A`)** de Google et l'**Agent Communication Protocol (`ACP`)** d'IBM BeeAI au sein de **`A2A v1.0`**. Le tableau 4.1 dresse l'inventaire technique des **dix projets fondateurs** de l'`AAIF`.
+Le basculement s'est opéré à partir de décembre 2025 et tout au long de 2026 avec la création de l'**Agentic AI Foundation (`AAIF`)** au sein de la Linux Foundation. Réunissant Anthropic, OpenAI, Google, Block, Microsoft, AWS, Solo.io, Hugging Face, Alibaba et Cloudflare sous une gouvernance tripartite neutre, l'`AAIF` a notamment scellé la fusion entre **Agent2Agent (`A2A`)** de Google et l'**Agent Communication Protocol (`ACP`)** d'IBM BeeAI au sein de **`A2A v1.0`**. Le tableau ci-dessous dresse l'inventaire technique des **dix projets fondateurs** de l'`AAIF`.
 
 | Projet AAIF | Origine initiale | Couche | Rôle normatif en architecture d'entreprise | Statut 2026–2027 |
 |---|---|---|---|---|
@@ -57,7 +57,7 @@ Cette répartition institutionnelle résout un paradoxe central : aucune fondati
 
 ## 4.2 Modèle de référence en 6 couches et loi de non-substituabilité outil vs pair
 
-Projeter ces spécifications sur un **modèle de référence en six couches** (Figure 4.1) garantit l'indépendance de substitution : remplacer un moteur de Couche 1 ou un routeur de Couche 2 laisse intacts les contrats fonctionnels des Couches 3 à 6. Contrairement au modèle OSI classique conçu dans les années 1980 pour acheminer des octets sans interprétation sémantique entre terminaux passifs, la pile agentique doit encapsuler simultanément le **sens métier**, l'**intention déléguée**, l'**identité atténuée** et le **budget économique** à travers des composants non déterministes :
+Projeter ces spécifications sur un **modèle de référence en six couches** garantit l'indépendance de substitution : remplacer un moteur de Couche 1 ou un routeur de Couche 2 laisse intacts les contrats fonctionnels des Couches 3 à 6. Contrairement au modèle OSI classique conçu dans les années 1980 pour acheminer des octets sans interprétation sémantique entre terminaux passifs, la pile agentique doit encapsuler simultanément le **sens métier**, l'**intention déléguée**, l'**identité atténuée** et le **budget économique** à travers des composants non déterministes :
 
 1. **Couche 1 — Isolation, évaluation et hôtes (`OpenSandbox`, `OpenEnv`, `Goose`, moteurs durables)** : Fournit le substrat physique et temporel fiable — exécution durable à journalisation déterministe (`Temporal`, `Restate`), confinement microVM/WASM pour tout code non fiable, bancs d'homologation reproductibles et télémétrie `OpenTelemetry`.
 2. **Couche 2 — Plan de données IA, routage et identité (`agentgateway`, `Agent Router`, `SLIM`/`MLS`, `OAuth 2.1 OBO`)** : Assure l'acheminement chiffré post-quantique, la vérification des identités non humaines (`NHI` via `SPIFFE`/`WIMSE`), l'atténuation stricte des portées à chaque saut, l'arbitrage coût/latence inter-modèles et l'évaluation des politiques `Cedar` ou `OPA`.
