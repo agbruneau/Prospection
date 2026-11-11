@@ -1,24 +1,23 @@
 # Compendium 2027 — Interopérabilité et Orchestration en Entreprise Agentique
 
-Dépôt éditorial et chaîne de compilation du compendium de référence **« Interopérabilité et Orchestration en Entreprise Agentique »** (**500 pages numérotées**, format livre Royal 170 × 240 mm, édition 2027).
+Édition intégrale finalisée (**500 pages numérotées**, format Royal `170 × 240 mm`, 125 649 mots, 8 parties, 25 chapitres, 3 annexes, 32 schémas vectoriels, 25 décisions d'architecture `ADR-001` à `ADR-025`).
 
-## Architecture du dépôt
+## Livrables autonomes
 
-* [`PLAN_DIRECTEUR.md`](PLAN_DIRECTEUR.md) — Cartographie thématique exhaustive (8 parties, 25 chapitres, 3 annexes) et pagination compilée sur 500 pages.
-* [`CHARTE_ET_FIL_ROUGE.md`](CHARTE_ET_FIL_ROUGE.md) — Structure canonique « Hybride exigeant », conventions linguistiques (`fr-CA`) et dossier d'architecture de l'entreprise fil rouge (**Groupe Boréal Inc.**).
-* [`metadata.yaml`](metadata.yaml) — Métadonnées éditoriales globales Pandoc.
-* [`manuscrit/`](manuscrit/) — Sources Markdown modulaires (37 fichiers) et figures vectorielles SVG (32 diagrammes) dans [`manuscrit/figures/`](manuscrit/figures/).
-* [`build/`](build/) — Filtre Lua (`compendium.lua`), gabarit d'édition Typst (`compendium-lib.typ`, `compendium-pandoc.typ`), feuille de style HTML5 (`compendium.css`), validation pré-compilation (`validate_manuscript.py`) et contrôle de pagination (`check_pagination.py`).
-* [`dist/`](dist/) — Livrables finaux compilés (`compendium-2027-complet.pdf` et `compendium-2027-complet.html`).
+* [`dist/compendium-2027-complet.pdf`](dist/compendium-2027-complet.pdf) — Livre complet mis en page pour impression et lecture sur écran (`511` pages physiques : `11` pages liminaires + `500` pages numérotées).
+* [`dist/compendium-2027-complet.html`](dist/compendium-2027-complet.html) — Édition web `HTML5` autonome hors ligne (table des matières navigable, 32 diagrammes `SVG` vectoriels et formules `MathML` intégrés dans un fichier unique).
 
-## Validation et compilation (PDF livre & HTML5 autonome)
+## Structure de l'ouvrage
 
-Prérequis : `pandoc` (≥ 3.x), `typst` (≥ 0.15) et `python` (≥ 3.10).
-
-```powershell
-# Valider l'intégrité XML SVG, les blocs Pandoc et le manuscrit complet
-python ./build/scripts/validate_manuscript.py
-
-# Compiler l'édition intégrale (nettoie automatiquement les fichiers intermédiaires)
-pwsh ./build.ps1
-```
+| Bloc éditorial | Périmètre | Pagination (`PDF`) |
+|---|---|---|
+| **Ouverture** — Architecture et gouvernance du tissu conjonctif agentique | Cadrage exécutif & parcours par rôle | p. 1–17 |
+| **Partie I** — Fondations de l'Entreprise Agentique en 2027 | Chapitres 1 à 3 | p. 18–70 |
+| **Partie II** — La Pile Protocolaire d'Interopérabilité Ouverte (`AAIF`, `MCP`, `A2A v1.0`, `AGNTCY`, `AG-UI`, `AP2`, `x402`) | Chapitres 4 à 7 | p. 71–141 |
+| **Partie III** — Interopérabilité Sémantique, Ontologies (`Apache Ossie`) et Mémoire Bi-Temporelle | Chapitres 8 à 10 | p. 142–192 |
+| **Partie IV** — Patrons d'Orchestration, Exécution Durable (`Temporal`, `Restate`) et Transactions (`Saga`) | Chapitres 11 à 14 | p. 193–280 |
+| **Partie V** — Intégration au SI Réel : Fédération SaaS, Patrimoine (`CUA`) et Convergence `IT/OT` | Chapitres 15 à 17 | p. 281–335 |
+| **Partie VI** — Identité Non Humaine (`NHI`), `OAuth 2.1 OBO` (`RFC 8693`), `OWASP ASI` et Défense en Profondeur | Chapitres 18 à 20 | p. 336–399 |
+| **Partie VII** — Ingénierie de Production : `OpenTelemetry GenAI`, `ADLC` (`τ-bench`) et `FinOps` | Chapitres 21 à 23 | p. 400–447 |
+| **Partie VIII** — Gouvernance (`ISO/IEC 42001`, `EU AI Act`, `BSIF E-23`, `Loi 25`), Droit B2B et `HOTL` | Chapitres 24 à 25 | p. 448–479 |
+| **Annexes A–C** — Registre des 25 `ADR`, listes d'homologation (60 points) et glossaire normatif | Annexes A à C | p. 480–500 |
