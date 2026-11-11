@@ -20,16 +20,16 @@
 
 ## 2. Budget éditorial des 500 pages
 
-| Bloc éditorial | Chapitres | Plage cible | Budget pages | État dans le dépôt |
+| Bloc éditorial | Chapitres | Pagination compilée | Volume réel | État dans le dépôt |
 |---|---|---|---|---|
-| **Ouverture** — Cadrage exécutif, parcours par rôle et conventions | Ouverture | p. 1–15 | **15 p.** | **Rédigé (Étalon)** |
-| **Partie I** — Fondations de l'Entreprise Agentique en 2027 | Chap. 1 à 3 | p. 16–65 | **50 p.** | **Chap. 1 rédigé (Étalon)** ; Chap. 2–3 structurés |
-| **Partie II** — La Pile Protocolaire d'Interopérabilité Ouverte | Chap. 4 à 7 | p. 66–140 | **75 p.** | Squelettes détaillés prêts |
-| **Partie III** — Interopérabilité Sémantique, Ontologies et Mémoire | Chap. 8 à 10 | p. 141–195 | **55 p.** | Squelettes détaillés prêts |
-| **Partie IV** — Patrons d'Orchestration, Exécution Durable et Transactions | Chap. 11 à 14 | p. 196–275 | **80 p.** | Squelettes détaillés prêts |
-| **Partie V** — Intégration au SI Réel : SaaS, Legacy et IT/OT | Chap. 15 à 17 | p. 276–335 | **60 p.** | Squelettes détaillés prêts |
-| **Partie VI** — Identité Agentique, Sécurité Zero Trust et Cyber | Chap. 18 à 20 | p. 336–395 | **60 p.** | Squelettes détaillés prêts |
-| **Partie VII** — Ingénierie de Production : AgentOps, OTel et FinOps | Chap. 21 à 23 | p. 396–445 | **50 p.** | Squelettes détaillés prêts |
-| **Partie VIII** — Gouvernance, Droit, Organisation et Post-2027 | Chap. 24 à 25 | p. 446–480 | **35 p.** | Squelettes détaillés prêts |
-| **Annexes** — Cahier pratique (ADR, Checklists, Glossaire) | Annexes A à C | p. 481–500 | **20 p.** | Squelettes détaillés prêts |
-| **TOTAL COMPENDIUM 2027** | **25 chapitres + 3 annexes** | **p. 1–500** | **500 p.** | **Pipeline actif** |
+| **Ouverture** — Cadrage exécutif, parcours par rôle et conventions | Ouverture | p. 1–17 | **17 p.** | **Rédigé et compilé** |
+| **Partie I** — Fondations de l'Entreprise Agentique en 2027 | Chap. 1 à 3 | p. 18–70 | **53 p.** | **Rédigé et compilé** |
+| **Partie II** — La Pile Protocolaire d'Interopérabilité Ouverte | Chap. 4 à 7 | p. 71–141 | **71 p.** | **Rédigé et compilé** |
+| **Partie III** — Interopérabilité Sémantique, Ontologies et Mémoire | Chap. 8 à 10 | p. 142–192 | **51 p.** | **Rédigé et compilé** |
+| **Partie IV** — Patrons d'Orchestration, Exécution Durable et Transactions | Chap. 11 à 14 | p. 193–280 | **88 p.** | **Rédigé et compilé** |
+| **Partie V** — Intégration au SI Réel : SaaS, Legacy et IT/OT | Chap. 15 à 17 | p. 281–335 | **55 p.** | **Rédigé et compilé** |
+| **Partie VI** — Identité Agentique, Sécurité Zero Trust et Cyber | Chap. 18 à 20 | p. 336–399 | **64 p.** | **Rédigé et compilé** |
+| **Partie VII** — Ingénierie de Production : AgentOps, OTel et FinOps | Chap. 21 à 23 | p. 400–447 | **48 p.** | **Rédigé et compilé** |
+| **Partie VIII** — Gouvernance, Droit, Organisation et Post-2027 | Chap. 24 à 25 | p. 448–479 | **32 p.** | **Rédigé et compilé** |
+| **Annexes** — Cahier pratique (ADR, Checklists, Glossaire) | Annexes A à C | p. 480–500 | **21 p.** | **Rédigé et compilé** |
+| **TOTAL COMPENDIUM 2027** | **25 chapitres + 3 annexes** | **p. 1–500** (+ 11 p. liminaires) | **500 p.** | **Édition intégrale livrée** |

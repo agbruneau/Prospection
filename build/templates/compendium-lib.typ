@@ -26,27 +26,27 @@
 
 #let compendium-box(kind: "note", title: "", body) = {
   let st = box-styles.at(kind, default: box-styles.note)
-  v(0.45em)
+  v(0.6em)
   block(
     width: 100%,
     breakable: true,
     fill: st.bg,
     stroke: (left: 3.2pt + st.stroke, top: 0.5pt + st.stroke.lighten(65%), right: 0.5pt + st.stroke.lighten(65%), bottom: 0.5pt + st.stroke.lighten(65%)),
     radius: (right: 3pt, left: 0pt),
-    inset: (x: 11pt, y: 9pt),
+    inset: (x: 12.5pt, y: 10.5pt),
   )[
-    #block(breakable: false, below: 6pt)[
+    #block(breakable: false, below: 6.5pt)[
       #text(font: ("Segoe UI", "Calibri"), size: 7.5pt, weight: "bold", tracking: 0.6pt, fill: st.stroke)[#st.badge]
       #if title != "" [
         #linebreak()
-        #text(font: ("Segoe UI", "Calibri"), size: 9.8pt, weight: "bold", fill: palette.navy)[#title]
+        #text(font: ("Segoe UI", "Calibri"), size: 10.2pt, weight: "bold", fill: palette.navy)[#title]
       ]
     ]
-    #set par(justify: true, leading: 0.62em)
-    #set text(size: 9.3pt)
+    #set par(justify: true, leading: 0.72em, spacing: 0.96em)
+    #set text(size: 9.9pt)
     #body
   ]
-  v(0.45em)
+  v(0.6em)
 }
 
 #let render-book(
@@ -66,7 +66,7 @@
 
   set text(
     font: ("Libertinus Serif", "Georgia", "Cambria"),
-    size: 10pt,
+    size: 11.10pt,
     fill: rgb("#1a202c"),
     lang: lang,
     region: region,
@@ -74,8 +74,8 @@
 
   set par(
     justify: true,
-    leading: 0.66em,
-    spacing: 0.95em,
+    leading: 0.78em,
+    spacing: 1.14em,
     first-line-indent: 0pt,
   )
 
@@ -83,61 +83,62 @@
   show heading: set text(font: ("Segoe UI", "Calibri"), fill: palette.navy)
   show heading.where(level: 1): it => {
     set par(justify: false, leading: 0.45em)
-    v(0.2cm)
+    v(0.18cm)
     block(breakable: false, below: 0.55cm)[
-      #text(size: 17.5pt, weight: "bold")[#it.body]
+      #text(size: 18pt, weight: "bold")[#it.body]
       #v(0.22cm)
       #line(length: 38%, stroke: 2pt + palette.accent)
     ]
   }
   show heading.where(level: 2): it => {
     set par(justify: false)
-    v(0.35cm)
-    block(breakable: false, below: 0.28cm)[
-      #text(size: 12.6pt, weight: "bold", fill: palette.navy)[#it.body]
+    v(0.45cm)
+    block(breakable: false, below: 0.34cm)[
+      #text(size: 13.2pt, weight: "bold", fill: palette.navy)[#it.body]
     ]
   }
   show heading.where(level: 3): it => {
     set par(justify: false)
-    v(0.22cm)
-    block(breakable: false, below: 0.18cm)[
-      #text(size: 10.6pt, weight: "bold", fill: palette.slate)[#it.body]
+    v(0.3cm)
+    block(breakable: false, below: 0.22cm)[
+      #text(size: 11pt, weight: "bold", fill: palette.slate)[#it.body]
     ]
   }
   show heading.where(level: 4): it => {
     set par(justify: false)
-    v(0.15cm)
-    block(breakable: false, below: 0.12cm)[
-      #text(size: 9.8pt, weight: "bold", style: "italic", fill: palette.slate)[#it.body]
+    v(0.2cm)
+    block(breakable: false, below: 0.15cm)[
+      #text(size: 10.2pt, weight: "bold", style: "italic", fill: palette.slate)[#it.body]
     ]
   }
 
-  // Code en ligne et blocs de code
-  show raw: set text(font: ("Consolas", "Courier New"), size: 8.4pt)
-  show raw.where(block: false): box.with(
+  // Code en ligne sécable et blocs de code
+  show raw: set text(font: ("Consolas", "Courier New"), size: 8.7pt)
+  show raw.where(block: false): it => highlight(
     fill: rgb("#f1f5f9"),
-    inset: (x: 3pt, y: 0pt),
-    outset: (y: 2pt),
     radius: 2pt,
+    extent: 1.2pt,
+    text(font: ("Consolas", "Courier New"), size: 8.7pt, fill: rgb("#0f2744"), it.text.replace("_", "_\u{200b}").replace("/", "/\u{200b}")),
   )
   show raw.where(block: true): it => {
-    set par(justify: false, leading: 0.52em)
-    v(0.3em)
+    set par(justify: false, leading: 0.58em)
+    v(0.42em)
     block(
       width: 100%,
       breakable: true,
       fill: palette.code-bg,
       stroke: 0.6pt + palette.border,
       radius: 3pt,
-      inset: (x: 9pt, y: 8pt),
+      inset: (x: 9.5pt, y: 9pt),
     )[#it]
-    v(0.3em)
+    v(0.42em)
   }
 
-  // Tableaux d'édition technique
+  // Tableaux d'édition technique (cellules alignées à gauche et césure CamelCase / snake_case)
   show figure.where(kind: table): set block(breakable: true)
   set table(
-    inset: (x: 6pt, y: 5.5pt),
+    align: left,
+    inset: (x: 6pt, y: 6.2pt),
     stroke: (x, y) => (
       top: if y == 0 { 1.1pt + palette.navy } else if y == 1 { 0.8pt + palette.navy } else { 0.4pt + palette.border },
       bottom: 0.6pt + palette.border,
@@ -147,8 +148,16 @@
     fill: (x, y) => if y == 0 { palette.table-head } else if calc.odd(y) { white } else { palette.table-alt },
   )
   show table.cell: it => {
-    set par(justify: false, leading: 0.52em)
-    set text(font: ("Segoe UI", "Calibri"), size: 8.3pt)
+    set align(left)
+    set par(justify: false, leading: 0.56em)
+    set text(font: ("Segoe UI", "Calibri"), size: 8.4pt, hyphenate: true)
+    show regex("[a-z][A-Z]"): m => m.text.slice(0, 1) + "\u{200b}" + m.text.slice(1)
+    show raw.where(block: false): r => text(
+      font: ("Consolas", "Courier New"),
+      size: 7.8pt,
+      fill: palette.navy,
+      r.text.replace("_", "_\u{200b}").replace("/", "/\u{200b}").replace(".", ".\u{200b}").replace("-", "-\u{200b}"),
+    )
     if it.y == 0 {
       text(weight: "bold", fill: palette.navy)[#it]
     } else {
@@ -159,19 +168,19 @@
   // Légendes de figures et tableaux
   show figure.caption: it => {
     set par(justify: false)
-    v(0.15cm)
-    text(font: ("Segoe UI", "Calibri"), size: 8.4pt, style: "italic", fill: palette.muted)[#it]
+    v(0.2cm)
+    text(font: ("Segoe UI", "Calibri"), size: 8.7pt, style: "italic", fill: palette.muted)[#it]
   }
 
   // Liens et équations en bloc
   show link: set text(fill: palette.accent)
-  show math.equation.where(block: true): set text(size: 9.2pt)
+  show math.equation.where(block: true): set text(size: 9.7pt)
 
-  // --- PAGES LIMINAIRES (Couverture + Table des matières, hors pagination des 500 p.) ---
+  // --- PAGES LIMINAIRES (Couverture + Table des matières, hors pagination arabe) ---
   set page(
     width: 170mm,
     height: 240mm,
-    margin: (inside: 20mm, outside: 17mm, top: 20mm, bottom: 20mm),
+    margin: (inside: 22.5mm, outside: 19.5mm, top: 22.5mm, bottom: 22.5mm),
     numbering: none,
   )
 

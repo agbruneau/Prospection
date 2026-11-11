@@ -1,6 +1,6 @@
 # PARTIE I — Fondations de l'Entreprise Agentique en 2027 : Paradigmes, Taxonomie et Maturité {.partie-titre}
 
-> **Budget éditorial de la Partie I** : 50 pages (p. 16–65) • **Chapitres 1 à 3**
+> **Périmètre éditorial de la Partie I** : 53 pages (p. 18–70) • **Chapitres 1 à 3**
 
 L'entrée en production massive de systèmes multi-agents au sein des grandes organisations ne prolonge pas simplement la vague des assistants conversationnels de 2023–2024 : elle inverse le centre de gravité du système d'information. Tant qu'un modèle de langage répondait à un humain dans une fenêtre de clavardage, l'opérateur humain demeurait l'unique orchestrateur, le vérificateur sémantique implicite et le détenteur exclusif des droits d'écriture dans les progiciels métiers. Dès lors que des agents reçoivent des objectifs asynchrones, délèguent des sous-tâches à d'autres agents et mutent directement des systèmes d'enregistrement, chaque raccourci architectural pris à l'ère des prototypes devient un vecteur de panne systémique, de dérapage financier ou d'infraction réglementaire.
 

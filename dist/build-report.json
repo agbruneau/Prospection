@@ -1,45 +1,269 @@
 {
-  "pdf_file": "dist\\compendium-2027-complet.pdf",
-  "pdf_size_kb": 1520.7,
-  "total_physical_pages": 99,
+  "pdf_file": "dist/compendium-2027-complet.pdf",
+  "pdf_size_kb": 10143.5,
+  "total_physical_pages": 511,
+  "front_matter_pages": 11,
+  "total_arabic_body_pages": 500,
   "level1_sections_count": 37,
-  "level1_sections": [
-    "Ouverture—Architecture et Gouvernance du Tissu Conjonctif Agentique en 2027",
-    "PARTIE I—Fondations de lEntreprise Agentique en 2027:Paradigmes, Taxonomie et Maturité",
-    "Chapitre 1—De lassistance conversationnelle à la main-dœuvre dexécution asynchrone",
-    "Chapitre 2—Le grand découplage architectural:Contrôle déterministe vs autonomie probabiliste",
-    "Chapitre 3—Modèle de maturité de lentreprise agentique(Niveaux 1 à 5) et antipatterns",
-    "PARTIE II—La Pile Protocolaire dInteropérabilité Ouverte",
-    "Chapitre 4—Gouvernance des standards et anatomie de la pile interopérable",
-    "Chapitre 5—Connectivité verticale:Outils, ressources, compétences et Web(MCP, Agent Skills, WebMCP)",
-    "Chapitre 6—Coordination horizontale, découverte et réseau inter-agents(A2A v1.0, AGNTCY)",
-    "Chapitre 7—Interfaces humain-agent, multimodalité temps réel et protocoles transactionnels(AG-UI, A2UI, AP2, x402)",
-    "PARTIE III—Interopérabilité Sémantique, Ontologies dEntreprise et Mémoire Partagée",
-    "Chapitre 8—Le mur du contexte dentreprise:Ingénierie du contexte(Context Engineering) à grande échelle",
-    "Chapitre 9—Couches sémantiques normalisées et ontologies dentreprise(Apache Ossie)",
-    "Chapitre 10—Architectures de mémoire agentique distribuée et bi-temporelle",
-    "PARTIE IV—Patrons dOrchestration, Exécution Durable et Intégrité Transactionnelle",
-    "Chapitre 11—Topologies dorchestration et de chorégraphie multi-agents",
-    "Chapitre 12—Moteurs dexécution durable et gestion des cycles de vie longue durée",
-    "Chapitre 13—Maillage événementiel asynchrone et patron Saga à compensation",
-    "Chapitre 14—Plan de données AI-natif, passerelles et routage cognitif hybride",
-    "PARTIE V—Intégration au SI Réel:Fédération Inter-Silos SaaS, Legacy et Convergence IT/OT",
-    "Chapitre 15—Fédération des jardins clos SaaS et problème de l« Orchestrateur dOrchestrateurs»",
-    "Chapitre 16—Intégration Legacy sans API:Computer-Use Agents(CUA), RPA/APA et Mainframes",
-    "Chapitre 17—Orchestration cyber-physique:Convergence IT/OT, OPC-UA et Jumeaux numériques",
-    "PARTIE VI—Identité Agentique, Sécurité Zero Trust et Résilience Cyber",
-    "Chapitre 18—Identités non humaines(NHI) de première classe et délégation cryptographique",
-    "Chapitre 19—Modélisation des menaces multi-agents(OWASP ASI01–ASI10) et sécurité MCP",
-    "Chapitre 20—Défense en profondeur:Sandboxing, garde-fous neuro-symboliques et coupe-circuits",
-    "PARTIE VII—Ingénierie de Production:AgentOps, Observabilité, Simulation et FinOps",
-    "Chapitre 21—Observabilité distribuée de bout en bout avec OpenTelemetry GenAI",
-    "Chapitre 22—Cycle de vie ADLC, CI/CD probabiliste, simulation(tau-bench) et ingénierie du chaos",
-    "Chapitre 23—FinOps agentique:Gouvernance économique et Cost-per-Outcome",
-    "PARTIE VIII—Gouvernance, Droit, Modèle Opérationnel et Horizon Post-2027",
-    "Chapitre 24—Conformité réglementaire internationale et canadienne, et droit B2B inter-agents",
-    "Chapitre 25—Modèle opérationnel cible, facteur humain(HOTL) et prospective 2028–2030",
-    "Annexe A—Patrons de décision architecturale(ADR) et arbres de choix",
-    "Annexe B—Listes de contrôle dhomologation pré-production(60 points)",
-    "Annexe C—Glossaire normatif français-anglais et index des standards 2027"
+  "sections": [
+    {
+      "index": 1,
+      "title": "Ouverture—Architecture et Gouvernance du Tissu Conjonctif Agentique en 2027",
+      "arabic_start_page": 1,
+      "arabic_end_page": 17,
+      "pages": 17
+    },
+    {
+      "index": 2,
+      "title": "PARTIE I—Fondations de lEntreprise Agentique en 2027:Paradigmes, Taxonomie et Maturité",
+      "arabic_start_page": 18,
+      "arabic_end_page": 18,
+      "pages": 1
+    },
+    {
+      "index": 3,
+      "title": "Chapitre 1—De lassistance conversationnelle à la main-dœuvre dexécution asynchrone",
+      "arabic_start_page": 19,
+      "arabic_end_page": 40,
+      "pages": 22
+    },
+    {
+      "index": 4,
+      "title": "Chapitre 2—Le grand découplage architectural:Contrôle déterministe vs autonomie probabiliste",
+      "arabic_start_page": 41,
+      "arabic_end_page": 56,
+      "pages": 16
+    },
+    {
+      "index": 5,
+      "title": "Chapitre 3—Modèle de maturité de lentreprise agentique(Niveaux 1 à 5) et antipatterns",
+      "arabic_start_page": 57,
+      "arabic_end_page": 70,
+      "pages": 14
+    },
+    {
+      "index": 6,
+      "title": "PARTIE II—La Pile Protocolaire dInteropérabilité Ouverte",
+      "arabic_start_page": 71,
+      "arabic_end_page": 71,
+      "pages": 1
+    },
+    {
+      "index": 7,
+      "title": "Chapitre 4—Gouvernance des standards et anatomie de la pile interopérable",
+      "arabic_start_page": 72,
+      "arabic_end_page": 84,
+      "pages": 13
+    },
+    {
+      "index": 8,
+      "title": "Chapitre 5—Connectivité verticale:Outils, ressources, compétences et Web(MCP, Agent Skills, WebMCP)",
+      "arabic_start_page": 85,
+      "arabic_end_page": 105,
+      "pages": 21
+    },
+    {
+      "index": 9,
+      "title": "Chapitre 6—Coordination horizontale, découverte et réseau inter-agents(A2A v1.0, AGNTCY)",
+      "arabic_start_page": 106,
+      "arabic_end_page": 126,
+      "pages": 21
+    },
+    {
+      "index": 10,
+      "title": "Chapitre 7—Interfaces humain-agent, multimodalité temps réel et protocoles transactionnels(AG-UI, A2UI, AP2, x402)",
+      "arabic_start_page": 127,
+      "arabic_end_page": 141,
+      "pages": 15
+    },
+    {
+      "index": 11,
+      "title": "PARTIE III—Interopérabilité Sémantique, Ontologies dEntreprise et Mémoire Partagée",
+      "arabic_start_page": 142,
+      "arabic_end_page": 142,
+      "pages": 1
+    },
+    {
+      "index": 12,
+      "title": "Chapitre 8—Le mur du contexte dentreprise:Ingénierie du contexte(Context Engineering) à grande échelle",
+      "arabic_start_page": 143,
+      "arabic_end_page": 158,
+      "pages": 16
+    },
+    {
+      "index": 13,
+      "title": "Chapitre 9—Couches sémantiques normalisées et ontologies dentreprise(Apache Ossie)",
+      "arabic_start_page": 159,
+      "arabic_end_page": 177,
+      "pages": 19
+    },
+    {
+      "index": 14,
+      "title": "Chapitre 10—Architectures de mémoire agentique distribuée et bi-temporelle",
+      "arabic_start_page": 178,
+      "arabic_end_page": 192,
+      "pages": 15
+    },
+    {
+      "index": 15,
+      "title": "PARTIE IV—Patrons dOrchestration, Exécution Durable et Intégrité Transactionnelle",
+      "arabic_start_page": 193,
+      "arabic_end_page": 193,
+      "pages": 1
+    },
+    {
+      "index": 16,
+      "title": "Chapitre 11—Topologies dorchestration et de chorégraphie multi-agents",
+      "arabic_start_page": 194,
+      "arabic_end_page": 219,
+      "pages": 26
+    },
+    {
+      "index": 17,
+      "title": "Chapitre 12—Moteurs dexécution durable et gestion des cycles de vie longue durée",
+      "arabic_start_page": 220,
+      "arabic_end_page": 247,
+      "pages": 28
+    },
+    {
+      "index": 18,
+      "title": "Chapitre 13—Maillage événementiel asynchrone et patron Saga à compensation",
+      "arabic_start_page": 248,
+      "arabic_end_page": 265,
+      "pages": 18
+    },
+    {
+      "index": 19,
+      "title": "Chapitre 14—Plan de données AI-natif, passerelles et routage cognitif hybride",
+      "arabic_start_page": 266,
+      "arabic_end_page": 280,
+      "pages": 15
+    },
+    {
+      "index": 20,
+      "title": "PARTIE V—Intégration au SI Réel:Fédération Inter-Silos SaaS, Legacy et Convergence IT/OT",
+      "arabic_start_page": 281,
+      "arabic_end_page": 281,
+      "pages": 1
+    },
+    {
+      "index": 21,
+      "title": "Chapitre 15—Fédération des jardins clos SaaS et problème de l« Orchestrateur dOrchestrateurs»",
+      "arabic_start_page": 282,
+      "arabic_end_page": 300,
+      "pages": 19
+    },
+    {
+      "index": 22,
+      "title": "Chapitre 16—Intégration Legacy sans API:Computer-Use Agents(CUA), RPA/APA et Mainframes",
+      "arabic_start_page": 301,
+      "arabic_end_page": 317,
+      "pages": 17
+    },
+    {
+      "index": 23,
+      "title": "Chapitre 17—Orchestration cyber-physique:Convergence IT/OT, OPC-UA et Jumeaux numériques",
+      "arabic_start_page": 318,
+      "arabic_end_page": 335,
+      "pages": 18
+    },
+    {
+      "index": 24,
+      "title": "PARTIE VI—Identité Agentique, Sécurité Zero Trust et Résilience Cyber",
+      "arabic_start_page": 336,
+      "arabic_end_page": 336,
+      "pages": 1
+    },
+    {
+      "index": 25,
+      "title": "Chapitre 18—Identités non humaines(NHI) de première classe et délégation cryptographique",
+      "arabic_start_page": 337,
+      "arabic_end_page": 358,
+      "pages": 22
+    },
+    {
+      "index": 26,
+      "title": "Chapitre 19—Modélisation des menaces multi-agents(OWASP ASI01–ASI10) et sécurité MCP",
+      "arabic_start_page": 359,
+      "arabic_end_page": 380,
+      "pages": 22
+    },
+    {
+      "index": 27,
+      "title": "Chapitre 20—Défense en profondeur:Sandboxing, garde-fous neuro-symboliques et coupe-circuits",
+      "arabic_start_page": 381,
+      "arabic_end_page": 399,
+      "pages": 19
+    },
+    {
+      "index": 28,
+      "title": "PARTIE VII—Ingénierie de Production:AgentOps, Observabilité, Simulation et FinOps",
+      "arabic_start_page": 400,
+      "arabic_end_page": 400,
+      "pages": 1
+    },
+    {
+      "index": 29,
+      "title": "Chapitre 21—Observabilité distribuée de bout en bout avec OpenTelemetry GenAI",
+      "arabic_start_page": 401,
+      "arabic_end_page": 416,
+      "pages": 16
+    },
+    {
+      "index": 30,
+      "title": "Chapitre 22—Cycle de vie ADLC, CI/CD probabiliste, simulation(tau-bench) et ingénierie du chaos",
+      "arabic_start_page": 417,
+      "arabic_end_page": 432,
+      "pages": 16
+    },
+    {
+      "index": 31,
+      "title": "Chapitre 23—FinOps agentique:Gouvernance économique et Cost-per-Outcome",
+      "arabic_start_page": 433,
+      "arabic_end_page": 447,
+      "pages": 15
+    },
+    {
+      "index": 32,
+      "title": "PARTIE VIII—Gouvernance, Droit, Modèle Opérationnel et Horizon Post-2027",
+      "arabic_start_page": 448,
+      "arabic_end_page": 448,
+      "pages": 1
+    },
+    {
+      "index": 33,
+      "title": "Chapitre 24—Conformité réglementaire internationale et canadienne, et droit B2B inter-agents",
+      "arabic_start_page": 449,
+      "arabic_end_page": 463,
+      "pages": 15
+    },
+    {
+      "index": 34,
+      "title": "Chapitre 25—Modèle opérationnel cible, facteur humain(HOTL) et prospective 2028–2030",
+      "arabic_start_page": 464,
+      "arabic_end_page": 479,
+      "pages": 16
+    },
+    {
+      "index": 35,
+      "title": "Annexe A—Patrons de décision architecturale(ADR) et arbres de choix",
+      "arabic_start_page": 480,
+      "arabic_end_page": 485,
+      "pages": 6
+    },
+    {
+      "index": 36,
+      "title": "Annexe B—Listes de contrôle dhomologation pré-production(60 points)",
+      "arabic_start_page": 486,
+      "arabic_end_page": 492,
+      "pages": 7
+    },
+    {
+      "index": 37,
+      "title": "Annexe C—Glossaire normatif français-anglais et index des standards 2027",
+      "arabic_start_page": 493,
+      "arabic_end_page": 500,
+      "pages": 8
+    }
   ]
 }

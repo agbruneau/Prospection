@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 510" width="880" height="510">
+  <defs>
+    <marker id="arrFwd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="arrRev" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#b45309"/>
+    </marker>
+    <marker id="arrDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f5132"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="510" fill="#ffffff"/>
+
+  <!-- Titre -->
+  <text x="440" y="25" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="14" font-weight="bold" fill="#0f2744">Architecture MCP d'Entreprise : Host, Client, Streamable HTTP, Agent Skills et WebMCP</text>
+
+  <!-- COLONNE GAUCHE HAUT : MCP Host -->
+  <rect x="20" y="42" width="290" height="338" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6"/>
+  <text x="165" y="62" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11.5" font-weight="bold" fill="#0f2744">Hôte Agentique (MCP Host)</text>
+  <text x="165" y="76" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#1e40af">Worker Temporal, Goose ou Application Métier</text>
+
+  <!-- Sous-bloc : Couche cognitive portable -->
+  <rect x="32" y="86" width="266" height="84" rx="4" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="165" y="104" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#5b21b6">Portabilité Cognitive (Standards AAIF)</text>
+  <text x="42" y="121" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Open Responses : API d'inférence unifiée</text>
+  <text x="42" y="137" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Agent Skills : SKILL.md (divulgation progressive)</text>
+  <text x="42" y="153" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• AGENTS.md : consignes et invariants locaux</text>
+
+  <!-- Sous-bloc : MCP Clients 1:1 -->
+  <rect x="32" y="180" width="266" height="90" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.3"/>
+  <text x="165" y="198" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f2744">Connecteurs MCP Client (Isolation 1:1)</text>
+  <text x="42" y="215" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Négociation cycle de vie (initialize)</text>
+  <text x="42" y="231" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Exposition bornée des périmètres (Roots)</text>
+  <text x="42" y="247" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Validation stricte JSON Schema entrée/sortie</text>
+  <text x="42" y="262" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#1d4ed8">• 1 instance Client dédiée par Serveur MCP</text>
+
+  <!-- Sous-bloc : Primitives inversées -->
+  <rect x="32" y="280" width="266" height="88" rx="4" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+  <text x="165" y="298" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#92400e">Contrôle des Primitives Inversées</text>
+  <text x="42" y="315" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• sampling/createMessage : quota &amp; filtre prompt</text>
+  <text x="42" y="331" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• elicitation/create (Formulaire JSON plat)</text>
+  <text x="42" y="347" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• elicitation/create (Mode URL hors-bande OAuth)</text>
+  <text x="42" y="361" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#92400e">Approbation de l'hôte obligatoire avant exécution</text>
+
+  <!-- COLONNE GAUCHE BAS : WebMCP -->
+  <rect x="20" y="394" width="290" height="98" rx="6" fill="#fef2f2" stroke="#991b1b" stroke-width="1.4"/>
+  <text x="165" y="414" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.8" font-weight="bold" fill="#991b1b">Surface Client Navigateur : WebMCP (W3C)</text>
+  <text x="32" y="432" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• API : document.modelContext.registerTool()</text>
+  <text x="32" y="448" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Mode déclaratif : &lt;form toolname="..."&gt;</text>
+  <text x="32" y="464" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Cycle de vie lié à l'UI via AbortSignal</text>
+  <text x="32" y="480" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#7f1d1d">Exécution locale dans l'onglet actif (zéro scraping)</text>
+
+  <!-- FLÈCHES HOST <-> GATEWAY -->
+  <line x1="310" y1="212" x2="401" y2="212" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#arrFwd)"/>
+  <text x="356" y="191" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" font-weight="bold" fill="#1d4ed8">Streamable HTTP</text>
+  <text x="356" y="203" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8" fill="#334155">POST /mcp (Tools,</text>
+  <text x="356" y="226" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8" fill="#334155">Resources, Prompts)</text>
+
+  <line x1="403" y1="322" x2="312" y2="322" stroke="#b45309" stroke-width="1.6" stroke-dasharray="4,2" marker-end="url(#arrRev)"/>
+  <text x="356" y="309" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.2" font-weight="bold" fill="#92400e">Flux SSE Serveur</text>
+  <text x="356" y="336" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8" fill="#334155">Sampling, Elicitation</text>
+  <text x="356" y="347" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8" fill="#334155">&amp; Notifications</text>
+
+  <!-- Lien interne Host -> OpenSandbox (bas) -->
+  <path d="M 298 128 L 356 128 L 356 446 L 626 446" fill="none" stroke="#475569" stroke-width="1.3" stroke-dasharray="3,3" marker-end="url(#arrDark)"/>
+  <text x="492" y="462" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.3" fill="#475569">Exécution confinée des scripts/ Agent Skills (stdio local isolé)</text>
+
+  <!-- COLONNE CENTRALE : agentgateway -->
+  <rect x="405" y="42" width="175" height="382" rx="6" fill="#f8fafc" stroke="#7c2d12" stroke-width="1.8"/>
+  <text x="492" y="63" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11.2" font-weight="bold" fill="#7c2d12">agentgateway</text>
+  <text x="492" y="78" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#9a3412">Plan de Données MCP (AAIF)</text>
+
+  <rect x="416" y="90" width="153" height="58" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="492" y="107" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#0f2744">Transport &amp; Versions</text>
+  <text x="492" y="122" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">MCP-Protocol-Version</text>
+  <text x="492" y="136" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">Sans état / Mcp-Session-Id</text>
+
+  <rect x="416" y="158" width="153" height="68" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="492" y="175" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#0f2744">Identité &amp; Délégation</text>
+  <text x="492" y="190" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">Échange OAuth 2.1 OBO</text>
+  <text x="492" y="204" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">(RFC 8693) + Preuve DPoP</text>
+  <text x="492" y="218" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#7c2d12">Zéro secret partagé</text>
+
+  <rect x="416" y="236" width="153" height="68" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="492" y="253" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#0f2744">Autorisation &amp; Filtrage</text>
+  <text x="492" y="268" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">Politiques Cedar par outil</text>
+  <text x="492" y="282" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">Inspection anti-injection</text>
+  <text x="492" y="296" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">Vérif. SHA-256 schémas</text>
+
+  <rect x="416" y="314" width="153" height="96" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="492" y="331" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#0f2744">Observabilité &amp; FinOps</text>
+  <text x="492" y="347" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">Traces OpenTelemetry</text>
+  <text x="492" y="361" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">(attributs gen_ai.* / mcp.*)</text>
+  <text x="492" y="376" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">Limitation de débit HTTP</text>
+  <text x="492" y="391" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">&amp; Coupe-circuit d'erreurs</text>
+
+  <!-- FLÈCHES GATEWAY -> SERVEURS MCP -->
+  <line x1="580" y1="94" x2="626" y2="94" stroke="#0f5132" stroke-width="1.6" marker-end="url(#arrDark)"/>
+  <line x1="580" y1="210" x2="626" y2="210" stroke="#0f5132" stroke-width="1.6" marker-end="url(#arrDark)"/>
+  <line x1="580" y1="326" x2="626" y2="326" stroke="#0f5132" stroke-width="1.6" marker-end="url(#arrDark)"/>
+
+  <!-- COLONNE DROITE : Serveurs MCP de domaine + OpenSandbox -->
+  <rect x="630" y="42" width="230" height="104" rx="5" fill="#f0fdf4" stroke="#0f5132" stroke-width="1.4"/>
+  <text x="745" y="61" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#0f5132">Serveur MCP — SAP S/4HANA</text>
+  <text x="640" y="79" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• 8 Tools orientés intention métier</text>
+  <text x="640" y="95" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Clés d'idempotence &amp; baux TTL</text>
+  <text x="640" y="111" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Sorties typées structuredContent</text>
+  <text x="640" y="127" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#14532d">Appels officiels BAPI / OData v4</text>
+
+  <rect x="630" y="158" width="230" height="104" rx="5" fill="#f0fdf4" stroke="#0f5132" stroke-width="1.4"/>
+  <text x="745" y="177" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#0f5132">Serveur MCP — Snowflake &amp; BCA</text>
+  <text x="640" y="195" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Resources URI (boreal://bca/...)</text>
+  <text x="640" y="211" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Références légères resource_link</text>
+  <text x="640" y="227" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Pagination sémantique par curseur</text>
+  <text x="640" y="243" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#14532d">Masquage dynamique Loi 25 / E-23</text>
+
+  <rect x="630" y="274" width="230" height="104" rx="5" fill="#f0fdf4" stroke="#0f5132" stroke-width="1.4"/>
+  <text x="745" y="293" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#0f5132">Serveur MCP — ServiceNow</text>
+  <text x="640" y="311" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Prompts d'incident standardisés</text>
+  <text x="640" y="327" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Erreurs cognitives auto-correctrices</text>
+  <text x="640" y="343" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Escalade Elicitation URL (HOTL)</text>
+  <text x="640" y="359" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#14532d">Synchronisation ITSM &amp; Terrain FSM</text>
+
+  <rect x="630" y="392" width="230" height="100" rx="5" fill="#f1f5f9" stroke="#334155" stroke-width="1.4"/>
+  <text x="745" y="411" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#0f2744">Bac à Sable — OpenSandbox</text>
+  <text x="640" y="429" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Isolation microVM / gVisor / WASM</text>
+  <text x="640" y="445" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Exécution des scripts/ déterministes</text>
+  <text x="640" y="461" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Système de fichiers éphémère</text>
+  <text x="640" y="477" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#475569">Zéro accès réseau sortant non autorisé</text>
+</svg>

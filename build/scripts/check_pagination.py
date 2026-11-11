@@ -12,7 +12,6 @@ from pathlib import Path
 
 def count_pdf_pages(pdf_path: Path) -> int:
     data = pdf_path.read_bytes()
-    # Recherche les objets /Type /Page (en excluant /Type /Pages)
     matches = re.findall(rb"/Type\s*/Page\b(?!s)", data)
     return len(matches)
 
@@ -42,39 +41,48 @@ def main() -> int:
 
     total_physical_pages = count_pdf_pages(pdf_path)
 
-    # Ajoute une sonde temporaire en fin de fichier .typ pour connaître la dernière page logique arabe
-    probe_typ = typ_path.with_name(typ_path.stem + "-probe.typ")
-    typ_content = typ_path.read_text(encoding="utf-8")
-    probe_snippet = (
-        '\n#context [#metadata((total_body_pages: counter(page).get().first())) <book-end-meta>]\n'
-        '#show heading.where(level: 1): it => context [\n'
-        '  #metadata((title: it.body, body_page: counter(page).get().first(), outlined: it.outlined)) <h1-meta>\n'
-        '  #it\n'
-        ']\n'
-    )
-    # Place le show rule juste avant le tout dernier doc ou interroge simplement heading
+    expr = "query(heading.where(level: 1)).map(h => (page: h.location().page(), outlined: h.outlined, body: h.body))"
     res = subprocess.run(
-        ["typst", "query", "--root", ".", str(typ_path), "heading.where(level: 1)"],
+        ["typst", "eval", expr, "--root", ".", "--in", str(typ_path)],
         capture_output=True,
         text=True,
         encoding="utf-8",
     )
 
     headings_info = []
+    section_pages = []
+    front_matter_pages = 0
+    total_arabic_body_pages = total_physical_pages
+
     if res.returncode == 0 and res.stdout.strip():
-        raw_items = json.loads(res.stdout)
-        for item in raw_items:
-            if not item.get("outlined", True):
-                continue
-            title = extract_text(item.get("body", {})).strip()
-            headings_info.append(title)
+        raw_items = [x for x in json.loads(res.stdout) if x.get("outlined", True)]
+        if raw_items:
+            first_body_phys = raw_items[0]["page"]
+            front_matter_pages = first_body_phys - 1
+            total_arabic_body_pages = total_physical_pages - front_matter_pages
+            for idx, item in enumerate(raw_items):
+                title = extract_text(item.get("body", {})).strip()
+                phys = item["page"]
+                arab = phys - first_body_phys + 1
+                nxt_phys = raw_items[idx + 1]["page"] if idx + 1 < len(raw_items) else (total_physical_pages + 1)
+                span = nxt_phys - phys
+                headings_info.append(title)
+                section_pages.append({
+                    "index": idx + 1,
+                    "title": title,
+                    "arabic_start_page": arab,
+                    "arabic_end_page": arab + span - 1,
+                    "pages": span,
+                })
 
     report = {
-        "pdf_file": str(pdf_path),
+        "pdf_file": str(pdf_path).replace("\\", "/"),
         "pdf_size_kb": round(pdf_path.stat().st_size / 1024, 1),
         "total_physical_pages": total_physical_pages,
+        "front_matter_pages": front_matter_pages,
+        "total_arabic_body_pages": total_arabic_body_pages,
         "level1_sections_count": len(headings_info),
-        "level1_sections": headings_info,
+        "sections": section_pages,
     }
 
     report_path = pdf_path.with_name("build-report.json")
@@ -82,10 +90,10 @@ def main() -> int:
 
     print(f"=== RAPPORT DE COMPILATION ({pdf_path.name}) ===")
     print(f"Taille du PDF          : {report['pdf_size_kb']} Ko")
-    print(f"Pages physiques totales: {total_physical_pages} pages (incluant couverture et TDM)")
+    print(f"Pages physiques totales: {total_physical_pages} pages ({front_matter_pages} liminaires + {total_arabic_body_pages} pages numérotées)")
     print(f"Sections H1 détectées  : {len(headings_info)}")
-    for idx, h in enumerate(headings_info, 1):
-        print(f"  [{idx:02d}] {h}")
+    for s in section_pages:
+        print(f"  [{s['index']:02d}] p.{s['arabic_start_page']:03d}–{s['arabic_end_page']:03d} ({s['pages']:2d} p.) | {s['title']}")
 
     return 0
 
