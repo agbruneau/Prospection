@@ -1,0 +1,11 @@
+# PARTIE V — Intégration au SI Réel : Fédération Inter-Silos SaaS, Legacy et Convergence IT/OT {.partie-titre}
+
+> **Périmètre éditorial de la Partie V** : 55 pages (p. 281–335) • **Chapitres 15 à 17**
+
+Tant qu'une architecture multi-agents demeure confinée au laboratoire ou à des microservices infonuagiques récents, l'assemblage des protocoles ouverts (`MCP`, `A2A v1.0`), des moteurs durables et des jetons délégués paraît linéaire. Or, le système d'information réel d'une grande organisation patrimoniale (*brownfield*) oppose trois forces d'inertie majeures à cette épure : la guerre de souveraineté que se livrent les grands éditeurs SaaS pour capter l'orchestration maîtresse et taxer chaque action transversale, l'opacité de cœurs transactionnels vieux de trente ans dépourvus d'API REST mais garants de l'intégrité comptable ou prudentielle, et l'intransigeance des ateliers industriels où la latence, la segmentation réseau et la sûreté physique interdisent toute improvisation probabiliste.
+
+Cette cinquième partie ancre la fabrique agentique dans l'hétérogénéité concrète des actifs applicatifs et cyber-physiques de l'entreprise :
+
+* Le **Chapitre 15** résout le dilemme politique et technique de l'« orchestrateur d'orchestrateurs » entre les jardins clos SaaS (`Copilot Studio`, `Salesforce Agentforce`, `ServiceNow AI Agents`, `SAP Joule`, `Workday`), en instituant un routage gouverné par la gravité des données, une propagation d'identité fédérée (`Entra ID` vers `SAP CIS`) et des garde-fous déterministes contre les boucles circulaires inter-plateformes.
+* Le **Chapitre 16** encadre l'intégration du patrimoine sans API en articulant `RPA` déterministe et `APA` cognitive (`UiPath Maestro`), en soumettant les *Computer-Use Agents* (`CUA`) sur terminaux `3270`/`5250` et `Citrix` à un harnais de zones interdites et de double vérification post-action, tout en industrialisant l'encapsulation `MCP` des programmes `RPG`/`CICS` et des flux `EDI X12`.
+* Le **Chapitre 17** établit l'architecture cyber-physique `IT/OT` conforme au modèle Purdue et à la norme `IEC 62443`, séparant l'exploration sémantique en lecture seule (`OPC-UA`, `MQTT Sparkplug`) de l'action corrective obligatoirement validée par un jumeau numérique déterministe avant l'émission de recettes signées vers le `MES` ou le `SCADA`.

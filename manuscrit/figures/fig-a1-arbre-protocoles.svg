@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" width="880" height="460">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e3a5f"/>
+    </marker>
+  </defs>
+  <rect width="880" height="460" fill="#ffffff"/>
+  <text x="440" y="26" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="15.5" font-weight="bold" fill="#0f2744">Arbre de Décision A.1 — Sélection du Protocole d'Interopérabilité (Édition 2027)</text>
+
+  <!-- Noeud racine -->
+  <rect x="275" y="44" width="330" height="50" rx="6" fill="#0f2744"/>
+  <text x="440" y="66" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11" font-weight="bold" fill="#ffffff">Q1 : Quelle est la nature du destinataire</text>
+  <text x="440" y="83" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11" font-weight="bold" fill="#93c5fd">de l'interaction issue de l'agent ou du système ?</text>
+
+  <!-- Trois grandes branches -->
+  <line x1="330" y1="94" x2="145" y2="140" stroke="#1e3a5f" stroke-width="1.5" marker-end="url(#ar)"/>
+  <line x1="440" y1="94" x2="440" y2="140" stroke="#1e3a5f" stroke-width="1.5" marker-end="url(#ar)"/>
+  <line x1="550" y1="94" x2="735" y2="140" stroke="#1e3a5f" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <!-- Branche gauche : Humain -->
+  <rect x="35" y="142" width="220" height="52" rx="5" fill="#fff7ed" stroke="#9a3412" stroke-width="1.4"/>
+  <text x="145" y="164" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" font-weight="bold" fill="#7c2d12">Un opérateur ou client humain</text>
+  <text x="145" y="181" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">Q2a : Modalité requise ?</text>
+
+  <line x1="95" y1="194" x2="80" y2="238" stroke="#1e3a5f" stroke-width="1.3" marker-end="url(#ar)"/>
+  <line x1="195" y1="194" x2="210" y2="238" stroke="#1e3a5f" stroke-width="1.3" marker-end="url(#ar)"/>
+
+  <rect x="20" y="240" width="125" height="84" rx="4" fill="#f8fafc" stroke="#1d4ed8" stroke-width="1.3"/>
+  <text x="82" y="260" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f2744">Écran Réactif</text>
+  <text x="82" y="277" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#1d4ed8">AG-UI + A2UI</text>
+  <text x="82" y="293" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">(+ CIBA si approbation</text>
+  <text x="82" y="307" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">hors bande critique)</text>
+
+  <rect x="155" y="240" width="120" height="84" rx="4" fill="#f8fafc" stroke="#1d4ed8" stroke-width="1.3"/>
+  <text x="215" y="260" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f2744">Voix / Vidéo</text>
+  <text x="215" y="277" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#1d4ed8">WebRTC / SIP</text>
+  <text x="215" y="293" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Full-duplex &lt; 500 ms</text>
+  <text x="215" y="307" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">avec gestion barge-in</text>
+
+  <!-- Branche centrale : Outil / Données déterministes -->
+  <rect x="310" y="142" width="260" height="52" rx="5" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="440" y="164" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" font-weight="bold" fill="#0f2744">Une fonction, API, BD ou équipement</text>
+  <text x="440" y="181" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">Q2b : Interface programmable disponible ?</text>
+
+  <line x1="385" y1="194" x2="365" y2="238" stroke="#1e3a5f" stroke-width="1.3" marker-end="url(#ar)"/>
+  <line x1="495" y1="194" x2="515" y2="238" stroke="#1e3a5f" stroke-width="1.3" marker-end="url(#ar)"/>
+
+  <rect x="295" y="240" width="140" height="84" rx="4" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+  <text x="365" y="259" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#14532d">Oui (API / Web / OT)</text>
+  <text x="365" y="276" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" font-weight="bold" fill="#15803d">MCP Streamable HTTP</text>
+  <text x="365" y="292" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">(ou WebMCP navigateur /</text>
+  <text x="365" y="306" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">passerelle MCP-OPC-UA)</text>
+
+  <rect x="445" y="240" width="135" height="84" rx="4" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.3"/>
+  <text x="512" y="259" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#991b1b">Non (Écran Legacy)</text>
+  <text x="512" y="276" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" font-weight="bold" fill="#b91c1c">CUA / RPA Confiné</text>
+  <text x="512" y="292" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Encapsulé derrière</text>
+  <text x="512" y="306" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">un serveur MCP audité</text>
+
+  <!-- Branche droite : Autre(s) Agent(s) -->
+  <rect x="610" y="142" width="245" height="52" rx="5" fill="#f1f8f5" stroke="#0f5132" stroke-width="1.4"/>
+  <text x="732" y="164" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" font-weight="bold" fill="#0f5132">Un ou plusieurs agents autonomes</text>
+  <text x="732" y="181" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">Q2c : Couplage souhaité ?</text>
+
+  <line x1="680" y1="194" x2="662" y2="238" stroke="#1e3a5f" stroke-width="1.3" marker-end="url(#ar)"/>
+  <line x1="785" y1="194" x2="800" y2="238" stroke="#1e3a5f" stroke-width="1.3" marker-end="url(#ar)"/>
+
+  <rect x="595" y="240" width="132" height="84" rx="4" fill="#f0fdf4" stroke="#0f5132" stroke-width="1.4"/>
+  <text x="661" y="259" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f5132">Délégation ciblée</text>
+  <text x="661" y="276" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" font-weight="bold" fill="#15803d">A2A v1.0 (+ SLIM)</text>
+  <text x="661" y="292" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Découverte OASF</text>
+  <text x="661" y="306" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">(+ AP2/x402 si B2B)</text>
+
+  <rect x="737" y="240" width="125" height="84" rx="4" fill="#eff6ff" stroke="#1e3a5f" stroke-width="1.4"/>
+  <text x="799" y="259" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f2744">Diffusion 1-vers-N</text>
+  <text x="799" y="276" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" font-weight="bold" fill="#1d4ed8">Kafka / Solace</text>
+  <text x="799" y="292" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">CloudEvents typés</text>
+  <text x="799" y="306" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Découplage total</text>
+
+  <!-- Bandeau inférieur obligatoire -->
+  <rect x="20" y="350" width="842" height="90" rx="6" fill="#f8fafc" stroke="#0f2744" stroke-width="1.4"/>
+  <text x="441" y="373" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11.5" font-weight="bold" fill="#0f2744">Socle Transversal Invariant (Exigé quelle que soit la branche retenue ci-dessus)</text>
+  <text x="441" y="395" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">1. Passage par passerelle AI-native (agentgateway) • 2. Identité NHI + Jeton OAuth 2.1 OBO atténué (RFC 8693)</text>
+  <text x="441" y="414" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">3. Vocabulaire aligné Apache Ossie • 4. Clé d'idempotence + Budget FinOps • 5. Span OpenTelemetry (gen_ai.*)</text>
+</svg>

@@ -1,6 +1,6 @@
 # Compendium 2027 — Interopérabilité et Orchestration en Entreprise Agentique
 
-Édition intégrale étendue finalisée (**600 pages numérotées**, format Royal `170 × 240 mm`, 152 506 mots, 10 parties, 31 chapitres, 3 annexes, 38 schémas vectoriels, 31 décisions d'architecture `ADR-001` à `ADR-031`).
+Édition intégrale étendue finalisée (**600 pages numérotées**, format Royal `170 × 240 mm`, 152 562 mots, 10 parties, 31 chapitres, 3 annexes, 38 schémas vectoriels, 31 décisions d'architecture `ADR-001` à `ADR-031`).
 
 ## Livrables autonomes
 

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 540" width="880" height="540">
+  <defs>
+    <marker id="agNavy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e3a5f"/>
+    </marker>
+    <marker id="agGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f5132"/>
+    </marker>
+    <marker id="agBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="agAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#7c2d12"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="540" fill="#ffffff"/>
+  <text x="440" y="25" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="14.5" font-weight="bold" fill="#0f2744">Plan de Données AI-Natif : agentgateway, Routage Cognitif Hybride et Affinité de KV-Cache</text>
+
+  <!-- Colonne gauche : Trafic entrant -->
+  <rect x="24" y="44" width="176" height="300" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/>
+  <text x="112" y="64" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.8" font-weight="bold" fill="#0f2744">Sources &amp; Trafic Entrant</text>
+
+  <rect x="36" y="76" width="152" height="74" rx="4" fill="#ffffff" stroke="#1e3a5f" stroke-width="1.1"/>
+  <text x="112" y="95" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.6" font-weight="bold" fill="#0f2744">Agents &amp; Workflows</text>
+  <text x="112" y="111" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Sagas Temporal • Spécialistes</text>
+  <text x="112" y="125" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">BSN / BEL / BCA</text>
+  <text x="112" y="140" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#1d4ed8">mTLS SPIFFE + ActionEnvelope</text>
+
+  <rect x="36" y="162" width="152" height="74" rx="4" fill="#ffffff" stroke="#1e3a5f" stroke-width="1.1"/>
+  <text x="112" y="181" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.6" font-weight="bold" fill="#0f2744">Canaux Interactifs</text>
+  <text x="112" y="197" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Portails AG-UI / A2UI</text>
+  <text x="112" y="211" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Flux vocaux WebRTC</text>
+  <text x="112" y="226" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#1d4ed8">Contrainte TTFT &lt; 250 ms</text>
+
+  <rect x="36" y="248" width="152" height="82" rx="4" fill="#ffffff" stroke="#1e3a5f" stroke-width="1.1"/>
+  <text x="112" y="267" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.6" font-weight="bold" fill="#0f2744">Pairs Fédérés Externes</text>
+  <text x="112" y="283" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Agentforce • ServiceNow</text>
+  <text x="112" y="297" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">SAP Joule • Partenaires B2B</text>
+  <text x="112" y="314" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#0f5132">Délégation A2A v1.0 signée</text>
+
+  <!-- Flèches vers agentgateway -->
+  <line x1="200" y1="113" x2="232" y2="113" stroke="#1e3a5f" stroke-width="1.6" marker-end="url(#agNavy)"/>
+  <line x1="200" y1="199" x2="232" y2="199" stroke="#1e3a5f" stroke-width="1.6" marker-end="url(#agNavy)"/>
+  <line x1="200" y1="289" x2="232" y2="289" stroke="#1e3a5f" stroke-width="1.6" marker-end="url(#agNavy)"/>
+
+  <!-- Noyau central : agentgateway + Agent Router -->
+  <rect x="236" y="44" width="262" height="300" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.8"/>
+  <text x="367" y="64" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11.2" font-weight="bold" fill="#0f2744">Plan de Données Unifié — agentgateway</text>
+  <text x="367" y="78" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#1d4ed8">Linux Foundation AAIF (Noyau Rust haute cadence)</text>
+
+  <rect x="244" y="88" width="246" height="42" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="367" y="105" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.3" font-weight="bold" fill="#0f2744">1. Identité NHI &amp; Échange OAuth 2.1 OBO</text>
+  <text x="367" y="120" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Atténuation de portée RFC 8693 par outil MCP</text>
+
+  <rect x="244" y="137" width="246" height="42" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="367" y="154" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.3" font-weight="bold" fill="#0f2744">2. Quotas en Jetons &amp; Coupe-Circuit FinOps</text>
+  <text x="367" y="169" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Plafonds TPM / $ CAD par saga et par division</text>
+
+  <rect x="244" y="186" width="246" height="52" rx="4" fill="#fde68a" stroke="#7c2d12" stroke-width="1.3"/>
+  <text x="367" y="204" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" font-weight="bold" fill="#7c2d12">3. Agent Router (Arbitrage Multicritère)</text>
+  <text x="367" y="219" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Score complexité C(q) • Résidence Loi 25</text>
+  <text x="367" y="231" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#7c2d12">SLA latence • Escalade sur confiance calibrée</text>
+
+  <rect x="244" y="245" width="246" height="42" rx="4" fill="#ffffff" stroke="#0f5132" stroke-width="1"/>
+  <text x="367" y="262" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.0" font-weight="bold" fill="#0f5132">4. Multiplexeur MCP &amp; Proxy A2A / Open Responses</text>
+  <text x="367" y="277" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Streamable HTTP • Schéma d'inférence unifié</text>
+
+  <rect x="244" y="294" width="246" height="38" rx="4" fill="#ffffff" stroke="#64748b" stroke-width="1"/>
+  <text x="367" y="310" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#0f2744">5. Masquage PII &amp; Traces OTel (gen_ai.*)</text>
+  <text x="367" y="324" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">Auditabilité sans modification du code agent</text>
+
+  <!-- Flèches de routage vers les 3 paliers + MCP/A2A -->
+  <line x1="498" y1="196" x2="534" y2="90" stroke="#0f5132" stroke-width="1.8" marker-end="url(#agGreen)"/>
+  <line x1="498" y1="212" x2="534" y2="178" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#agBlue)"/>
+  <line x1="498" y1="224" x2="534" y2="262" stroke="#7c2d12" stroke-width="1.8" marker-end="url(#agAmber)"/>
+  <line x1="498" y1="266" x2="534" y2="322" stroke="#1e3a5f" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#agNavy)"/>
+
+  <!-- Colonne droite : Les 3 paliers cognitifs + cibles MCP/A2A -->
+  <rect x="538" y="44" width="318" height="82" rx="5" fill="#ecfdf5" stroke="#0f5132" stroke-width="1.5"/>
+  <text x="697" y="63" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#0f5132">Palier 1 — SLM Spécialisés Souverains (~73 % vol.)</text>
+  <text x="697" y="79" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">Modèles 3B–14B (vLLM / SGLang sur GPU internes)</text>
+  <text x="697" y="94" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Triage, extraction JSON stricte, normalisation OT/EDI</text>
+  <text x="697" y="110" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#0f5132">TTFT &lt; 150 ms • ~0,04 $ / M jetons • Résidence Loi 25</text>
+
+  <rect x="538" y="135" width="318" height="78" rx="5" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="697" y="154" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#1d4ed8">Palier 2 — LLM Généralistes Frontières (~22 % vol.)</text>
+  <text x="697" y="170" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">Synthèse multi-sources, appels d'outils MCP (5–12 outils)</text>
+  <text x="697" y="185" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Bascule multi-régions transparente via Open Responses</text>
+  <text x="697" y="201" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#1d4ed8">TTFT 350–800 ms • Équilibre coût / polyvalence</text>
+
+  <rect x="538" y="222" width="318" height="76" rx="5" fill="#fffbeb" stroke="#7c2d12" stroke-width="1.5"/>
+  <text x="697" y="241" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#7c2d12">Palier 3 — Raisonnement / Test-Time Compute (~5 % vol.)</text>
+  <text x="697" y="257" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">Planification L3/L4 contradictoire, contre-audit BSIF E-23</text>
+  <text x="697" y="272" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Contingenté par plafond dur maxReasoningTokens</text>
+  <text x="697" y="287" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#7c2d12">Escalade sélective uniquement si confiance &lt; seuil</text>
+
+  <rect x="538" y="306" width="318" height="38" rx="4" fill="#f1f5f9" stroke="#1e3a5f" stroke-width="1.2"/>
+  <text x="697" y="322" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#0f2744">Fédération Aval : Serveurs MCP &amp; Pairs A2A v1.0</text>
+  <text x="697" y="336" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">SAP S/4HANA • ServiceNow • IBM i • Jumeaux OPC-UA</text>
+
+  <!-- Panneau inférieur : Ordonnancement Kubernetes conscient du préfixe KV-cache -->
+  <rect x="24" y="360" width="832" height="166" rx="6" fill="#f8fafc" stroke="#0f2744" stroke-width="1.6"/>
+  <text x="440" y="381" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11.4" font-weight="bold" fill="#0f2744">Ordonnancement Kubernetes Conscient du Préfixe (Gateway API Inference Extension / llm-d) — Partage du KV-Cache</text>
+
+  <!-- Sous-bloc gauche : Structure du contexte multi-tours -->
+  <rect x="38" y="392" width="376" height="122" rx="4" fill="#ffffff" stroke="#64748b" stroke-width="1.1"/>
+  <text x="226" y="410" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.8" font-weight="bold" fill="#0f2744">Anatomie d'une Session Multi-Tours (Tours 1 à 8)</text>
+
+  <rect x="50" y="420" width="266" height="28" rx="3" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="183" y="438" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" font-weight="bold" fill="#0f2744">Préfixe Invariant : Prompt + Schémas MCP (88 %)</text>
+
+  <rect x="320" y="420" width="82" height="28" rx="3" fill="#fde68a" stroke="#b45309" stroke-width="1"/>
+  <text x="361" y="438" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" font-weight="bold" fill="#7c2d12">Delta Tour k</text>
+
+  <text x="226" y="466" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#991b1b">• Round-Robin naïf : invalide le KV-cache à chaque tour d'outil</text>
+  <text x="226" y="482" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Recalcul coûteux du Prefill (12 000+ jetons répétés 8 fois)</text>
+  <text x="226" y="498" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#0f5132">• Affinité de préfixe : ne calcule que le Delta (~300 jetons)</text>
+
+  <!-- Flèche vers Endpoint Picker -->
+  <line x1="414" y1="453" x2="444" y2="453" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#agBlue)"/>
+
+  <!-- Sous-bloc droit : Endpoint Picker EPP & Réplicas GPU -->
+  <rect x="448" y="392" width="394" height="122" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="645" y="410" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.8" font-weight="bold" fill="#1d4ed8">Endpoint Picker (EPP) : Score = α·Hit(Préfixe) − β·File(GPU) − γ·HBM</text>
+
+  <rect x="460" y="422" width="118" height="78" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+  <text x="519" y="439" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#475569">Pod GPU #1</text>
+  <text x="519" y="455" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#64748b">Préfixe absent (0 %)</text>
+  <text x="519" y="470" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#64748b">HBM : 64 %</text>
+  <text x="519" y="488" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#64748b">Non sélectionné</text>
+
+  <rect x="586" y="422" width="118" height="78" rx="4" fill="#ecfdf5" stroke="#0f5132" stroke-width="1.6"/>
+  <text x="645" y="439" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#0f5132">Pod GPU #2 (Cible)</text>
+  <text x="645" y="455" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" font-weight="bold" fill="#0f5132">KV-Cache CHAUD 88 %</text>
+  <text x="645" y="470" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">HBM : 58 % • File : 2</text>
+  <text x="645" y="488" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" font-weight="bold" fill="#0f5132">Routage Tours 1..8</text>
+
+  <rect x="712" y="422" width="118" height="78" rx="4" fill="#fffbeb" stroke="#b45309" stroke-width="1"/>
+  <text x="771" y="439" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#7c2d12">Pod GPU #3 (Secours)</text>
+  <text x="771" y="455" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">Cache partiel (45 %)</text>
+  <text x="771" y="470" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#334155">HBM : 31 % • File : 0</text>
+  <text x="771" y="488" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.3" fill="#7c2d12">Débordement anti-hotspot</text>
+</svg>
