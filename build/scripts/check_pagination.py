@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Vérifie le PDF compilé et produit un rapport de pagination par chapitre via Typst."""
+"""Vérifie le PDF compilé et affiche le rapport de pagination par chapitre via Typst."""
 
 from __future__ import annotations
 
@@ -49,7 +49,6 @@ def main() -> int:
         encoding="utf-8",
     )
 
-    headings_info = []
     section_pages = []
     front_matter_pages = 0
     total_arabic_body_pages = total_physical_pages
@@ -66,7 +65,6 @@ def main() -> int:
                 arab = phys - first_body_phys + 1
                 nxt_phys = raw_items[idx + 1]["page"] if idx + 1 < len(raw_items) else (total_physical_pages + 1)
                 span = nxt_phys - phys
-                headings_info.append(title)
                 section_pages.append({
                     "index": idx + 1,
                     "title": title,
@@ -75,23 +73,11 @@ def main() -> int:
                     "pages": span,
                 })
 
-    report = {
-        "pdf_file": str(pdf_path).replace("\\", "/"),
-        "pdf_size_kb": round(pdf_path.stat().st_size / 1024, 1),
-        "total_physical_pages": total_physical_pages,
-        "front_matter_pages": front_matter_pages,
-        "total_arabic_body_pages": total_arabic_body_pages,
-        "level1_sections_count": len(headings_info),
-        "sections": section_pages,
-    }
-
-    report_path = pdf_path.with_name("build-report.json")
-    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-
+    pdf_size_kb = round(pdf_path.stat().st_size / 1024, 1)
     print(f"=== RAPPORT DE COMPILATION ({pdf_path.name}) ===")
-    print(f"Taille du PDF          : {report['pdf_size_kb']} Ko")
+    print(f"Taille du PDF          : {pdf_size_kb} Ko")
     print(f"Pages physiques totales: {total_physical_pages} pages ({front_matter_pages} liminaires + {total_arabic_body_pages} pages numérotées)")
-    print(f"Sections H1 détectées  : {len(headings_info)}")
+    print(f"Sections H1 détectées  : {len(section_pages)}")
     for s in section_pages:
         print(f"  [{s['index']:02d}] p.{s['arabic_start_page']:03d}–{s['arabic_end_page']:03d} ({s['pages']:2d} p.) | {s['title']}")
 

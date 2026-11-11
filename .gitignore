@@ -1,8 +1,11 @@
-# Fichiers intermédiaires de compilation (les livrables .pdf, .html et build-report.json dans dist/ sont versionnés)
+# Fichiers intermédiaires de compilation (seuls les livrables finaux dans dist/ sont versionnés)
 dist/*.typ
 dist/*.png
+dist/*.json
 
-# Fichiers temporaires OS et éditeurs
+# Caches Python et fichiers temporaires OS / éditeurs
+__pycache__/
+*.py[cod]
 .DS_Store
 Thumbs.db
 *.tmp
