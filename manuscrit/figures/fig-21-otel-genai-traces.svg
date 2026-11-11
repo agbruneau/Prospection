@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 470" width="880" height="470">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e3a5f"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#b45309"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f5132"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="470" fill="#ffffff"/>
+
+  <text x="440" y="25" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="15" font-weight="bold" fill="#0f2744">Trace Distribuée OpenTelemetry (gen_ai.*) &amp; Pipeline de Caviardage PII de Bout en Bout</text>
+  <text x="440" y="43" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" fill="#475569">Propagation W3C Trace Context (traceparent + baggage NHI/FinOps) à travers Sagas, A2A v1.0, Inférence LLM, MCP et Mémoire</text>
+
+  <!-- Zone Supérieure : Cascade des Spans (Waterfall) -->
+  <rect x="18" y="55" width="844" height="238" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+  <text x="32" y="71" font-family="Segoe UI, Calibri, sans-serif" font-size="11.2" font-weight="bold" fill="#0f2744">1. Arbre Causal des Spans (trace_id: 4bf92f35...e4736 | saga.id: saga-inc-2027-088412)</text>
+
+  <!-- Échelle temporelle -->
+  <line x1="250" y1="88" x2="842" y2="88" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="250" y="84" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#64748b">0 ms</text>
+  <text x="445" y="84" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#64748b">800 ms</text>
+  <text x="640" y="84" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#64748b">1 800 ms</text>
+  <text x="815" y="84" font-family="Segoe UI, Calibri, sans-serif" font-size="8.4" fill="#64748b">2 640 ms</text>
+
+  <!-- Span 1 : Saga Parent -->
+  <text x="32" y="106" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#1e293b">Orchestrateur Durable (Temporal)</text>
+  <rect x="250" y="93" width="590" height="20" rx="3" fill="#1e3a5f"/>
+  <text x="260" y="107" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#ffffff">saga.workflow.run [L3] — budget.max_cad=1.20 | hops.remaining=4 (2 640 ms)</text>
+
+  <!-- Span 2 : Délégation A2A -->
+  <text x="44" y="138" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#1d4ed8">└─ Saut A2A v1.0 (agentgateway)</text>
+  <rect x="274" y="125" width="536" height="20" rx="3" fill="#1d4ed8"/>
+  <text x="284" y="139" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#ffffff">invoke_agent bca-warranty-adjudicator — nhi.sub=spiffe://boreal.ca/bsn/maint | obo.act=usr-882 (2 310 ms)</text>
+
+  <!-- Span 3 : Inférence LLM 1 -->
+  <text x="58" y="170" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#6d28d9">└─ Inférence Raisonnement</text>
+  <rect x="296" y="157" width="215" height="20" rx="3" fill="#6d28d9"/>
+  <text x="304" y="171" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#ffffff">gen_ai.chat (in:1840, cache:1400, reason:310)</text>
+
+  <!-- Span 4 : Appel Outil MCP -->
+  <text x="58" y="202" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f5132">└─ Appel Outil MCP (JSON-RPC)</text>
+  <rect x="518" y="189" width="142" height="20" rx="3" fill="#0f5132"/>
+  <text x="526" y="203" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#ffffff">execute_tool check_policy_as400</text>
+
+  <!-- Span 5 : Requête Graphe Mémoire -->
+  <text x="58" y="234" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#b45309">└─ Mémoire Bi-Temporelle</text>
+  <rect x="668" y="221" width="76" height="20" rx="3" fill="#d97706"/>
+  <text x="674" y="235" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#ffffff">graphiti.query</text>
+
+  <!-- Span 6 : Synthèse finale -->
+  <text x="58" y="266" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#6d28d9">└─ Décision Structurée</text>
+  <rect x="750" y="253" width="54" height="20" rx="3" fill="#7c3aed"/>
+  <text x="756" y="267" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#ffffff">emit</text>
+
+  <!-- Flèches d'export OTLP -->
+  <line x1="440" y1="293" x2="440" y2="318" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+  <text x="450" y="310" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#1d4ed8">Export OTLP/gRPC mTLS</text>
+
+  <!-- Zone Inférieure : Collecteur OTel, Détection Livelock et Caviardage PII -->
+  <rect x="18" y="320" width="844" height="136" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="32" y="341" font-family="Segoe UI, Calibri, sans-serif" font-size="11.5" font-weight="bold" fill="#0f2744">2. Passerelle OpenTelemetry Collector : Assainissement PII (Loi 25 / RGPD) &amp; Analyse en Flux</text>
+
+  <!-- Boîte Collecteur -->
+  <rect x="32" y="354" width="256" height="88" rx="5" fill="#ffffff" stroke="#b45309" stroke-width="1.5"/>
+  <text x="160" y="373" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" font-weight="bold" fill="#9a3412">Processeur Redaction &amp; Pseudonymisation</text>
+  <text x="160" y="390" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#334155">• Masquage NAS, IBAN, courriels, téléphones</text>
+  <text x="160" y="405" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#334155">• Séparation attributs gen_ai.input.messages</text>
+  <text x="160" y="420" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#334155">• Hachage HMAC-SHA256 des clés clients</text>
+  <text x="160" y="434" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#b45309">Zéro PII en clair dans les index APM</text>
+
+  <line x1="288" y1="378" x2="334" y2="378" stroke="#0f5132" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <line x1="288" y1="418" x2="334" y2="418" stroke="#b45309" stroke-width="1.5" marker-end="url(#arrowAmber)"/>
+
+  <!-- Destination 1 : Télémétrie & Détection Livelock -->
+  <rect x="334" y="350" width="268" height="44" rx="4" fill="#ffffff" stroke="#0f5132" stroke-width="1.3"/>
+  <text x="468" y="368" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f5132">Backend Observabilité &amp; Moteur FinOps</text>
+  <text x="468" y="383" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">Métriques SLI/SLO, coûts jetons, graphes causaux</text>
+
+  <!-- Destination 2 : Coffre Forensique Chiffré -->
+  <rect x="334" y="402" width="268" height="44" rx="4" fill="#fff7ed" stroke="#9a3412" stroke-width="1.3"/>
+  <text x="468" y="420" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#9a3412">Voûte Forensique Chiffrée (Accès Bris de Glace)</text>
+  <text x="468" y="435" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">Payloads complets sous clé KMS par juridiction (TTL 30j)</text>
+
+  <line x1="602" y1="372" x2="636" y2="372" stroke="#1e3a5f" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Détecteur de Boucle Sémantique -->
+  <rect x="636" y="350" width="212" height="96" rx="5" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4"/>
+  <text x="742" y="370" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#991b1b">Sentinelle Anti-Livelock Temps Réel</text>
+  <text x="742" y="387" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#7f1d1d">• Similitude cosinus d'intentions &gt; 0,94</text>
+  <text x="742" y="402" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#7f1d1d">• Répétition cycle A2A/MCP sans progrès</text>
+  <text x="742" y="417" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#7f1d1d">• Dérive ratio jetons raisonnement / sortie</text>
+  <text x="742" y="435" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#991b1b">Action : Coupe-circuit Saga + Alerte HOTL</text>
+</svg>

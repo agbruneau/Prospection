@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 515" width="880" height="515">
+  <defs>
+    <marker id="arrNavy27" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f2744"/>
+    </marker>
+    <marker id="arrBlue27" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="arrAmber27" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#9a3412"/>
+    </marker>
+    <marker id="arrGreen27" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f5132"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="515" fill="#ffffff"/>
+
+  <text x="440" y="25" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="14" font-weight="bold" fill="#0f2744">Souveraineté Cognitive : Résidence Juridictionnelle, Enclaves GPU TEE et Reprise Cognitive (Cognitive DR)</text>
+
+  <!-- Plan de contrôle souverain en amont -->
+  <rect x="20" y="44" width="840" height="92" rx="7" fill="#f0f5fa" stroke="#0f2744" stroke-width="1.6"/>
+  <text x="440" y="64" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11.2" font-weight="bold" fill="#0f2744">Cellule de Contrôle Juridictionnel &amp; Cryptographique (Agentgateway Souverain + HSM HYOK)</text>
+
+  <rect x="38" y="76" width="252" height="48" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.1"/>
+  <text x="164" y="95" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.3" font-weight="bold" fill="#0f2744">Routeur Géofencé (Cedar)</text>
+  <text x="164" y="112" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#334155">Classification : Loi 25 • E-23 • UE</text>
+
+  <rect x="314" y="76" width="252" height="48" rx="4" fill="#ffffff" stroke="#4c1d95" stroke-width="1.1"/>
+  <text x="440" y="95" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.3" font-weight="bold" fill="#4c1d95">Pseudonymisation Réversible</text>
+  <text x="440" y="112" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#334155">Jetons HMAC-FPE détenus en HSM local</text>
+
+  <rect x="590" y="76" width="252" height="48" rx="4" fill="#ffffff" stroke="#0f5132" stroke-width="1.1"/>
+  <text x="716" y="95" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.3" font-weight="bold" fill="#0f5132">Sonde de Santé &amp; Parité Cognitive</text>
+  <text x="716" y="112" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#334155">Disjoncteur SLA, latence, retrait API</text>
+
+  <!-- Flèches de distribution -->
+  <line x1="164" y1="136" x2="154" y2="168" stroke="#0f2744" stroke-width="1.5" marker-end="url(#arrNavy27)"/>
+  <line x1="440" y1="136" x2="440" y2="168" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#arrBlue27)"/>
+  <line x1="716" y1="136" x2="726" y2="168" stroke="#0f5132" stroke-width="1.5" marker-end="url(#arrGreen27)"/>
+
+  <!-- Couloir 1 : Zone Souveraine Canada / Québec -->
+  <rect x="20" y="170" width="268" height="196" rx="6" fill="#ffffff" stroke="#0f2744" stroke-width="1.5"/>
+  <rect x="20" y="170" width="268" height="26" rx="6" fill="#0f2744"/>
+  <text x="154" y="187" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#ffffff">Zone A — Souveraine CA / QC</text>
+  <text x="34" y="213" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#0f2744">Périmètre : Loi 25 &amp; BSIF E-23</text>
+  <text x="34" y="230" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#334155">• État Temporal &amp; graphe Graphiti locaux</text>
+  <text x="34" y="246" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#334155">• KV-cache isolé chiffré en mémoire</text>
+  <text x="34" y="262" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#334155"></text>
+  <text x="34" y="262" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#334155">• Zéro transit sous CLOUD Act non chiffré</text>
+  <rect x="34" y="278" width="240" height="72" rx="4" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="154" y="296" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#1d4ed8">Enclave GPU TEE (H100 / B200)</text>
+  <text x="154" y="313" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#1e293b">Attestation matérielle distante</text>
+  <text x="154" y="328" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#1e293b">Libération clé KMS uniquement si</text>
+  <text x="154" y="342" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" font-weight="bold" fill="#0f2744">mesure PCR firmware conforme</text>
+
+  <!-- Couloir 2 : Cloud Frontalier Public (Primaire sous Pseudonymisation) -->
+  <rect x="306" y="170" width="268" height="196" rx="6" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <rect x="306" y="170" width="268" height="26" rx="6" fill="#1d4ed8"/>
+  <text x="440" y="187" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#ffffff">Zone B — Modèles Frontières (API)</text>
+  <text x="320" y="213" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#1d4ed8">Raisonnement Complexe (System-2)</text>
+  <text x="320" y="230" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#334155">• Entrées expurgées de PII directe</text>
+  <text x="320" y="246" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#334155">• Contrat Zero-Data-Retention (ZDR)</text>
+  <text x="320" y="262" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#334155">• Normalisation Open Responses</text>
+  <rect x="320" y="278" width="240" height="72" rx="4" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="440" y="296" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#9a3412">Aléas Externes Surveillés :</text>
+  <text x="440" y="313" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#7c2d12">Panne régionale hyperscaler, 429 massif,</text>
+  <text x="440" y="328" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#7c2d12">dépréciation modèle ou choc tarifaire,</text>
+  <text x="440" y="342" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" font-weight="bold" fill="#9a3412">injonction juridique extraterritoriale</text>
+
+  <!-- Couloir 3 : Grappe de Reprise Souveraine (Cognitive DR) -->
+  <rect x="592" y="170" width="268" height="196" rx="6" fill="#ffffff" stroke="#0f5132" stroke-width="1.6"/>
+  <rect x="592" y="170" width="268" height="26" rx="6" fill="#0f5132"/>
+  <text x="726" y="187" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#ffffff">Zone C — Secours Open-Weights (DR)</text>
+  <text x="606" y="213" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#0f5132">Continuité Souveraine CA &amp; UE</text>
+  <text x="606" y="230" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#334155">• Grappe vLLM / SGLang pré-chauffée</text>
+  <text x="606" y="246" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#334155">• Poids ouverts audités &amp; figés en registre</text>
+  <text x="606" y="262" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" fill="#334155">• Adaptateurs de consignes pré-calibrés</text>
+  <rect x="606" y="278" width="240" height="72" rx="4" fill="#ecfdf5" stroke="#86efac"/>
+  <text x="726" y="296" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#0f5132">Garantie Cognitive DR :</text>
+  <text x="726" y="313" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#1e293b">RTO cognitif &lt; 15 min sans perte d'état</text>
+  <text x="726" y="328" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#1e293b">Schémas MCP &amp; pass^5 pré-homologués</text>
+  <text x="726" y="342" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" font-weight="bold" fill="#0f5132">Autonomie complète hors hyperscaler</text>
+
+  <!-- Flèche de bascule B -> C -->
+  <line x1="574" y1="314" x2="590" y2="314" stroke="#9a3412" stroke-width="2" marker-end="url(#arrAmber27)"/>
+
+  <!-- Bandeau inférieur : Protocole de Bascule Cognitive (RTO / RPO) -->
+  <rect x="20" y="388" width="840" height="108" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.3"/>
+  <text x="440" y="408" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.8" font-weight="bold" fill="#0f2744">Mécanique d'Exercice Trimestriel de Bascule Cognitive (GameDay BSIF E-23)</text>
+
+  <rect x="38" y="420" width="250" height="62" rx="4" fill="#ffffff" stroke="#64748b"/>
+  <text x="163" y="438" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.1" font-weight="bold" fill="#0f2744">1. Détection &amp; Gel Propre (T + 30 s)</text>
+  <text x="163" y="454" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Mise en pause des activités Temporal</text>
+  <text x="163" y="469" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Zéro perte de transaction (RPO = 0)</text>
+
+  <line x1="288" y1="451" x2="313" y2="451" stroke="#0f2744" stroke-width="1.4" marker-end="url(#arrNavy27)"/>
+
+  <rect x="315" y="420" width="250" height="62" rx="4" fill="#ffffff" stroke="#1d4ed8"/>
+  <text x="440" y="438" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.1" font-weight="bold" fill="#1d4ed8">2. Commutation Profil (T + 3 min)</text>
+  <text x="440" y="454" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Activation gabarit prompt Open-Weights</text>
+  <text x="440" y="469" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Montée en charge auto-scaling GPU</text>
+
+  <line x1="565" y1="451" x2="590" y2="451" stroke="#0f5132" stroke-width="1.4" marker-end="url(#arrGreen27)"/>
+
+  <rect x="592" y="420" width="250" height="62" rx="4" fill="#ffffff" stroke="#0f5132"/>
+  <text x="717" y="438" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.1" font-weight="bold" fill="#0f5132">3. Reprise Bornée (T + 12 min)</text>
+  <text x="717" y="454" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Seuils d'escalade HOTL resserrés +15 %</text>
+  <text x="717" y="469" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Continuité métier certifiée en audit</text>
+</svg>

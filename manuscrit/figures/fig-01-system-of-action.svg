@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e3a5f"/>
+    </marker>
+  </defs>
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="26" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="15" font-weight="bold" fill="#0f2744">Superposition du « System of Action » sur les « Systems of Record » (Cas Groupe Boréal)</text>
+
+  <!-- Couche supérieure : Canaux d'engagement -->
+  <rect x="30" y="44" width="820" height="58" rx="5" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+  <text x="440" y="65" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11.5" font-weight="bold" fill="#0f2744">Systems of Engagement (Interfaces Humaines &amp; Télématique)</text>
+  <text x="440" y="85" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Portail Client AG-UI / A2UI • Microsoft Teams (Copilot Studio) • Console Opérateur Usine (WebRTC) • Alertes IoT MQTT</text>
+
+  <!-- Couche centrale : System of Action (Fabrique Agentique Boréal) -->
+  <rect x="30" y="122" width="820" height="164" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.8"/>
+  <text x="48" y="145" font-family="Segoe UI, Calibri, sans-serif" font-size="12.5" font-weight="bold" fill="#0f2744">System of Action — Fabrique Agentique Boréal (Tissu d'Interopérabilité et d'Orchestration)</text>
+
+  <rect x="48" y="158" width="242" height="110" rx="4" fill="#ffffff" stroke="#1d4ed8"/>
+  <text x="169" y="179" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" font-weight="bold" fill="#0f2744">Orchestration &amp; État Durable</text>
+  <text x="169" y="198" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">• Workflows Temporal (Sagas inter-divisions)</text>
+  <text x="169" y="215" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">• Bus événementiel Kafka &amp; Solace</text>
+  <text x="169" y="232" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">• Approbations HOTL via CIBA</text>
+  <text x="169" y="249" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#1d4ed8">• Découplage Contrôle / Raisonnement</text>
+
+  <rect x="309" y="158" width="262" height="110" rx="4" fill="#ffffff" stroke="#0f5132"/>
+  <text x="440" y="179" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" font-weight="bold" fill="#0f5132">Maillage A2A v1.0 &amp; Sémantique</text>
+  <text x="440" y="198" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">• Annuaire fédéré d'Agent Cards (OASF)</text>
+  <text x="440" y="215" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">• Ontologie unifiée (Apache Ossie)</text>
+  <text x="440" y="232" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">• Mémoire bi-temporelle (Graphiti)</text>
+  <text x="440" y="249" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#0f5132">• Délégation horizontale inter-silos</text>
+
+  <rect x="590" y="158" width="242" height="110" rx="4" fill="#ffffff" stroke="#7c2d12"/>
+  <text x="711" y="179" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" font-weight="bold" fill="#7c2d12">Passerelle AI-Native &amp; Sécurité</text>
+  <text x="711" y="198" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">• agentgateway (Proxy MCP / A2A / LLM)</text>
+  <text x="711" y="215" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">• Identités NHI + OAuth 2.1 OBO</text>
+  <text x="711" y="232" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">• Politiques Cedar / OPA + Quotas FinOps</text>
+  <text x="711" y="249" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#7c2d12">• Traces OpenTelemetry (gen_ai.*)</text>
+
+  <!-- Flèches vers Systems of Record -->
+  <line x1="165" y1="286" x2="165" y2="314" stroke="#1e3a5f" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="440" y1="286" x2="440" y2="314" stroke="#1e3a5f" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="715" y1="286" x2="715" y2="314" stroke="#1e3a5f" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <!-- Couche basse : les 3 divisions (Systems of Record) -->
+  <rect x="30" y="316" width="258" height="86" rx="5" fill="#f1f5f9" stroke="#0f2744" stroke-width="1.3"/>
+  <text x="159" y="337" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.8" font-weight="bold" fill="#0f2744">Boréal Services Numériques (BSN)</text>
+  <text x="159" y="355" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">Salesforce Agentforce • ServiceNow</text>
+  <text x="159" y="372" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#1d4ed8">Connecteurs : A2A v1.0 + Serveurs MCP</text>
+  <text x="159" y="389" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#64748b">Gravité : Clients &amp; Billets terrain</text>
+
+  <rect x="311" y="316" width="258" height="86" rx="5" fill="#f1f5f9" stroke="#0f2744" stroke-width="1.3"/>
+  <text x="440" y="337" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.8" font-weight="bold" fill="#0f2744">Boréal Capital &amp; Assurances (BCA)</text>
+  <text x="440" y="355" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">IBM i (AS/400) • Guidewire • Snowflake</text>
+  <text x="440" y="372" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#1d4ed8">Connecteurs : CUA confiné + MCP SQL</text>
+  <text x="440" y="389" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#991b1b">Régime : BSIF E-23 (mai 2027) &amp; Loi 25</text>
+
+  <rect x="592" y="316" width="258" height="86" rx="5" fill="#f1f5f9" stroke="#0f2744" stroke-width="1.3"/>
+  <text x="721" y="337" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.8" font-weight="bold" fill="#0f2744">Boréal Équipements &amp; Logistique (BEL)</text>
+  <text x="721" y="355" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" fill="#334155">SAP S/4HANA (Joule) • Automates OPC-UA</text>
+  <text x="721" y="372" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#1d4ed8">Connecteurs : MCP BAPI + Jumeau Numérique</text>
+  <text x="721" y="389" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#64748b">Gravité : Stocks, Usines &amp; Achats B2B</text>
+</svg>

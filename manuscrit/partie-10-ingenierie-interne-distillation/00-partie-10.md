@@ -1,0 +1,11 @@
+# PARTIE X — Ingénierie Agentique Interne (SDLC & DataOps) et Amélioration Continue des Flottes {.partie-titre}
+
+> **Périmètre éditorial de la Partie X** : 49 pages (p. 528–576) • **Chapitres 29 à 31**
+
+Une fois consolidées ses fondations internes (Parties I à VIII) et ses frontières souveraines et B2B (Partie IX), l'entreprise agentique peut retourner sa propre fabrique d'orchestration vers les trois goulets d'étranglement structurels de sa direction technologique : des cœurs patrimoniaux (`RPG`, `COBOL`, `PL/SQL`) sous-documentés qui imposent encore des détours coûteux par écrans `CUA` ; des pipelines analytiques et plateformes distribuées exposés aux dérives silencieuses de schémas et aux tempêtes d'alertes nocturnes ; enfin, une facture d'inférence qui s'alourdit si les millions de traces résolues par les grands modèles frontières ne sont jamais capitalisés en modèles internes compacts. Appliquer des flottes d'agents au génie logiciel, aux données et aux modèles exige toutefois une discipline intraitable : **sans preuves déterministes, la méta-automatisation n'industrialise pas la vélocité, mais la dette technique et l'instabilité**.
+
+Cette dixième et dernière partie parachève le compendium en gouvernant l'ingénierie interne et le volant d'efficience cognitive :
+
+* Le **Chapitre 29** bâtit l'usine logicielle `Agentic SDLC` à séparation stricte des devoirs (oracle distinct du bâtisseur isolé, indexation `AST`/`SCIP`, score de mutation \(\ge 85\,\%\)) et modernise le patrimoine selon le patron *Strangler Fig* prouvé par trente jours de double exécution en ombre (*Shadow Mirroring*) à zéro écart.
+* Le **Chapitre 30** déploie l'`Agentic DataOps` sous contrats `ODCS` en mode *Write-Audit-Publish* pour protéger l'ontologie `Apache Ossie`, ainsi que le `SRE` autonome découplant un essaim d'investigation en lecture seule de *runbooks* paramétrés bornés par rayon d'impact sous `Cedar`.
+* Le **Chapitre 31** opère le volant d'inertie cognitif (*Data Flywheel*) convertissant les traces `OpenTelemetry` assainies (`Loi 25`) et les arbitrages `HOTL` en compilation déclarative de consignes (`DSPy`) et en distillation `LLM → SLM` (`Multi-LoRA`), avant de livrer la conclusion générale de l'ouvrage.

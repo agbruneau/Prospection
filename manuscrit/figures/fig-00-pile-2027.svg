@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 560" width="880" height="560">
+  <rect width="880" height="560" fill="#ffffff"/>
+  <text x="440" y="28" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="16" font-weight="bold" fill="#0f2744">Architecture de Référence à 6 Couches — Entreprise Agentique 2027</text>
+
+  <!-- Bandeau vertical gauche : Sécurité Zero Trust & Identité -->
+  <rect x="18" y="48" width="118" height="492" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="77" y="74" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11" font-weight="bold" fill="#991b1b">TRANSVERSAL</text>
+  <text x="77" y="92" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="12" font-weight="bold" fill="#7f1d1d">Zero Trust &amp; NHI</text>
+  <line x1="30" y1="104" x2="124" y2="104" stroke="#fca5a5" stroke-width="1"/>
+  <text x="77" y="132" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">SPIFFE / SPIRE</text>
+  <text x="77" y="150" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">W3C DIDs / VCs</text>
+  <text x="77" y="182" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#7f1d1d">Délégation</text>
+  <text x="77" y="200" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">OAuth 2.1 OBO</text>
+  <text x="77" y="218" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">RFC 8693 (act/sub)</text>
+  <text x="77" y="236" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">CIBA Asynchrone</text>
+  <text x="77" y="268" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#7f1d1d">Protection Runtime</text>
+  <text x="77" y="286" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">OWASP ASI01–10</text>
+  <text x="77" y="304" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">OPA / Cedar PDP</text>
+  <text x="77" y="322" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">OpenSandbox</text>
+  <text x="77" y="340" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">MicroVMs / WASI</text>
+  <text x="77" y="372" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#7f1d1d">Résilience</text>
+  <text x="77" y="390" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Pinning MCP</text>
+  <text x="77" y="408" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Kill Switches SOC</text>
+
+  <!-- Bandeau vertical droit : AgentOps, OTel & FinOps -->
+  <rect x="744" y="48" width="118" height="492" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5"/>
+  <text x="803" y="74" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11" font-weight="bold" fill="#166534">TRANSVERSAL</text>
+  <text x="803" y="92" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="12" font-weight="bold" fill="#14532d">AgentOps &amp; FinOps</text>
+  <line x1="756" y1="104" x2="850" y2="104" stroke="#86efac" stroke-width="1"/>
+  <text x="803" y="132" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#14532d">Observabilité</text>
+  <text x="803" y="150" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">OpenTelemetry</text>
+  <text x="803" y="168" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">gen_ai.* Traces</text>
+  <text x="803" y="200" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#14532d">Qualité &amp; ADLC</text>
+  <text x="803" y="218" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Agent Registry</text>
+  <text x="803" y="236" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">OpenEnv / τ-bench</text>
+  <text x="803" y="254" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Shadow &amp; Canary</text>
+  <text x="803" y="272" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Chaos Agentique</text>
+  <text x="803" y="304" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#14532d">FinOps</text>
+  <text x="803" y="322" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Budgets de jetons</text>
+  <text x="803" y="340" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Cost-per-Outcome</text>
+  <text x="803" y="358" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#334155">Routage SLM/LLM</text>
+
+  <!-- Couche 6 -->
+  <rect x="148" y="48" width="584" height="72" rx="5" fill="#eff6ff" stroke="#1e3a5f" stroke-width="1.5"/>
+  <text x="164" y="69" font-family="Segoe UI, Calibri, sans-serif" font-size="12" font-weight="bold" fill="#0f2744">Couche 6 — Gouvernance, Conformité Légale et Commerce Agentique B2B</text>
+  <text x="164" y="89" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#334155">Cadres : ISO/IEC 42001 • EU AI Act (2026–2027) • BSIF E-23 (mai 2027) • Loi 25 • NIST AI Agent Standards</text>
+  <text x="164" y="107" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#1d4ed8">Transactions B2B : AP2 (FIDO / Mandats W3C VCs) • x402 (Règlement HTTP 402) • Contrats &amp; SLA signés</text>
+
+  <!-- Couche 5 -->
+  <rect x="148" y="132" width="584" height="72" rx="5" fill="#f8fafc" stroke="#334155" stroke-width="1.3"/>
+  <text x="164" y="153" font-family="Segoe UI, Calibri, sans-serif" font-size="12" font-weight="bold" fill="#0f2744">Couche 5 — Interaction Humain-Agent (HITL / HOTL) et Multimodalité Temps Réel</text>
+  <text x="164" y="173" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#334155">Interfaces : AG-UI (Flux d'événements et deltas d'état) • A2UI / MCP-UI (Composants déclaratifs JSON)</text>
+  <text x="164" y="191" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#334155">Canaux : Voix et vidéo temps réel WebRTC / SIP • Escalade graduée par le risque • Anti-biais (ASI09)</text>
+
+  <!-- Couche 4 -->
+  <rect x="148" y="216" width="584" height="76" rx="5" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6"/>
+  <text x="164" y="237" font-family="Segoe UI, Calibri, sans-serif" font-size="12" font-weight="bold" fill="#0f2744">Couche 4 — Orchestration Hybride, Exécution Durable et Intégrité Transactionnelle</text>
+  <text x="164" y="257" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#334155">Durabilité : Temporal • Restate • Microsoft Agent Framework • Bedrock AgentCore • UiPath Maestro (BPMN)</text>
+  <text x="164" y="276" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#1d4ed8">Événements &amp; Cohérence : Confluent Kafka • Solace Agent Mesh • NATS • Patron Saga &amp; Compensations</text>
+
+  <!-- Couche 3 -->
+  <rect x="148" y="304" width="584" height="76" rx="5" fill="#f8fafc" stroke="#334155" stroke-width="1.3"/>
+  <text x="164" y="325" font-family="Segoe UI, Calibri, sans-serif" font-size="12" font-weight="bold" fill="#0f2744">Couche 3 — Coordination Horizontale Inter-Agents et Fédération des Silos SaaS</text>
+  <text x="164" y="345" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#334155">Protocoles : A2A v1.0 (Agent Cards, Tâches asynchrones, Artefacts ; fusion ACP) • AGNTCY (OASF, SLIM/MLS)</text>
+  <text x="164" y="364" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#334155">Fédération : MuleSoft Agent Fabric • Agentforce ↔ ServiceNow ↔ SAP Joule ↔ Copilot Studio</text>
+
+  <!-- Couche 2 -->
+  <rect x="148" y="392" width="584" height="70" rx="5" fill="#fff7ed" stroke="#9a3412" stroke-width="1.3"/>
+  <text x="164" y="413" font-family="Segoe UI, Calibri, sans-serif" font-size="12" font-weight="bold" fill="#7c2d12">Couche 2 — Sémantique Métier, Ontologies d'Entreprise et Mémoire Partagée</text>
+  <text x="164" y="432" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#334155">Modèle métier : Apache Ossie (Open Semantic Interchange) • Ontologies causales • Jumeaux numériques</text>
+  <text x="164" y="450" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#334155">Mémoire &amp; Contexte : Graphes bi-temporels (Graphiti) • État hiérarchique (Letta) • Context Engineering</text>
+
+  <!-- Couche 1 -->
+  <rect x="148" y="474" width="584" height="66" rx="5" fill="#f1f5f9" stroke="#0f2744" stroke-width="1.5"/>
+  <text x="164" y="494" font-family="Segoe UI, Calibri, sans-serif" font-size="12" font-weight="bold" fill="#0f2744">Couche 1 — Connectivité Outils, Passerelles AI-Natives, Legacy et IT/OT</text>
+  <text x="164" y="512" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#334155">Intégration : MCP • Agent Skills • AGENTS.md • Open Responses • WebMCP • CUA (Écrans) • OPC-UA (Usine)</text>
+  <text x="164" y="529" font-family="Segoe UI, Calibri, sans-serif" font-size="10.5" fill="#334155">Plan de données : agentgateway • Agent Router (Envoy) • Inférence hybride &amp; partage de KV-cache</text>
+</svg>

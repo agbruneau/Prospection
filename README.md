@@ -1,11 +1,11 @@
 # Compendium 2027 — Interopérabilité et Orchestration en Entreprise Agentique
 
-Édition intégrale finalisée (**500 pages numérotées**, format Royal `170 × 240 mm`, 125 649 mots, 8 parties, 25 chapitres, 3 annexes, 32 schémas vectoriels, 25 décisions d'architecture `ADR-001` à `ADR-025`).
+Édition intégrale étendue finalisée (**600 pages numérotées**, format Royal `170 × 240 mm`, 152 506 mots, 10 parties, 31 chapitres, 3 annexes, 38 schémas vectoriels, 31 décisions d'architecture `ADR-001` à `ADR-031`).
 
 ## Livrables autonomes
 
-* [`dist/compendium-2027-complet.pdf`](dist/compendium-2027-complet.pdf) — Livre complet mis en page pour impression et lecture sur écran (`511` pages physiques : `11` pages liminaires + `500` pages numérotées).
-* [`dist/compendium-2027-complet.html`](dist/compendium-2027-complet.html) — Édition web `HTML5` autonome hors ligne (table des matières navigable, 32 diagrammes `SVG` vectoriels et formules `MathML` intégrés dans un fichier unique).
+* [`dist/compendium-2027-complet.pdf`](dist/compendium-2027-complet.pdf) — Livre complet mis en page pour impression et lecture sur écran (`613` pages physiques : `13` pages liminaires + `600` pages numérotées).
+* [`dist/compendium-2027-complet.html`](dist/compendium-2027-complet.html) — Édition web `HTML5` autonome hors ligne (table des matières navigable, 38 diagrammes `SVG` vectoriels et formules `MathML` intégrés dans un fichier unique).
 
 ## Structure de l'ouvrage
 
@@ -20,4 +20,6 @@
 | **Partie VI** — Identité Non Humaine (`NHI`), `OAuth 2.1 OBO` (`RFC 8693`), `OWASP ASI` et Défense en Profondeur | Chapitres 18 à 20 | p. 336–399 |
 | **Partie VII** — Ingénierie de Production : `OpenTelemetry GenAI`, `ADLC` (`τ-bench`) et `FinOps` | Chapitres 21 à 23 | p. 400–447 |
 | **Partie VIII** — Gouvernance (`ISO/IEC 42001`, `EU AI Act`, `BSIF E-23`, `Loi 25`), Droit B2B et `HOTL` | Chapitres 24 à 25 | p. 448–479 |
-| **Annexes A–C** — Registre des 25 `ADR`, listes d'homologation (60 points) et glossaire normatif | Annexes A à C | p. 480–500 |
+| **Partie IX** — Réseaux B2B Fédérés (`EDC`/`ODRL`, `vLEI`), Souveraineté Cognitive (`TEE`, `Cognitive DR`) et `Edge` / `Physical AI` (`CRDT`, `ROS 2`) | Chapitres 26 à 28 | p. 480–527 |
+| **Partie X** — Ingénierie Agentique Interne (`Agentic SDLC`, `ODCS`, `SRE`) et Distillation Continue (`DSPy`, `Multi-LoRA`) | Chapitres 29 à 31 | p. 528–576 |
+| **Annexes A–C** — Registre des 31 `ADR`, listes d'homologation (75 points) et glossaire normatif | Annexes A à C | p. 577–600 |
