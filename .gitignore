@@ -1,0 +1,9 @@
+# Fichiers intermédiaires de compilation (les livrables .pdf, .html et build-report.json dans dist/ sont versionnés)
+dist/*.typ
+dist/*.png
+
+# Fichiers temporaires OS et éditeurs
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
