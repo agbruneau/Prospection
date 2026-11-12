@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 515" width="880" height="515">
+  <defs>
+    <marker id="arrNavy31" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f2744"/>
+    </marker>
+    <marker id="arrBlue31" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="arrGreen31" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f5132"/>
+    </marker>
+    <marker id="arrPurple31" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#4c1d95"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="515" fill="#ffffff"/>
+
+  <text x="440" y="25" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="14" font-weight="bold" fill="#0f2744">Volant d'Inertie Cognitif (Data Flywheel) : Compilation Déclarative et Distillation Continue LLM → SLM</text>
+
+  <!-- Étape 1 (Haut Gauche) : Production & Télémétrie -->
+  <rect x="24" y="52" width="376" height="122" rx="7" fill="#f0f5fa" stroke="#0f2744" stroke-width="1.6"/>
+  <rect x="24" y="52" width="376" height="26" rx="7" fill="#0f2744"/>
+  <text x="212" y="69" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#ffffff">1. Trafic Production &amp; Arbitrages Humains HOTL</text>
+  <text x="40" y="96" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Modèle enseignant frontière (Teacher LLM) sur les 20 % durs</text>
+  <text x="40" y="113" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Traces complètes OpenTelemetry GenAI + issue métier réelle</text>
+  <text x="40" y="130" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Corrections contrastives des superviseurs HOTL (paires DPO)</text>
+  <text x="40" y="148" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#1d4ed8">• Signal d'ancrage : uniquement les sagas sans compensation</text>
+
+  <line x1="400" y1="113" x2="478" y2="113" stroke="#0f2744" stroke-width="1.8" marker-end="url(#arrNavy31)"/>
+  <rect x="410" y="92" width="58" height="17" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="439" y="104" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8" font-weight="bold" fill="#0f2744">OTel</text>
+
+  <!-- Étape 2 (Haut Droite) : Sas de Gouvernance & Jeu d'Or -->
+  <rect x="480" y="52" width="376" height="122" rx="7" fill="#f6f3ff" stroke="#4c1d95" stroke-width="1.6"/>
+  <rect x="480" y="52" width="376" height="26" rx="7" fill="#4c1d95"/>
+  <text x="668" y="69" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#ffffff">2. Sas d'Assainissement Loi 25 &amp; Curation d'Or</text>
+  <text x="496" y="96" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Anonymisation irréversible PII &amp; secrets d'affaires B2B</text>
+  <text x="496" y="113" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Filtrage anti-empoisonnement (rejet traces suspectes ASI06)</text>
+  <text x="496" y="130" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Dédoublonnage sémantique &amp; équilibrage des cas rares</text>
+  <text x="496" y="148" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#4c1d95">• Partition stricte : Train (70 %) / Dev (15 %) / Holdout (15 %)</text>
+
+  <line x1="668" y1="174" x2="668" y2="216" stroke="#4c1d95" stroke-width="1.8" marker-end="url(#arrPurple31)"/>
+
+  <!-- Étape 3 (Bas Droite) : Compilation DSPy + Distillation LoRA -->
+  <rect x="480" y="218" width="376" height="134" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6"/>
+  <rect x="480" y="218" width="376" height="26" rx="7" fill="#1d4ed8"/>
+  <text x="668" y="235" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#ffffff">3. Compilation de Graphes &amp; Distillation SLM</text>
+  <text x="496" y="262" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Niveau A (Sans poids) : Compilateur déclaratif type DSPy</text>
+  <text x="508" y="278" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#475569">(optimise consignes et exemples few-shot par métrique)</text>
+  <text x="496" y="297" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Niveau B (Poids légers) : Affinage SFT + DPO par LoRA</text>
+  <text x="496" y="313" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Modèle élève (Student SLM 4B–8B) sur schémas MCP internes</text>
+  <text x="496" y="331" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#1d4ed8">• Coût d'inférence divisé par 8 à 14 et TTFT divisé par 4</text>
+
+  <line x1="480" y1="285" x2="402" y2="285" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#arrBlue31)"/>
+  <rect x="411" y="264" width="58" height="17" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="440" y="276" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8" font-weight="bold" fill="#1d4ed8">LoRA</text>
+
+  <!-- Étape 4 (Bas Gauche) : Homologation τ-bench & Routage -->
+  <rect x="24" y="218" width="376" height="134" rx="7" fill="#f1f8f5" stroke="#0f5132" stroke-width="1.6"/>
+  <rect x="24" y="218" width="376" height="26" rx="7" fill="#0f5132"/>
+  <text x="212" y="235" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.2" font-weight="bold" fill="#ffffff">4. Homologation τ-bench (pass^5) &amp; Promotion</text>
+  <text x="40" y="262" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Banc de non-régression τ-bench sur jeu Holdout scellé</text>
+  <text x="40" y="279" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Exigence : pass^5(SLM) &gt;= 99 % du pass^5(Teacher LLM)</text>
+  <text x="40" y="296" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Déploiement Shadow Mode → Canary 10 % sur agentgateway</text>
+  <text x="40" y="313" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Surveillance continue de dérive (PSI / entropie / escalade)</text>
+  <text x="40" y="331" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#0f5132">• Retour automatique au Teacher LLM si cas hors distribution</text>
+
+  <line x1="212" y1="218" x2="212" y2="176" stroke="#0f5132" stroke-width="1.8" marker-end="url(#arrGreen31)"/>
+
+  <!-- Bandeau Inférieur : Courbe économique de compression Cost-per-Outcome -->
+  <rect x="24" y="376" width="832" height="120" rx="7" fill="#f8fafc" stroke="#334155" stroke-width="1.4"/>
+  <text x="440" y="397" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.8" font-weight="bold" fill="#0f2744">Trajectoire Économique d'un Flux Agentique Mature sur 4 Trimestres (Compression du Cost-per-Outcome)</text>
+
+  <rect x="42" y="412" width="184" height="68" rx="4" fill="#ffffff" stroke="#9a3412"/>
+  <text x="134" y="429" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#9a3412">T1 — Amorçage (100 % LLM)</text>
+  <text x="134" y="446" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Collecte traces initiales</text>
+  <text x="134" y="462" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" font-weight="bold" fill="#0f2744">1,28 $ CAD / résultat</text>
+
+  <line x1="226" y1="446" x2="246" y2="446" stroke="#0f2744" stroke-width="1.4" marker-end="url(#arrNavy31)"/>
+
+  <rect x="248" y="412" width="184" height="68" rx="4" fill="#ffffff" stroke="#1d4ed8"/>
+  <text x="340" y="429" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#1d4ed8">T2 — Compilation Prompt</text>
+  <text x="340" y="446" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Compression contexte + cache</text>
+  <text x="340" y="462" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" font-weight="bold" fill="#0f2744">0,74 $ CAD / résultat</text>
+
+  <line x1="432" y1="446" x2="452" y2="446" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#arrBlue31)"/>
+
+  <rect x="454" y="412" width="184" height="68" rx="4" fill="#ffffff" stroke="#4c1d95"/>
+  <text x="546" y="429" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#4c1d95">T3 — 1re Distillation SLM</text>
+  <text x="546" y="446" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">65 % trafic sur SLM LoRA</text>
+  <text x="546" y="462" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" font-weight="bold" fill="#0f2744">0,39 $ CAD / résultat</text>
+
+  <line x1="638" y1="446" x2="658" y2="446" stroke="#0f5132" stroke-width="1.4" marker-end="url(#arrGreen31)"/>
+
+  <rect x="660" y="412" width="178" height="68" rx="4" fill="#ecfdf5" stroke="#0f5132" stroke-width="1.3"/>
+  <text x="749" y="429" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#0f5132">T4 — Régime Continu</text>
+  <text x="749" y="446" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#1e293b">86 % SLM + 14 % Teacher</text>
+  <text x="749" y="462" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" font-weight="bold" fill="#0f5132">0,19 $ CAD / résultat (-85 %)</text>
+</svg>

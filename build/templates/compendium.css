@@ -1,0 +1,200 @@
+/* Feuille de style HTML5 autonome — Compendium 2027 */
+:root {
+  --bg: #ffffff;
+  --fg: #1a202c;
+  --navy: #0f2744;
+  --accent: #1d4ed8;
+  --slate: #334155;
+  --muted: #64748b;
+  --border: #cbd5e1;
+  --surface: #f8fafc;
+  --table-head: #eef2f7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1120;
+    --fg: #e2e8f0;
+    --navy: #93c5fd;
+    --accent: #60a5fa;
+    --slate: #cbd5e1;
+    --muted: #94a3b8;
+    --border: #334155;
+    --surface: #111827;
+    --table-head: #1e293b;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  max-width: 940px;
+  padding: 2.5rem 2rem 5rem;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Georgia", "Libertinus Serif", Cambria, serif;
+  font-size: 17px;
+  line-height: 1.68;
+}
+
+header#title-block-header {
+  border-top: 6px solid var(--navy);
+  border-bottom: 1px solid var(--border);
+  padding: 1.8rem 0 1.5rem;
+  margin-bottom: 2rem;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+h1.title {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  color: var(--navy);
+  margin: 0 0 0.5rem;
+}
+
+p.subtitle {
+  font-size: 1.12rem;
+  color: var(--slate);
+  margin: 0 0 1rem;
+}
+
+.author, .date {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin: 0.2rem 0;
+}
+
+nav#TOC {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2.8rem;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.94rem;
+}
+
+nav#TOC h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+h1 {
+  margin-top: 3.2rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid var(--accent);
+  font-size: 1.8rem;
+}
+
+h1.partie-titre {
+  margin-top: 4rem;
+  padding: 1.2rem 1.4rem;
+  background: var(--surface);
+  border-left: 6px solid var(--navy);
+  border-bottom: 1px solid var(--border);
+}
+
+h2 { margin-top: 2.1rem; font-size: 1.35rem; }
+h3 { margin-top: 1.5rem; font-size: 1.12rem; color: var(--slate); }
+
+p, li { text-align: justify; }
+td p, th p, .compendium-box-header p { text-align: left; margin: 0; }
+
+code {
+  font-family: "Consolas", "Cascadia Mono", monospace;
+  font-size: 0.86em;
+  background: var(--surface);
+  padding: 0.12em 0.35em;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.95rem 1.1rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  line-height: 1.45;
+}
+
+pre code { background: transparent; padding: 0; font-size: 0.84rem; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.4rem 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.88rem;
+}
+
+th, td {
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--table-head);
+  color: var(--navy);
+  border-top: 2px solid var(--navy);
+  border-bottom: 2px solid var(--navy);
+  font-weight: 700;
+}
+
+figure {
+  margin: 1.8rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 0.4rem;
+}
+
+figcaption {
+  margin-top: 0.5rem;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.86rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.compendium-box {
+  margin: 1.5rem 0;
+  padding: 0.95rem 1.2rem;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid var(--border);
+  border-left-width: 5px;
+  background: var(--surface);
+}
+
+.compendium-box-header {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.96rem;
+  margin-bottom: 0.55rem;
+  color: var(--navy);
+}
+
+.box-executive { border-left-color: #1e3a5f; }
+.box-filrouge  { border-left-color: #0f5132; }
+.box-sectoriel { border-left-color: #9a3412; }
+.box-adr       { border-left-color: #4c1d95; }
+.box-note      { border-left-color: #0369a1; }
+.box-important { border-left-color: #1d4ed8; }
+.box-tip       { border-left-color: #15803d; }
+.box-warning   { border-left-color: #b45309; }
+.box-caution   { border-left-color: #b91c1c; }

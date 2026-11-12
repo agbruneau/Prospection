@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 515" width="880" height="515">
+  <defs>
+    <marker id="arrowNavy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f2744"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#9a3412"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="515" fill="#ffffff"/>
+
+  <text x="440" y="25" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="14.5" font-weight="bold" fill="#0f2744">Modèle Opérationnel Cible (Hub-and-Spoke) : CoE Agentique, Tandem RH–IT et Supervision HOTL</text>
+
+  <!-- Niveau supérieur : Tandem RH-IT et Poste HOTL -->
+  <rect x="20" y="42" width="408" height="86" rx="6" fill="#f8fafc" stroke="#1e3a5f" stroke-width="1.3"/>
+  <text x="36" y="61" font-family="Segoe UI, Calibri, sans-serif" font-size="11.2" font-weight="bold" fill="#0f2744">Tandem RH – IT (Gouvernance de la Main-d'Œuvre Hybride)</text>
+  <text x="36" y="79" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#334155">• Cycle de vie unifié : arrivée et départ NHI couplés au SIRH (72 h)</text>
+  <text x="36" y="95" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#334155">• Refonte des fiches de poste &amp; parcours de requalification certifiants</text>
+  <text x="36" y="111" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#334155">• Dialogue social : transparence algorithmique &amp; droit à la déconnexion</text>
+
+  <rect x="452" y="42" width="408" height="86" rx="6" fill="#fff7ed" stroke="#9a3412" stroke-width="1.4"/>
+  <text x="468" y="61" font-family="Segoe UI, Calibri, sans-serif" font-size="11.2" font-weight="bold" fill="#7c2d12">Poste de Supervision Human-on-the-Loop (HOTL)</text>
+  <text x="468" y="79" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#334155">• Console différentielle A2UI (preuves contradictoires, zéro prose flatteuse)</text>
+  <text x="468" y="95" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" fill="#334155">• Budget cognitif borné (≤ 33 arbitrages complexes / quart) &amp; CIBA</text>
+  <text x="468" y="111" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#9a3412">• Injection de Tests Canaris (anti-complaisance OWASP ASI09)</text>
+
+  <line x1="224" y1="128" x2="290" y2="152" stroke="#0f2744" stroke-width="1.5" marker-end="url(#arrowNavy)"/>
+  <line x1="656" y1="128" x2="590" y2="152" stroke="#9a3412" stroke-width="1.5" marker-start="url(#arrowAmber)" marker-end="url(#arrowAmber)"/>
+
+  <!-- Niveau central : HUB (Centre d'Excellence Agentique) -->
+  <rect x="60" y="154" width="760" height="132" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.8"/>
+  <text x="440" y="175" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="12" font-weight="bold" fill="#0f2744">HUB CENTRAL — Centre d'Excellence Agentique (CoE Plateforme, Sécurité, Ontologies &amp; FinOps)</text>
+
+  <rect x="78" y="188" width="172" height="82" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="164" y="206" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f2744">Socle &amp; Runtime</text>
+  <text x="164" y="223" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">Temporal / Restate</text>
+  <text x="164" y="238" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">Passerelle agentgateway</text>
+  <text x="164" y="253" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#1d4ed8">Registre OASF / A2A</text>
+
+  <rect x="262" y="188" width="172" height="82" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="348" y="206" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f2744">Sécurité &amp; Conformité</text>
+  <text x="348" y="223" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">Identités SPIFFE &amp; OBO</text>
+  <text x="348" y="238" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">Politiques Cedar / OPA</text>
+  <text x="348" y="253" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#991b1b">Kill-Switch &amp; AIMS 42001</text>
+
+  <rect x="446" y="188" width="172" height="82" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="532" y="206" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f2744">Sémantique &amp; Qualité</text>
+  <text x="532" y="223" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">Gouvernance Apache Ossie</text>
+  <text x="532" y="238" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">Harnais CI/CD pass^k</text>
+  <text x="532" y="253" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#1d4ed8">Red-Teaming continu</text>
+
+  <rect x="630" y="188" width="172" height="82" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="716" y="206" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f2744">Cellule FinOps IA</text>
+  <text x="716" y="223" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">Routage SLM / LLM</text>
+  <text x="716" y="238" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">Refacturation interne</text>
+  <text x="716" y="253" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#0f5132">Cost-per-Outcome</text>
+
+  <!-- Flèches Hub <-> Spokes -->
+  <line x1="210" y1="286" x2="154" y2="322" stroke="#1d4ed8" stroke-width="1.6" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
+  <line x1="440" y1="286" x2="440" y2="322" stroke="#1d4ed8" stroke-width="1.6" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
+  <line x1="670" y1="286" x2="726" y2="322" stroke="#1d4ed8" stroke-width="1.6" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
+
+  <rect x="275" y="294" width="330" height="20" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+  <text x="440" y="308" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#334155">Golden Paths, garde-fous mutuels &amp; télémétrie OpenTelemetry</text>
+
+  <!-- Niveau inférieur : 3 SPOKES métiers -->
+  <rect x="20" y="324" width="268" height="172" rx="6" fill="#ffffff" stroke="#0f5132" stroke-width="1.5"/>
+  <rect x="20" y="324" width="268" height="26" rx="6" fill="#0f5132"/>
+  <text x="154" y="341" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.3" font-weight="bold" fill="#ffffff">SPOKE 1 — Boréal Équipements &amp; Logistique (BEL)</text>
+  <text x="32" y="366" font-family="Segoe UI, Calibri, sans-serif" font-size="8.7" font-weight="bold" fill="#0f2744">Named Business Owner : VP Chaîne d'Approvisionnement</text>
+  <text x="32" y="384" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Périmètre : SAP S/4HANA, MES, achats AP2</text>
+  <text x="32" y="400" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Équipe : Responsable Produit + Ing. MCP/OT</text>
+  <text x="32" y="416" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Budget : P&amp;L résultat logistique &amp; stocks</text>
+  <rect x="32" y="430" width="244" height="52" rx="4" fill="#ecfdf5" stroke="#a7f3d0"/>
+  <text x="154" y="447" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#0f5132">Imputabilité directe du propriétaire :</text>
+  <text x="154" y="461" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#1e293b">Plafonds d'achat B2B, recettes jumeau OT</text>
+  <text x="154" y="474" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#1e293b">&amp; validation trimestrielle des compensations</text>
+
+  <rect x="306" y="324" width="268" height="172" rx="6" fill="#ffffff" stroke="#0f2744" stroke-width="1.5"/>
+  <rect x="306" y="324" width="268" height="26" rx="6" fill="#0f2744"/>
+  <text x="440" y="341" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" font-weight="bold" fill="#ffffff">SPOKE 2 — Boréal Capital &amp; Assurances (BCA)</text>
+  <text x="318" y="366" font-family="Segoe UI, Calibri, sans-serif" font-size="9" font-weight="bold" fill="#0f2744">Named Business Owner : VP Souscription</text>
+  <text x="318" y="384" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Périmètre : IBM i (AS/400), Guidewire</text>
+  <text x="318" y="400" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Équipe : Actuaire Risques + Ing. Agents</text>
+  <text x="318" y="416" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Budget : Coût par dossier instruit &amp; sinistres</text>
+  <rect x="318" y="430" width="244" height="52" rx="4" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="440" y="447" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#1d4ed8">Imputabilité directe du propriétaire :</text>
+  <text x="440" y="461" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#1e293b">Dossier BSIF E-23, explicabilité Loi 25</text>
+  <text x="440" y="474" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#1e293b">&amp; seuils d'escalade vers souscripteurs HOTL</text>
+
+  <rect x="592" y="324" width="268" height="172" rx="6" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <rect x="592" y="324" width="268" height="26" rx="6" fill="#1d4ed8"/>
+  <text x="726" y="341" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.5" font-weight="bold" fill="#ffffff">SPOKE 3 — Boréal Services Numériques (BSN)</text>
+  <text x="604" y="366" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#0f2744">Named Business Owner : VP Succès Client</text>
+  <text x="604" y="384" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Périmètre : Télématique, ServiceNow, CRM</text>
+  <text x="604" y="400" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Équipe : Curateur Ontologie + SRE AgentOps</text>
+  <text x="604" y="416" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#334155">• Budget : SLA disponibilité 99,5 % &amp; rétention</text>
+  <rect x="604" y="430" width="244" height="52" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="726" y="447" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#0f2744">Imputabilité directe du propriétaire :</text>
+  <text x="726" y="461" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#1e293b">Exactitude triage, transparence EU Art. 50</text>
+  <text x="726" y="474" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#1e293b">&amp; activation d'urgence du mode dégradé</text>
+</svg>

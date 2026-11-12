@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 510" width="880" height="510">
+  <rect width="880" height="510" fill="#ffffff"/>
+
+  <!-- Titre -->
+  <text x="440" y="25" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="14.5" font-weight="bold" fill="#0f2744">Positionnement Architectural des Runtimes d'Exécution Durable Agentique (2027)</text>
+  <text x="440" y="42" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" fill="#475569">Arbitrage entre portabilité multi-cloud, latence de transition par étape, horizon temporel et intégration écosystémique</text>
+
+  <!-- Axes de positionnement -->
+  <rect x="56" y="58" width="784" height="364" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <line x1="448" y1="58" x2="448" y2="422" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <line x1="56" y1="240" x2="840" y2="240" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4"/>
+
+  <!-- Étiquettes des axes -->
+  <text x="448" y="73" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#1d4ed8">PORTABILITÉ OUVERTE &amp; NEUTRALITÉ MULTI-CLOUD / SUR SITE</text>
+  <text x="448" y="415" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#7c2d12">INTÉGRATION NATIVE ÉCOSYSTÈME HYPERSCALER (CLÉ EN MAIN)</text>
+
+  <text x="72" y="233" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#0f5132">HAUTE FRÉQUENCE &amp; LATENCE MS (T2 / T3)</text>
+  <text x="824" y="233" text-anchor="end" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" font-weight="bold" fill="#0f2744">SAGAS LONGUES &amp; SESSIONS LOURDES (T3 / T4)</text>
+
+  <!-- ==================== QUADRANT HAUT GAUCHE : RESTATE ==================== -->
+  <rect x="78" y="86" width="348" height="132" rx="6" fill="#ffffff" stroke="#0f5132" stroke-width="1.8"/>
+  <rect x="78" y="86" width="348" height="28" rx="6" fill="#ecfdf5" stroke="#0f5132" stroke-width="1.2"/>
+  <text x="252" y="104" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11" font-weight="bold" fill="#0f5132">Restate (Moteur Rust • Journal Bifrost intégré)</text>
+
+  <text x="90" y="128" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Primitives : Services RPC, Virtual Objects (clé K/V), Workflows</text>
+  <text x="90" y="144" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Modèle d'exécution : Push HTTP/2 vers conteneurs ou FaaS</text>
+  <text x="90" y="160" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Latence par étape journalisée (ctx.run) : ~1 à 5 ms</text>
+  <text x="90" y="176" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Force : Déploiement binaire unique, Awakeables ultra-légers</text>
+  <text x="90" y="194" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" font-weight="bold" fill="#0f5132">Idéal : Micro-orchestration A2A/MCP, agents sans serveur, T2-T3</text>
+  <text x="90" y="210" font-family="Segoe UI, Calibri, sans-serif" font-size="8.2" fill="#64748b">SDK : TypeScript, Python, Go, Java/Kotlin, Rust</text>
+
+  <!-- ==================== QUADRANT HAUT DROITE : TEMPORAL ==================== -->
+  <rect x="470" y="86" width="348" height="132" rx="6" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.8"/>
+  <rect x="470" y="86" width="348" height="28" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="644" y="104" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11" font-weight="bold" fill="#0f2744">Temporal + Temporal Nexus (Licence MIT)</text>
+
+  <text x="482" y="128" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Primitives : Workflows, Activities, Signals, Queries, Updates</text>
+  <text x="482" y="144" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Modèle d'exécution : Workers en Pull sur Task Queues isolées</text>
+  <text x="482" y="160" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Fédération inter-divisions : Contrats RPC durables via Nexus</text>
+  <text x="482" y="176" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Force : Résilience multi-régions, Versioning, Codec AES-GCM</text>
+  <text x="482" y="194" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" font-weight="bold" fill="#1d4ed8">Idéal : Sagas critiques multi-semaines, banque/assurance (T3-T4)</text>
+  <text x="482" y="210" font-family="Segoe UI, Calibri, sans-serif" font-size="8.2" fill="#64748b">SDK : TypeScript, Python, Go, Java, .NET, PHP</text>
+
+  <!-- ==================== QUADRANT BAS GAUCHE : MICROSOFT AGENT FRAMEWORK ==================== -->
+  <rect x="78" y="256" width="348" height="140" rx="6" fill="#ffffff" stroke="#334155" stroke-width="1.6"/>
+  <rect x="78" y="256" width="348" height="28" rx="6" fill="#f1f5f9" stroke="#334155" stroke-width="1.2"/>
+  <text x="252" y="274" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.8" font-weight="bold" fill="#0f2744">Microsoft Agent Framework (Durable Task)</text>
+
+  <text x="90" y="298" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Convergence officielle : AutoGen + Semantic Kernel unifiés</text>
+  <text x="90" y="314" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Moteur sous-jacent : Durable Task Framework / Azure / Dapr</text>
+  <text x="90" y="330" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• État : Déshydratation native des Agent Threads &amp; Workflows</text>
+  <text x="90" y="346" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Force : Identité Entra ID OBO native, pont Copilot Studio</text>
+  <text x="90" y="364" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" font-weight="bold" fill="#334155">Idéal : Entreprises standardisées Azure / .NET &amp; Python</text>
+  <text x="90" y="380" font-family="Segoe UI, Calibri, sans-serif" font-size="8.2" fill="#64748b">Portabilité : Haute sur Azure Functions, moyenne via Dapr K8s</text>
+
+  <!-- ==================== QUADRANT BAS DROITE : AMAZON BEDROCK AGENTCORE ==================== -->
+  <rect x="470" y="256" width="348" height="140" rx="6" fill="#ffffff" stroke="#9a3412" stroke-width="1.6"/>
+  <rect x="470" y="256" width="348" height="28" rx="6" fill="#fff7ed" stroke="#9a3412" stroke-width="1.2"/>
+  <text x="644" y="274" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10.8" font-weight="bold" fill="#7c2d12">Amazon Bedrock AgentCore (Runtime AWS)</text>
+
+  <text x="482" y="298" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Architecture : Sessions microVM isolées à longue durée de vie</text>
+  <text x="482" y="314" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Composants intégrés : Runtime, Gateway MCP, Memory, Identity</text>
+  <text x="482" y="330" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Agnostique au cadriciel : Exécute LangGraph, CrewAI, Strands</text>
+  <text x="482" y="346" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Force : Isolation matérielle + couplage Step Functions T4</text>
+  <text x="482" y="364" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" font-weight="bold" fill="#7c2d12">Idéal : Charges AWS intensives avec bac à sable code intégré</text>
+  <text x="482" y="380" font-family="Segoe UI, Calibri, sans-serif" font-size="8.2" fill="#64748b">Portabilité : Faible hors AWS (adhérence plan de contrôle IAM)</text>
+
+  <!-- Bandeau inférieur : Règle de combinaison Boréal -->
+  <rect x="56" y="434" width="784" height="60" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="74" y="454" font-family="Segoe UI, Calibri, sans-serif" font-size="9.8" font-weight="bold" fill="#0f2744">Patron d'urbanisation recommandé (Architecture Bi-Vitesse Groupe Boréal) :</text>
+  <text x="74" y="471" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Couche Macro-Sagas (T3/T4, 1 h à 90 j) : Temporal + Nexus pour la gouvernance inter-divisions, le versionnage long et la piste d'audit BSIF E-23.</text>
+  <text x="74" y="486" font-family="Segoe UI, Calibri, sans-serif" font-size="8.9" fill="#334155">• Couche Micro-Agents (T2, secondes à minutes) : Restate ou Durable Task pour sérialiser l'état par entité (Virtual Object) avec surcharge minimale.</text>
+</svg>

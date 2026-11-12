@@ -1,0 +1,11 @@
+# PARTIE III — Interopérabilité Sémantique, Ontologies d'Entreprise et Mémoire Partagée {.partie-titre}
+
+> **Périmètre éditorial de la Partie III** : 53 pages (p. 145–197) • **Chapitres 8 à 10**
+
+Normaliser les protocoles d'échange et les enveloppes de transport ne résout que la moitié du défi d'interopérabilité d'une entreprise agentique. Deux agents spécialistes peuvent dialoguer sans erreur syntaxique sur `A2A v1.0`, invoquer des serveurs `MCP` conformes et propager des jetons `OAuth 2.1` valides tout en prenant, de concert, une décision opérationnelle désastreuse. Dès qu'une division commerciale qualifie de « client actif » un compte en essai gratuit tandis que la filiale financière réserve ce terme aux contrats sans arriéré, ou lorsqu'un orchestrateur noie sa fenêtre d'inférence sous cent mille jetons de journaux contradictoires, la vélocité protocolaire ne fait qu'accélérer la propagation d'erreurs d'affaires.
+
+Passer de la connectivité technique à la cohérence cognitive exige de gouverner trois ressources critiques du *System of Action* : le budget d'attention immédiate des modèles, la définition formelle des concepts manipulés et la validité temporelle des faits retenus. Cette troisième partie établit l'architecture de connaissances qui ancre le raisonnement probabiliste dans la réalité vérifiable du système d'information :
+
+* Le **Chapitre 8** formalise l'ingénierie du contexte (*Context Engineering*) à grande échelle : compilation déterministe de fenêtres stratifiées, alignement strict des préfixes sur le `KV-cache`, filtrage `ACL-aware` pré-récupération et enveloppes de transfert inter-agents par référence (*Claim-Check*) éliminant le *Context Rot*.
+* Le **Chapitre 9** unifie le vocabulaire d'entreprise en couplant les couches sémantiques analytiques **Apache Ossie** (*Open Semantic Interchange*) avec des ontologies opérationnelles causales encadrant les automates d'états légaux et les préconditions des actions mutatives.
+* Le **Chapitre 10** conçoit les architectures de mémoire agentique distribuée, articulant les blocs hiérarchiques paginés (`Letta`) et les graphes de connaissances bi-temporels (`Graphiti`) sous contraintes d'isolation multi-locataire, de garde anti-empoisonnement (`OWASP ASI06`) et d'effacement crypto-sélectif conforme à la `Loi 25` et au `RGPD`.

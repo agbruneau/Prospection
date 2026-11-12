@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 480" width="880" height="480">
+  <defs>
+    <marker id="arrowNavy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e3a5f"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f5132"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="480" fill="#ffffff"/>
+
+  <text x="440" y="26" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="15" font-weight="bold" fill="#0f2744">Architecture de Mémoire Hybride : Hiérarchie OS (Letta) &amp; Graphe Bi-Temporel (Graphiti)</text>
+
+  <!-- Colonne Gauche : Hiérarchie Mémoire Locale Type OS (Letta) -->
+  <rect x="20" y="46" width="376" height="318" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="208" y="68" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11.5" font-weight="bold" fill="#0f2744">1. Gestionnaire de Mémoire Type OS (Letta)</text>
+  <text x="208" y="84" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#1d4ed8">État local par cellule agentique • Pagination explicite bornée</text>
+
+  <rect x="36" y="96" width="344" height="74" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.3"/>
+  <text x="208" y="114" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f2744">Core Memory Blocks (RAM Contextuelle Épinglée)</text>
+  <text x="208" y="130" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Bloc Mandat &amp; Politiques (Lecture seule, signé plateforme)</text>
+  <text x="208" y="145" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">• Bloc État Dossier &amp; Préférences (Quota strict : ex. 2 048 car.)</text>
+  <text x="208" y="160" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#1d4ed8">Outils : memory_replace / memory_rethink (filtrés anti-ASI06)</text>
+
+  <line x1="208" y1="170" x2="208" y2="192" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <rect x="36" y="192" width="344" height="68" rx="4" fill="#ffffff" stroke="#64748b"/>
+  <text x="208" y="211" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#1e293b">Recall Memory (Journal Épisodique paginé)</text>
+  <text x="208" y="227" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#475569">Traces d'interactions, décisions passées &amp; appels d'outils</text>
+  <text x="208" y="242" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#475569">Éviction FIFO avec synthèse structurée sur dépassement</text>
+
+  <line x1="208" y1="260" x2="208" y2="282" stroke="#1e3a5f" stroke-width="1.5" marker-end="url(#arrowNavy)"/>
+
+  <rect x="36" y="282" width="344" height="66" rx="4" fill="#fff7ed" stroke="#9a3412"/>
+  <text x="208" y="301" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#7c2d12">Garde d'Écriture Déterministe (MemoryWriteGuard)</text>
+  <text x="208" y="317" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Vérifie provenance source, bloque instructions cachées (ASI06)</text>
+  <text x="208" y="332" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#9a3412">Scelle tenant_id + subject_id avant toute persistance</text>
+
+  <!-- Connecteur horizontal vers Graphe Bi-temporel -->
+  <line x1="396" y1="205" x2="438" y2="205" stroke="#0f5132" stroke-width="1.8" marker-end="url(#arrowGreen)"/>
+  <line x1="438" y1="225" x2="396" y2="225" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+
+  <!-- Colonne Droite : Graphe de Connaissances Bi-Temporel Partagé (Graphiti) -->
+  <rect x="438" y="46" width="422" height="318" rx="6" fill="#ecfdf5" stroke="#0f5132" stroke-width="1.5"/>
+  <text x="649" y="68" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11.5" font-weight="bold" fill="#0f5132">2. Graphe de Connaissances Bi-Temporel (Graphiti / Zep)</text>
+  <text x="649" y="84" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#0f5132">Mémoire sémantique &amp; relationnelle partagée • Invalidation sans écrasement</text>
+
+  <!-- Schéma des 2 axes temporels sur une arête -->
+  <rect x="454" y="96" width="390" height="114" rx="4" fill="#ffffff" stroke="#0f5132" stroke-width="1.3"/>
+  <text x="649" y="115" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="10" font-weight="bold" fill="#0f2744">Anatomie d'une Arête Bi-Temporelle (Fait Métier Versionné)</text>
+  <text x="649" y="132" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9" fill="#1e293b">(Compresseur #90441) —[FIRMWARE_ACTIF: v4.2]⟶ (Contrôleur HX9)</text>
+
+  <rect x="468" y="142" width="175" height="56" rx="3" fill="#eff6ff" stroke="#1d4ed8"/>
+  <text x="555" y="159" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#0f2744">Axe 1 : Temps Métier Réel</text>
+  <text x="555" y="174" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#334155">valid_from : 2027-01-10</text>
+  <text x="555" y="188" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#1d4ed8">valid_to : 2027-03-02 (MAJ v4.3)</text>
+
+  <rect x="655" y="142" width="175" height="56" rx="3" fill="#f8fafc" stroke="#64748b"/>
+  <text x="742" y="159" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.2" font-weight="bold" fill="#1e293b">Axe 2 : Temps Système</text>
+  <text x="742" y="174" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#334155">ingested_at : 2027-01-14 (Sync)</text>
+  <text x="742" y="188" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.6" fill="#475569">superseded_at : 2027-03-02</text>
+
+  <!-- Résolution de contradiction et requête As-Of -->
+  <rect x="454" y="222" width="390" height="62" rx="4" fill="#ffffff" stroke="#1e3a5f"/>
+  <text x="649" y="241" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.8" font-weight="bold" fill="#0f2744">Résolution des Retards Terrain &amp; Requêtes Point-in-Time (As-Of)</text>
+  <text x="649" y="257" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Reconstruit l'état exact du monde à t_sinistre ET ce que savait l'agent à t_décision</text>
+  <text x="649" y="271" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#0f5132">Auditabilité intégrale exigée par BSIF E-23 &amp; contentieux assurances</text>
+
+  <rect x="454" y="296" width="390" height="52" rx="4" fill="#ffffff" stroke="#0f5132"/>
+  <text x="649" y="315" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.8" font-weight="bold" fill="#0f5132">Sous-Graphes d'Épisodes &amp; Communautés Pré-Synthétisées</text>
+  <text x="649" y="331" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.8" fill="#334155">Recherche hybride (BM25 + Vecteur + Traversée 2-sauts) en &lt; 75 ms p95</text>
+
+  <!-- Bandeau inférieur : Isolation Multi-Tenant & Gouvernance Loi 25 / RGPD -->
+  <rect x="20" y="382" width="840" height="82" rx="6" fill="#f8fafc" stroke="#1e3a5f" stroke-width="1.3"/>
+  <text x="440" y="403" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="11" font-weight="bold" fill="#0f2744">Socle de Gouvernance Transversal : Cloisonnement Multi-Locataire &amp; Droit à l'Effacement (Loi 25 / RGPD)</text>
+
+  <rect x="36" y="414" width="254" height="38" rx="4" fill="#ffffff" stroke="#1d4ed8"/>
+  <text x="163" y="430" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.3" font-weight="bold" fill="#0f2744">Partitionnement Cryptographique</text>
+  <text x="163" y="443" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Clés KMS dédiées par locataire / division</text>
+
+  <rect x="313" y="414" width="254" height="38" rx="4" fill="#ffffff" stroke="#9a3412"/>
+  <text x="440" y="430" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.3" font-weight="bold" fill="#7c2d12">Oubli Sélectif Coordonné (Art. 17)</text>
+  <text x="440" y="443" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Purge Blocs + Vecteurs + Arêtes PII</text>
+
+  <rect x="590" y="414" width="254" height="38" rx="4" fill="#ffffff" stroke="#0f5132"/>
+  <text x="717" y="430" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="9.3" font-weight="bold" fill="#0f5132">Crypto-Shredding Législatif</text>
+  <text x="717" y="443" text-anchor="middle" font-family="Segoe UI, Calibri, sans-serif" font-size="8.5" fill="#334155">Préserve intégrité comptable anonymisée</text>
+</svg>
